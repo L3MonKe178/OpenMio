@@ -28,9 +28,10 @@ nbproject/private/
 # documented in README; don't commit it.
 run/
 
-# One-off snapshots from the deobf process
+# One-off snapshots and helper scripts from the deobf process
 errors-snapshot.txt
 summary.txt
+fix-*.py
 
 # Local environment overrides
 .env
