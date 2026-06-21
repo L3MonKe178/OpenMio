@@ -1,0 +1,31 @@
+accessWidener	v1	named
+
+# Private inner classes referenced by our mixins / modules.
+accessible	class	net/minecraft/client/particle/FireworksSparkParticle$Explosion
+accessible	class	net/minecraft/world/chunk/PalettedContainer$Data
+accessible	field	net/minecraft/entity/LimbAnimator	speed	F
+accessible	field	net/minecraft/entity/LimbAnimator	pos	F
+accessible	field	net/minecraft/entity/LimbAnimator	prevSpeed	F
+accessible	field	net/minecraft/client/particle/Particle	maxAge	I
+accessible	field	net/minecraft/client/gui/hud/ChatHud	visibleMessages	Ljava/util/List;
+accessible	method	net/minecraft/entity/Entity	findCollisionsForMovement	(Lnet/minecraft/entity/Entity;Lnet/minecraft/world/World;Ljava/util/List;Lnet/minecraft/util/math/Box;)Ljava/util/List;
+accessible	method	net/minecraft/item/CrossbowItem	getSpeed	(Lnet/minecraft/component/type/ChargedProjectilesComponent;)F
+accessible	field	com/mojang/blaze3d/systems/RenderSystem	shaderLightDirections	[Lorg/joml/Vector3f;
+
+# DragonEntityModel internals used by Trails / Chams modules
+accessible	class	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer	model	Lnet/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	head	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	jaw	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	neck	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	body	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	leftWing	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	rightWing	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	leftWingTip	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/client/render/entity/EnderDragonEntityRenderer$DragonEntityModel	rightWingTip	Lnet/minecraft/client/model/ModelPart;
+accessible	field	net/minecraft/network/ClientConnection	channel	Lio/netty/channel/Channel;
+accessible	method	net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket	write	(Lnet/minecraft/network/PacketByteBuf;)V
+accessible	field	net/minecraft/client/model/ModelPart	cuboids	Ljava/util/List;
+accessible	field	net/minecraft/client/model/ModelPart	children	Ljava/util/Map;
+accessible	field	net/minecraft/client/model/ModelPart$Cuboid	sides	[Lnet/minecraft/client/model/ModelPart$Quad;
+accessible	field	net/minecraft/client/render/BufferRenderer	currentVertexBuffer	Lnet/minecraft/client/gl/VertexBuffer;

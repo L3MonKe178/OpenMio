@@ -1,0 +1,2 @@
+package baritone.api.process;
+public enum PathingCommandType { REQUEST_PAUSE, REVALIDATE_GOAL_AND_PATH, SET_GOAL_AND_PATH, CANCEL_AND_SET_GOAL, FORCE_REVALIDATE_GOAL_AND_PATH, DEFER }

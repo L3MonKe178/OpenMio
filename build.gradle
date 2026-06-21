@@ -1,0 +1,72 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'java'
+}
+
+group = project.mod_group
+version = project.mod_version
+base { archivesName = project.mod_id }
+
+repositories {
+    maven { url 'https://maven.fabricmc.net/' }
+    maven {
+        // Baritone API
+        url 'https://impactdevelopment.github.io/maven/'
+    }
+    maven {
+        // Sodium
+        url 'https://api.modrinth.com/maven'
+        content { includeGroup "maven.modrinth" }
+    }
+    mavenCentral()
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/mio.accesswidener")
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+    // Yarn human-readable mappings — the source already uses them
+    // (MinecraftClient, Items, TOTEM_OF_UNDYING, …) because the deobf jar was
+    // tiny-remapped from intermediary to named before decompilation.
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // Sodium / Lithium / Baritone — referenced by a handful of mixins and a
+    // couple of modules. Skipped: Baritone API is not on Fabric Maven for 1.21
+    // (impactdevelopment hosts the Forge build). If you need the AntiCheat /
+    // pathfinding modules to compile, drop a baritone-api jar in `libs/` and
+    // it will be picked up via the `fileTree(dir: 'libs')` line above.
+    compileOnly "maven.modrinth:sodium:mc1.21-0.5.11"
+    // Discord-IPC bundled in this jar uses junixsocket for Unix-socket transport.
+    compileOnly "com.kohlschutter.junixsocket:junixsocket-core:2.10.0"
+    compileOnly "net.lenni0451:Reflect:1.5.0"
+
+    // The decompiled code calls `nick.Loader.settings(this)` and friends. Those
+    // classes live in the *loader* jar that we deliberately didn't decompile.
+    // Drop the loader jar in `libs/mio-loader-deobf.jar` and Gradle will pick it up.
+    compileOnly fileTree(dir: 'libs', includes: ['*.jar'])
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withSourcesJar()
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
