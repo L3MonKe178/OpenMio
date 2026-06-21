@@ -304,7 +304,7 @@ public class NameTagsModule extends Module {
          if (var12) {
             var2.translate(
                Double.longBitsToDouble(-4616189618054758400L),
-               Double.longBitsToDouble(4608533498688228557L) + (double)field_984.field_372.getValue().intValue(),
+               Double.longBitsToDouble(4608533498688228557L) + (double)(field_984.field_372.getValue() != null ? field_984.field_372.getValue().intValue() : 0),
                0.0
             );
          }

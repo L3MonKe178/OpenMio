@@ -64,7 +64,7 @@ public class AbstractModule_3 extends AbstractModule_26 {
          this.field_3436 = "0.00";
          this.field_3437 = Formatting.WHITE;
       } else {
-         String var1 = this.field_3433.getValue().toUpperCase(Locale.ROOT);
+         String var1 = (this.field_3433.getValue() != null ? this.field_3433.getValue().toUpperCase(Locale.ROOT) : "");
          String var2 = (this.field_3434.getValue() != null ? this.field_3434.getValue().getName() : "").toUpperCase(Locale.ROOT);
 
          try {
