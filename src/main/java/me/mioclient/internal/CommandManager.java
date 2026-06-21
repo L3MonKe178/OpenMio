@@ -44,7 +44,7 @@ public final class CommandManager extends Registry<Command> implements MioAPI, C
       if (!var0.isBlank()) {
          String var1 = var0.substring(0, 1);
          field_3192 = var1;
-         clickgui.field_2846.method_78((String)var1);
+         if (clickgui != null) clickgui.field_2846.method_78((String)var1);
       }
    }
 

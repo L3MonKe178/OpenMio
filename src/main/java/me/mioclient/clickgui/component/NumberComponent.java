@@ -27,6 +27,7 @@ public class NumberComponent extends SettingComponent {
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
 
       double min = ((Number) this.setting.method_100()).doubleValue();
       double max = ((Number) this.setting.method_101()).doubleValue();

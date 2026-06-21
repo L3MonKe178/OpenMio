@@ -53,6 +53,7 @@ public class Panel {
 
    public void render(DrawContext ctx, int mouseX, int mouseY) {
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       MinecraftClient mc = MinecraftClient.getInstance();
       int w = this.width();
 

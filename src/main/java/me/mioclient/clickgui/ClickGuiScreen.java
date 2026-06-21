@@ -130,6 +130,7 @@ public class ClickGuiScreen extends Screen {
 
    private void drawBackground(DrawContext ctx, float alpha) {
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       java.awt.Color bgCol = ui.field_2883.getValue();
       java.awt.Color fgCol = ui.field_2884.getValue();
       if (bgCol != null && bgCol.getAlpha() > 0) {
@@ -145,6 +146,7 @@ public class ClickGuiScreen extends Screen {
    private void drawSearch(DrawContext ctx) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       if (this.searchFocused) {
          long now = System.currentTimeMillis();
          if (now - this.caretToggleMs > 500L) {
@@ -226,6 +228,7 @@ public class ClickGuiScreen extends Screen {
    public boolean mouseScrolled(double mx, double my, double horiz, double vert) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return super.mouseScrolled(mx, my, horiz, vert);
       int step = 2 + mc.textRenderer.fontHeight + ui.field_2851.getValue();
       int maxBottom = 5;
       int maxTop = 0;

@@ -109,6 +109,7 @@ public class ModuleButton {
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
 
       this.toggleAnim.target(this.module.isToggled());
       float on = this.toggleAnim.tick();

@@ -226,10 +226,10 @@ extends Module {
                     if ((this.field_899.getValue() != null ? this.field_899.getValue().booleanValue() : false)) {
                         this.method_14(playerEntity.getPos());
                     }
-                    if ((this.field_886.getValue() != null ? this.field_886.getValue().booleanValue() : false) && (this.field_887.getValue() != null ? this.field_887.getValue().booleanValue() : false) && (this.field_889.getValue() != null ? this.field_889.getValue().floatValue() : 0.0f) > 0.0f && (object2 = Hub.field_2606.method_2(this.field_888.getValue())) != null) {
+                    if ((this.field_886.getValue() != null ? this.field_886.getValue().booleanValue() : false) && (this.field_887.getValue() != null ? this.field_887.getValue().booleanValue() : false) && (this.field_889.getValue() != null ? this.field_889.getValue().floatValue() : 0.0f) > 0.0f && Hub.field_2606 != null && (object2 = Hub.field_2606.method_2(this.field_888.getValue())) != null) {
                         ((Class_0337)object2).method_230((this.field_889.getValue() != null ? this.field_889.getValue().floatValue() : 0.0f));
                     }
-                    if (!(this.field_893.getValue() != null ? this.field_893.getValue().booleanValue() : false) || this.field_910 < 2 || !((this.field_894.getValue() != null ? this.field_894.getValue().floatValue() : 0.0f) > 0.0f) || (object2 = Hub.field_2606.method_6(this.field_910)) == null) continue;
+                    if (!(this.field_893.getValue() != null ? this.field_893.getValue().booleanValue() : false) || this.field_910 < 2 || !((this.field_894.getValue() != null ? this.field_894.getValue().floatValue() : 0.0f) > 0.0f) || Hub.field_2606 == null || (object2 = Hub.field_2606.method_6(this.field_910)) == null) continue;
                     ((Class_0337)object2).method_230((this.field_894.getValue() != null ? this.field_894.getValue().floatValue() : 0.0f));
                 }
                 catch (Exception exception) {}

@@ -299,7 +299,7 @@ public class ElytraFlyModule extends Module {
    public void method_1099() {
       if (this.method_558() && !field_4219.player.isFallFlying() && !field_4219.player.isOnGround() && this.field_4350.getValue() != Class_0323.NONE) {
          if (this.field_4350.getValue() == Class_0323.STRICT) {
-            Hub.field_2596.method_2(this, Float.intBitsToFloat(1036831949));
+            if (Hub.field_2596 != null) Hub.field_2596.method_2(this, Float.intBitsToFloat(1036831949));
          }
 
          long var1 = 100L;
@@ -313,7 +313,7 @@ public class ElytraFlyModule extends Module {
             this.field_4390.reset();
          }
       } else {
-         Hub.field_2596.method_38(this);
+         if (Hub.field_2596 != null) Hub.field_2596.method_38(this);
       }
    }
 

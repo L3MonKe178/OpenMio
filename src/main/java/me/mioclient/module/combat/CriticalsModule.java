@@ -56,7 +56,7 @@ public class CriticalsModule extends Module {
    public void method_300() {
       float[] var1 = new float[]{field_4219.player.getYaw(), field_4219.player.getPitch()};
       if (field_3405.field_582 != null && field_3405.isToggled()) {
-         var1 = RotationManager.method_2(RotationManager.method_14(field_3405.field_582), Hub.field_2598.method_509());
+         var1 = RotationManager.method_2(RotationManager.method_14(field_3405.field_582), Hub.field_2598 != null ? Hub.field_2598.method_509() : 0F);
       }
 
       switch ((Class_0448)this.field_3406.getValue()) {

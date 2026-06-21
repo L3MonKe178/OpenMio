@@ -18,7 +18,9 @@ public class ColorComponent extends SettingComponent {
    @Override
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       MinecraftClient mc = MinecraftClient.getInstance();
-      int color = ColorUtil.argb(UIModule.field_2843.field_2876.getValue());
+      UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
+      int color = ColorUtil.argb(ui.field_2876.getValue());
       ctx.drawText(mc.textRenderer, this.setting.getName(), x + 4, y + 2, color, false);
 
       Color c = s().getValue();

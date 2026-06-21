@@ -18,6 +18,7 @@ public class EnumComponent extends SettingComponent {
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       int label = ColorUtil.argb(ui.field_2876.getValue());
       int value = ColorUtil.argb(ui.field_2877.getValue());
       ctx.drawText(mc.textRenderer, this.setting.getName(), x + 4, y + 2, label, false);

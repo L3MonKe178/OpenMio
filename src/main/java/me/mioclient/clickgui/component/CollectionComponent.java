@@ -27,6 +27,7 @@ public class CollectionComponent extends SettingComponent {
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       MinecraftClient mc = MinecraftClient.getInstance();
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       int color = ColorUtil.argb(ui.field_2876.getValue());
       ctx.drawText(mc.textRenderer, this.setting.getName(), x + 4, y + 2, color, false);
 

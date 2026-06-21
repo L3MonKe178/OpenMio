@@ -57,7 +57,7 @@ public class VelocityModule extends Module {
 
    @Override
    public void onDisable() {
-      sprint.field_1033 = false;
+      if (sprint != null) sprint.field_1033 = false;
       this.field_2516.method_1156().onDisable();
    }
 
@@ -76,7 +76,7 @@ public class VelocityModule extends Module {
    )
    public void method_2(Event_17 var1) {
       if (this.field_2509.getValue() != Class_0184.WALLS) {
-         sprint.field_1033 = false;
+         if (sprint != null) sprint.field_1033 = false;
       }
 
       this.field_2516.method_1156().method_40();

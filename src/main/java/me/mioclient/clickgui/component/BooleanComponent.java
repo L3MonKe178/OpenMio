@@ -17,6 +17,7 @@ public class BooleanComponent extends SettingComponent {
    @Override
    public void render(DrawContext ctx, int x, int y, int width, int mouseX, int mouseY) {
       UIModule ui = UIModule.field_2843;
+      if (ui == null) return;
       MinecraftClient mc = MinecraftClient.getInstance();
       boolean v = s().getValue();
       int color = v ? ColorUtil.argb(ui.field_2877.getValue()) : ColorUtil.argb(ui.field_2876.getValue());
