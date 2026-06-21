@@ -382,7 +382,7 @@ public class AutoCrystalModule extends Module {
          Vec3d var4 = this.field_4123.get();
          if (this.field_4081.getValue()) {
             if (var4 != null && (!RotationManager.method_514() || this.method_1131())) {
-               Hub.field_2598.method_2(RotationManager.method_2(RotationManager.method_78(var4), Hub.field_2598.method_509()), 100, true);
+               if (Hub.field_2598 != null) Hub.field_2598.method_2(RotationManager.method_2(RotationManager.method_78(var4), Hub.field_2598.method_509()), 100, true);
                if (this.field_4125.method_9(500L)) {
                   this.field_4122.lazySet(null);
                   this.field_4123.lazySet(null);
@@ -429,9 +429,9 @@ public class AutoCrystalModule extends Module {
          }
       }
 
-      if (var1.method_127() instanceof EntityStatusS2CPacket var5
+      if (this.field_2290 != null
+         && var1.method_127() instanceof EntityStatusS2CPacket var5
          && var5.getStatus() == 3
-         && this.field_2290 != null
          && ((DuckEntityStatusS2CPacket)var5).getId() == this.field_2290.getId()) {
          ((Class_0705)this.field_2290).setServerSideDead(true);
       }
@@ -509,7 +509,7 @@ public class AutoCrystalModule extends Module {
             }
 
             boolean var10 = field_4219.player.isHolding(Items.END_CRYSTAL) || Class_0396.method_76() >= Float.intBitsToFloat(1090519040);
-            if (!field_144.method_1052()) {
+            if (field_144 != null && !field_144.method_1052()) {
                var10 = true;
             }
 
@@ -536,7 +536,7 @@ public class AutoCrystalModule extends Module {
          .method_35(this.field_4062.getValue())
          .method_107(this.field_4120.getValue() && !this.method_1141())
          .method_374(this.field_4064.getValue() && this.method_1136())
-         .method_425(this.method_1141() && speedmine.field_3994.getValue() != Class_0692.INSTANT)
+         .method_425(this.method_1141() && speedmine != null && speedmine.field_3994.getValue() != Class_0692.INSTANT)
          .method_101(this.field_4088.getValue() ? this.field_4089.getValue() : 0)
          .method_33(this.field_4069.getValue());
       if (var1 != null && var4.method_185(var1.method_406())) {
@@ -957,7 +957,7 @@ public class AutoCrystalModule extends Module {
       if (!this.field_4068.method_105()) {
          for (int var2 = 1; var2 < this.field_4068.getValue(); var2++) {
             int var3 = var1 + var2;
-            if (field_144.field_3744.getValue()) {
+            if (field_144 != null && field_144.field_3744.getValue()) {
                var3--;
             }
 
@@ -1006,7 +1006,8 @@ public class AutoCrystalModule extends Module {
          } else if (this.field_4106.getValue()) {
             return false;
          } else {
-            return field_4049.isToggled()
+            return field_4049 != null
+                  && field_4049.isToggled()
                   && field_4049.field_3792.get() != null
                   && field_4049.field_3793 != null
                   && this.field_4122.get() != null
@@ -1170,6 +1171,7 @@ public class AutoCrystalModule extends Module {
 
    public boolean method_1141() {
       float var1 = Float.intBitsToFloat(1075838976);
+      if (speedmine == null) return false;
       boolean var2 = (double)speedmine.method_1119() + speedmine.method_1114() * (double)var1 >= (double)speedmine.field_3988.getValue().floatValue()
          && speedmine.method_1118() != null
          && Class_1225.method_3(speedmine.method_1118());

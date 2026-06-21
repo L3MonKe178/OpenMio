@@ -196,6 +196,7 @@ public class ChamsModule extends Module {
                         var2.getX(), var2.method_805().y + (double)((Float.intBitsToFloat(1065353216) - var4x) * this.field_245.getValue()), var2.getZ()
                      );
                      Color[] var5 = (this.field_241.getValue() != null ? this.field_241.getValue().method_2(this) : null);
+                     if (var5 == null) return;
                      Class_0482.method_2(
                         Class_1081.method_2(var5[0], (float)var5[0].getAlpha() / Float.intBitsToFloat(1132396544) * var4x),
                         Class_1081.method_2(var5[1], (float)var5[1].getAlpha() / Float.intBitsToFloat(1132396544) * var4x)

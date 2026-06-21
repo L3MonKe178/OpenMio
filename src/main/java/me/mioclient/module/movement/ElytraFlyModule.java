@@ -132,14 +132,16 @@ public class ElytraFlyModule extends Module {
       this.field_4392.setTime(-1L);
       this.field_4394 = true;
       if (!this.method_535()) {
-         this.field_4388.method_1156().onEnable();
+         var handler = this.field_4388.method_1156();
+         if (handler != null) handler.onEnable();
       }
    }
 
    @Override
    public void onDisable() {
       if (!this.method_535()) {
-         this.field_4388.method_1156().onDisable();
+         var handler = this.field_4388.method_1156();
+         if (handler != null) handler.onDisable();
       }
 
       if (!this.method_535() && this.field_4387.getValue() && this.field_4387.method_176() && !field_4219.player.isSneaking()) {
@@ -174,7 +176,8 @@ public class ElytraFlyModule extends Module {
          this.field_4394 = true;
       }
 
-      this.field_4388.method_1156().method_2(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
@@ -183,7 +186,8 @@ public class ElytraFlyModule extends Module {
          this.field_4391.reset();
       }
 
-      this.field_4388.method_1156().method_2(var1);
+      var handler2 = this.field_4388.method_1156();
+      if (handler2 != null) handler2.method_2(var1);
    }
 
    @Subscribe
@@ -241,7 +245,8 @@ public class ElytraFlyModule extends Module {
                   }
                }
 
-               this.field_4388.method_1156().method_2(var1);
+               var handler = this.field_4388.method_1156();
+               if (handler != null) handler.method_2(var1);
             }
          }
       }
@@ -256,27 +261,32 @@ public class ElytraFlyModule extends Module {
          }
       }
 
-      this.field_4388.method_1156().method_5(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe
    public void method_9(Event_9 var1) {
-      this.field_4388.method_1156().method_2(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
    public void method_9(Event_19 var1) {
-      this.field_4388.method_1156().method_9(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_9(Event_39 var1) {
-      this.field_4388.method_1156().method_9(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_5(Event_16 var1) {
-      this.field_4388.method_1156().method_5(var1);
+      var handler = this.field_4388.method_1156();
+      if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe

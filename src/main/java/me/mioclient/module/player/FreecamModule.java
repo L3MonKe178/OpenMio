@@ -67,7 +67,7 @@ public class FreecamModule extends Module {
 
    @Override
    public void onDisable() {
-      if (!this.method_535()) {
+      if (!this.method_535() && this.field_2829 != null && field_4219.player != null) {
          field_4219.player.setYaw(this.field_2829[0]);
          field_4219.player.setPitch(this.field_2829[1]);
          field_4219.options.setPerspective(this.field_1352);

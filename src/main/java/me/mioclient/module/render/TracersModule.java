@@ -70,7 +70,7 @@ public class TracersModule extends Module {
                var7 = Class_1081.method_9(Hub.field_2603.method_1146(), (this.field_525.getValue() != null ? this.field_525.getValue().getAlpha() : 255));
             }
 
-            Class_0800 var12 = var8 ? field_521.field_2133.getValue() : Class_0800.NORMAL;
+            Class_0800 var12 = var8 && field_521 != null && field_521.field_2133 != null && field_521.field_2133.getValue() != null ? field_521.field_2133.getValue() : Class_0800.NORMAL;
             Color var10 = var7;
             var12.method_5(
                () -> {

@@ -231,7 +231,7 @@ public class   AuraModule extends Module {
                   var2 = false;
                }
 
-               if (field_1040.isToggled()
+               if ((field_1040 != null && field_1040.isToggled())
                   || field_4219.player.getAbilities().flying
                   || field_4219.player.isFallFlying()
                   || Class_0382.method_29(field_4219.player)
@@ -277,7 +277,7 @@ public class   AuraModule extends Module {
                      field_4219.player.networkHandler.sendPacket(new ClientCommandC2SPacket(field_4219.player, Mode.START_SPRINTING));
                   }
 
-                  field_1039.field_4445 = false;
+                  if (field_1039 != null) field_1039.field_4445 = false;
                   if (var7 != -1) {
                      if (this.field_1059.getValue()) {
                         this.field_1072 = Class_0756.method_9(Enchantments.DENSITY, field_4219.player.getInventory().getStack(var7));

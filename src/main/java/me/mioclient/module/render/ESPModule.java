@@ -155,7 +155,7 @@ public class ESPModule extends Module {
                double var10 = (double)var5.getPos().getZ() - var2.z;
                var1.method_10().push();
                var1.method_10().translate(var6, var8, var10);
-               Color var12 = Class_0612.method_2(this.field_3850.method_5(var5), field_521.field_2133.getValue().method_727());
+               Color var12 = Class_0612.method_2(this.field_3850.method_5(var5), field_521 != null && field_521.field_2133 != null && field_521.field_2133.getValue() != null ? field_521.field_2133.getValue().method_727() : new float[]{1.0F, 1.0F, 1.0F, 1.0F});
                var3.setColor(var12.getRed(), var12.getGreen(), var12.getBlue(), 255);
                if (field_4219.getBlockEntityRenderDispatcher().get(var5) == null) {
                   VertexConsumer var13 = var3.getBuffer(RenderLayer.getSolid());

@@ -67,7 +67,8 @@ public class SpeedModule extends Module {
 
    @Override
    public void onEnable() {
-      this.field_2199.method_1156().onEnable();
+      var handler = this.field_2199.method_1156();
+      if (handler != null) handler.onEnable();
    }
 
    @Subscribe
@@ -80,14 +81,16 @@ public class SpeedModule extends Module {
    @Subscribe
    public void method_9(Event_39 var1) {
       if (!var1.method_1025()) {
-         this.field_2199.method_1156().method_738();
+         var handler = this.field_2199.method_1156();
+         if (handler != null) handler.method_738();
       }
    }
 
    @Subscribe
    public void method_9(Event_9 var1) {
       if (Hub.field_2602.method_985().method_9(10L) && !this.field_2197) {
-         this.field_2199.method_1156().method_9(var1);
+         var handler = this.field_2199.method_1156();
+         if (handler != null) handler.method_9(var1);
       }
    }
 
@@ -104,7 +107,8 @@ public class SpeedModule extends Module {
    public void method_2(Event_19 var1) {
       this.field_2197 = false;
       if (Hub.field_2602.method_985().method_9(10L)) {
-         this.field_2199.method_1156().method_2(var1);
+         var handler = this.field_2199.method_1156();
+         if (handler != null) handler.method_2(var1);
       }
    }
 
@@ -131,11 +135,13 @@ public class SpeedModule extends Module {
    }
 
    public void reset() {
-      this.field_2199.method_1156().field_1419 = 0.0;
-      this.field_2199.method_1156().field_1570 = 0.0;
-      this.field_2199.method_1156().field_1571 = 4;
+      var handler = this.field_2199.method_1156();
+      if (handler == null) return;
+      handler.field_1419 = 0.0;
+      handler.field_1570 = 0.0;
+      handler.field_1571 = 4;
       if (this.field_2191.getValue() == StrafeType.ON_GROUND) {
-         this.field_2199.method_1156().field_1571 = 2;
+         handler.field_1571 = 2;
       }
    }
 

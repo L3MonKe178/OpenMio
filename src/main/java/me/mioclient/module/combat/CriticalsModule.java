@@ -55,7 +55,7 @@ public class CriticalsModule extends Module {
 
    public void method_300() {
       float[] var1 = new float[]{field_4219.player.getYaw(), field_4219.player.getPitch()};
-      if (field_3405.field_582 != null && field_3405.isToggled()) {
+      if (field_3405 != null && field_3405.field_582 != null && field_3405.isToggled()) {
          var1 = RotationManager.method_2(RotationManager.method_14(field_3405.field_582), Hub.field_2598 != null ? Hub.field_2598.method_509() : 0F);
       }
 
@@ -124,7 +124,7 @@ public class CriticalsModule extends Module {
    public boolean method_7(PlayerInteractEntityC2SPacket var1) {
       if (Class_0144.method_9(var1) == Class_0034.ATTACK && this.method_976()) {
          Entity var2 = Class_0144.method_2(var1);
-         return (!field_3405.isToggled() || !field_3405.field_1073 || this.field_3406.getValue() == Class_0448.GRIM)
+         return (field_3405 == null || !field_3405.isToggled() || !field_3405.field_1073 || this.field_3406.getValue() == Class_0448.GRIM)
             && var2 != null
             && var2.isAlive()
             && !(var2 instanceof EndCrystalEntity);

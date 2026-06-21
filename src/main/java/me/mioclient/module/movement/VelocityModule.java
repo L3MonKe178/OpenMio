@@ -58,17 +58,20 @@ public class VelocityModule extends Module {
    @Override
    public void onDisable() {
       if (sprint != null) sprint.field_1033 = false;
-      this.field_2516.method_1156().onDisable();
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.onDisable();
    }
 
    @Subscribe
    public void method_2(Event_10 var1) {
-      this.field_2516.method_1156().method_2(var1);
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
    public void method_5(Event_4 var1) {
-      this.field_2516.method_1156().method_5(var1);
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe(
@@ -79,22 +82,26 @@ public class VelocityModule extends Module {
          if (sprint != null) sprint.field_1033 = false;
       }
 
-      this.field_2516.method_1156().method_40();
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_40();
    }
 
    @Subscribe
    public void method_5(Event_36 var1) {
-      this.field_2516.method_1156().method_5(var1);
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe
    public void method_9(Event_19 var1) {
-      this.field_2516.method_1156().method_9(var1);
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_2(Event_37 var1) {
-      this.field_2516.method_1156().method_2(var1);
+      var handler = this.field_2516.method_1156();
+      if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
