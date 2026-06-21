@@ -27,7 +27,7 @@ src/main/java/me/mioclient/
 ├── mixin/           Minecraft mixins
 ├── clickgui/        ClickGUI rewrite
 └── deobf/           preserved obfuscated-name shims
-libs/mio-loader-deobf.jar    compileOnly — original loader, used at compile time
+libs/mio-loader.jar          original obfuscated loader — compileOnly + runtime drop-in for run/mods/
 ```
 
 ## What works
@@ -38,11 +38,13 @@ libs/mio-loader-deobf.jar    compileOnly — original loader, used at compile ti
 
 ## Runtime
 
-The original `mio-loader.jar` ships the encrypted strings and a few helper classes the runtime touches. Drop it in `run/mods/` before launching:
+The original `mio-loader.jar` (under `libs/`) ships the encrypted strings, the `nick.Hash`/`nick.Ints` runtime helpers, and the `nick.Loader` Fabric entrypoint that bootstraps everything. Drop it in `run/mods/` before launching:
 
 ```sh
-mkdir -p run/mods && cp ../mio-loader.jar run/mods/
+mkdir -p run/mods && cp libs/mio-loader.jar run/mods/
 ```
+
+Same jar serves as the `compileOnly` dep at build time and the runtime mod at launch — one file, no version drift.
 
 ## Reconstruction pipeline
 
