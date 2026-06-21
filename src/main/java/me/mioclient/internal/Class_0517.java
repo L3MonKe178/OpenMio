@@ -121,13 +121,13 @@ public class Class_0517 extends Class_0716 {
             && var2) {
             if (!Class_0382.method_428() && Hub.field_2615.method_1161() < 3 && !this.field_1640) {
                field_4219.player.startFallFlying();
-               Class_1261.method_1099();
+               PacketUtil.method_1099();
             }
 
             if (this.field_2275.field_4385.getValue() && !this.field_1640) {
                field_4219.interactionManager.clickSlot(0, 6, 0, SlotActionType.PICKUP, field_4219.player);
                field_4219.interactionManager.clickSlot(0, 6, 0, SlotActionType.PICKUP, field_4219.player);
-               Class_1261.method_1099();
+               PacketUtil.method_1099();
             }
 
             if (!field_4219.player.horizontalCollision) {
@@ -182,7 +182,7 @@ public class Class_0517 extends Class_0716 {
                break;
             }
 
-            Class_1261.method_9(var1);
+            PacketUtil.method_9(var1);
          }
       }
    }

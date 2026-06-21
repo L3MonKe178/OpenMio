@@ -9,12 +9,12 @@ import me.mioclient.event.Event_24;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0930;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1257;
 import me.mioclient.internal.Class_1334;
@@ -91,14 +91,14 @@ public class IRCModule extends Module {
                   if (!(var5 >= Float.intBitsToFloat(1176255488))) {
                      Vec3d var6 = Vec3d.of(var4.method_111());
                      Vec3d var7 = var6;
-                     if (var5 >= (float)Class_0245.field_685) {
-                        float[] var8 = Class_0485.method_78(var6);
+                     if (var5 >= (float)Constants.field_685) {
+                        float[] var8 = RotationManager.method_78(var6);
                         var7 = new Vec3d(
                            field_4219.player.getX()
-                              + (double)(Float.intBitsToFloat(1116471296) * (float)Math.cos(Math.toRadians((double)(var8[0] + (float)Class_0245.field_685)))),
+                              + (double)(Float.intBitsToFloat(1116471296) * (float)Math.cos(Math.toRadians((double)(var8[0] + (float)Constants.field_685)))),
                            var6.y,
                            field_4219.player.getZ()
-                              + (double)(Float.intBitsToFloat(1116471296) * (float)Math.sin(Math.toRadians((double)(var8[0] + (float)Class_0245.field_685))))
+                              + (double)(Float.intBitsToFloat(1116471296) * (float)Math.sin(Math.toRadians((double)(var8[0] + (float)Constants.field_685))))
                         );
                      }
 
@@ -121,8 +121,8 @@ public class IRCModule extends Module {
                      );
                      double var12 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var11, Double.longBitsToDouble(4613937818241073152L));
                      Box var14 = new Box(
-                        var11.add(-Class_0245.field_689, -Class_0245.field_689, -Class_0245.field_689),
-                        var11.add(Class_0245.field_689, Class_0245.field_689, Class_0245.field_689)
+                        var11.add(-Constants.field_689, -Constants.field_689, -Constants.field_689),
+                        var11.add(Constants.field_689, Constants.field_689, Constants.field_689)
                      );
                      var14 = var14.withMaxY(MathHelper.lerp((double)var9, var11.y, (double)field_4219.world.getTopY()))
                         .withMinY(MathHelper.lerp((double)var9, var11.y, (double)field_4219.world.getBottomY()));
@@ -134,7 +134,7 @@ public class IRCModule extends Module {
                            Float.intBitsToFloat(1050253722) * var9 * var21 * var10
                         )
                      );
-                     Class_0838.field_2672
+                     RenderUtil.field_2672
                         .method_2(
                            var1.method_881(),
                            var11,
@@ -144,31 +144,33 @@ public class IRCModule extends Module {
                            Class_1081.method_2(Color.red, Color.yellow, Double.longBitsToDouble(4652007308841189376L), 0.0),
                            field_563
                         );
-                     if (this.field_572.getValue().method_670()) {
+                     if (this.field_572 == null || this.field_572.getValue() == null) return;
+                     if ((this.field_572.getValue() != null ? this.field_572.getValue().method_670() : false)) {
                         double var15 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var11, Double.longBitsToDouble(4609434218613702656L))
                            * (double)var9
                            * (double)var21;
-                        String var17 = this.field_572.getValue().method_9(var4);
+                        if (this.field_572 == null || this.field_572.getValue() == null) return;
+                        String var17 = (this.field_572.getValue() != null ? this.field_572.getValue().method_9(var4) : "");
                         float var18 = Float.intBitsToFloat(-1102263091) * (float)var12;
-                        Class_0838.field_2672
+                        RenderUtil.field_2672
                            .method_2(
                               var1.method_10(),
                               var11,
                               0.0F,
                               var18,
-                              -(Class_1016.field_3143.method_221(var17) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
+                              -(FontRenderer.field_3143.method_221(var17) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
                               Float.intBitsToFloat(1084227584),
                               var15 * Double.longBitsToDouble(4611686018427387904L),
                               new Color(0, 0, 0, 100)
                            );
-                        Class_0838.field_2672
+                        RenderUtil.field_2672
                            .method_2(
                               var1.method_881(),
                               var17,
                               var11,
                               0.0F,
                               var18,
-                              -(Class_1016.field_3143.method_221(var17) / Float.intBitsToFloat(1073741824)),
+                              -(FontRenderer.field_3143.method_221(var17) / Float.intBitsToFloat(1073741824)),
                               0.0F,
                               var15,
                               Color.WHITE,
@@ -183,7 +185,7 @@ public class IRCModule extends Module {
    }
 
    public float method_186(float var1) {
-      double var2 = Double.longBitsToDouble(4611686018427387904L) * Class_0245.field_687 / Double.longBitsToDouble(4613937818241073152L);
+      double var2 = Double.longBitsToDouble(4611686018427387904L) * Constants.field_687 / Double.longBitsToDouble(4613937818241073152L);
       return var1 == 0.0F
          ? 0.0F
          : (float)(
@@ -202,9 +204,9 @@ public class IRCModule extends Module {
    @Subscribe
    public void method_2(Event_24 var1) {
       if (this.field_566.getValue()) {
-         if (var1.method_219().length() > this.field_567.getValue().length() && var1.method_219().startsWith(this.field_567.getValue())) {
+         if (var1.method_219().length() > (this.field_567.getValue() != null ? this.field_567.getValue().length() : 0) && var1.method_219().startsWith(this.field_567.getValue())) {
             var1.method_463();
-            Hub.field_2610.method_214(var1.method_219().substring(this.field_567.getValue().length()).trim());
+            Hub.field_2610.method_214(var1.method_219().substring((this.field_567.getValue() != null ? this.field_567.getValue().length() : 0)).trim());
          }
       }
    }

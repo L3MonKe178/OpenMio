@@ -12,7 +12,7 @@ import net.minecraft.client.network.ServerInfo;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0591 extends Class_0618 {
+public final class Class_0591 extends Command {
    public Class_0591() {
       super("session");
    }
@@ -34,8 +34,8 @@ public final class Class_0591 extends Class_0618 {
                      }
 
                      ((DuckSession)field_4219.getSession()).setUsername(var1x);
-                     Class_1245.method_2(
-                        Text.literal(new Class_1303().method_2((Object)var1x).method_9("Session's name has been set to \u0001.")), Class_1245.method_38(-1)
+                     ChatUtil.method_2(
+                        Text.literal(new TextBuilder().method_2((Object)var1x).method_9("Session's name has been set to \u0001.")), ChatUtil.method_38(-1)
                      );
                      return 1;
                   }

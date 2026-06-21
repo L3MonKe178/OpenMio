@@ -35,11 +35,11 @@ public class Class_0262 extends Class_1015<Class_0211> {
             (float)(this.field_418.getY() + this.field_419 + this.method_66()) - Float.intBitsToFloat(1056964608),
             this.method_852().field_2879.getValue()
          );
-         String var7 = new Class_1303().method_2(this.field_3138.getValue().getName()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001");
+         String var7 = new TextBuilder().method_2(this.field_3138.getValue().getName()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001");
          this.method_2(
             var2,
             var7,
-            () -> Class_1016.field_3143
+            () -> FontRenderer.field_3143
                   .method_9(
                      var1,
                      var7,

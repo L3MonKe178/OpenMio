@@ -69,7 +69,7 @@ public class Class_0992 extends Class_0806 {
             var2 = 0.0;
             var4 = 0.0;
          } else {
-            double[] var9 = Class_0464.method_2(field_4219.player.getYaw(Class_0838.method_776()), field_4219.player.input, this.field_1570);
+            double[] var9 = Class_0464.method_2(field_4219.player.getYaw(RenderUtil.method_776()), field_4219.player.input, this.field_1570);
             var2 = var9[0];
             var4 = var9[1];
          }

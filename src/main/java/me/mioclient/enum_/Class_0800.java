@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0800 implements Class_0013 {
+public enum Class_0800 implements Nameable {
    NORMAL("Normal"),
    PROTANOPIA("Protanopia") {
       @Override

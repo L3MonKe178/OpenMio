@@ -28,7 +28,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
 
-public final class Class_0355 extends Class_0618 {
+public final class Class_0355 extends Command {
    public Class_0355() {
       super("preset");
       this.method_9("config", "cfg");
@@ -55,9 +55,9 @@ public final class Class_0355 extends Class_0618 {
                                                       var4.printStackTrace();
                                                    }
 
-                                                   Class_1245.method_2(
-                                                      Text.literal(new Class_1303().method_2((Object)var1x).method_9("Preset \u0001 has been saved.")),
-                                                      Class_1245.method_38(-1)
+                                                   ChatUtil.method_2(
+                                                      Text.literal(new TextBuilder().method_2((Object)var1x).method_9("Preset \u0001 has been saved.")),
+                                                      ChatUtil.method_38(-1)
                                                    );
                                                    return 1;
                                                 }
@@ -73,9 +73,9 @@ public final class Class_0355 extends Class_0618 {
                                                 Class_0371 var1x = Class_0897.getPreset(var0, "category", "preset");
                                                 Class_0852 var2 = Class_0798.getManager(var0, "category");
                                                 var2.method_493(var1x.method_228());
-                                                Class_1245.method_2(
-                                                   Text.literal(new Class_1303().method_2(var1x.method_228()).method_9("Preset \u0001 has been deleted.")),
-                                                   Class_1245.method_38(-1)
+                                                ChatUtil.method_2(
+                                                   Text.literal(new TextBuilder().method_2(var1x.method_228()).method_9("Preset \u0001 has been deleted.")),
+                                                   ChatUtil.method_38(-1)
                                                 );
                                                 return 1;
                                              }
@@ -93,14 +93,14 @@ public final class Class_0355 extends Class_0618 {
                                                    Class_0371 var1x = Class_0897.getPreset(var0, "category", "preset");
                                                    Class_0852 var2 = Class_0798.getManager(var0, "category");
                                                    var2.method_39(var1x.method_228(), (String)var0.getArgument("name", String.class));
-                                                   Class_1245.method_2(
+                                                   ChatUtil.method_2(
                                                       Text.literal(
-                                                         new Class_1303()
+                                                         new TextBuilder()
                                                             .method_2((String)var0.getArgument("name", String.class))
                                                             .method_2(var1x.method_228())
                                                             .method_9("The name of \u0001 has been set to \u0001.")
                                                       ),
-                                                      Class_1245.method_38(-1)
+                                                      ChatUtil.method_38(-1)
                                                    );
                                                    return 1;
                                                 }
@@ -120,9 +120,9 @@ public final class Class_0355 extends Class_0618 {
                                           Class_0852 var4 = Class_0798.getManager(var1x, "category");
                                           var4.method_56();
                                           var4.method_465(var3.method_228());
-                                          Class_1245.method_2(
-                                             Text.literal(new Class_1303().method_2(var3.method_228()).method_9("Preset \u0001 has been loaded.")),
-                                             Class_1245.method_38(-1)
+                                          ChatUtil.method_2(
+                                             Text.literal(new TextBuilder().method_2(var3.method_228()).method_9("Preset \u0001 has been loaded.")),
+                                             ChatUtil.method_38(-1)
                                           );
                                           if (var2 == Class_0836.ALL) {
                                              this.method_2(this::method_393);
@@ -147,14 +147,14 @@ public final class Class_0355 extends Class_0618 {
                                                 Category var4 = (Category)var1x.getArgument("module_category", Category.class);
                                                 var3.method_56();
                                                 this.method_2(var2, var1xx -> var1xx.getCategory() == var4);
-                                                Class_1245.method_2(
+                                                ChatUtil.method_2(
                                                    Text.literal(
-                                                      new Class_1303()
+                                                      new TextBuilder()
                                                          .method_2(var4.getName())
                                                          .method_2(var2.method_228())
                                                          .method_9("Preset \u0001 for \u0001 has been loaded.")
                                                    ),
-                                                   Class_1245.method_38(-1)
+                                                   ChatUtil.method_38(-1)
                                                 );
                                                 return 1;
                                              }
@@ -174,14 +174,14 @@ public final class Class_0355 extends Class_0618 {
                                              var3.method_56();
                                              Predicate var5 = var1xx -> var4.contains(var1xx.getClass());
                                              this.method_2(var2, var5);
-                                             Class_1245.method_2(
+                                             ChatUtil.method_2(
                                                 Text.literal(
-                                                   new Class_1303()
+                                                   new TextBuilder()
                                                       .method_2(this.method_4(var5))
                                                       .method_2(var2.method_228())
                                                       .method_9("Preset \u0001 for \u0001 has been loaded.")
                                                 ),
-                                                Class_1245.method_38(-1)
+                                                ChatUtil.method_38(-1)
                                              );
                                              return 1;
                                           }
@@ -194,9 +194,9 @@ public final class Class_0355 extends Class_0618 {
                         .executes(
                            var0 -> {
                               Class_0852 var1x = Class_0798.getManager(var0, "category");
-                              Class_1245.method_2(
+                              ChatUtil.method_2(
                                  Text.literal("Preset list: ").append(Texts.join(var1x.getRegistry(), var0x -> Text.literal(var0x.method_228()))).append("."),
-                                 Class_1245.method_38(-1)
+                                 ChatUtil.method_38(-1)
                               );
                               return 1;
                            }
@@ -214,11 +214,11 @@ public final class Class_0355 extends Class_0618 {
                               var2.remove("toggled");
                               var2.remove("key");
                               field_4219.keyboard.setClipboard(Base64.getEncoder().encodeToString(var2.toString().getBytes(StandardCharsets.UTF_8)));
-                              Class_1245.method_2(
+                              ChatUtil.method_2(
                                  Text.literal("Successfully copied ")
                                     .append(Text.literal(var1x.getName()).formatted(Formatting.GRAY))
                                     .append(" config to your clipboard"),
-                                 Class_1245.method_38(-1)
+                                 ChatUtil.method_38(-1)
                               );
                               return 1;
                            }
@@ -236,11 +236,11 @@ public final class Class_0355 extends Class_0618 {
                            try {
                               String var2 = new String(Base64.getDecoder().decode(field_4219.keyboard.getClipboard().trim().replace("\n", "")));
                               var1x.fromJson(JsonParser.parseString(var2));
-                              Class_1245.method_2(
+                              ChatUtil.method_2(
                                  Text.literal("Successfully loaded ")
                                     .append(Text.literal(var1x.getName()).formatted(Formatting.GRAY))
                                     .append(" config from your clipboard"),
-                                 Class_1245.method_38(-1)
+                                 ChatUtil.method_38(-1)
                               );
                            } catch (Exception var4) {
                               MutableText var3 = Text.literal("Failed to load ")
@@ -252,7 +252,7 @@ public final class Class_0355 extends Class_0618 {
                                  var3 = var3.append(" due to an unknown reason");
                               }
 
-                              Class_1245.method_2(var3, Class_1245.method_38(-1), Priority.MID);
+                              ChatUtil.method_2(var3, ChatUtil.method_38(-1), Priority.MID);
                               var4.printStackTrace();
                            }
 
@@ -267,7 +267,7 @@ public final class Class_0355 extends Class_0618 {
             return 1;
          } else {
             Class_0836.ALL.fromJson(var1x);
-            Class_1245.method_2(Text.literal("Restored previous preset."), Class_1245.method_38(-1));
+            ChatUtil.method_2(Text.literal("Restored previous preset."), ChatUtil.method_38(-1));
             return 1;
          }
       }));
@@ -304,10 +304,10 @@ public final class Class_0355 extends Class_0618 {
             var1.append(" - ");
             var1.append(var4.method_4());
             var1.append(" ");
-            var1.append(Class_1245.method_185(var4.method_78().getName()));
+            var1.append(ChatUtil.method_185(var4.method_78().getName()));
          }
       }
 
-      Class_1245.method_2(var1, -2);
+      ChatUtil.method_2(var1, -2);
    }
 }

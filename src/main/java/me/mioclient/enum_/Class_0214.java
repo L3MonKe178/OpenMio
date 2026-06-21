@@ -1,10 +1,10 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_1153;
 import me.mioclient.module.abstract_.AbstractModule_42;
 
-public enum Class_0214 implements Class_0013 {
+public enum Class_0214 implements Nameable {
    PLAIN("Plain"),
    SMART("Smart");
 

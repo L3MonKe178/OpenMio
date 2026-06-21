@@ -1,8 +1,8 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0200 implements Class_0013 {
+public enum Class_0200 implements Nameable {
    OVERWORLD("overworld", "Overworld"),
    THE_NETHER("the_nether", "Nether"),
    THE_END("the_end", "End");

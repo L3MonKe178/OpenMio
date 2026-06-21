@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
 import java.util.function.Supplier;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.internal.Class_0914;
 import me.mioclient.internal.Class_1355;
 
-public enum Class_0151 implements Class_0013 {
+public enum Class_0151 implements Nameable {
    SOLID("Solid", () -> Class_1355.field_4416),
    RAINBOW("Rainbow", () -> Class_1355.field_4417),
    GRADIENT("Gradient", () -> Class_1355.field_4418),

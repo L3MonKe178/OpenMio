@@ -14,7 +14,7 @@ public class Class_0325 {
    public final float field_1086 = (float)MathHelper.clamp(
       Math.random(), Double.longBitsToDouble(4589708452267294720L), Double.longBitsToDouble(4595653204011646976L)
    );
-   public final float field_1096 = Class_0930.method_2((float)Class_0245.field_688, Float.intBitsToFloat(1066611507));
+   public final float field_1096 = Class_0930.method_2((float)Constants.field_688, Float.intBitsToFloat(1066611507));
    public final double field_608 = Math.random();
    public final double field_1097 = (double)Class_0930.method_2(Float.intBitsToFloat(-1123603710), Float.intBitsToFloat(1023879938));
    public float field_877 = Class_0930.method_2(Float.intBitsToFloat(-1092196762), 0.0F);

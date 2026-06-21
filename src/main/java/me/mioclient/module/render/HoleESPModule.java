@@ -7,7 +7,7 @@ import me.mioclient.enum_.Class_0786;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.module.Category;
@@ -54,9 +54,9 @@ public class HoleESPModule extends Module {
       Box var5 = new Box(Class_0382.method_425());
 
       for (Class_0681 var7 : Hub.field_2605.method_223()) {
-         if (Class_0485.method_4(var7.method_172())
+         if (RotationManager.method_4(var7.method_172())
             && (this.field_4329.getValue() || !var7.method_676())
-            && var7.method_406().isWithinDistance(var4, (double)this.field_4319.getValue().intValue())
+            && var7.method_406().isWithinDistance(var4, (double)(this.field_4319.getValue() != null ? this.field_4319.getValue().intValue() : 0))
             && (!field_4219.player.getBoundingBox().intersects(var7.method_172()) || !this.field_4320.getValue() || this.field_4321.getValue())) {
             Color var8 = this.field_4324.getValue();
             Color var9 = this.field_4325.getValue();
@@ -70,11 +70,11 @@ public class HoleESPModule extends Module {
 
             double var10 = var4.distanceTo(var7.method_406().toCenterPos());
             boolean var12 = var7.method_172().intersects(var5) && this.field_4320.getValue();
-            if (this.field_4321.getValue() && (var10 >= (double)this.field_4322.getValue().floatValue() || var12)) {
+            if (this.field_4321.getValue() && (var10 >= (double)(this.field_4322.getValue() != null ? this.field_4322.getValue().floatValue() : 0.0f) || var12)) {
                float var13 = Float.intBitsToFloat(1065353216)
                   - (float)MathHelper.clamp(
-                     (var10 - (double)this.field_4322.getValue().floatValue())
-                        / (double)((float)this.field_4319.getValue().intValue() - this.field_4322.getValue()),
+                     (var10 - (double)(this.field_4322.getValue() != null ? this.field_4322.getValue().floatValue() : 0.0f))
+                        / (double)((float)(this.field_4319.getValue() != null ? this.field_4319.getValue().intValue() : 0) - this.field_4322.getValue()),
                      0.0,
                      Double.longBitsToDouble(4607182418800017408L)
                   );

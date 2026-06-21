@@ -9,7 +9,7 @@ import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -53,10 +53,10 @@ public class FastWebModule extends Module {
                .filter(var0 -> field_4219.world.getBlockState(var0).isOf(Blocks.COBWEB))
                .forEach(var0 -> {
                   if (!field_2449.method_1052()) {
-                     Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, var0, Direction.UP);
+                     PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, var0, Direction.UP);
                   }
 
-                  Class_1261.method_2(Action.STOP_DESTROY_BLOCK, var0, Direction.UP);
+                  PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, var0, Direction.UP);
                });
          }
 
@@ -94,13 +94,13 @@ public class FastWebModule extends Module {
             }
 
             if (this.field_2455.getValue() && field_4219.player.input.jumping && !this.method_724()) {
-               field_4219.player.setVelocity(field_4219.player.getVelocity().withAxis(Axis.Y, (double)this.field_2454.getValue().floatValue()));
-               var1.setY((double)this.field_2454.getValue().floatValue());
+               field_4219.player.setVelocity(field_4219.player.getVelocity().withAxis(Axis.Y, (double)(this.field_2454.getValue() != null ? this.field_2454.getValue().floatValue() : 0.0f)));
+               var1.setY((double)(this.field_2454.getValue() != null ? this.field_2454.getValue().floatValue() : 0.0f));
             }
          }
 
          if (Class_0464.method_363() && this.field_2451.getValue()) {
-            double[] var2 = Class_0464.method_2(var1, Class_0464.method_78(true) * (double)this.field_2452.getValue().floatValue());
+            double[] var2 = Class_0464.method_2(var1, Class_0464.method_78(true) * (double)(this.field_2452.getValue() != null ? this.field_2452.getValue().floatValue() : 0.0f));
             field_4219.player.setVelocity(var2[0], field_4219.player.getVelocity().y, var2[1]);
          }
       } else {

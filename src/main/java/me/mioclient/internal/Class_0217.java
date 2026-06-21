@@ -13,7 +13,7 @@ public class Class_0217 extends Class_1117 {
    public static final Color field_603 = new Color(255, 255, 255, 100);
    public final ViewModelModule viewmodel;
    public final LinkedList<Class_1375> field_604 = new LinkedList<>();
-   public final Class_0242 field_605 = new Class_0242();
+   public final Timer field_605 = new Timer();
    public Class_0417 field_606;
    public Class_1375 field_607;
    public double field_608;
@@ -177,7 +177,7 @@ public class Class_0217 extends Class_1117 {
    public void method_38(DrawContext var1) {
       float var2 = (float)var1.getScaledWindowWidth();
       float var3 = (float)var1.getScaledWindowHeight();
-      Class_0838.field_2672
+      RenderUtil.field_2672
          .method_9(
             var1.getMatrices(),
             var2 / Float.intBitsToFloat(1073741824) - Float.intBitsToFloat(1065353216),
@@ -201,13 +201,13 @@ public class Class_0217 extends Class_1117 {
       int var5 = 2;
 
       for (String var7 : var4) {
-         float var8 = Class_1016.field_3143.method_221(var7);
-         Class_1016.field_3143
+         float var8 = FontRenderer.field_3143.method_221(var7);
+         FontRenderer.field_3143
             .method_9(var1, var7, (var2 - var8) / Float.intBitsToFloat(1073741824), (float)(50 + var5), Class_1081.method_9(Color.white, 180));
-         var5 += Class_1016.field_3143.method_66() + 1;
+         var5 += FontRenderer.field_3143.method_66() + 1;
       }
 
-      Class_0838.field_2672
+      RenderUtil.field_2672
          .method_9(
             var1.getMatrices(),
             var2 / Float.intBitsToFloat(1073741824) - Float.intBitsToFloat(1065353216),

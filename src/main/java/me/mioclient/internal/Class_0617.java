@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0274;
 import me.mioclient.module.Category;
 import me.mioclient.record.Class_0123;
 import me.mioclient.record.Class_0362;
 import net.minecraft.client.gui.DrawContext;
 
-public class Class_0617 extends Class_1117 implements Class_1309 {
+public class Class_0617 extends Class_1117 implements MioAPI {
    public static final List<Class_0535> field_1950 = Collections.synchronizedList(new ArrayList<>());
    public static final Class_0255 field_1951 = new Class_0255();
    public final Class_0051 field_1952 = new Class_0051();
@@ -100,7 +100,7 @@ public class Class_0617 extends Class_1117 implements Class_1309 {
       float var12 = this.field_1953.method_45();
       this.field_1953.method_3(field_1951.method_290());
       if (field_1951.method_290() || (double)var12 > Double.longBitsToDouble(4591870180066957722L)) {
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                context,
                field_1951.method_286(),

@@ -1,9 +1,9 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class Class_1067 implements Class_1309 {
+public class Class_1067 implements MioAPI {
    public static double field_3274;
    public static boolean field_3275 = FabricLoader.getInstance().isModLoaded("advanced-ui-scale");
 

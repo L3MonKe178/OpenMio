@@ -14,7 +14,7 @@ public class Class_1007 extends DrawContext {
 
    public void drawItemInSlot(TextRenderer textRenderer, ItemStack stack, int x, int y, @Nullable String countOverride) {
       if (stack.getCount() == 69) {
-         countOverride = new Class_1303().method_2(String.valueOf(Formatting.RED)).method_9("\u00010");
+         countOverride = new TextBuilder().method_2(String.valueOf(Formatting.RED)).method_9("\u00010");
       }
 
       super.drawItemInSlot(textRenderer, stack, x, y, countOverride);

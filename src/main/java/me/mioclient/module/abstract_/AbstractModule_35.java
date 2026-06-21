@@ -47,7 +47,7 @@ public class AbstractModule_35 extends AbstractModule_26 {
             var1 -> this.field_4299
                   .add(
                      new Class_1162(
-                        var1, () -> field_4219.player.hasStatusEffect(var1) && this.field_4297.getValue().method_2((StatusEffect)var1.value(), this.field_4298)
+                        var1, () -> field_4219.player.hasStatusEffect(var1) && (this.field_4297.getValue() != null ? this.field_4297.getValue().method_2((StatusEffect)var1.value(), this.field_4298) : false)
                      )
                   )
          );

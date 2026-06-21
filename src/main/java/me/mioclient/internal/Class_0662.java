@@ -7,7 +7,7 @@ import me.mioclient.enum_.Priority;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0662 extends Class_0618 {
+public final class Class_0662 extends Command {
    public Class_0662() {
       super("print");
    }
@@ -22,15 +22,15 @@ public final class Class_0662 extends Class_0618 {
                         .getChatHud()
                         .addMessage(
                            Text.of((String)var0.getArgument("message", String.class)),
-                           Class_1245.method_38((int)(Math.random() * Double.longBitsToDouble(4666723172467343360L))),
-                           Class_1245.field_3910
+                           ChatUtil.method_38((int)(Math.random() * Double.longBitsToDouble(4666723172467343360L))),
+                           ChatUtil.field_3910
                         );
                      return 1;
                   }
                )
          ))
          .executes(var0 -> {
-            Class_1245.method_2(Text.literal("Please enter a message to print."), Class_1245.method_38(-1), Priority.LOW);
+            ChatUtil.method_2(Text.literal("Please enter a message to print."), ChatUtil.method_38(-1), Priority.LOW);
             return 1;
          });
    }

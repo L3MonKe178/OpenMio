@@ -8,10 +8,10 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.command.CommandSource;
 
-public class Class_0246 implements ArgumentType<String>, Class_1309 {
+public class Class_0246 implements ArgumentType<String>, MioAPI {
    public static final List<String> field_692 = List.of("cat", "fit", "asphyxia1337");
 
    public Class_0246() {

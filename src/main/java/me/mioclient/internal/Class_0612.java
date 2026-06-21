@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.awt.Color;
 import java.util.Comparator;
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.record.Class_0610;
@@ -20,7 +20,7 @@ import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL32C;
 
-public final class Class_0612 implements Class_1309 {
+public final class Class_0612 implements MioAPI {
    public static final Class_0809 field_1891 = Class_0809.method_740();
    public static final Class_0809 field_1892 = Class_0809.method_740();
    public static final List<Class_0610> field_1893 = new ObjectArrayList();
@@ -178,7 +178,7 @@ public final class Class_0612 implements Class_1309 {
    }
 
    public static void method_474() {
-      Class_0838.field_2672.method_780();
+      RenderUtil.field_2672.method_780();
       RenderSystem.setShader(GameRenderer::getPositionColorProgram);
       field_1891.method_529();
       field_1893.sort(Comparator.comparing(var0x -> var0x.field_1889));
@@ -196,7 +196,7 @@ public final class Class_0612 implements Class_1309 {
 
       field_1893.clear();
       method_623();
-      Class_0838.field_2672.method_782();
+      RenderUtil.field_2672.method_782();
    }
 
    public static void method_623() {

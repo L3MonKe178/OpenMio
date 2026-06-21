@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.world.chunk.WorldChunk;
 
-public class Event_5 extends Class_0605 {
+public class Event_5 extends Event {
    public final WorldChunk field_3541;
 
    public Event_5(WorldChunk var1) {

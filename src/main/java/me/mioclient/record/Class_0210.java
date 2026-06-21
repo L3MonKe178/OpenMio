@@ -1,9 +1,9 @@
 package me.mioclient.record;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.enum_.Class_0304;
 
-public final class Class_0210 implements Class_0013 {
+public final class Class_0210 implements Nameable {
    public final String field_591;
    public final Class_0304 field_592;
 

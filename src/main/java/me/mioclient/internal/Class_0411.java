@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckKeyBinding;
 import me.mioclient.module.movement.NoSlowModule;
 import net.minecraft.client.MinecraftClient;
@@ -9,7 +9,7 @@ import net.minecraft.client.input.Input;
 import net.minecraft.client.option.KeyBinding;
 import org.lwjgl.glfw.GLFW;
 
-public class Class_0411 extends Input implements Class_1309 {
+public class Class_0411 extends Input implements MioAPI {
    public static NoSlowModule noslow = Hub.field_2595.method_78(NoSlowModule.class);
 
    public Class_0411() {

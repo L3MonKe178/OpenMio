@@ -22,7 +22,7 @@ public class Class_0882 implements ArgumentType<Class_1127> {
       String var2 = var1.readString();
       Optional var3 = Hub.field_2627.method_310(var2);
       if (var3.isEmpty()) {
-         throw new DynamicCommandExceptionType(var0 -> Text.of(new Class_1303().method_2(String.valueOf(var0)).method_9("Filter not found \u0001")))
+         throw new DynamicCommandExceptionType(var0 -> Text.of(new TextBuilder().method_2(String.valueOf(var0)).method_9("Filter not found \u0001")))
             .create(var2);
       } else {
          return (Class_1127)var3.get();

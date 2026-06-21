@@ -13,7 +13,7 @@ import me.mioclient.Hub;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.BlockPos;
 
-public class Class_1321 extends Class_0618 {
+public class Class_1321 extends Command {
    public static final String field_4275 = "#";
 
    public Class_1321() {
@@ -31,7 +31,7 @@ public class Class_1321 extends Class_0618 {
                   String var4 = "#";
 
                   try {
-                     var4 = new Class_1303().method_2(var2.getRemaining()).method_2((Object)var4).method_9("");
+                     var4 = new TextBuilder().method_2(var2.getRemaining()).method_2((Object)var4).method_9("");
                   } catch (Exception var11) {
                   }
 

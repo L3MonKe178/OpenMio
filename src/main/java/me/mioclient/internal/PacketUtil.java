@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import io.netty.buffer.Unpooled;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckClientWorld;
 import net.minecraft.client.network.PendingUpdateManager;
 import net.minecraft.entity.Entity;
@@ -26,8 +26,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-public class Class_1261 implements Class_1309 {
-   public Class_1261() {
+public class PacketUtil implements MioAPI {
+   public PacketUtil() {
       super();
    }
 

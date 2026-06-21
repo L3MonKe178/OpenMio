@@ -9,14 +9,14 @@ import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0415;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0304;
 import me.mioclient.module.abstract_.AbstractModule_21;
 import me.mioclient.record.Class_0210;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public final class Class_1280 extends Class_0939<Class_0210> implements Class_1309, Class_1146 {
+public final class Class_1280 extends Registry<Class_0210> implements MioAPI, Class_1146 {
    public static final AbstractModule_21 field_4150 = Hub.field_2595.method_78(AbstractModule_21.class);
    public static final Class_0841 field_4151 = new Class_0841(Class_0304.class);
 

@@ -14,7 +14,7 @@ public class Class_0741 implements Class_0098 {
 
    @Override
    public void method_2(ChannelHandlerContext var1) {
-      Class_1245.method_2(Text.literal(this.field_483), Class_1245.method_38(this.field_483.hashCode()));
+      ChatUtil.method_2(Text.literal(this.field_483), ChatUtil.method_38(this.field_483.hashCode()));
    }
 
    @Override

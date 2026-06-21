@@ -28,7 +28,7 @@ public class Class_1252 extends Class_1344 {
             .executes(
                var1x -> {
                   String var2 = (String)var1x.getArgument("name", String.class);
-                  Class_1245.method_2(Text.of("Fetching data..."), Class_1245.method_22(this));
+                  ChatUtil.method_2(Text.of("Fetching data..."), ChatUtil.method_22(this));
                   this.method_29("seen", var2)
                      .whenComplete(
                         (var2x, var3) -> {
@@ -58,7 +58,7 @@ public class Class_1252 extends Class_1344 {
                                        var9.append(").");
                                     }
 
-                                    Class_1245.method_2(Text.of(var9.toString()), Class_1245.method_22(this));
+                                    ChatUtil.method_2(Text.of(var9.toString()), ChatUtil.method_22(this));
                                     return;
                                  }
 
@@ -69,9 +69,9 @@ public class Class_1252 extends Class_1344 {
                            }
 
                            if (var4 != null) {
-                              Class_1245.method_2(
-                                 Text.of(new Class_1303().method_2(var4).method_2(String.valueOf(Formatting.RED)).method_9("\u0001\u0001")),
-                                 Class_1245.method_22(this),
+                              ChatUtil.method_2(
+                                 Text.of(new TextBuilder().method_2(var4).method_2(String.valueOf(Formatting.RED)).method_9("\u0001\u0001")),
+                                 ChatUtil.method_22(this),
                                  Priority.MID
                               );
                            }

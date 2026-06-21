@@ -2,7 +2,7 @@ package me.mioclient.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import java.util.function.Consumer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_5;
 import net.minecraft.client.world.ClientChunkManager;
 import net.minecraft.nbt.NbtCompound;
@@ -38,6 +38,6 @@ public class MixinClientChunkManager {
       CallbackInfoReturnable<WorldChunk> var6,
       @Local WorldChunk var7
    ) {
-      Class_1309.field_4220.method_36(new Event_5(var7));
+      MioAPI.field_4220.method_36(new Event_5(var7));
    }
 }

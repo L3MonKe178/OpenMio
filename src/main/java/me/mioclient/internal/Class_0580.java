@@ -1,9 +1,9 @@
 package me.mioclient.internal;
 
 import com.google.gson.annotations.SerializedName;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public class Class_0580 implements Class_0013 {
+public class Class_0580 implements Nameable {
    @SerializedName("id")
    public final String field_1834;
    @SerializedName("x")
@@ -27,7 +27,7 @@ public class Class_0580 implements Class_0013 {
    public String method_599() {
       int var10000 = this.field_1835;
       int var10001 = this.field_1836;
-      return new Class_1303().method_2(var10001).method_2(var10000).method_9("\u0001, \u0001.");
+      return new TextBuilder().method_2(var10001).method_2(var10000).method_9("\u0001, \u0001.");
    }
 
    public double method_380() {

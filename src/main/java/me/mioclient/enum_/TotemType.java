@@ -2,9 +2,9 @@ package me.mioclient.enum_;
 
 import java.util.Set;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.module.combat.OffhandModule;
 import me.mioclient.module.exploit.XCarryModule;
 import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
@@ -13,7 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.screen.slot.Slot;
 
-public enum TotemType implements Class_1309, Class_0013 {
+public enum TotemType implements MioAPI, Nameable {
    TOTEM("Totem", Items.TOTEM_OF_UNDYING),
    CRYSTAL("Crystal", Items.END_CRYSTAL),
    GAPPLE("Gapple", Items.GOLDEN_APPLE) {
@@ -44,14 +44,14 @@ public enum TotemType implements Class_1309, Class_0013 {
       Item var2 = this.method_98(var1);
       if (var2 != null && !field_4219.player.getOffHandStack().isOf(var2)) {
          if (field_4219.currentScreen instanceof ShulkerBoxScreen || field_4219.currentScreen instanceof GenericContainerScreen) {
-            for (Slot var4 : Class_1309.field_4219.player.currentScreenHandler.slots) {
+            for (Slot var4 : MioAPI.field_4219.player.currentScreenHandler.slots) {
                if (var4.getStack().isOf(var2)) {
                   return var4.id;
                }
             }
          }
 
-         return Class_0136.method_2(var2, field_450.isToggled());
+         return PlayerUtil.method_2(var2, field_450.isToggled());
       } else {
          return -1;
       }

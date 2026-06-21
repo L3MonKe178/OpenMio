@@ -27,19 +27,19 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_58;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0277;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1116;
 import me.mioclient.internal.Class_1138;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_10;
@@ -110,10 +110,10 @@ public class SpeedMineModule extends Module {
    public Setting<Color> field_4014;
    public Setting<Set<Block>> field_4015;
    public final ArrayDeque<Boolean> field_4016;
-   public final Class_0242 field_4017;
-   public final Class_0242 field_4018;
-   public final Class_0242 field_4019;
-   public final Class_0242 field_4020;
+   public final Timer field_4017;
+   public final Timer field_4018;
+   public final Timer field_4019;
+   public final Timer field_4020;
    public static final AtomicBoolean field_4021 = new AtomicBoolean();
    public final AtomicBoolean field_4022;
    public final Class_1116 field_4023;
@@ -133,10 +133,10 @@ public class SpeedMineModule extends Module {
       super("SpeedMine", "Mines blocks silently.", Category.PLAYER);
       Settings.initialize(this);
       this.field_4016 = new ArrayDeque<>();
-      this.field_4017 = new Class_0242();
-      this.field_4018 = new Class_0242();
-      this.field_4019 = new Class_0242();
-      this.field_4020 = new Class_0242();
+      this.field_4017 = new Timer();
+      this.field_4018 = new Timer();
+      this.field_4019 = new Timer();
+      this.field_4020 = new Timer();
       this.field_4022 = new AtomicBoolean();
       this.field_4023 = new Class_1116(this);
       this.field_4024 = new Class_1138();
@@ -216,7 +216,7 @@ public class SpeedMineModule extends Module {
                      int var7 = field_4219.player.getInventory().selectedSlot;
                      boolean var8 = var6 != -1;
                      if (this.field_4000.getValue() == Class_0403.NORMAL) {
-                        var6 = Class_0136.method_29(this.field_3164, true);
+                        var6 = PlayerUtil.method_29(this.field_3164, true);
                         if (var6 != var7 && this.field_4001.getValue()) {
                            this.field_1980 = var7;
                         }
@@ -224,31 +224,31 @@ public class SpeedMineModule extends Module {
 
                      if (var6 != -1) {
                         if (this.field_4003.getValue() && this.field_4000.getValue() == Class_0403.SILENT) {
-                           Class_0136.method_39(var6);
+                           PlayerUtil.method_39(var6);
                         } else if (var7 != var6) {
-                           Class_0136.method_16(var6);
+                           PlayerUtil.method_16(var6);
                         }
                      }
 
                      if (this.field_3990.getValue()) {
-                        Class_1261.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
-                        Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
+                        PacketUtil.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
+                        PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
                         if (this.field_4028 == null) {
                            this.field_4028 = new Class_0277(this.field_3164);
                         }
                      } else {
-                        Class_1261.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
+                        PacketUtil.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
                         if (var8) {
-                           Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
+                           PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
                         }
                      }
 
                      if (var8 && var6 != -1) {
                         if (this.field_4000.getValue() == Class_0403.SILENT) {
                            if (this.field_4003.getValue()) {
-                              Class_0136.method_39(var6);
+                              PlayerUtil.method_39(var6);
                            } else if (var7 != var6) {
-                              Class_0136.method_16(var7);
+                              PlayerUtil.method_16(var7);
                            }
                         }
 
@@ -283,7 +283,7 @@ public class SpeedMineModule extends Module {
             BlockPos var1x = this.field_3164;
             if (var1x != null) {
                if (this.field_3992.getValue()) {
-                  Class_1261.method_9(Hand.MAIN_HAND);
+                  PacketUtil.method_9(Hand.MAIN_HAND);
                }
 
                if (Class_1225.method_3(var1x)) {
@@ -292,7 +292,7 @@ public class SpeedMineModule extends Module {
                   this.method_2(new Event_58(var1x, this.method_664(var1x)));
                   field_3986 = false;
                } else if (this.field_3994.getValue() == Class_0692.FAST) {
-                  Class_1261.method_2(Action.START_DESTROY_BLOCK, var1x, this.method_664(var1x));
+                  PacketUtil.method_2(Action.START_DESTROY_BLOCK, var1x, this.method_664(var1x));
                   this.field_4016.clear();
                }
             }
@@ -307,12 +307,12 @@ public class SpeedMineModule extends Module {
 
    @Subscribe
    public void method_2(Event_10 var1) {
-      if (Class_0485.method_513()
+      if (RotationManager.method_513()
          && this.field_3988.getValue() < Float.intBitsToFloat(1065353216)
          && !field_3984.method_1052()
          && var1.method_127() instanceof PlayerActionC2SPacket var2
          && var2.getAction() == Action.STOP_DESTROY_BLOCK) {
-         Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, var2.getPos().add(0, 500, 0), var2.getDirection());
+         PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, var2.getPos().add(0, 500, 0), var2.getDirection());
       }
    }
 
@@ -330,11 +330,11 @@ public class SpeedMineModule extends Module {
                && var2) {
                field_4021.set(true);
                int var9 = field_4219.player.getInventory().selectedSlot;
-               int var10 = Class_0136.method_29(this.field_4028.method_111(), !this.field_4003.getValue());
+               int var10 = PlayerUtil.method_29(this.field_4028.method_111(), !this.field_4003.getValue());
                if (this.field_4003.getValue()) {
-                  Class_0136.method_39(var10);
+                  PlayerUtil.method_39(var10);
                } else {
-                  Class_1261.method_9(var10, true);
+                  PacketUtil.method_9(var10, true);
                }
 
                this.method_574(this.field_4028.method_111());
@@ -343,9 +343,9 @@ public class SpeedMineModule extends Module {
                this.field_4028 = null;
                Hub.field_2619.method_2(() -> {
                   if (this.field_4003.getValue()) {
-                     Class_0136.method_39(var10);
+                     PlayerUtil.method_39(var10);
                   } else {
-                     Class_1261.method_9(var9, true);
+                     PacketUtil.method_9(var9, true);
                      field_4219.player.getInventory().selectedSlot = var9;
                   }
 
@@ -355,7 +355,7 @@ public class SpeedMineModule extends Module {
                && !Class_1225.method_3(this.field_3164)
                && this.field_4000.getValue() == Class_0403.NORMAL
                && this.field_4001.getValue()) {
-               Class_0136.method_16(this.field_1980);
+               PlayerUtil.method_16(this.field_1980);
                this.field_1980 = -1;
             } else if (!this.method_1113()) {
                if (!field_4219.player.isSpectator() && !field_4219.player.isCreative() && Class_1225.method_3(this.field_3164)) {
@@ -372,7 +372,7 @@ public class SpeedMineModule extends Module {
                   if (!(this.method_1119() < this.field_3988.getValue())) {
                      if ((
                            this.field_3994.getValue() != Class_0692.INSTANT
-                              || this.field_4018.method_2((double)this.field_3996.getValue().floatValue(), TimeUnit.SECONDS)
+                              || this.field_4018.method_2((double)(this.field_3996.getValue() != null ? this.field_3996.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)
                         )
                         && !field_3985.method_573()) {
                         if (!this.field_3995.getValue() || this.method_1117()) {
@@ -386,10 +386,10 @@ public class SpeedMineModule extends Module {
                               && this.field_4027 != -1
                               && field_4219.player.getInventory().selectedSlot != this.field_4027) {
                               if (this.field_4000.getValue() == Class_0403.SILENT && this.field_4003.getValue()) {
-                                 Class_0136.method_39(this.field_4027);
+                                 PlayerUtil.method_39(this.field_4027);
                               } else {
                                  this.field_1980 = field_4219.player.getInventory().selectedSlot;
-                                 Class_0136.method_16(this.field_4027);
+                                 PlayerUtil.method_16(this.field_4027);
                               }
                            } else if (var3 != this.field_4027 && this.field_3994.getValue() == Class_0692.INSTANT && this.field_3998.getValue()) {
                               return;
@@ -401,25 +401,25 @@ public class SpeedMineModule extends Module {
                            }
 
                            if (this.field_3992.getValue()) {
-                              Class_1261.method_9(Hand.MAIN_HAND);
+                              PacketUtil.method_9(Hand.MAIN_HAND);
                            }
 
-                           if (!Class_0485.method_513() && this.field_3994.getValue() != Class_0692.INSTANT) {
-                              Class_1261.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), field_4219.player.isOnGround());
+                           if (!RotationManager.method_513() && this.field_3994.getValue() != Class_0692.INSTANT) {
+                              PacketUtil.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), field_4219.player.isOnGround());
                            }
 
                            BlockPos var6 = this.field_3164;
                            this.field_4023.method_994(this.field_3164);
-                           Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
+                           PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
                            if (field_3984.method_1052() && this.field_3994.getValue() == Class_0692.NONE) {
-                              Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, var5);
+                              PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, var5);
                            }
 
                            Hub.field_2622.method_100(this.field_3164);
                            if (this.field_3994.getValue() == Class_0692.FAST) {
-                              Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, var5);
-                              Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
-                              Class_1261.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
+                              PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, var5);
+                              PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var5);
+                              PacketUtil.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var5);
                               this.field_3164 = null;
                            }
 
@@ -427,9 +427,9 @@ public class SpeedMineModule extends Module {
                               int var7 = this.field_4027;
                               Runnable var8 = () -> {
                                  if (this.field_4003.getValue() && this.field_4000.getValue() == Class_0403.SILENT) {
-                                    Class_0136.method_39(var7);
+                                    PlayerUtil.method_39(var7);
                                  } else if (var3 != this.field_4027 || this.field_4002.getValue() == Class_0400.TICK) {
-                                    Class_0136.method_16(var3);
+                                    PlayerUtil.method_16(var3);
                                  }
 
                                  field_219.field_4124.set(false);
@@ -454,8 +454,8 @@ public class SpeedMineModule extends Module {
                               this.reset();
                            }
 
-                           if (this.field_4005.getValue() && Class_0485.method_514()) {
-                              Hub.field_2598.method_2(Class_0485.method_2(Class_0485.method_78(var6.toCenterPos()), Hub.field_2598.method_509()), 150);
+                           if (this.field_4005.getValue() && RotationManager.method_514()) {
+                              Hub.field_2598.method_2(RotationManager.method_2(RotationManager.method_78(var6.toCenterPos()), Hub.field_2598.method_509()), 150);
                            }
                         }
                      }
@@ -471,7 +471,7 @@ public class SpeedMineModule extends Module {
       float var2 = this.field_3991.getValue() ? Hub.field_2602.method_990() : Float.intBitsToFloat(1065353216);
       if (this.field_4028 != null) {
          BlockState var3 = field_4219.world.getBlockState(this.field_4028.method_111());
-         int var4 = Class_0136.method_29(this.field_4028.method_111(), !this.field_4003.getValue());
+         int var4 = PlayerUtil.method_29(this.field_4028.method_111(), !this.field_4003.getValue());
          double var5 = Class_1225.method_2(field_4219.player.getInventory().getStack(var4), var3, field_4219.player.isOnGround()) * (double)var2;
          this.field_4028.method_310((float)var5);
          if (field_4219.world.isAir(this.field_4028.method_111())) {
@@ -495,7 +495,7 @@ public class SpeedMineModule extends Module {
                this.field_3164 = this.field_4029;
             }
          } else {
-            this.field_4027 = Class_0136.method_29(this.field_3164, !this.field_4003.getValue());
+            this.field_4027 = PlayerUtil.method_29(this.field_3164, !this.field_4003.getValue());
             if (this.field_3994.getValue() == Class_0692.INSTANT
                && this.field_3164 != null
                && field_4219.world.getBlockState(this.field_3164).getBlock() == Blocks.AIR) {
@@ -543,7 +543,7 @@ public class SpeedMineModule extends Module {
    @Subscribe
    public void method_9(Event_19 var1) {
       if (var1.method_213() == PreType.PRE && this.field_3164 != null) {
-         if (!(field_4219.player.getEyePos().distanceTo(this.field_3164.toCenterPos()) <= (double)this.field_3989.getValue().floatValue())) {
+         if (!(field_4219.player.getEyePos().distanceTo(this.field_3164.toCenterPos()) <= (double)(this.field_3989.getValue() != null ? this.field_3989.getValue().floatValue() : 0.0f))) {
             this.method_1116();
          }
       }
@@ -572,11 +572,12 @@ public class SpeedMineModule extends Module {
             }
 
             float var4 = MathHelper.clamp(
-               MathHelper.lerp(Class_0838.method_776(), this.field_4026, this.method_1119()) / this.field_3988.getValue(),
+               MathHelper.lerp(RenderUtil.method_776(), this.field_4026, this.method_1119()) / this.field_3988.getValue(),
                0.0F,
                Float.intBitsToFloat(1065353216)
             );
-            Color[] var5 = this.field_4012.getValue().method_2(this, var4);
+            if (this.field_4012 == null || this.field_4012.getValue() == null) return;
+            Color[] var5 = (this.field_4012.getValue() != null ? this.field_4012.getValue().method_2(this, var4) : null);
             Box var6 = this.field_4009
                .getValue()
                .method_2(
@@ -633,13 +634,13 @@ public class SpeedMineModule extends Module {
    }
 
    public void method_574(BlockPos var1) {
-      if (this.field_4005.getValue() && !Class_0485.method_514()) {
+      if (this.field_4005.getValue() && !RotationManager.method_514()) {
          Vec3d var2 = Class_1225.method_2(var1, Class_1172.field_3634);
          if (var2 == null) {
             var2 = var1.toCenterPos();
          }
 
-         float[] var3 = Class_0485.method_2(Class_0485.method_78(var2), Hub.field_2598.method_509());
+         float[] var3 = RotationManager.method_2(RotationManager.method_78(var2), Hub.field_2598.method_509());
          Hub.field_2598.method_2(var3, 150, true);
       }
    }
@@ -665,8 +666,8 @@ public class SpeedMineModule extends Module {
 
    public void reset() {
       if (this.field_3164 != null && !this.method_535()) {
-         Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, this.method_664(this.field_3164));
-         Class_1261.method_9(Hand.MAIN_HAND);
+         PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164, this.method_664(this.field_3164));
+         PacketUtil.method_9(Hand.MAIN_HAND);
          ((Class_1226)field_4219.interactionManager).setBreakingBlock(false);
          ((Class_1226)field_4219.interactionManager).setBreakingProgress(0.0F);
       }
@@ -694,7 +695,7 @@ public class SpeedMineModule extends Module {
                   .intersects(var1)) {
                   var2 = true;
                }
-            } else if (var4 instanceof EndCrystalEntity && var4.getBoundingBox().expand(0.0, Class_0245.field_689, 0.0).intersects(var1)) {
+            } else if (var4 instanceof EndCrystalEntity && var4.getBoundingBox().expand(0.0, Constants.field_689, 0.0).intersects(var1)) {
                return true;
             }
          }
@@ -707,7 +708,7 @@ public class SpeedMineModule extends Module {
       if (field_3983.isToggled() && field_3983.field_2757.getValue()) {
          return -1;
       } else {
-         int var2 = Class_0136.method_29(this.field_3164, !this.field_4003.getValue());
+         int var2 = PlayerUtil.method_29(this.field_3164, !this.field_4003.getValue());
          int var3 = field_4219.player.getInventory().selectedSlot;
          double var4 = Class_1225.method_2(
             field_4219.player.getInventory().getStack(var2), field_4219.world.getBlockState(var1), field_4219.player.isOnGround()
@@ -715,7 +716,7 @@ public class SpeedMineModule extends Module {
          if (this.field_4000.getValue() == Class_0403.NONE && var2 != var3) {
             return -1;
          } else {
-            return var4 > (double)this.field_3988.getValue().floatValue() ? var2 : -1;
+            return var4 > (double)(this.field_3988.getValue() != null ? this.field_3988.getValue().floatValue() : 0.0f) ? var2 : -1;
          }
       }
    }
@@ -753,7 +754,8 @@ public class SpeedMineModule extends Module {
    }
 
    public boolean method_686(BlockPos var1) {
-      return this.field_3987.getValue().method_2(field_4219.world.getBlockState(var1).getBlock(), this.field_4015);
+      if (this.field_3987 == null || this.field_3987.getValue() == null) return false;
+      return (this.field_3987.getValue() != null ? this.field_3987.getValue().method_2(field_4219.world.getBlockState(var1).getBlock(), this.field_4015) : false);
    }
 
    public float method_760() {

@@ -7,9 +7,9 @@ import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Event_36;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0144;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
 import me.mioclient.module.Category;
@@ -30,14 +30,14 @@ public class LegacyCrystalModule extends Module {
    public Setting<Integer> field_4339;
    public Setting<Boolean> field_4340;
    public final Map<BlockPos, Long> field_4341;
-   public final Class_0242 field_4342;
+   public final Timer field_4342;
    public long field_4343;
 
    public LegacyCrystalModule() {
       super("LegacyCrystal", "Legit auto crystal (crystal aura).", Category.COMBAT);
       Settings.initialize(this);
       this.field_4341 = new HashMap<>();
-      this.field_4342 = new Class_0242();
+      this.field_4342 = new Timer();
       this.field_4343 = 150L;
    }
 
@@ -51,7 +51,7 @@ public class LegacyCrystalModule extends Module {
          Entity var5 = ((EntityHitResult)field_4219.crosshairTarget).getEntity();
          if (this.field_4342.method_9(this.field_4343) && var5 instanceof EndCrystalEntity && this.field_4341.containsKey(var5.getBlockPos().down())) {
             ((DuckMinecraftClient)field_4219).attack();
-            this.field_4343 = (long)(Math.random() * (double)this.field_4339.getValue().intValue());
+            this.field_4343 = (long)(Math.random() * (double)(this.field_4339.getValue() != null ? this.field_4339.getValue().intValue() : 0));
             this.field_4342.reset();
          }
       }
@@ -62,9 +62,9 @@ public class LegacyCrystalModule extends Module {
       if (field_4219.world.getBlockState(var1.method_382().getBlockPos().up(2)).isAir()) {
          boolean var2 = Class_1035.method_2(var1.method_382().getBlockPos(), false, false, true, false, false, false);
          if (field_4219.player.getMainHandStack().getItem() instanceof SwordItem) {
-            Class_0136.method_16(Class_0136.method_5(var2 ? Items.END_CRYSTAL : Items.OBSIDIAN));
+            PlayerUtil.method_16(PlayerUtil.method_5(var2 ? Items.END_CRYSTAL : Items.OBSIDIAN));
          } else if (field_4219.player.getMainHandStack().isOf(Items.OBSIDIAN) && var2) {
-            Class_0136.method_78(Class_0136.method_5(Items.END_CRYSTAL));
+            PlayerUtil.method_78(PlayerUtil.method_5(Items.END_CRYSTAL));
          }
       }
    }

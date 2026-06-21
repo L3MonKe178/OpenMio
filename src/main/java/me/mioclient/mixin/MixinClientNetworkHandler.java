@@ -2,10 +2,10 @@ package me.mioclient.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_24;
 import me.mioclient.internal.Class_0542;
-import me.mioclient.internal.Class_1032;
+import me.mioclient.internal.CommandManager;
 import me.mioclient.module.render.AmbienceModule;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.world.ClientWorld;
@@ -40,8 +40,8 @@ public class MixinClientNetworkHandler {
       cancellable = true
    )
    private void sendChatMessageHook(String var1, CallbackInfo var2) {
-      if (var1.startsWith(Class_1032.method_927())) {
-         Class_1032.method_7(var1.substring(Class_1032.method_927().length()));
+      if (var1.startsWith(CommandManager.method_927())) {
+         CommandManager.method_7(var1.substring(CommandManager.method_927().length()));
          var2.cancel();
       }
    }
@@ -57,7 +57,7 @@ public class MixinClientNetworkHandler {
    )
    private String dabigbulletz(String var1) {
       this.event = new Event_24(var1);
-      Class_1309.field_4220.method_36(this.event);
+      MioAPI.field_4220.method_36(this.event);
       return this.event.method_219();
    }
 
@@ -104,7 +104,7 @@ public class MixinClientNetworkHandler {
    private void onVehicleMove(VehicleMoveS2CPacket var1, CallbackInfo var2, @Local Entity var3) {
       Vec3d var4 = new Vec3d(var1.getX(), var1.getY(), var1.getZ());
       Class_0542 var5 = new Class_0542(var4);
-      Class_1309.field_4220.method_36(var5);
+      MioAPI.field_4220.method_36(var5);
       if (var5.method_464()) {
          var2.cancel();
       }

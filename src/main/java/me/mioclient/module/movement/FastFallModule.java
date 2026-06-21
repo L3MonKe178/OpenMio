@@ -9,7 +9,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
 import me.mioclient.internal.Class_0981;
@@ -55,12 +55,12 @@ public class FastFallModule extends Module {
    public boolean field_2197;
    public double field_4410;
    public double field_4411;
-   public final Class_0242 field_4412;
+   public final Timer field_4412;
 
    public FastFallModule() {
       super("FastFall", "Allows you to get in holes with ease!", Category.MOVEMENT, "reversestep");
       Settings.initialize(this);
-      this.field_4412 = new Class_0242();
+      this.field_4412 = new Timer();
    }
 
    @Override
@@ -226,7 +226,7 @@ public class FastFallModule extends Module {
          && this.method_724()
          && this.field_4410 != 0.0
          && this.field_4411 != 0.0
-         && this.field_4411 <= (double)this.field_4401.getValue().floatValue();
+         && this.field_4411 <= (double)(this.field_4401.getValue() != null ? this.field_4401.getValue().floatValue() : 0.0f);
    }
 
    public void method_1188() {

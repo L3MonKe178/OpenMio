@@ -10,7 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public interface Class_0964 extends Class_1309 {
+public interface Class_0964 extends MioAPI {
    AbstractModule_21 field_2972 = Hub.field_2595.method_78(AbstractModule_21.class);
    Color field_2973 = new Color(0, 0, 0, 0);
 

@@ -11,15 +11,15 @@ import me.mioclient.enum_.SettingMode;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0930;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.internal.Class_1368;
 import me.mioclient.module.Category;
@@ -119,21 +119,21 @@ public class WaypointsModule extends Module {
                   float var7 = Class_1334.method_5(field_4219.player.getPos(), var6);
                   Vec3d var8 = var6;
                   if (var7 >= Float.intBitsToFloat(1123024896)) {
-                     float[] var9 = Class_0485.method_78(var6);
-                     Vec3d var10 = field_4219.player.getLerpedPos(Class_0838.method_776());
+                     float[] var9 = RotationManager.method_78(var6);
+                     Vec3d var10 = field_4219.player.getLerpedPos(RenderUtil.method_776());
                      var8 = new Vec3d(
                         var10.getX()
-                           + (double)(Float.intBitsToFloat(1120403456) * (float)Math.cos(Math.toRadians((double)(var9[0] + (float)Class_0245.field_685)))),
+                           + (double)(Float.intBitsToFloat(1120403456) * (float)Math.cos(Math.toRadians((double)(var9[0] + (float)Constants.field_685)))),
                         var6.y,
                         var10.getZ()
-                           + (double)(Float.intBitsToFloat(1120403456) * (float)Math.sin(Math.toRadians((double)(var9[0] + (float)Class_0245.field_685))))
+                           + (double)(Float.intBitsToFloat(1120403456) * (float)Math.sin(Math.toRadians((double)(var9[0] + (float)Constants.field_685))))
                      );
                   }
 
                   if (this.field_3308.getValue()) {
                      Box var13 = new Box(
-                           var8.add(-Class_0245.field_689, -Class_0245.field_689, -Class_0245.field_689),
-                           var8.add(Class_0245.field_689, Class_0245.field_689, Class_0245.field_689)
+                           var8.add(-Constants.field_689, -Constants.field_689, -Constants.field_689),
+                           var8.add(Constants.field_689, Constants.field_689, Constants.field_689)
                         )
                         .withMaxY((double)field_4219.world.getTopY())
                         .withMinY((double)field_4219.world.getBottomY());
@@ -144,8 +144,8 @@ public class WaypointsModule extends Module {
                      Class_0612.method_2(
                         var1.method_10(),
                         new Box(
-                           var6.add(-Class_0245.field_689, -Class_0245.field_689, -Class_0245.field_689),
-                           var6.add(Class_0245.field_689, Class_0245.field_689, Class_0245.field_689)
+                           var6.add(-Constants.field_689, -Constants.field_689, -Constants.field_689),
+                           var6.add(Constants.field_689, Constants.field_689, Constants.field_689)
                         ),
                         this.field_3315.getValue(),
                         this.field_3306.getValue()
@@ -154,7 +154,7 @@ public class WaypointsModule extends Module {
 
                   if (this.field_3309.getValue()) {
                      GL32C.glLineWidth(this.field_3306.getValue());
-                     Class_0838.field_2672.method_2(var1.method_10(), var3, var8, this.field_3315.getValue());
+                     RenderUtil.field_2672.method_2(var1.method_10(), var3, var8, this.field_3315.getValue());
                      GL32C.glLineWidth(Float.intBitsToFloat(1065353216));
                   }
 
@@ -164,17 +164,18 @@ public class WaypointsModule extends Module {
                         var8 = var8.withAxis(Axis.Y, var14 + (double)field_4219.player.getEyeHeight(field_4219.player.getPose()));
                      }
 
-                     String var15 = new Class_1303().method_2(this.field_3311.getValue().method_37(var6)).method_2(var5.getName()).method_9("\u0001 \u0001");
-                     double var16 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var8, (double)this.field_3312.getValue().floatValue());
-                     float var12 = (float)Class_0245.field_689;
+                     if (this.field_3311 == null || this.field_3311.getValue() == null) return;
+                     String var15 = new TextBuilder().method_2((this.field_3311.getValue() != null ? this.field_3311.getValue().method_37(var6) : "")).method_2(var5.getName()).method_9("\u0001 \u0001");
+                     double var16 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var8, (double)(this.field_3312.getValue() != null ? this.field_3312.getValue().floatValue() : 0.0f));
+                     float var12 = (float)Constants.field_689;
                      if (this.field_3313.getValue()) {
-                        Class_0838.field_2672
+                        RenderUtil.field_2672
                            .method_2(
                               var1.method_10(),
                               var8,
                               Float.intBitsToFloat(-1124744561),
-                              (float)Class_0245.field_689,
-                              -(Class_1016.field_3143.method_221(var15) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
+                              (float)Constants.field_689,
+                              -(FontRenderer.field_3143.method_221(var15) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
                               Float.intBitsToFloat(1084227584),
                               var16 * Double.longBitsToDouble(4611686018427387904L),
                               new Color(0, 0, 0, 100)
@@ -184,14 +185,14 @@ public class WaypointsModule extends Module {
                         }
                      }
 
-                     Class_0838.field_2672
+                     RenderUtil.field_2672
                         .method_2(
                            var1.method_881(),
                            var15,
                            var8,
                            0.0F,
                            var12,
-                           -(Class_1016.field_3143.method_221(var15) / Float.intBitsToFloat(1073741824)),
+                           -(FontRenderer.field_3143.method_221(var15) / Float.intBitsToFloat(1073741824)),
                            0.0F,
                            var16,
                            Color.WHITE,

@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
-public class Event_27 extends Class_0605 {
+public class Event_27 extends Event {
    public final MatrixStack field_16;
    public final Entity field_17;
 

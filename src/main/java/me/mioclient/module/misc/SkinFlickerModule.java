@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import me.mioclient.enum_.Orientation2;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -36,7 +36,7 @@ public class SkinFlickerModule extends Module {
    public Setting<Float> field_2762;
    public final Map<PlayerModelPart, Boolean> field_2763;
    public final int field_2764;
-   public final Class_0242 field_2765;
+   public final Timer field_2765;
    public int field_2766;
 
    public SkinFlickerModule() {
@@ -44,7 +44,7 @@ public class SkinFlickerModule extends Module {
       Settings.initialize(this);
       this.field_2763 = new HashMap<>();
       this.field_2764 = PlayerModelPart.values().length;
-      this.field_2765 = new Class_0242();
+      this.field_2765 = new Timer();
    }
 
    @Override
@@ -61,7 +61,7 @@ public class SkinFlickerModule extends Module {
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      if (this.field_2765.method_2((double)this.field_2762.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (this.field_2765.method_2((double)(this.field_2762.getValue() != null ? this.field_2762.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          switch ((Orientation2)this.field_2760.getValue()) {
             case FULL:
                for (PlayerModelPart var5 : PlayerModelPart.values()) {

@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.util.List;
 import me.mioclient.api.Class_0742;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.combat.AntiPhaseModule;
 import me.mioclient.record.Class_0146;
 import me.mioclient.record.Class_1013;
@@ -13,7 +13,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 
-public class Class_0088 implements Class_1309, Class_0742 {
+public class Class_0088 implements MioAPI, Class_0742 {
    private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
    private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
    private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);

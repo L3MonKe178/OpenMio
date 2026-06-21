@@ -9,7 +9,7 @@ import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public class Class_0299 extends Class_0618 {
+public class Class_0299 extends Command {
    public Class_0299() {
       super("defaults");
    }

@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_3;
 import me.mioclient.module.render.TrajectoriesModule;
 import net.minecraft.entity.Entity;
@@ -80,7 +80,7 @@ public class Class_0204 {
 
       for (Vec3d var4 : this.field_578) {
          if (var2 != null) {
-            Class_0838.field_2672
+            RenderUtil.field_2672
                .method_2(
                   var1.method_10(),
                   this.field_583.field_2373,
@@ -99,7 +99,7 @@ public class Class_0204 {
          Class_0612.method_2(var1.method_10(), this.field_580, this.field_583.field_2365.getValue(), this.field_583.field_2364.getValue());
       }
 
-      if (this.field_581 != null && this.field_582 == Class_1309.field_4219.player) {
+      if (this.field_581 != null && this.field_582 == MioAPI.field_4219.player) {
          Class_0612.method_5(
             var1.method_10(), Class_0719.method_2(this.field_581, var1.method_880()), Class_1081.method_9(this.field_583.field_2365.getValue(), 60)
          );

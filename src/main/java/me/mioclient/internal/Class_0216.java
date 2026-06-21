@@ -9,7 +9,7 @@ import me.mioclient.enum_.Class_1136;
 import me.mioclient.module.Module;
 import net.minecraft.command.CommandSource;
 
-public final class Class_0216 extends Class_0618 {
+public final class Class_0216 extends Command {
    public Class_0216() {
       super("alias");
    }

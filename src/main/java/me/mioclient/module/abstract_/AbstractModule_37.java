@@ -10,7 +10,7 @@ import me.mioclient.event.Event_41;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0177;
 import me.mioclient.internal.Class_0539;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.mixin.ducks.DuckHandledScreen;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -61,7 +61,7 @@ public class AbstractModule_37 extends Module {
    public AbstractModule_37() {
       super(
          "Tooltips",
-         new Class_1303()
+         new TextBuilder()
             .method_2(String.valueOf(Formatting.YELLOW))
             .method_2(String.valueOf(Formatting.YELLOW))
             .method_9(
@@ -182,7 +182,7 @@ public class AbstractModule_37 extends Module {
                      BlockPos var10 = (BlockPos)NbtHelper.toBlockPos(var27, "FlowerPos").orElse(null);
                      if (var10 != null) {
                         var1.method_563()
-                           .add(TooltipComponent.of(Text.literal(new Class_1303().method_2(var10.toShortString()).method_9("Position \u0001")).asOrderedText()));
+                           .add(TooltipComponent.of(Text.literal(new TextBuilder().method_2(var10.toShortString()).method_9("Position \u0001")).asOrderedText()));
                      }
                   }
                }

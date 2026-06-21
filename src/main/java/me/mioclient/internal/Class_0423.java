@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.io.InputStream;
 import java.util.concurrent.CompletableFuture;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.sound.AbstractSoundInstance;
 import net.minecraft.client.sound.AudioStream;
 import net.minecraft.client.sound.OggAudioStream;
@@ -16,7 +16,7 @@ public class Class_0423 extends AbstractSoundInstance {
    public InputStream field_1338;
 
    public Class_0423(Vec3d var1, InputStream var2) {
-      super(Identifier.of(Class_1309.method_244() ? "mioloader" : "mio", "sound"), SoundCategory.MASTER, SoundInstance.createRandom());
+      super(Identifier.of(MioAPI.method_244() ? "mioloader" : "mio", "sound"), SoundCategory.MASTER, SoundInstance.createRandom());
       this.x = var1.x;
       this.y = var1.y;
       this.z = var1.z;
@@ -24,7 +24,7 @@ public class Class_0423 extends AbstractSoundInstance {
    }
 
    public Class_0423(InputStream var1) {
-      super(Identifier.of(Class_1309.method_244() ? "mioloader" : "mio", "sound"), SoundCategory.MASTER, SoundInstance.createRandom());
+      super(Identifier.of(MioAPI.method_244() ? "mioloader" : "mio", "sound"), SoundCategory.MASTER, SoundInstance.createRandom());
       this.field_1338 = var1;
       this.relative = true;
       this.x = 0.0;

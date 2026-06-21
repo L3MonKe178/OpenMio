@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
 import java.awt.Color;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_0964;
 import me.mioclient.module.render.ChamsModule;
 
-public enum Class_1285 implements Class_0013, Class_0964 {
+public enum Class_1285 implements Nameable, Class_0964 {
    BOTH("Both") {
       @Override
       public Color[] method_2(ChamsModule var1) {

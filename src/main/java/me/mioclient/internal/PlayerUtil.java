@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.util.function.Predicate;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckInteractionManager;
 import me.mioclient.module.player.ItemSaverModule;
 import net.minecraft.block.BlockState;
@@ -18,10 +18,10 @@ import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 
-public class Class_0136 implements Class_1309 {
+public class PlayerUtil implements MioAPI {
    public static ItemSaverModule field_405 = Hub.field_2595.method_78(ItemSaverModule.class);
 
-   public Class_0136() {
+   public PlayerUtil() {
       super();
    }
 

@@ -1,6 +1,6 @@
 package me.mioclient.mixin;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_40;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.SoundSystem;
@@ -22,7 +22,7 @@ public class MixinSoundSystem {
    )
    private void playHook(SoundInstance var1, CallbackInfo var2) {
       Event_40 var3 = new Event_40(var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }

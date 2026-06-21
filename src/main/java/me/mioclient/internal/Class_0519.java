@@ -14,9 +14,9 @@ import net.minecraft.util.math.MathHelper;
 
 public class Class_0519 extends Class_1015<Color> implements Class_0988 {
    public final List<Class_0937> field_1641 = new ArrayList<>(3);
-   public final Class_0242 field_1642 = new Class_0242();
-   public final Class_0242 field_1643 = new Class_0242();
-   public final Class_0242 field_1644 = new Class_0242();
+   public final Timer field_1642 = new Timer();
+   public final Timer field_1643 = new Timer();
+   public final Timer field_1644 = new Timer();
    public boolean field_111;
    public boolean field_257;
    public boolean field_1645;
@@ -63,7 +63,7 @@ public class Class_0519 extends Class_1015<Color> implements Class_0988 {
          this.method_2(
             var2,
             this.field_3138.getName(),
-            () -> Class_1016.field_3143
+            () -> FontRenderer.field_3143
                   .method_9(
                      var1,
                      this.field_3138.getName(),

@@ -1,6 +1,6 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_10;
 import me.mioclient.mixin.ducks.DuckVehicleMoveC2SPacket;
 import me.mioclient.module.movement.EntityControlModule;
@@ -10,8 +10,8 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.VehicleMoveC2SPacket;
 import net.minecraft.util.math.Vec3d;
 
-public final class Class_0131 implements Class_1309 {
-   public final Class_0242 field_393 = new Class_0242();
+public final class Class_0131 implements MioAPI {
+   public final Timer field_393 = new Timer();
    public final EntityControlModule field_394;
    public int field_395;
    public int field_396;
@@ -89,7 +89,7 @@ public final class Class_0131 implements Class_1309 {
       if (var2 != null) {
          VehicleMoveC2SPacket var3 = new VehicleMoveC2SPacket(var2);
          ((DuckVehicleMoveC2SPacket)var3).setY(var3.getY() + (double)var1);
-         Class_1261.method_2(var3);
+         PacketUtil.method_2(var3);
       }
    }
 

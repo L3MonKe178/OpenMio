@@ -20,7 +20,7 @@ import net.minecraft.util.math.Box;
 public class Class_0030 extends Class_0043 {
    public static final FastWebModule field_51 = Hub.field_2595.method_78(FastWebModule.class);
    public final List<Long> field_52 = Collections.synchronizedList(new ArrayList<>());
-   public final Class_0242 field_53 = new Class_0242();
+   public final Timer field_53 = new Timer();
    public boolean field_54;
 
    public Class_0030(VelocityModule var1) {

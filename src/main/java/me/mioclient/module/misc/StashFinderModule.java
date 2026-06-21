@@ -9,11 +9,11 @@ import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_5;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0580;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -46,12 +46,12 @@ public class StashFinderModule extends Module {
    public Setting<Boolean> field_1508;
    public Setting<Boolean> field_1509;
    public Setting<Boolean> field_1510;
-   public final Class_0242 field_1511;
+   public final Timer field_1511;
 
    public StashFinderModule() {
       super("StashFinder", "Logs and/or notifies you about possible stashes.", Category.MISC);
       Settings.initialize(this);
-      this.field_1511 = new Class_0242();
+      this.field_1511 = new Timer();
       this.setDrawn(false);
    }
 
@@ -78,9 +78,9 @@ public class StashFinderModule extends Module {
             }
 
             if (this.field_1495.getValue() && var5 >= this.field_1496.getValue()) {
-               String var15 = new Class_1303().method_2(var5).method_9("\u0001 chests");
+               String var15 = new TextBuilder().method_2(var5).method_9("\u0001 chests");
                Class_0580 var18 = this.method_2(
-                  new Class_1303().method_2((Object)var2).method_2((Object)var15).method_9("\u0001 (\u0001)"), var4.getCenterX(), var4.getCenterZ()
+                  new TextBuilder().method_2((Object)var2).method_2((Object)var15).method_9("\u0001 (\u0001)"), var4.getCenterX(), var4.getCenterZ()
                );
                if (this.method_2(var18, var15)) {
                   break;
@@ -90,7 +90,7 @@ public class StashFinderModule extends Module {
                if (this.field_1497.getValue() && !Hub.field_2622.method_101(var9.getPos())) {
                   String var8 = "a shulkerbox";
                   Class_0580 var10 = this.method_2(
-                     new Class_1303().method_2((Object)var2).method_2((Object)var8).method_9("\u0001 (\u0001)"), var4.getCenterX(), var4.getCenterZ()
+                     new TextBuilder().method_2((Object)var2).method_2((Object)var8).method_9("\u0001 (\u0001)"), var4.getCenterX(), var4.getCenterZ()
                   );
                   if (this.method_2(var10, var8)) {
                      break;
@@ -108,7 +108,7 @@ public class StashFinderModule extends Module {
                for (ChestMinecartEntity var11 : (Iterable<ChestMinecartEntity>)(Iterable<?>)(var13)) {
                   if (var17.getBoundingBox().intersects(var11.getBoundingBox())) {
                      Class_0580 var12 = this.method_2(
-                        new Class_1303().method_2((Object)var2).method_9("Stacked minecarts (\u0001)"), var4.getCenterX(), var4.getCenterZ()
+                        new TextBuilder().method_2((Object)var2).method_9("Stacked minecarts (\u0001)"), var4.getCenterX(), var4.getCenterZ()
                      );
                      this.method_2(var12, "Stacked minecarts");
                      return;
@@ -131,12 +131,12 @@ public class StashFinderModule extends Module {
       if (Hub.field_2618.method_2(var1x -> var1x.method_380() == var1.method_380() && var1x.method_396() == var1.method_396()).isEmpty()
          && Hub.field_2618.method_2(var1)) {
          if (this.field_1499.getValue()) {
-            MutableText var3 = Text.literal(this.getName()).append(new Class_1303().method_2((Object)var2).method_9(" has found \u0001 at: "));
+            MutableText var3 = Text.literal(this.getName()).append(new TextBuilder().method_2((Object)var2).method_9(" has found \u0001 at: "));
             if (!this.field_1500.getValue()) {
                var3.append(var1.method_599());
             }
 
-            Class_1245.method_2(var3, Class_1245.method_38(-13579), Priority.LOW);
+            ChatUtil.method_2(var3, ChatUtil.method_38(-13579), Priority.LOW);
          }
 
          if (this.field_1502.getValue() && this.field_1511.method_2(Double.longBitsToDouble(4617315517961601024L), TimeUnit.SECONDS)) {

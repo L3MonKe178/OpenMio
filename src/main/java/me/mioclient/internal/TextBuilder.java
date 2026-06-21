@@ -5,107 +5,107 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
-public final class Class_1303 {
+public final class TextBuilder {
    public static final char field_4212 = 1;
    public static final char field_4213 = '\u0002';
    public static final String field_4214 = String.valueOf(field_4212);
    public final List<String> field_4215 = new ArrayList<>();
 
-   public Class_1303() {
+   public TextBuilder() {
       super();
    }
 
-   public Class_1303 method_2(boolean var1) {
+   public TextBuilder method_2(boolean var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(byte var1) {
+   public TextBuilder method_2(byte var1) {
       this.method_2(String.valueOf((int)var1));
       return this;
    }
 
-   public Class_1303 method_2(char var1) {
+   public TextBuilder method_2(char var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(short var1) {
+   public TextBuilder method_2(short var1) {
       this.method_2(String.valueOf((int)var1));
       return this;
    }
 
-   public Class_1303 method_2(int var1) {
+   public TextBuilder method_2(int var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(long var1) {
+   public TextBuilder method_2(long var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(double var1) {
+   public TextBuilder method_2(double var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(float var1) {
+   public TextBuilder method_2(float var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(boolean[] var1) {
+   public TextBuilder method_2(boolean[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(byte[] var1) {
+   public TextBuilder method_2(byte[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(char[] var1) {
+   public TextBuilder method_2(char[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(short[] var1) {
+   public TextBuilder method_2(short[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(int[] var1) {
+   public TextBuilder method_2(int[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(long[] var1) {
+   public TextBuilder method_2(long[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(double[] var1) {
+   public TextBuilder method_2(double[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(float[] var1) {
+   public TextBuilder method_2(float[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(Object[] var1) {
+   public TextBuilder method_2(Object[] var1) {
       this.method_2(Arrays.toString(var1));
       return this;
    }
 
-   public Class_1303 method_2(Object var1) {
+   public TextBuilder method_2(Object var1) {
       this.method_2(String.valueOf(var1));
       return this;
    }
 
-   public Class_1303 method_2(String var1) {
+   public TextBuilder method_2(String var1) {
       this.field_4215.add(0, var1);
       return this;
    }

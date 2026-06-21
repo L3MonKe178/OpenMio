@@ -9,14 +9,14 @@ import java.util.ConcurrentModificationException;
 import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0333;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.api.Class_1322;
 import me.mioclient.enum_.Orientation;
 import me.mioclient.event.Event_46;
 import me.mioclient.internal.Class_0436;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1032;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.CommandManager;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.module.abstract_.AbstractModule_14;
 import me.mioclient.module.client.FontsModule;
 import me.mioclient.module.misc.BetterChatModule;
@@ -48,7 +48,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({ChatHud.class})
-public abstract class MixinChatHud implements Class_1309, Class_1322 {
+public abstract class MixinChatHud implements MioAPI, Class_1322 {
    private static final NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
    private static final BetterChatModule betterchat = Hub.field_2595.method_78(BetterChatModule.class);
    private static final AbstractModule_14 chathud = Hub.field_2595.method_78(AbstractModule_14.class);
@@ -94,7 +94,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
       cancellable = true
    )
    private void logChatMessageHook(ChatHudLine var1, CallbackInfo var2) {
-      if (var1.indicator() == Class_1245.field_3910) {
+      if (var1.indicator() == ChatUtil.field_3910) {
          var2.cancel();
       }
    }
@@ -138,7 +138,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
       ((Class_0333)var3).setSignature(this.last);
       Visible var4 = (Visible)var3;
       Event_46 var5 = new Event_46(var4);
-      Class_1309.field_4220.method_36(var5);
+      MioAPI.field_4220.method_36(var5);
       var1.add(var2, var3);
    }
 
@@ -197,7 +197,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
          }
       }
 
-      Class_0436 var16 = Class_1016.field_3143.method_914();
+      Class_0436 var16 = FontRenderer.field_3143.method_914();
       if (var16 != null && fonts.isToggled() && fonts.field_370.getValue()) {
          var16.method_2(var1.getMatrices(), var3, (float)var4, (float)var5, var6, true);
          return 0;
@@ -237,7 +237,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
       at = {@At("TAIL")}
    )
    private void render(DrawContext var1, int var2, int var3, int var4, boolean var5, CallbackInfo var6) {
-      Class_1016.field_3143.method_474();
+      FontRenderer.field_3143.method_474();
    }
 
    @ModifyArg(
@@ -265,7 +265,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
    private void addMessageHook(Text var1, MessageSignatureData var2, MessageIndicator var3, CallbackInfo var4, @Local ChatHudLine var5) {
       if (!skip) {
          Event_46 var7 = new Event_46(var3, var2, var1);
-         Class_1309.field_4220.method_36(var7);
+         MioAPI.field_4220.method_36(var7);
          var1 = var7.method_1033();
          var2 = var7.getSignature();
          var4.cancel();
@@ -349,7 +349,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
       )}
    )
    private boolean addToMessageHistory(boolean var1, @Local(argsOnly = true) String var2) {
-      return var1 || var2.startsWith(Class_1032.method_927());
+      return var1 || var2.startsWith(CommandManager.method_927());
    }
 
    @ModifyExpressionValue(
@@ -360,7 +360,7 @@ public abstract class MixinChatHud implements Class_1309, Class_1322 {
       )}
    )
    private TextHandler getTextStyleAtHook(TextHandler var1) {
-      Class_0436 var2 = Class_1016.field_3143.method_914();
+      Class_0436 var2 = FontRenderer.field_3143.method_914();
       return (TextHandler)(var2 != null && fonts.isToggled() && fonts.field_370.getValue() ? var2.method_477() : var1);
    }
 

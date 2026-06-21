@@ -1,8 +1,8 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_1010 implements Class_0013 {
+public enum Class_1010 implements Nameable {
    NCP("NCP"),
    GRIM("Grim");
 

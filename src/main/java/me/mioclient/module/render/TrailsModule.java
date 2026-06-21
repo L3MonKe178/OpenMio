@@ -11,10 +11,10 @@ import java.util.concurrent.TimeUnit;
 import me.mioclient.event.Event_12;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0329;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -52,12 +52,12 @@ public class TrailsModule extends Module {
    public Setting<Color> field_3559;
    public Setting<Boolean> field_3560;
    public Setting<Double> field_3561;
-   public final Class_0242 field_3562;
+   public final Timer field_3562;
 
    public TrailsModule() {
       super("Trails", "Draws trails behind certain entities.", Category.RENDER);
       Settings.initialize(this);
-      this.field_3562 = new Class_0242();
+      this.field_3562 = new Timer();
       this.setDrawn(false);
    }
 
@@ -82,7 +82,7 @@ public class TrailsModule extends Module {
    )
    public void method_9(Event_12 var1) {
       if (!this.method_535()) {
-         if (this.field_3548.getValue() == 0.0F || this.field_3562.method_2((double)this.field_3548.getValue().floatValue(), TimeUnit.SECONDS)) {
+         if (this.field_3548.getValue() == 0.0F || this.field_3562.method_2((double)(this.field_3548.getValue() != null ? this.field_3548.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
             this.field_3562.reset();
             synchronized (this.field_3546) {
                if (field_4219.player.age % 4 == 0) {
@@ -107,7 +107,7 @@ public class TrailsModule extends Module {
                for (Entity var10 : field_4219.world.getEntities()) {
                   if (this.method_98(var10)) {
                      this.field_3546.compute(var10.getId(), (var1x, var2) -> {
-                        Class_0329 var3x = new Class_0329(var10.getLerpedPos(Class_0838.method_776()));
+                        Class_0329 var3x = new Class_0329(var10.getLerpedPos(RenderUtil.method_776()));
                         if (var2 == null) {
                            return new ArrayList<>(Collections.singleton(var3x));
                         } else {
@@ -125,15 +125,15 @@ public class TrailsModule extends Module {
    public void method_2(MatrixStack var1, List<Class_0329> var2) {
       Tessellator var3 = Tessellator.getInstance();
       BufferBuilder var4 = var3.begin(DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
-      Class_0838.field_2672.method_780();
+      RenderUtil.field_2672.method_780();
       RenderSystem.setShader(GameRenderer::getPositionColorProgram);
       RenderSystem.enableBlend();
       GL32C.glLineWidth(this.field_3555.getValue());
       RenderSystem.lineWidth(this.field_3555.getValue());
-      float[] var5 = Color.RGBtoHSB(this.field_3559.getValue().getRed(), this.field_3559.getValue().getGreen(), this.field_3559.getValue().getBlue(), null);
+      float[] var5 = Color.RGBtoHSB((this.field_3559.getValue() != null ? this.field_3559.getValue().getRed() : 0), (this.field_3559.getValue() != null ? this.field_3559.getValue().getGreen() : 0), (this.field_3559.getValue() != null ? this.field_3559.getValue().getBlue() : 0), null);
 
       for (int var6 = 0; var6 < var2.size() - 2; var6++) {
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(
                var1,
                var4,
@@ -145,7 +145,7 @@ public class TrailsModule extends Module {
       }
 
       BufferRenderer.drawWithGlobalProgram(var4.end());
-      Class_0838.field_2672.method_782();
+      RenderUtil.field_2672.method_782();
       GL32C.glLineWidth(Float.intBitsToFloat(1065353216));
    }
 
@@ -154,8 +154,8 @@ public class TrailsModule extends Module {
          ? Color.getHSBColor(
             (float)(
                Math.ceil((double)var2.method_383() / (Double.longBitsToDouble(4626322717216342016L) * this.field_3561.getValue()))
-                  % (double)Class_0245.field_686
-                  / (double)Class_0245.field_686
+                  % (double)Constants.field_686
+                  / (double)Constants.field_686
             ),
             var1[1],
             var1[2]
@@ -164,9 +164,9 @@ public class TrailsModule extends Module {
       if (this.field_3556.getValue() && System.currentTimeMillis() - var2.method_383() >= this.method_1022()) {
          float var4 = Float.intBitsToFloat(1065353216)
             - (float)(System.currentTimeMillis() - var2.method_383() - this.method_1022()) / (float)this.method_1023();
-         return Class_1081.method_9(var3, (int)MathHelper.clamp(var4 * (float)this.field_3559.getValue().getAlpha(), 0.0F, Float.intBitsToFloat(1132396544)));
+         return Class_1081.method_9(var3, (int)MathHelper.clamp(var4 * (float)(this.field_3559.getValue() != null ? this.field_3559.getValue().getAlpha() : 255), 0.0F, Float.intBitsToFloat(1132396544)));
       } else {
-         return Class_1081.method_9(var3, this.field_3559.getValue().getAlpha());
+         return Class_1081.method_9(var3, (this.field_3559.getValue() != null ? this.field_3559.getValue().getAlpha() : 255));
       }
    }
 

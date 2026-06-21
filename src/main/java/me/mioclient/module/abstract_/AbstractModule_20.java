@@ -13,7 +13,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0149;
 import me.mioclient.internal.Class_0199;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.record.Class_0197;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.CustomSetting;
@@ -40,7 +40,8 @@ public class AbstractModule_20 extends AbstractModule_26 {
 
    public AbstractModule_20() {
       super("EntityList");
-      this.field_2137.method_5(var1 -> this.field_2136.getValue().method_2(EntityType.ITEM, this.field_2134.getValue()));
+      if (this.field_2136 == null || this.field_2136.getValue() == null) return;
+      this.field_2137.method_5(var1 -> (this.field_2136.getValue() != null ? this.field_2136.getValue().method_2(EntityType.ITEM, this.field_2134.getValue()) : false));
       this.method_2(new Class_0149(this));
    }
 
@@ -50,7 +51,8 @@ public class AbstractModule_20 extends AbstractModule_26 {
          this.field_2141.clear();
 
          for (Entity var4 : field_4219.world.getEntities()) {
-            if (this.field_2136.getValue().method_2(var4.getType(), this.field_2134.getValue())) {
+            if (this.field_2136 == null || this.field_2136.getValue() == null) continue;
+            if ((this.field_2136.getValue() != null ? this.field_2136.getValue().method_2(var4.getType(), this.field_2134.getValue()) : false)) {
                if (var4 instanceof ItemEntity) {
                   ItemEntity var5 = (ItemEntity)var4;
                   if (var5.getStack().isEmpty()) {
@@ -58,7 +60,8 @@ public class AbstractModule_20 extends AbstractModule_26 {
                   }
 
                   Item var6 = var5.getStack().getItem();
-                  if (!this.field_2137.getValue().method_2(var6, this.field_2135)) {
+                  if (this.field_2137 == null || this.field_2137.getValue() == null) continue;
+                  if (!(this.field_2137.getValue() != null ? this.field_2137.getValue().method_2(var6, this.field_2135) : false)) {
                      continue;
                   }
                }
@@ -83,22 +86,22 @@ public class AbstractModule_20 extends AbstractModule_26 {
                this.field_2142.sort(Comparator.comparing(var0 -> -var0.field_554));
                break;
             case LENGTH:
-               this.field_2142.sort(Comparator.comparing(var0 -> Class_1016.field_3143.method_221(var0.method_2(Formatting.WHITE))));
+               this.field_2142.sort(Comparator.comparing(var0 -> FontRenderer.field_3143.method_221(var0.method_2(Formatting.WHITE))));
          }
       }
    }
 
    @Override
    public void method_2(DrawContext var1) {
-      float var2 = this.field_1844.method_194((float)Class_1016.field_3143.method_66()) - this.field_1844.method_60();
+      float var2 = this.field_1844.method_194((float)FontRenderer.field_3143.method_66()) - this.field_1844.method_60();
       synchronized (this.field_2142) {
          for (Class_0197 var5 : this.field_2142) {
             Color var6 = this.method_9(var2);
             Formatting var7 = this.field_2140.getValue() ? Formatting.WHITE : Formatting.RESET;
             String var8 = var5.method_2(var7);
-            float var9 = Class_1016.field_3143.method_221(var8);
-            Class_1016.field_3143.method_9(var1, var8, this.field_1844.method_176(var9) - this.field_1844.method_59(), var2, var6);
-            var2 += (float)((Class_1016.field_3143.method_66() + 1) * this.field_1844.method_196());
+            float var9 = FontRenderer.field_3143.method_221(var8);
+            FontRenderer.field_3143.method_9(var1, var8, this.field_1844.method_176(var9) - this.field_1844.method_59(), var2, var6);
+            var2 += (float)((FontRenderer.field_3143.method_66() + 1) * this.field_1844.method_196());
          }
       }
    }
@@ -109,8 +112,8 @@ public class AbstractModule_20 extends AbstractModule_26 {
       float var2 = 0.0F;
       synchronized (this.field_2142) {
          for (Class_0197 var5 : this.field_2142) {
-            float var6 = Class_1016.field_3143.method_221(var5.method_2(Formatting.WHITE));
-            var1 += (float)(Class_1016.field_3143.method_66() + 1);
+            float var6 = FontRenderer.field_3143.method_221(var5.method_2(Formatting.WHITE));
+            var1 += (float)(FontRenderer.field_3143.method_66() + 1);
             if (var6 > var2) {
                var2 = var6;
             }

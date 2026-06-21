@@ -3,8 +3,8 @@ package me.mioclient.module.player;
 import me.mioclient.enum_.Class_1168;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -30,19 +30,19 @@ public class AutoUpgradeModule extends Module {
    public Setting<Class_1168> field_3327;
    public Setting<Integer> field_3328;
    public Setting<Boolean> field_3329;
-   public final Class_0242 field_3330;
+   public final Timer field_3330;
 
    public AutoUpgradeModule() {
       super("AutoUpgrade", "Automatically upgrades diamond items to netherite.", Category.PLAYER);
       Settings.initialize(this);
-      this.field_3330 = new Class_0242();
+      this.field_3330 = new Timer();
    }
 
    @Subscribe
    public void method_9(Event_17 var1) {
       ScreenHandler var2 = field_4219.player.currentScreenHandler;
       if (field_4219.currentScreen instanceof SmithingScreen) {
-         if (this.field_3330.method_9((long)this.field_3328.getValue().intValue())) {
+         if (this.field_3330.method_9((long)(this.field_3328.getValue() != null ? this.field_3328.getValue().intValue() : 0))) {
             if (this.method_2(var2, field_3322) > 1 || !this.field_3329.getValue()) {
                if (!var2.getSlot(3).getStack().isEmpty()) {
                   field_4219.interactionManager.clickSlot(var2.syncId, 3, 0, SlotActionType.QUICK_MOVE, field_4219.player);
@@ -52,7 +52,7 @@ public class AutoUpgradeModule extends Module {
                   if (var3.isEmpty() || var3.isOf(field_3322) && var3.getCount() == 1) {
                      for (int var6 = 4; var6 < 40; var6++) {
                         if (var2.getSlot(var6).getStack().isOf(field_3322)) {
-                           Class_0136.method_5(var6, 0);
+                           PlayerUtil.method_5(var6, 0);
                            this.field_3330.reset();
                            break;
                         }
@@ -60,14 +60,14 @@ public class AutoUpgradeModule extends Module {
                   } else if (var2.getSlot(1).getStack().isEmpty()) {
                      int var5 = this.method_2(var2);
                      if (var5 != -1) {
-                        Class_0136.method_5(var5, 1);
+                        PlayerUtil.method_5(var5, 1);
                         this.field_3330.reset();
                      }
                   } else {
                      if (var2.getSlot(2).getStack().isEmpty()) {
                         for (int var4 = 4; var4 < 40; var4++) {
                            if (var2.getSlot(var4).getStack().isOf(Items.NETHERITE_INGOT)) {
-                              Class_0136.method_5(var4, 2);
+                              PlayerUtil.method_5(var4, 2);
                               this.field_3330.reset();
                               break;
                            }

@@ -3,7 +3,7 @@ package me.mioclient.module.misc;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.exploit.RocketModule;
@@ -56,10 +56,10 @@ public class MiddleClickModule extends Module {
    }
 
    public void method_298() {
-      Hand var1 = Class_0136.method_7(Items.FIREWORK_ROCKET);
+      Hand var1 = PlayerUtil.method_7(Items.FIREWORK_ROCKET);
       int var2 = field_4219.player.getInventory().selectedSlot;
-      int var3 = Class_0136.method_9(Items.FIREWORK_ROCKET);
-      int var4 = Class_0136.method_5(Items.FIREWORK_ROCKET);
+      int var3 = PlayerUtil.method_9(Items.FIREWORK_ROCKET);
+      int var4 = PlayerUtil.method_5(Items.FIREWORK_ROCKET);
       if (var1 != null) {
          field_4219.interactionManager.interactItem(field_4219.player, var1);
       } else if (var3 != -1) {
@@ -73,9 +73,9 @@ public class MiddleClickModule extends Module {
 
    public void method_2(int var1, int var2, boolean var3) {
       if (var3) {
-         Class_0136.method_39(var2);
+         PlayerUtil.method_39(var2);
       } else {
-         Class_0136.method_16(var1);
+         PlayerUtil.method_16(var1);
       }
    }
 }

@@ -33,16 +33,16 @@ public class Class_1325 implements Class_0098 {
             Color var3 = field_906.field_565.getValue()
                ? Class_1081.method_2(Class_1081.method_959(), Class_1081.method_959().darker(), Double.longBitsToDouble(4658815484840378368L), 0.0)
                : Class_1081.method_959();
-            var2.append(Text.literal(this.field_4278).styled(var1x -> Class_1245.method_2(var1x, var3::hashCode)));
+            var2.append(Text.literal(this.field_4278).styled(var1x -> ChatUtil.method_2(var1x, var3::hashCode)));
             var2.append("> ");
             var2.append(this.field_483);
             String var10000 = this.field_483;
             String var10001 = this.field_4278;
             int var10002 = field_906.field_576;
-            MessageSignatureData var4 = Class_1245.method_38(
-               new Class_1303().method_2(var10002).method_2((Object)var10001).method_2((Object)var10000).method_9("\u0001\u0001\u0001").hashCode()
+            MessageSignatureData var4 = ChatUtil.method_38(
+               new TextBuilder().method_2(var10002).method_2((Object)var10001).method_2((Object)var10000).method_9("\u0001\u0001\u0001").hashCode()
             );
-            Class_1245.method_2(var2, var4);
+            ChatUtil.method_2(var2, var4);
             if (field_906.field_568.getValue()
                && !this.field_4278.contains(Hub.field_2609.method_801())
                && !this.field_4278.contains(MinecraftClient.getInstance().getSession().getUsername())) {

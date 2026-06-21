@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.util.math.Vec3i;
 
-public enum Class_0388 implements Class_0013 {
+public enum Class_0388 implements Nameable {
    field_1257(
       "Full",
       new Vec3i(1, 0, 0),

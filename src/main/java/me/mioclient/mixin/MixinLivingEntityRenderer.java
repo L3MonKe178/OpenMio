@@ -5,9 +5,9 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import java.util.Collections;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_14;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1355;
 import me.mioclient.module.render.AnimationsModule;
@@ -35,7 +35,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
    value = {LivingEntityRenderer.class},
    priority = 9999
 )
-public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityModel<T>> implements Class_1309 {
+public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityModel<T>> implements MioAPI {
    private static final ChamsModule chams = Hub.field_2595.method_78(ChamsModule.class);
    private static final AnimationsModule animations = Hub.field_2595.method_78(AnimationsModule.class);
    private static final NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
@@ -106,7 +106,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook1(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_520() : var1.prevBodyYaw;
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_520() : var1.prevBodyYaw;
    }
 
    @Redirect(
@@ -117,7 +117,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook2(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_521() : var1.prevHeadYaw;
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_521() : var1.prevHeadYaw;
    }
 
    @Redirect(
@@ -128,7 +128,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook3(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_517() : var1.bodyYaw;
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_517() : var1.bodyYaw;
    }
 
    @Redirect(
@@ -139,7 +139,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook4(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_522() : var1.headYaw;
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_522() : var1.headYaw;
    }
 
    @Redirect(
@@ -150,7 +150,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook5(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_519() : var1.prevPitch;
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_519() : var1.prevPitch;
    }
 
    @Redirect(
@@ -161,7 +161,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       )
    )
    private float hook6(LivingEntity var1) {
-      return var1 == field_4219.player && !Class_0485.field_1538 ? this.rotations().method_516() : var1.getPitch();
+      return var1 == field_4219.player && !RotationManager.field_1538 ? this.rotations().method_516() : var1.getPitch();
    }
 
    @Inject(
@@ -199,7 +199,7 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
       return norender.isToggled() && norender.field_747.getValue() ? 10 : var0;
    }
 
-   private Class_0485 rotations() {
+   private RotationManager rotations() {
       return Hub.field_2598;
    }
 }

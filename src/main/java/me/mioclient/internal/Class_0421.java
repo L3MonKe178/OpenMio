@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
 public final class Class_0421 {
-   public final Class_0242 field_1335 = new Class_0242();
+   public final Timer field_1335 = new Timer();
    public final int field_1336;
    public final BlockPos field_1337;
    public float field_877;

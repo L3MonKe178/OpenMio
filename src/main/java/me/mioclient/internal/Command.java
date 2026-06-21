@@ -11,10 +11,10 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
-public abstract class Class_0618 extends Named {
+public abstract class Command extends Named {
    public String[] field_1958 = new String[0];
 
-   public Class_0618(String var1) {
+   public Command(String var1) {
       super(var1);
    }
 
@@ -35,7 +35,7 @@ public abstract class Class_0618 extends Named {
    }
 
    public MutableText method_5(String var1) {
-      return Text.empty().append(Class_1245.method_5(var1));
+      return Text.empty().append(ChatUtil.method_5(var1));
    }
 
    public void method_9(String... var1) {
@@ -48,7 +48,7 @@ public abstract class Class_0618 extends Named {
 
    public abstract void exec(LiteralArgumentBuilder<CommandSource> var1);
 
-   public void method_2(Class_0618 var1, LiteralArgumentBuilder<CommandSource> var2) {
+   public void method_2(Command var1, LiteralArgumentBuilder<CommandSource> var2) {
       LiteralArgumentBuilder var3 = LiteralArgumentBuilder.<CommandSource>literal(var1.getName());
       var1.exec(var3);
       var2.then(var3);

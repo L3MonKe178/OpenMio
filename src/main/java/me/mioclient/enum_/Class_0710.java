@@ -1,10 +1,10 @@
 package me.mioclient.enum_;
 
 import java.util.Collection;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.setting.Setting;
 
-public enum Class_0710 implements Class_0013 {
+public enum Class_0710 implements Nameable {
    ANY("Any"),
    WHITELIST("WhiteList") {
       @Override

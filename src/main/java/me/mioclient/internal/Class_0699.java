@@ -9,7 +9,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
@@ -44,6 +44,6 @@ public class Class_0699<T extends Enum<T>> implements ArgumentType<T> {
    }
 
    public String name(T var1) {
-      return var1 instanceof Class_0013 ? ((Class_0013)var1).getName() : var1.name().toLowerCase(Locale.ROOT);
+      return var1 instanceof Nameable ? ((Nameable)var1).getName() : var1.name().toLowerCase(Locale.ROOT);
    }
 }

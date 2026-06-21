@@ -18,16 +18,16 @@ import me.mioclient.event.Event_7;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0094;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0321;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0517;
 import me.mioclient.internal.Class_0613;
 import me.mioclient.internal.Class_0716;
 import me.mioclient.internal.Class_0933;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.internal.Class_1295;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
 import me.mioclient.module.Category;
@@ -94,11 +94,11 @@ public class ElytraFlyModule extends Module {
    public Setting<Boolean> field_4386;
    public  Setting<Boolean> field_4387;
    public final Class_1295<Class_1229, Class_0716> field_4388;
-   public final Class_0242 field_4389;
-   public final Class_0242 field_4390;
-   public final Class_0242 field_4391;
-   public final Class_0242 field_4392;
-   public final Class_0242 field_4393;
+   public final Timer field_4389;
+   public final Timer field_4390;
+   public final Timer field_4391;
+   public final Timer field_4392;
+   public final Timer field_4393;
    public boolean field_4394;
    public boolean field_4395;
    public boolean field_4396;
@@ -107,11 +107,11 @@ public class ElytraFlyModule extends Module {
       super("ElytraFly", "Turns you into a block game boeing.", Category.MOVEMENT, "elytraflight");
       Settings.initialize(this);
       this.field_4388 = new Class_1295<>(this.field_4349);
-      this.field_4389 = new Class_0242();
-      this.field_4390 = new Class_0242();
-      this.field_4391 = new Class_0242();
-      this.field_4392 = new Class_0242();
-      this.field_4393 = new Class_0242();
+      this.field_4389 = new Timer();
+      this.field_4390 = new Timer();
+      this.field_4391 = new Timer();
+      this.field_4392 = new Timer();
+      this.field_4393 = new Timer();
       this.field_4359.method_31("LavaSpeed");
       this.field_4373.method_31("VerticalPacket");
       this.field_4379.method_31("StrictSpeed");
@@ -143,8 +143,8 @@ public class ElytraFlyModule extends Module {
       }
 
       if (!this.method_535() && this.field_4387.getValue() && this.field_4387.method_176() && !field_4219.player.isSneaking()) {
-         Class_1261.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
-         Class_1261.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
+         PacketUtil.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
+         PacketUtil.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
       }
 
       this.field_4389.reset();
@@ -153,7 +153,7 @@ public class ElytraFlyModule extends Module {
    @Override
    public String getInfo() {
       try {
-         return Class_1016.method_3(this.field_4349.getValue().getName());
+         return FontRenderer.method_3((this.field_4349.getValue() != null ? this.field_4349.getValue().getName() : ""));
       } catch (Exception var2) {
          return null;
       }
@@ -198,10 +198,10 @@ public class ElytraFlyModule extends Module {
 
    @Subscribe
    public void method_2(Event_17 var1) {
-      int var2 = Class_0136.method_5(Items.ELYTRA);
+      int var2 = PlayerUtil.method_5(Items.ELYTRA);
       boolean var3 = var2 == -1;
       if (var2 == -1) {
-         var2 = Class_0136.method_9(Items.ELYTRA);
+         var2 = PlayerUtil.method_9(Items.ELYTRA);
       }
 
       boolean var4 = this.method_1183();
@@ -291,7 +291,7 @@ public class ElytraFlyModule extends Module {
 
    public void method_1177() {
       if (!this.field_4392.method_9(500L) || this.field_4387.method_176()) {
-         Class_1261.method_1099();
+         PacketUtil.method_1099();
          field_4219.player.startFallFlying();
       }
    }
@@ -304,12 +304,12 @@ public class ElytraFlyModule extends Module {
 
          long var1 = 100L;
          if (this.field_4349.getValue() == Class_1229.STRICT) {
-            var1 = (long)this.field_4380.getValue().intValue();
+            var1 = (long)(this.field_4380.getValue() != null ? this.field_4380.getValue().intValue() : 0);
          }
 
          if (this.field_4390.method_9(var1)) {
             field_4219.player.startFallFlying();
-            Class_1261.method_1099();
+            PacketUtil.method_1099();
             this.field_4390.reset();
          }
       } else {
@@ -398,9 +398,9 @@ public class ElytraFlyModule extends Module {
       } else if (field_885) {
          return false;
       } else {
-         int var1 = Class_0136.method_5(Items.ELYTRA);
+         int var1 = PlayerUtil.method_5(Items.ELYTRA);
          if (var1 == -1) {
-            var1 = Class_0136.method_9(Items.ELYTRA);
+            var1 = PlayerUtil.method_9(Items.ELYTRA);
          }
 
          boolean var2 = var1 != -1;

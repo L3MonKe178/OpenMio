@@ -8,12 +8,12 @@ import me.mioclient.event.Event_16;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0621;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1261;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.PacketUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.mixin.ducks.DuckAbstractBlock;
 import me.mioclient.module.Category;
@@ -40,7 +40,7 @@ public final class AbstractModule_6 extends Module {
    public Setting<Boolean> field_3899;
    public Setting<Integer> field_3900;
    public Setting<Integer> field_3901;
-   public final Class_0242 field_3902;
+   public final Timer field_3902;
    public float field_1760;
    public BlockPos field_3534;
    public boolean field_3903;
@@ -52,13 +52,13 @@ public final class AbstractModule_6 extends Module {
    public AbstractModule_6() {
       super(
          "ObstaclePasser",
-         new Class_1303()
+         new TextBuilder()
             .method_2(String.valueOf(Formatting.YELLOW))
             .method_9("Passes obstacles in your way. \n\u0001Requires either ElytraFly or Speed enabled."),
          Category.MOVEMENT
       );
       Settings.initialize(this);
-      this.field_3902 = new Class_0242();
+      this.field_3902 = new Timer();
       this.field_3900.method_2("~", SettingMode.MIN);
       this.field_3898.method_9(() -> this.field_3907 = null);
    }
@@ -193,8 +193,8 @@ public final class AbstractModule_6 extends Module {
       if (Hub.field_2630.method_261()) {
          if (!this.field_3903) {
             this.field_3903 = true;
-            Class_1261.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
-            Class_1261.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
+            PacketUtil.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
+            PacketUtil.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
          }
       } else if (this.field_3903) {
          this.field_3903 = false;

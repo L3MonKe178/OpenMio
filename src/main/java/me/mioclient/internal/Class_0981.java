@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0694;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -21,7 +21,7 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.RaycastContext.FluidHandling;
 import net.minecraft.world.RaycastContext.ShapeType;
 
-public class Class_0981 implements Class_1309 {
+public class Class_0981 implements MioAPI {
    public Class_0981() {
       super();
    }
@@ -52,8 +52,8 @@ public class Class_0981 implements Class_1309 {
    }
 
    public static HitResult method_2(Vec3d var0, float var1, float var2, float var3) {
-      float var4 = var2 * Class_0245.field_690;
-      float var5 = -var1 * Class_0245.field_690;
+      float var4 = var2 * Constants.field_690;
+      float var5 = -var1 * Constants.field_690;
       float var6 = MathHelper.cos(var5);
       float var7 = MathHelper.sin(var5);
       float var8 = MathHelper.cos(var4);

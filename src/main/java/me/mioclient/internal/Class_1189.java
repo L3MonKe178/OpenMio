@@ -24,7 +24,7 @@ public class Class_1189 implements ArgumentType<Class_0702> {
       return var2.startsWith("mouse")
          ? new Class_0702(Integer.parseInt(var2.toLowerCase().replace("mouse", "")), Class_0046.TOGGLE, true)
          : new Class_0702(
-            InputUtil.fromTranslationKey(new Class_1303().method_2(var2.replace("_", ".")).method_9("key.keyboard.\u0001")).getCode(), Class_0046.TOGGLE, false
+            InputUtil.fromTranslationKey(new TextBuilder().method_2(var2.replace("_", ".")).method_9("key.keyboard.\u0001")).getCode(), Class_0046.TOGGLE, false
          );
    }
 
@@ -37,7 +37,7 @@ public class Class_1189 implements ArgumentType<Class_0702> {
       });
 
       for (int var3 = 0; var3 < 5; var3++) {
-         String var4 = new Class_1303().method_2(var3).method_9("MOUSE\u0001");
+         String var4 = new TextBuilder().method_2(var3).method_9("MOUSE\u0001");
          if (CommandSource.shouldSuggest(var2.getRemaining(), var4)) {
             var2.suggest(var4);
          }

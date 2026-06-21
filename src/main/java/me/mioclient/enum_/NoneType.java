@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.screen.slot.SlotActionType;
 
-public enum NoneType implements Class_0013 {
+public enum NoneType implements Nameable {
    NONE("None", SlotActionType.QUICK_MOVE),
    THROW("Throw", SlotActionType.THROW),
    PICKUP("Pickup", SlotActionType.PICKUP);

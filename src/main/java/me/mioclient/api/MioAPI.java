@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import me.mioclient.internal.Class_1205;
 import net.minecraft.client.MinecraftClient;
 
-public interface Class_1309 {
+public interface MioAPI {
    Gson field_4218 = new GsonBuilder().setLenient().setPrettyPrinting().create();
    MinecraftClient field_4219 = MinecraftClient.getInstance();
    // The original referenced the deobfuscator-deleted `me.mioclient.w` central
@@ -37,7 +37,7 @@ public interface Class_1309 {
 
    static boolean method_244() {
       try {
-         Class.forName("me.mioclient.loader.Globals", false, Class_1309.class.getClassLoader());
+         Class.forName("me.mioclient.loader.Globals", false, MioAPI.class.getClassLoader());
          return true;
       } catch (Exception var1) {
          return false;

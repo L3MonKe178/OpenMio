@@ -40,7 +40,7 @@ public final class Class_1376 extends Class_0806 {
    public void method_738() {
       if (!this.method_404() && Class_0464.method_363() && field_4219.player.groundCollision) {
          double[] var1 = Class_0464.method_2(field_4219.player.getYaw(), field_4219.player.input, Double.longBitsToDouble(4607182418800017408L));
-         float var2 = (float)(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Class_0245.field_685);
+         float var2 = (float)(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Constants.field_685);
          Vec3d var3 = field_4219.player.getVelocity();
          float var4 = (float)Math.toRadians((double)var2);
          float var5 = Float.intBitsToFloat(1045220557);

@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.lang.reflect.Field;
 import me.mioclient.api.Class_0597;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0016;
 import me.mioclient.record.Class_0661;
 import net.minecraft.client.MinecraftClient;
@@ -14,7 +14,7 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
-public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
+public class Class_0192 implements MioAPI, Class_0597<EnderDragonEntity> {
    private static final Field LEFT_FRONT_LEG = method_dragonField("leftFrontLeg");
    private static final Field LEFT_FRONT_LEG_TIP = method_dragonField("leftFrontLegTip");
    private static final Field LEFT_FRONT_FOOT = method_dragonField("leftFrontFoot");
@@ -86,9 +86,9 @@ public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
       for (int var17 = 0; var17 < 5; var17++) {
          double[] var18 = var2.getSegmentProperties(5 - var17, var4);
          float var16 = (float)Math.cos((double)((float)var17 * 0.45F + var15)) * 0.15F;
-         var3.neck.yaw = MathHelper.wrapDegrees((float)(var18[0] - var12[0])) * Class_0245.field_690 * 1.5F;
-         var3.neck.pitch = var16 + var2.getChangeInNeckPitch(var17, var12, var18) * Class_0245.field_690 * 1.5F * 5.0F;
-         var3.neck.roll = -MathHelper.wrapDegrees((float)(var18[0] - (double)var14)) * Class_0245.field_690 * 1.5F;
+         var3.neck.yaw = MathHelper.wrapDegrees((float)(var18[0] - var12[0])) * Constants.field_690 * 1.5F;
+         var3.neck.pitch = var16 + var2.getChangeInNeckPitch(var17, var12, var18) * Constants.field_690 * 1.5F * 5.0F;
+         var3.neck.roll = -MathHelper.wrapDegrees((float)(var18[0] - (double)var14)) * Constants.field_690 * 1.5F;
          var3.neck.pivotY = var9;
          var3.neck.pivotZ = var10;
          var3.neck.pivotX = var8;
@@ -102,9 +102,9 @@ public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
       var3.head.pivotZ = var10;
       var3.head.pivotX = var8;
       double[] var27 = var2.getSegmentProperties(0, var4);
-      var3.head.yaw = MathHelper.wrapDegrees((float)(var27[0] - var12[0])) * Class_0245.field_690;
-      var3.head.pitch = MathHelper.wrapDegrees(var2.getChangeInNeckPitch(6, var12, var27)) * Class_0245.field_690 * 1.5F * 5.0F;
-      var3.head.roll = -MathHelper.wrapDegrees((float)(var27[0] - (double)var14)) * Class_0245.field_690;
+      var3.head.yaw = MathHelper.wrapDegrees((float)(var27[0] - var12[0])) * Constants.field_690;
+      var3.head.pitch = MathHelper.wrapDegrees(var2.getChangeInNeckPitch(6, var12, var27)) * Constants.field_690 * 1.5F * 5.0F;
+      var3.head.roll = -MathHelper.wrapDegrees((float)(var27[0] - (double)var14)) * Constants.field_690;
       Class_0482.method_2(var5, var3.head);
       var1.push();
       var1.translate(0.0F, 1.0F, 0.0F);
@@ -116,7 +116,7 @@ public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
       var3.leftWing.pitch = 0.125F - (float)Math.cos((double)var29) * 0.2F;
       var3.leftWing.yaw = -0.25F;
       var3.leftWing.roll = -((float)(Math.sin((double)var29) + 0.125)) * 0.8F;
-      var3.leftWingTip.roll = (float)(Math.sin((double)(var29 + 2.0F)) + Class_0245.field_688) * 0.75F;
+      var3.leftWingTip.roll = (float)(Math.sin((double)(var29 + 2.0F)) + Constants.field_688) * 0.75F;
       var3.rightWing.pitch = var3.leftWing.pitch;
       var3.rightWing.yaw = -var3.leftWing.yaw;
       var3.rightWing.roll = -var3.leftWing.roll;
@@ -152,9 +152,9 @@ public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
       for (int var19 = 0; var19 < 12; var19++) {
          var27 = var2.getSegmentProperties(12 + var19, var4);
          var26 += MathHelper.sin((float)var19 * 0.45F + var15) * 0.05F;
-         var3.neck.yaw = (MathHelper.wrapDegrees((float)(var27[0] - var12[0])) * 1.5F + 180.0F) * Class_0245.field_690;
-         var3.neck.pitch = var26 + (float)(var27[1] - var12[1]) * Class_0245.field_690 * 1.5F * 5.0F;
-         var3.neck.roll = MathHelper.wrapDegrees((float)(var27[0] - (double)var14)) * Class_0245.field_690 * 1.5F;
+         var3.neck.yaw = (MathHelper.wrapDegrees((float)(var27[0] - var12[0])) * 1.5F + 180.0F) * Constants.field_690;
+         var3.neck.pitch = var26 + (float)(var27[1] - var12[1]) * Constants.field_690 * 1.5F * 5.0F;
+         var3.neck.roll = MathHelper.wrapDegrees((float)(var27[0] - (double)var14)) * Constants.field_690 * 1.5F;
          var3.neck.pivotY = var9;
          var3.neck.pivotZ = var10;
          var3.neck.pivotX = var8;
@@ -171,10 +171,10 @@ public class Class_0192 implements Class_1309, Class_0597<EnderDragonEntity> {
       Class_0661 var1, float var2, ModelPart var3, ModelPart var4, ModelPart var5, ModelPart var6, ModelPart var7, ModelPart var8, ModelPart var9
    ) {
       var7.pitch = 1.0F + var2 * 0.1F;
-      var8.pitch = (float)(Class_0245.field_688 + (double)(var2 * 0.1F));
+      var8.pitch = (float)(Constants.field_688 + (double)(var2 * 0.1F));
       var9.pitch = 0.75F + var2 * 0.1F;
       var4.pitch = 1.3F + var2 * 0.1F;
-      var5.pitch = (float)(-Class_0245.field_688 - (double)(var2 * 0.1F));
+      var5.pitch = (float)(-Constants.field_688 - (double)(var2 * 0.1F));
       var6.pitch = 0.75F + var2 * 0.1F;
       Class_0482.method_2(var1, var3);
       Class_0482.method_2(var1, var4);

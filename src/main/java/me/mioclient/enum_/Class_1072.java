@@ -1,7 +1,7 @@
 package me.mioclient.enum_;
 
 import java.util.function.BiFunction;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.internal.Class_0084;
 import me.mioclient.internal.Class_0179;
 import me.mioclient.internal.Class_0260;
@@ -9,7 +9,7 @@ import me.mioclient.internal.Class_0298;
 import me.mioclient.internal.Class_0678;
 import me.mioclient.record.Class_0702;
 
-public enum Class_1072 implements Class_0013 {
+public enum Class_1072 implements Nameable {
    SIMPLE("simple", Class_0298::new),
    QUEUE("queue", Class_0179::new),
    DOUBLE_TAP("double_tap", Class_0084::new),

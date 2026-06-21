@@ -12,12 +12,12 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0032;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_0719;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1225;
 import me.mioclient.module.Category;
@@ -66,7 +66,7 @@ public class SearchModule extends Module {
    public Setting<Boolean> field_2092;
    public Setting<Boolean> field_2093;
    public Setting<Boolean> field_2094;
-   public final Class_0242 field_2095;
+   public final Timer field_2095;
    public final Set<BlockPos> field_2096;
    public final Class_0032 field_2097;
    public boolean field_2098;
@@ -74,7 +74,7 @@ public class SearchModule extends Module {
    public SearchModule() {
       super("Search", "Helps finding whitelisted stuff.", Category.RENDER);
       Settings.initialize(this);
-      this.field_2095 = new Class_0242();
+      this.field_2095 = new Timer();
       this.field_2096 = Collections.synchronizedSet(new HashSet<>());
       this.field_2097 = new Class_0032(
          1,
@@ -117,7 +117,7 @@ public class SearchModule extends Module {
                         && var1x.getZ() <= var1.getEndZ()
                ),
          (var1, var2) -> {
-            if (this.field_2077.getValue().contains(var2.getBlock())) {
+            if ((this.field_2077.getValue() != null ? this.field_2077.getValue().contains(var2.getBlock()) : false)) {
                if (var2.isAir()) {
                   return;
                }
@@ -180,14 +180,15 @@ public class SearchModule extends Module {
    public void method_9(Event_3 var1) {
       if (this.field_2079.getValue()) {
          for (Entity var3 : field_4219.world.getEntities()) {
-            if (this.field_2078.getValue().contains(var3.getType())) {
+            if (this.field_2078 == null || this.field_2078.getValue() == null) continue;
+            if ((this.field_2078.getValue() != null ? this.field_2078.getValue().contains(var3.getType()) : false)) {
                Box var4 = Class_0719.method_2(var3, var1.method_880());
                Color var5 = this.method_251(var3);
                field_521.field_2133
                   .getValue()
                   .method_5(
                      () -> {
-                        if (Class_0485.method_4(var4)) {
+                        if (RotationManager.method_4(var4)) {
                            if (this.field_2081.getValue()) {
                               Class_0612.method_5(
                                  var1.method_10(), var4, Class_1081.method_9(var5, (int)(Float.intBitsToFloat(1132396544) * this.field_2082.getValue()))
@@ -205,7 +206,7 @@ public class SearchModule extends Module {
                               .rotateX(-((float)Math.toRadians((double)var4x.getPitch())))
                               .rotateY(-((float)Math.toRadians((double)var4x.getYaw())))
                               .add(field_4219.getEntityRenderDispatcher().camera.getPos());
-                           Class_0838.field_2672
+                           RenderUtil.field_2672
                               .method_2(
                                  var1.method_10(),
                                  var5x,
@@ -241,7 +242,7 @@ public class SearchModule extends Module {
                   .getValue()
                   .method_5(
                      () -> {
-                        if (Class_0485.method_4(var7)) {
+                        if (RotationManager.method_4(var7)) {
                            if (this.field_2081.getValue()) {
                               Class_0612.method_5(
                                  var1.method_10(), var7, Class_1081.method_9(var8, (int)(Float.intBitsToFloat(1132396544) * this.field_2082.getValue()))
@@ -259,7 +260,7 @@ public class SearchModule extends Module {
                               .rotateX(-((float)Math.toRadians((double)var5x.getPitch())))
                               .rotateY(-((float)Math.toRadians((double)var5x.getYaw())))
                               .add(field_4219.getEntityRenderDispatcher().camera.getPos());
-                           Class_0838.field_2672
+                           RenderUtil.field_2672
                               .method_2(
                                  var1.method_10(),
                                  var6x,

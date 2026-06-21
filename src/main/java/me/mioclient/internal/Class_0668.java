@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Module;
 import sun.misc.Unsafe;
 
@@ -58,7 +58,7 @@ public class Class_0668 {
          Class<?> var3 = null;
 
          try {
-            var3 = Class.forName(var2, false, Class_1309.class.getClassLoader());
+            var3 = Class.forName(var2, false, MioAPI.class.getClassLoader());
          } catch (Exception var10) {
             throw new RuntimeException();
          }

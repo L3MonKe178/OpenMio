@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0156;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 
-public final class Class_0191 implements Class_1309 {
+public final class Class_0191 implements MioAPI {
    public List<Class_0681> field_536 = new ArrayList<>();
    public boolean field_537;
    public Future<?> field_538;

@@ -1,9 +1,9 @@
 package me.mioclient.record;
 
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 
-public final class Class_0012 implements BooleanConsumer, Class_1309 {
+public final class Class_0012 implements BooleanConsumer, MioAPI {
    public final Runnable field_20;
 
    public Class_0012(Runnable var1) {

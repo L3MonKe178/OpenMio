@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1054;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_1;
@@ -28,7 +28,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public final class Class_0485 implements Class_1309 {
+public final class RotationManager implements MioAPI {
    public static AbstractModule_28 field_144 = Hub.field_2595.method_78(AbstractModule_28.class);
    public static boolean field_1538;
    public float field_1539;
@@ -48,7 +48,7 @@ public final class Class_0485 implements Class_1309 {
    public Class_0983 field_1552;
    public boolean field_1553;
 
-   public Class_0485() {
+   public RotationManager() {
       super();
       field_4220.method_14(this);
    }
@@ -73,8 +73,8 @@ public final class Class_0485 implements Class_1309 {
          float[] var3 = this.field_1552.method_888();
          float var4 = method_7(var3);
          if (var4 != var3[0]
-            && var4 != MathHelper.wrapDegrees(var3[0] - (float)Class_0245.field_684)
-            && var4 != MathHelper.wrapDegrees(var3[0] + (float)Class_0245.field_684)) {
+            && var4 != MathHelper.wrapDegrees(var3[0] - (float)Constants.field_684)
+            && var4 != MathHelper.wrapDegrees(var3[0] + (float)Constants.field_684)) {
             field_4219.player.setSprinting(false);
          }
 
@@ -88,10 +88,10 @@ public final class Class_0485 implements Class_1309 {
       if (field_4219.player.isFallFlying()) {
          return var0[0];
       } else {
-         float var1 = (float)Class_0245.field_686;
+         float var1 = (float)Constants.field_686;
          float var2 = var0[0];
 
-         for (int var3 = 0; var3 < Class_0245.field_686; var3 += Class_0245.field_685) {
+         for (int var3 = 0; var3 < Constants.field_686; var3 += Constants.field_685) {
             float var4 = MathHelper.wrapDegrees(var0[0] + (float)var3);
             float var5 = MathHelper.angleBetween(var4, field_4219.player.getYaw());
             if (var5 <= var1) {
@@ -132,7 +132,7 @@ public final class Class_0485 implements Class_1309 {
       if (this.field_1550 && !var1.method_464() && !this.field_1551) {
          if (var1.method_127() instanceof PlayerMoveC2SPacket) {
             var1.method_463();
-            Class_1261.method_9(var1.method_127());
+            PacketUtil.method_9(var1.method_127());
             this.method_507();
          } else {
             this.field_800.add(var1.method_127());
@@ -165,7 +165,7 @@ public final class Class_0485 implements Class_1309 {
          Packet var3 = this.field_800.poll();
          if (var3 != null) {
             this.field_1551 = true;
-            Class_1261.method_2(var3);
+            PacketUtil.method_2(var3);
             this.field_1551 = false;
          }
       }
@@ -206,7 +206,7 @@ public final class Class_0485 implements Class_1309 {
             this.method_2(new Class_0983(var1, var2));
          } else if (this.field_1550) {
             this.method_29(var1);
-            Class_1261.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), var1[0], var1[1], Hub.field_2615.method_707());
+            PacketUtil.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), var1[0], var1[1], Hub.field_2615.method_707());
          }
       }
    }
@@ -237,7 +237,7 @@ public final class Class_0485 implements Class_1309 {
 
    public static float[] method_98(BlockPos var0) {
       return method_78(
-         new Vec3d((double)var0.getX() + Class_0245.field_688, (double)var0.getY() + Class_0245.field_688, (double)var0.getZ() + Class_0245.field_688)
+         new Vec3d((double)var0.getX() + Constants.field_688, (double)var0.getY() + Constants.field_688, (double)var0.getZ() + Constants.field_688)
       );
    }
 
@@ -246,11 +246,11 @@ public final class Class_0485 implements Class_1309 {
    }
 
    public static float[] method_78(Vec3d var0) {
-      return method_7(field_4219.player.getCameraPosVec(Class_0838.method_776()), var0);
+      return method_7(field_4219.player.getCameraPosVec(RenderUtil.method_776()), var0);
    }
 
    public static float[] method_2(Vec3d var0, Direction var1) {
-      return method_7(field_4219.player.getCameraPosVec(Class_0838.method_776()), var1 == null ? var0 : var0.offset(var1, Class_0245.field_688));
+      return method_7(field_4219.player.getCameraPosVec(RenderUtil.method_776()), var1 == null ? var0 : var0.offset(var1, Constants.field_688));
    }
 
    public static float[] method_7(Vec3d var0, Vec3d var1) {
@@ -259,7 +259,7 @@ public final class Class_0485 implements Class_1309 {
       double var6 = var1.z - var0.z;
       double var8 = Math.sqrt(var2 * var2 + var6 * var6);
       return new float[]{
-         (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(var6, var2)) - (double)Class_0245.field_685),
+         (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(var6, var2)) - (double)Constants.field_685),
          (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(var4, var8)))
       };
    }
@@ -282,7 +282,7 @@ public final class Class_0485 implements Class_1309 {
    }
 
    public static int method_221(float var0) {
-      return MathHelper.floor((double)(var0 * Float.intBitsToFloat(1090519040) / (float)Class_0245.field_686) + Class_0245.field_688) & 7;
+      return MathHelper.floor((double)(var0 * Float.intBitsToFloat(1090519040) / (float)Constants.field_686) + Constants.field_688) & 7;
    }
 
    public static int method_512() {
@@ -290,7 +290,7 @@ public final class Class_0485 implements Class_1309 {
    }
 
    public static int method_222(float var0) {
-      return MathHelper.floor((double)(var0 * Float.intBitsToFloat(1082130432) / (float)Class_0245.field_686) + Class_0245.field_688) & 3;
+      return MathHelper.floor((double)(var0 * Float.intBitsToFloat(1082130432) / (float)Constants.field_686) + Constants.field_688) & 3;
    }
 
    public static Direction method_220(int var0) {
@@ -369,7 +369,7 @@ public final class Class_0485 implements Class_1309 {
          double var5 = field_4219.player.getX() - field_4219.player.prevX;
          double var7 = field_4219.player.getZ() - field_4219.player.prevZ;
          if (var5 * var5 + var7 * var7 > Double.longBitsToDouble(4567911030457368576L)) {
-            float var4 = (float)MathHelper.atan2(var7, var5) * Float.intBitsToFloat(1113927392) - (float)Class_0245.field_685;
+            float var4 = (float)MathHelper.atan2(var7, var5) * Float.intBitsToFloat(1113927392) - (float)Constants.field_685;
             float var9 = MathHelper.abs(MathHelper.wrapDegrees(var1) - var4);
             if (Float.intBitsToFloat(1119748096) < var9 && var9 < Float.intBitsToFloat(1132756992)) {
                var3 = var4 - Float.intBitsToFloat(1127481344);

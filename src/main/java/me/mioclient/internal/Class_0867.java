@@ -12,12 +12,12 @@ public class Class_0867 implements Class_1019 {
 
    @Override
    public void method_2(Class_0635 var1) {
-      Class_0136.method_5(var1.method_645(), var1.method_646());
+      PlayerUtil.method_5(var1.method_645(), var1.method_646());
    }
 
    @Override
    public void method_9(Class_0635 var1) {
-      Class_0136.method_5(var1.method_646(), var1.method_645());
+      PlayerUtil.method_5(var1.method_646(), var1.method_645());
    }
 
    @Override
@@ -30,7 +30,7 @@ public class Class_0867 implements Class_1019 {
             var2 = 8 - var3.getSlotType().getEntitySlotId();
          }
 
-         int var4 = Class_0136.method_9(var1);
+         int var4 = PlayerUtil.method_9(var1);
          return new Class_0635(var4, var2);
       }
    }

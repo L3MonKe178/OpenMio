@@ -42,7 +42,7 @@ public class XrayModule extends Module {
 
    public boolean method_2(BlockPos var1, Block var2) {
       return var2 != null && var1 != null && !this.method_535()
-         ? this.field_2915.getValue().contains(var2) && (!this.field_2914.getValue() || this.method_391(var1))
+         ? (this.field_2915.getValue() != null ? this.field_2915.getValue().contains(var2) : false) && (!this.field_2914.getValue() || this.method_391(var1))
          : false;
    }
 

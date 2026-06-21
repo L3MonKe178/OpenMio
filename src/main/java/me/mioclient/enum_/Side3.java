@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 
-public enum Side3 implements Class_0013 {
+public enum Side3 implements Nameable {
    LEFT("Left"),
    RIGHT("Right");
 
@@ -17,14 +17,14 @@ public enum Side3 implements Class_0013 {
 
    public void method_687() {
       if (this == LEFT) {
-         ((DuckMinecraftClient)Class_1309.field_4219).attack();
+         ((DuckMinecraftClient)MioAPI.field_4219).attack();
       } else {
-         ((DuckMinecraftClient)Class_1309.field_4219).interact();
+         ((DuckMinecraftClient)MioAPI.field_4219).interact();
       }
    }
 
    public KeyBinding method_688() {
-      return this == LEFT ? Class_1309.field_4219.options.attackKey : Class_1309.field_4219.options.useKey;
+      return this == LEFT ? MioAPI.field_4219.options.attackKey : MioAPI.field_4219.options.useKey;
    }
 
    @Override

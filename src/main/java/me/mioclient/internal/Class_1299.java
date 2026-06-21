@@ -44,7 +44,7 @@ public class Class_1299 extends Framebuffer {
       Class_1299 var2 = method_1165();
       Class_0675.field_2158.method_9("MaskSampler", var2);
       Class_0675.field_2158.method_2("Radius", var0);
-      Class_0675.field_2158.method_31(Class_0838.method_776());
+      Class_0675.field_2158.method_31(RenderUtil.method_776());
       GlStateManager._glBindFramebuffer(36009, var2.fbo);
       var2.clear(true);
       GlStateManager._glBindFramebuffer(36009, var1.fbo);

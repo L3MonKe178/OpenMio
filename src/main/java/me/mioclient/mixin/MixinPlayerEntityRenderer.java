@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import me.mioclient.Hub;
 import me.mioclient.enum_.Class_1229;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0392;
 import me.mioclient.internal.Class_1355;
 import me.mioclient.module.movement.ElytraFlyModule;
@@ -100,7 +100,7 @@ public abstract class MixinPlayerEntityRenderer extends LivingEntityRenderer<Abs
             && elytrafly.method_41()
             && elytrafly.field_4381.getValue()
             && elytrafly.field_4382.getValue()) {
-            var1.set(0, RotationAxis.POSITIVE_X.rotationDegrees((float)(-Class_0245.field_684)));
+            var1.set(0, RotationAxis.POSITIVE_X.rotationDegrees((float)(-Constants.field_684)));
          }
       }
    }

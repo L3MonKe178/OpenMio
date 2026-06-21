@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0200;
 import me.mioclient.enum_.Class_0334;
 import me.mioclient.module.exploit.NewChunksModule;
 import me.mioclient.record.Class_0853;
 import net.minecraft.util.math.ChunkPos;
 
-public class Class_0598 implements Class_1309 {
+public class Class_0598 implements MioAPI {
    public final Lock field_1866 = new ReentrantLock();
    public final NewChunksModule field_1867;
    public String field_1435;
@@ -61,7 +61,7 @@ public class Class_0598 implements Class_1309 {
             }
 
             Class_1222.method_2(
-               Class_1328.field_4287.resolve(new Class_1303().method_2(Class_1016.method_222(var1)).method_9("\u0001.data")), var2.toByteArray()
+               Class_1328.field_4287.resolve(new TextBuilder().method_2(FontRenderer.method_222(var1)).method_9("\u0001.data")), var2.toByteArray()
             );
          } catch (Exception var15) {
             var15.printStackTrace();
@@ -74,7 +74,7 @@ public class Class_0598 implements Class_1309 {
    }
 
    public void method_176(String var1) {
-      Path var2 = Class_1328.field_4287.resolve(new Class_1303().method_2(Class_1016.method_222(var1)).method_9("\u0001.data"));
+      Path var2 = Class_1328.field_4287.resolve(new TextBuilder().method_2(FontRenderer.method_222(var1)).method_9("\u0001.data"));
       if (var2.toFile().exists()) {
          try (DataInputStream var3 = new DataInputStream(new FileInputStream(var2.toFile()))) {
             int var4 = var3.readInt();

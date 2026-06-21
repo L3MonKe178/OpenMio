@@ -1,16 +1,16 @@
 package me.mioclient.enum_;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.abstract_.AbstractModule_40;
 import net.minecraft.text.Text;
 
-public enum Class_0602 implements Class_0013 {
+public enum Class_0602 implements Nameable {
    NAME("Name") {
       @Override
       public Text method_2(AbstractModule_40 var1) {
-         return Text.literal("Hello " + Class_1309.field_4219.player.getName().getString() + " :')");
+         return Text.literal("Hello " + MioAPI.field_4219.player.getName().getString() + " :')");
       }
    },
    UID("UID") {

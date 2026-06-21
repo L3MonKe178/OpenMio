@@ -1,13 +1,13 @@
 package me.mioclient.enum_;
 
 import java.util.function.Function;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import net.minecraft.util.math.BlockPos;
 
-public enum Class_0376 implements Class_0013 {
-   CLOSEST("Closest", var0 -> Class_1309.field_4219.player.getEyePos().squaredDistanceTo(var0.toCenterPos())),
-   FURTHEST("Furthest", var0 -> -Class_1309.field_4219.player.getEyePos().squaredDistanceTo(var0.toCenterPos())),
+public enum Class_0376 implements Nameable {
+   CLOSEST("Closest", var0 -> MioAPI.field_4219.player.getEyePos().squaredDistanceTo(var0.toCenterPos())),
+   FURTHEST("Furthest", var0 -> -MioAPI.field_4219.player.getEyePos().squaredDistanceTo(var0.toCenterPos())),
    TOP("Top", var0 -> (double)(-var0.getY())),
    BOTTOM("Bottom", var0 -> (double)var0.getY());
 

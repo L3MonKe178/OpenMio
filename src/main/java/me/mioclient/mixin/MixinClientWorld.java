@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import java.util.Random;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0514;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0647;
 import me.mioclient.enum_.Class_1296;
 import me.mioclient.event.Event_49;
@@ -74,7 +74,7 @@ public abstract class MixinClientWorld implements Class_0514 {
       )
    )
    private ParticleEffect randomBlockDisplayTickHook(ParticleEffect var1, @Local(argsOnly = true) Mutable var2) {
-      double var3 = Class_1309.field_4219.gameRenderer.getCamera().getPos().squaredDistanceTo((double)var2.getX(), (double)var2.getY(), (double)var2.getZ());
+      double var3 = MioAPI.field_4219.gameRenderer.getCamera().getPos().squaredDistanceTo((double)var2.getX(), (double)var2.getY(), (double)var2.getZ());
       return ambience.isToggled() && ambience.field_214.getValue() == Class_1296.DUSTY && ambience.field_213.getValue() && var3 < 25.0
          ? new BiomeParticleConfig(this.random.nextBoolean() ? ParticleTypes.WHITE_ASH : ParticleTypes.ASH, 0.1F).getParticle()
          : var1;
@@ -118,7 +118,7 @@ public abstract class MixinClientWorld implements Class_0514 {
    )
    private void removeEntityHook(int var1, RemovalReason var2, CallbackInfo var3) {
       Event_49 var4 = new Event_49(var1);
-      Class_1309.field_4220.method_36(var4);
+      MioAPI.field_4220.method_36(var4);
       if (var4.method_464()) {
          var3.cancel();
       }
@@ -142,7 +142,7 @@ public abstract class MixinClientWorld implements Class_0514 {
       cancellable = true
    )
    private void onGetSkyProperties(CallbackInfoReturnable<DimensionEffects> var1) {
-      if (Class_1309.field_4219.world != null) {
+      if (MioAPI.field_4219.world != null) {
          DimensionEffects var2 = null;
          if (skycolor.field_314.getValue() == Class_0647.END) {
             var2 = this.mio$customEnd;

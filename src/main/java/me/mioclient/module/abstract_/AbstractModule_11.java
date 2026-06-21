@@ -9,8 +9,8 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0121;
 import me.mioclient.internal.Class_0723;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.Setting;
 import net.minecraft.block.entity.BarrelBlockEntity;
@@ -46,7 +46,7 @@ public class AbstractModule_11 extends AbstractModule_26 {
             List.of(
                new Class_0121(
                   () -> Text.literal(
-                        new Class_1303()
+                        new TextBuilder()
                            .method_2(this.field_3970.getValue() ? "b/s" : "km/h")
                            .method_9("Speed %s%.2f\u0001")
                            .formatted(
@@ -80,7 +80,7 @@ public class AbstractModule_11 extends AbstractModule_26 {
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      this.field_3978.sort(Comparator.comparing(var0 -> -Class_1016.field_3143.method_221(var0.method_15().getString())));
+      this.field_3978.sort(Comparator.comparing(var0 -> -FontRenderer.field_3143.method_221(var0.method_15().getString())));
       this.field_3979 = 0;
 
       for (BlockEntity var3 : Hub.field_2622.method_347()) {

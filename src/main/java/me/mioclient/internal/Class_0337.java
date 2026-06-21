@@ -1,11 +1,11 @@
 package me.mioclient.internal;
 
 import java.io.ByteArrayInputStream;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckAbstractSoundInstance;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0337 implements Class_1309 {
+public class Class_0337 implements MioAPI {
    public static final Class_0337 field_1127 = new Class_0337(null) {
       @Override
       public void method_230(float var1) {

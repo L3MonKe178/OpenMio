@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.sound.SoundInstance;
 
-public final class Event_40 extends Class_0605 {
+public final class Event_40 extends Event {
    public final SoundInstance field_2952;
 
    public Event_40(SoundInstance var1) {

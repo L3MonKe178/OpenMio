@@ -35,7 +35,7 @@ public class CrosshairModule extends Module {
    @Subscribe
    public void method_2(Event_26 var1) {
       if (!this.method_535() && (!field_4219.gameRenderer.getCamera().isThirdPerson() || this.field_3501.getValue())) {
-         float var2 = (float)this.field_3508.getValue().intValue();
+         float var2 = (float)(this.field_3508.getValue() != null ? this.field_3508.getValue().intValue() : 0);
          if (this.field_3505.getValue()) {
             if (this.field_3506.getValue()) {
                this.field_3512
@@ -58,11 +58,11 @@ public class CrosshairModule extends Module {
          if (this.field_3503.getValue()) {
             MatrixStack var4 = var1.method_10();
             var4.push();
-            var4.translate((float)this.field_3504.getValue().intValue(), (float)this.field_3504.getValue().intValue(), 0.0F);
+            var4.translate((float)(this.field_3504.getValue() != null ? this.field_3504.getValue().intValue() : 0), (float)(this.field_3504.getValue() != null ? this.field_3504.getValue().intValue() : 0), 0.0F);
             this.method_5(
                var1.method_10(),
-               (float)this.field_3509.getValue().intValue(),
-               (float)this.field_3510.getValue().intValue() / Float.intBitsToFloat(1073741824),
+               (float)(this.field_3509.getValue() != null ? this.field_3509.getValue().intValue() : 0),
+               (float)(this.field_3510.getValue() != null ? this.field_3510.getValue().intValue() : 0) / Float.intBitsToFloat(1073741824),
                var2,
                Color.BLACK
             );
@@ -71,8 +71,8 @@ public class CrosshairModule extends Module {
 
          this.method_5(
             var1.method_10(),
-            (float)this.field_3509.getValue().intValue(),
-            (float)this.field_3510.getValue().intValue() / Float.intBitsToFloat(1073741824),
+            (float)(this.field_3509.getValue() != null ? this.field_3509.getValue().intValue() : 0),
+            (float)(this.field_3510.getValue() != null ? this.field_3510.getValue().intValue() : 0) / Float.intBitsToFloat(1073741824),
             var2,
             this.field_3511.getValue()
          );

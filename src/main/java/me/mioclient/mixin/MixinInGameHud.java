@@ -3,11 +3,11 @@ package me.mioclient.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0760;
 import me.mioclient.event.Event_26;
 import me.mioclient.internal.Class_0745;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.abstract_.AbstractModule_38;
 import me.mioclient.module.client.HUDModule;
 import me.mioclient.module.render.CrosshairModule;
@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin({InGameHud.class})
-public class MixinInGameHud implements Class_1309 {
+public class MixinInGameHud implements MioAPI {
    private static HUDModule hud = Hub.field_2595.method_78(HUDModule.class);
    private static NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
    private static CrosshairModule crosshair = Hub.field_2595.method_78(CrosshairModule.class);
@@ -52,7 +52,7 @@ public class MixinInGameHud implements Class_1309 {
          RenderSystem.blendFunc(770, 771);
          RenderSystem.disableCull();
          GL11.glEnable(2848);
-         Event_26 var4 = Event_26.method_2(var1.getMatrices(), var1, Class_0838.method_776());
+         Event_26 var4 = Event_26.method_2(var1.getMatrices(), var1, RenderUtil.method_776());
          field_4220.method_36(var4);
          Class_0745.method_474();
          RenderSystem.enableDepthTest();

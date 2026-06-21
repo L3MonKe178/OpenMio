@@ -7,7 +7,7 @@ import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -77,7 +77,7 @@ public class LongJumpModule extends Module {
             var2 = 0.0;
             var4 = 0.0;
          } else {
-            double[] var10 = Class_0464.method_2(field_4219.player.getYaw(Class_0838.method_776()), field_4219.player.input, this.field_1570);
+            double[] var10 = Class_0464.method_2(field_4219.player.getYaw(RenderUtil.method_776()), field_4219.player.input, this.field_1570);
             var2 = var10[0];
             var4 = var10[1];
          }

@@ -3,7 +3,7 @@ package me.mioclient.module.combat;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0922;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -47,7 +47,7 @@ public class AntiBotModule extends Module {
                String var3 = "1234567890_qwertyuiopasdfghjklzxcvbnm";
 
                for (char var7 : var2.toLowerCase().toCharArray()) {
-                  if (!Class_1016.method_2("1234567890_qwertyuiopasdfghjklzxcvbnm", var7)) {
+                  if (!FontRenderer.method_2("1234567890_qwertyuiopasdfghjklzxcvbnm", var7)) {
                      return true;
                   }
                }

@@ -1,10 +1,10 @@
 package me.mioclient.record;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 
-public final class Class_1003 implements Class_1309 {
+public final class Class_1003 implements MioAPI {
    public final BlockState field_3092;
    public final BlockPos field_3093;
    public final long field_3094;

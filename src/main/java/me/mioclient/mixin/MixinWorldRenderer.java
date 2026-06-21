@@ -6,14 +6,14 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0514;
 import me.mioclient.api.Class_1171;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0574;
 import me.mioclient.enum_.Class_1296;
 import me.mioclient.event.Event_12;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Event_6;
 import me.mioclient.internal.Class_0500;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0947;
 import me.mioclient.internal.Class_1355;
 import me.mioclient.module.player.FreecamModule;
@@ -54,7 +54,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({WorldRenderer.class})
-public abstract class MixinWorldRenderer implements Class_1309, Class_1171 {
+public abstract class MixinWorldRenderer implements MioAPI, Class_1171 {
    private static final ViewClipModule viewclip = Hub.field_2595.method_78(ViewClipModule.class);
    private static AmbienceModule ambience = Hub.field_2595.method_78(AmbienceModule.class);
    private static NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
@@ -107,12 +107,12 @@ public abstract class MixinWorldRenderer implements Class_1309, Class_1171 {
       @Local MatrixStack var9
    ) {
       var9.push();
-      Class_0838.method_9(var9);
+      RenderUtil.method_9(var9);
       RenderSystem.clear(256, MinecraftClient.IS_SYSTEM_MAC);
       RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      Event_3 var10 = Event_3.method_9(var9, Class_0838.method_776());
-      Class_0838.field_2672.method_38(() -> field_4220.method_36(var10));
-      Class_0947 var11 = Class_0947.method_2(var9, Class_0838.method_776());
+      Event_3 var10 = Event_3.method_9(var9, RenderUtil.method_776());
+      RenderUtil.field_2672.method_38(() -> field_4220.method_36(var10));
+      Class_0947 var11 = Class_0947.method_2(var9, RenderUtil.method_776());
       field_4220.method_36(var11);
       var9.pop();
    }
@@ -136,7 +136,7 @@ public abstract class MixinWorldRenderer implements Class_1309, Class_1171 {
       CallbackInfo var8,
       @Local MatrixStack var9
    ) {
-      Event_12 var10 = Event_12.method_5(var9, Class_0838.method_776());
+      Event_12 var10 = Event_12.method_5(var9, RenderUtil.method_776());
       field_4220.method_36(var10);
    }
 
@@ -195,9 +195,9 @@ public abstract class MixinWorldRenderer implements Class_1309, Class_1171 {
    private void onRenderHead(
       RenderTickCounter var1, boolean var2, Camera var3, GameRenderer var4, LightmapTextureManager var5, Matrix4f var6, Matrix4f var7, CallbackInfo var8
    ) {
-      Class_0838.method_39(var1.getTickDelta(false));
+      RenderUtil.method_39(var1.getTickDelta(false));
       this.mio$stack = new MatrixStack();
-      Class_0838.method_2(this.mio$stack);
+      RenderUtil.method_2(this.mio$stack);
       Class_1355.method_528();
    }
 

@@ -14,7 +14,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
-public class Class_0348 extends Class_0618 {
+public class Class_0348 extends Command {
    public static final byte[] field_1147 = new byte[]{-119, 80, 78, 71, 13, 10, 26, 10};
    public CompletableFuture<Void> field_1145 = CompletableFuture.completedFuture(null);
 
@@ -30,7 +30,7 @@ public class Class_0348 extends Class_0618 {
             if (!this.field_1145.isDone()) {
                return 0;
             } else {
-               Class_1245.method_2(Text.literal("Reloading Mio resources..."), Class_1245.method_22(this));
+               ChatUtil.method_2(Text.literal("Reloading Mio resources..."), ChatUtil.method_22(this));
                this.field_1145 = CompletableFuture.runAsync(
                   () -> {
                      HashSet<Identifier> var0 = new HashSet<>();
@@ -58,10 +58,10 @@ public class Class_0348 extends Class_0618 {
                                  }
                               }
                            } catch (RuntimeException | IOException var4) {
-                              Class_1245.method_2(
-                                 Text.literal(new Class_1303().method_2(var4.getMessage()).method_9("Invalid Image! \u0001"))
+                              ChatUtil.method_2(
+                                 Text.literal(new TextBuilder().method_2(var4.getMessage()).method_9("Invalid Image! \u0001"))
                                     .styled(var0xx -> var0xx.withFormatting(Formatting.RED)),
-                                 Class_1245.method_38(-999)
+                                 ChatUtil.method_38(-999)
                               );
                            }
 
@@ -75,8 +75,8 @@ public class Class_0348 extends Class_0618 {
                );
                this.field_1145
                   .whenComplete(
-                     (var1xx, var2) -> Class_1245.method_2(
-                           Text.literal("Reload complete!").styled(var0 -> var0.withFormatting(Formatting.GREEN)), Class_1245.method_22(this)
+                     (var1xx, var2) -> ChatUtil.method_2(
+                           Text.literal("Reload complete!").styled(var0 -> var0.withFormatting(Formatting.GREEN)), ChatUtil.method_22(this)
                         )
                   );
                return 1;

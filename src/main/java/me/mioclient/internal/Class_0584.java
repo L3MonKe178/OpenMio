@@ -2,12 +2,12 @@ package me.mioclient.internal;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Objects;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.record.Class_0362;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
 
-public class Class_0584 implements Class_1309 {
+public class Class_0584 implements MioAPI {
    public final Class_0585 progress = new Class_0585(Float.intBitsToFloat(1073741824));
    public final ItemStack field_1846;
    public final Class_0362 field_1847;

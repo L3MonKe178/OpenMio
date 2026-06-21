@@ -15,9 +15,9 @@ import me.mioclient.internal.Class_0043;
 import me.mioclient.internal.Class_0198;
 import me.mioclient.internal.Class_0552;
 import me.mioclient.internal.Class_0930;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1295;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -48,10 +48,10 @@ public class VelocityModule extends Module {
    @Override
    public String getInfo() {
       return this.field_2509.getValue() != Class_0184.PLAIN
-         ? Class_1016.method_3(this.field_2509.getValue().getName())
-         : new Class_1303()
-            .method_2(Class_0930.method_2((float)this.field_2511.getValue().intValue(), 1))
-            .method_2(Class_0930.method_2((float)this.field_2510.getValue().intValue(), 1))
+         ? FontRenderer.method_3((this.field_2509.getValue() != null ? this.field_2509.getValue().getName() : ""))
+         : new TextBuilder()
+            .method_2(Class_0930.method_2((float)(this.field_2511.getValue() != null ? this.field_2511.getValue().intValue() : 0), 1))
+            .method_2(Class_0930.method_2((float)(this.field_2510.getValue() != null ? this.field_2510.getValue().intValue() : 0), 1))
             .method_9("H\u0001% V\u0001%");
    }
 

@@ -17,7 +17,7 @@ import me.mioclient.event.Event_42;
 import me.mioclient.event.Event_61;
 import me.mioclient.event.Event_62;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0358;
 import me.mioclient.internal.Class_0539;
 import me.mioclient.internal.Class_0584;
@@ -60,8 +60,8 @@ public class ChestStealerModule extends Module {
    public Setting<Integer> field_3210;
    public Setting<Integer> field_3211;
    public final List<Class_0584> field_3212;
-   public final Class_0242 field_3213;
-   public final Class_0242 field_3214;
+   public final Timer field_3213;
+   public final Timer field_3214;
    public Class_0766 field_3215;
    public boolean field_947;
    public Slot field_3216;
@@ -70,8 +70,8 @@ public class ChestStealerModule extends Module {
       super("ChestStealer", "Steals items from the storages you open.", Category.PLAYER, "stealer");
       Settings.initialize(this);
       this.field_3212 = Collections.synchronizedList(new ArrayList<>());
-      this.field_3213 = new Class_0242();
-      this.field_3214 = new Class_0242();
+      this.field_3213 = new Timer();
+      this.field_3214 = new Timer();
       this.field_3208.method_9(this.field_3212::clear);
       this.field_3202.method_5(var1 -> !this.field_3207.getValue());
       ScreenEvents.AFTER_INIT.register(new Class_1308(this));
@@ -80,9 +80,9 @@ public class ChestStealerModule extends Module {
    @Subscribe
    public void method_2(Event_1 var1) {
       if ((field_4219.currentScreen instanceof GenericContainerScreen || field_4219.currentScreen instanceof ShulkerBoxScreen)
-         && this.field_3213.method_9((long)this.field_3209.getValue().intValue())
+         && this.field_3213.method_9((long)(this.field_3209.getValue() != null ? this.field_3209.getValue().intValue() : 0))
          && (!this.field_3207.getValue() || this.field_3215 != null)
-         && this.field_3214.method_9((long)this.field_3210.getValue().intValue())
+         && this.field_3214.method_9((long)(this.field_3210.getValue() != null ? this.field_3210.getValue().intValue() : 0))
          && !(field_4219.currentScreen instanceof Class_0539)) {
          Class_0766 var2 = this.field_3207.getValue() ? this.field_3215 : this.field_3202.getValue();
          ScreenHandler var3 = field_4219.player.currentScreenHandler;
@@ -107,8 +107,8 @@ public class ChestStealerModule extends Module {
             if (!var11.isEmpty() && (!this.field_3205.getValue() || !field_3025.isToggled() || field_3025.match(var11, this.field_3206.getValue()))) {
                boolean var12 = field_4219.currentScreen instanceof ShulkerBoxScreen;
                if (this.field_3204.getValue() == Class_0087.ITEM
-                  ? this.field_3203.getValue().method_2(var11.getItem(), this.field_3200)
-                  : this.field_3203.getValue().method_2(var11.getName().getString().toLowerCase(Locale.ROOT), this.field_3201)) {
+                  ? (this.field_3203.getValue() != null ? this.field_3203.getValue().method_2(var11.getItem(), this.field_3200) : false)
+                  : (this.field_3203.getValue() != null ? this.field_3203.getValue().method_2(var11.getName().getString().toLowerCase(Locale.ROOT), this.field_3201) : false)) {
                   List var13 = (List)var24.get(new Class_0510(var11.getItem(), var11.getComponents()));
                   switch (var2) {
                      case DROP:

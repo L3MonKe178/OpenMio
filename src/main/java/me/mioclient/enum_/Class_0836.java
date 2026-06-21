@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_1146;
 import me.mioclient.internal.Class_0033;
 import me.mioclient.internal.Class_1152;
@@ -24,7 +24,7 @@ import me.mioclient.module.client.UIModule;
 import me.mioclient.setting.ColorSetting;
 import me.mioclient.setting.Setting;
 
-public enum Class_0836 implements Class_0013, Class_1146 {
+public enum Class_0836 implements Nameable, Class_1146 {
    MODULES("Modules") {
       @Override
       public JsonElement toJson() {

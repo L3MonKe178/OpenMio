@@ -9,7 +9,7 @@ import me.mioclient.module.Module;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0495 extends Class_0618 {
+public final class Class_0495 extends Command {
    public Class_0495() {
       super("drawn");
    }
@@ -22,11 +22,11 @@ public final class Class_0495 extends Class_0618 {
                   var0 -> {
                      Module var1x = (Module)var0.getArgument("module", Module.class);
                      var1x.setDrawn(!var1x.isDrawn());
-                     Class_1245.method_2(
+                     ChatUtil.method_2(
                         Text.literal(
-                           new Class_1303().method_2(var1x.isDrawn()).method_2(var1x.getName()).method_9("Drawing for \u0001 has been set to \u0001.")
+                           new TextBuilder().method_2(var1x.isDrawn()).method_2(var1x.getName()).method_9("Drawing for \u0001 has been set to \u0001.")
                         ),
-                        Class_1245.method_38(-1)
+                        ChatUtil.method_38(-1)
                      );
                      return 1;
                   }
@@ -44,9 +44,9 @@ public final class Class_0495 extends Class_0618 {
                               var3.setDrawn(var1x);
                            }
 
-                           Class_1245.method_2(
-                              Text.literal(new Class_1303().method_2(var1x).method_9("Drawing for all modules has been set to \u0001.")),
-                              Class_1245.method_38(-1)
+                           ChatUtil.method_2(
+                              Text.literal(new TextBuilder().method_2(var1x).method_9("Drawing for all modules has been set to \u0001.")),
+                              ChatUtil.method_38(-1)
                            );
                            return 1;
                         }

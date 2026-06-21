@@ -5,14 +5,14 @@ import java.lang.reflect.Constructor;
 /**
  * Replaces {@code nick.Commands.initialize}, which scans for legacy
  * {@code me.mioclient.deobf.Class_XXXX} entries that don't exist after rename
- * and silently registers nothing. Every command extends {@link Class_0618};
+ * and silently registers nothing. Every command extends {@link Command};
  * the registered list is the same set nick.Commands knew about, mapped to the
  * classes that survived the rename.
  */
 public final class MioCommands {
    private MioCommands() { super(); }
 
-   public static void init(Class_1032 manager) {
+   public static void init(CommandManager manager) {
       String[] classes = new String[] {
          "me.mioclient.internal.Class_0712",
          "me.mioclient.internal.Class_0355",
@@ -58,7 +58,7 @@ public final class MioCommands {
             Constructor<?>[] ctors = klass.getDeclaredConstructors();
             if (ctors.length == 0) { failed++; continue; }
             ctors[0].setAccessible(true);
-            Class_0618 cmd = (Class_0618) ctors[0].newInstance();
+            Command cmd = (Command) ctors[0].newInstance();
             manager.method_2(cmd);
             ok++;
          } catch (Throwable t) {
@@ -66,7 +66,7 @@ public final class MioCommands {
             System.err.println("[Mio] Failed to register command: " + name + " - " + t);
          }
       }
-      // Class_0881 FRIEND/ENEMY are registered separately by Class_1032.method_931().
+      // Class_0881 FRIEND/ENEMY are registered separately by CommandManager.method_931().
       System.err.println("[Mio] Commands: " + ok + " registered, " + failed + " failed");
    }
 }

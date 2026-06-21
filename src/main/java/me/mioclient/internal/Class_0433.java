@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_22;
@@ -29,8 +29,8 @@ import net.minecraft.item.Items;
 import net.minecraft.item.map.MapState;
 import net.minecraft.network.packet.s2c.play.MapUpdateS2CPacket;
 
-public final class Class_0433 implements Class_1309 {
-   public final Class_0242 field_1367 = new Class_0242();
+public final class Class_0433 implements MioAPI {
+   public final Timer field_1367 = new Timer();
    public final Map<String, MapState> field_1368 = Collections.synchronizedMap(new HashMap<>());
    public String field_1369 = null;
 
@@ -110,7 +110,7 @@ public final class Class_0433 implements Class_1309 {
             }
 
             Class_1222.method_2(
-               Class_1328.field_4286.resolve(new Class_1303().method_2(Class_1016.method_222(var1)).method_9("\u0001.data")),
+               Class_1328.field_4286.resolve(new TextBuilder().method_2(FontRenderer.method_222(var1)).method_9("\u0001.data")),
                this.method_374(var2.toByteArray())
             );
          } catch (Exception var10) {
@@ -123,7 +123,7 @@ public final class Class_0433 implements Class_1309 {
       this.field_1368.clear();
 
       try {
-         Path var2 = Class_1328.field_4286.resolve(new Class_1303().method_2(Class_1016.method_222(var1)).method_9("\u0001.data"));
+         Path var2 = Class_1328.field_4286.resolve(new TextBuilder().method_2(FontRenderer.method_222(var1)).method_9("\u0001.data"));
          if (!var2.toFile().exists()) {
             return;
          }

@@ -1,13 +1,13 @@
 package me.mioclient.record;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 
-public final class Class_0773 implements Class_1309 {
+public final class Class_0773 implements MioAPI {
    public final Direction field_2429;
    public final Vec3d field_2430;
    public final VoxelShape field_2431;

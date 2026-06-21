@@ -6,10 +6,10 @@ import com.google.gson.JsonObject;
 import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.misc.StashFinderModule;
 
-public final class Class_0306 extends Class_0939<Class_0580> implements Class_1309, Class_1146 {
+public final class Class_0306 extends Registry<Class_0580> implements MioAPI, Class_1146 {
    public static StashFinderModule field_993 = Hub.field_2595.method_78(StashFinderModule.class);
 
    public Class_0306() {

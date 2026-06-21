@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0836;
 import me.mioclient.record.Class_0371;
 
-public final class Class_0852 extends Class_0939<Class_0371> implements Class_1309 {
+public final class Class_0852 extends Registry<Class_0371> implements MioAPI {
    public static final String field_2747 = ".json";
    public final Class_0836 field_1036;
    public final Path field_2748;
@@ -57,7 +57,7 @@ public final class Class_0852 extends Class_0939<Class_0371> implements Class_13
    }
 
    public boolean method_493(String var1) {
-      this.field_2748.resolve(new Class_1303().method_2((Object)var1).method_9("\u0001.json")).toFile().delete();
+      this.field_2748.resolve(new TextBuilder().method_2((Object)var1).method_9("\u0001.json")).toFile().delete();
       return this.field_3243.removeIf(var1x -> var1x.getName().equalsIgnoreCase(var1));
    }
 
@@ -82,11 +82,11 @@ public final class Class_0852 extends Class_0939<Class_0371> implements Class_13
       if (var1.equalsIgnoreCase(var2)) {
          return false;
       } else {
-         if (this.field_2748.resolve(new Class_1303().method_2((Object)var1).method_9("\u0001.json")).toFile().exists()) {
+         if (this.field_2748.resolve(new TextBuilder().method_2((Object)var1).method_9("\u0001.json")).toFile().exists()) {
             this.field_2748
-               .resolve(new Class_1303().method_2((Object)var1).method_9("\u0001.json"))
+               .resolve(new TextBuilder().method_2((Object)var1).method_9("\u0001.json"))
                .toFile()
-               .renameTo(this.field_2748.resolve(new Class_1303().method_2((Object)var2).method_9("\u0001.json")).toFile());
+               .renameTo(this.field_2748.resolve(new TextBuilder().method_2((Object)var2).method_9("\u0001.json")).toFile());
          }
 
          return this.method_78(var1, var2) && this.field_3243.removeIf(var1x -> var1x.getName().equalsIgnoreCase(var1));

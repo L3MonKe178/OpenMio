@@ -4,7 +4,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
-public class Class_0996 extends Class_0605 {
+public class Class_0996 extends Event {
    public Entity field_581;
    public MatrixStack field_2127;
    public VertexConsumerProvider field_3084;

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0836;
 import net.fabricmc.loader.api.FabricLoader;
 
-public final class Class_1328 implements Class_1309 {
+public final class Class_1328 implements MioAPI {
    public static final Path field_4281 = FabricLoader.getInstance().getGameDir().resolve("mio-fabric");
    public static final Path field_4282 = field_4281.resolve("presets");
    public static final Path field_4283 = field_4281.resolve("spammer");

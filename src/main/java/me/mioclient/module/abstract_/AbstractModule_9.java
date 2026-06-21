@@ -3,9 +3,9 @@ package me.mioclient.module.abstract_;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -18,8 +18,8 @@ import net.minecraft.util.math.ChunkPos;
 import nick.Settings;
 
 public class AbstractModule_9 extends Module {
-   public final Class_0242 field_923 = new Class_0242();
-   public final Class_0242 field_924 = new Class_0242();
+   public final Timer field_923 = new Timer();
+   public final Timer field_924 = new Timer();
    public Setting<Boolean> field_925;
    public Setting<Boolean> field_926;
    public Setting<Float> field_927;
@@ -28,7 +28,7 @@ public class AbstractModule_9 extends Module {
    public AbstractModule_9() {
       super(
          "Trident",
-         new Class_1303().method_2(String.valueOf(Formatting.RED)).method_9("Improves your experience with tridents. \n\u0001Riptide enchantment required."),
+         new TextBuilder().method_2(String.valueOf(Formatting.RED)).method_9("Improves your experience with tridents. \n\u0001Riptide enchantment required."),
          Category.EXPLOIT
       );
       Settings.initialize(this);
@@ -39,11 +39,11 @@ public class AbstractModule_9 extends Module {
       int var2 = this.method_318();
       if (var2 != -1 && !field_4219.player.isUsingItem()) {
          field_4219.interactionManager
-            .clickSlot(0, Class_0136.method_30(var2), field_4219.player.getInventory().selectedSlot, SlotActionType.SWAP, field_4219.player);
+            .clickSlot(0, PlayerUtil.method_30(var2), field_4219.player.getInventory().selectedSlot, SlotActionType.SWAP, field_4219.player);
          field_4219.interactionManager.interactItem(field_4219.player, Hand.MAIN_HAND);
          field_4219.interactionManager.stopUsingItem(field_4219.player);
          field_4219.interactionManager
-            .clickSlot(0, Class_0136.method_30(var2), field_4219.player.getInventory().selectedSlot, SlotActionType.SWAP, field_4219.player);
+            .clickSlot(0, PlayerUtil.method_30(var2), field_4219.player.getInventory().selectedSlot, SlotActionType.SWAP, field_4219.player);
          this.field_923.reset();
       }
    }
@@ -58,7 +58,7 @@ public class AbstractModule_9 extends Module {
    }
 
    public int method_318() {
-      return this.field_923.method_9((long)(this.field_928.getValue() * 50)) && !this.field_924.method_9(700L) ? Class_0136.method_9(Items.TRIDENT) : -1;
+      return this.field_923.method_9((long)(this.field_928.getValue() * 50)) && !this.field_924.method_9(700L) ? PlayerUtil.method_9(Items.TRIDENT) : -1;
    }
 
    public boolean method_319() {

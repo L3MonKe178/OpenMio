@@ -15,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 public class Class_1170 extends Class_1015<Number> {
    public static final NumberFormat field_3627 = NumberFormat.getNumberInstance();
    public final Class_0031 field_3628 = new Class_0031(Float.intBitsToFloat(1086324736), false);
-   public final Class_0242 field_3629 = new Class_0242();
+   public final Timer field_3629 = new Timer();
    public int field_1321;
    public int field_1322;
    public boolean field_470;
@@ -92,7 +92,7 @@ public class Class_1170 extends Class_1015<Number> {
                               var8 = this.field_3138.getValue();
                            } else {
                               var8 = this.field_2780;
-                              var8 = Float.parseFloat(new Class_1303().method_2(var8).method_9("\u0001f"));
+                              var8 = Float.parseFloat(new TextBuilder().method_2(var8).method_9("\u0001f"));
                            }
 
                            var6.method_78(var8);
@@ -104,7 +104,7 @@ public class Class_1170 extends Class_1015<Number> {
                               var10001 = this.field_3138.getValue();
                            } else {
                               var10001 = this.field_2780;
-                              var10001 = Double.parseDouble(new Class_1303().method_2(var10001).method_9("\u0001d"));
+                              var10001 = Double.parseDouble(new TextBuilder().method_2(var10001).method_9("\u0001d"));
                            }
 
                            var10000.method_78(var10001);
@@ -125,13 +125,13 @@ public class Class_1170 extends Class_1015<Number> {
    public void method_9(char var1) {
       if (!this.method_911()) {
          String var2 = "1234567890.-";
-         if (this.field_3142 && this.field_3137.method_194() && Class_1016.method_2(var2, var1)) {
-            if (var1 == '.' && Class_1016.method_2(this.field_2780, var1)) {
+         if (this.field_3142 && this.field_3137.method_194() && FontRenderer.method_2(var2, var1)) {
+            if (var1 == '.' && FontRenderer.method_2(this.field_2780, var1)) {
                return;
             }
 
             String var10001 = this.field_2780;
-            this.field_2780 = new Class_1303().method_2(var1).method_2((Object)var10001).method_9("\u0001\u0001");
+            this.field_2780 = new TextBuilder().method_2(var1).method_2((Object)var10001).method_9("\u0001\u0001");
          }
       }
    }
@@ -221,8 +221,8 @@ public class Class_1170 extends Class_1015<Number> {
             ? (this.field_2780 == null ? "" : this.field_2780)
             : (
                this.field_3138.method_468()
-                  ? new Class_1303().method_2(this.field_3138.method_157()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001")
-                  : new Class_1303()
+                  ? new TextBuilder().method_2(this.field_3138.method_157()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001")
+                  : new TextBuilder()
                      .method_2(((CustomSetting3)this.field_3138).method_323())
                      .method_2(
                         String.format("%s: %s", this.field_3138.getName(), field_3627.format(this.field_3138.getValue().doubleValue())).replace(",", ".")
@@ -232,10 +232,10 @@ public class Class_1170 extends Class_1015<Number> {
          this.method_2(
             var2,
             this.method_664(var7),
-            () -> Class_1016.field_3143
+            () -> FontRenderer.field_3143
                   .method_9(
                      var1,
-                     new Class_1303().method_2(this.method_453()).method_2((Object)var7).method_9("\u0001\u0001"),
+                     new TextBuilder().method_2(this.method_453()).method_2((Object)var7).method_9("\u0001\u0001"),
                      (float)(this.field_418.getX() + 4),
                      (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                      this.method_852().field_2876.getValue()
@@ -256,7 +256,7 @@ public class Class_1170 extends Class_1015<Number> {
 
    public String method_664(String var1) {
       String var10001 = this.field_3142 ? "_" : "";
-      return new Class_1303().method_2((Object)var10001).method_2((Object)var1).method_9("\u0001\u0001");
+      return new TextBuilder().method_2((Object)var10001).method_2((Object)var1).method_9("\u0001\u0001");
    }
 
    public String method_453() {

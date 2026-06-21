@@ -54,7 +54,7 @@ public class Class_0918 extends Class_1117 {
       synchronized (Hub.field_2606.method_533()) {
          AtomicInteger var2 = new AtomicInteger(0);
          Hub.field_2606.method_533().stream().map(var0 -> var0.method_243()).filter(var0 -> !var0.isEmpty()).distinct().forEach(var2x -> {
-            Class_0746 var3 = new Class_0746(Class_1016.method_3(var2x));
+            Class_0746 var3 = new Class_0746(FontRenderer.method_3(var2x));
             this.method_999().add(var3);
             var3.setX(var3.getX() + (var3.method_216() + 3) * var2.getAndIncrement());
          });
@@ -63,7 +63,7 @@ public class Class_0918 extends Class_1117 {
             for (Class_0746 var6 : this.method_999()) {
                if (var6.getName().equalsIgnoreCase(var4.method_243())) {
                   Supplier var7 = () -> this.field_2897.getValue().equals(var4)
-                        ? new Class_1303().method_2(var4.getName()).method_9("> \u0001")
+                        ? new TextBuilder().method_2(var4.getName()).method_9("> \u0001")
                         : var4.getName();
                   var6.method_714().add(new Class_0458(this, var6, var4));
                   break;

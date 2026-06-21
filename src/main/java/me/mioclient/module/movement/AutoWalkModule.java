@@ -6,7 +6,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_16;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -36,7 +36,7 @@ public class AutoWalkModule extends Module {
    public void method_2(Event_1 var1) {
       if (Hub.field_2614.method_874() == 0.0) {
          if (!this.field_265 && this.field_261.getValue()) {
-            Class_1245.method_2(Text.literal("You are stuck!"), Class_1245.method_2(this), Priority.HIGH);
+            ChatUtil.method_2(Text.literal("You are stuck!"), ChatUtil.method_2(this), Priority.HIGH);
             Hub.field_2606.method_2(this.field_262.getValue()).method_230(this.field_263.getValue());
          }
 

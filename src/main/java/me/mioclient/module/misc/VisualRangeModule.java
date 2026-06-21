@@ -12,8 +12,8 @@ import me.mioclient.event.Event_5;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -80,7 +80,7 @@ public class VisualRangeModule extends Module {
                      Color var4 = Hub.field_2603.method_9(var10, Color.WHITE);
                      String var5 = "%s%s entered visual range.".formatted(var10, Formatting.WHITE);
                      MutableText var6 = Text.literal(var5).styled(var1x -> var1x.withColor(var4.hashCode()));
-                     Class_1245.method_2(var6, Class_1245.method_38(Math.abs(var10.hashCode()) * -1 / 2), Priority.MID);
+                     ChatUtil.method_2(var6, ChatUtil.method_38(Math.abs(var10.hashCode()) * -1 / 2), Priority.MID);
                      if (!Hub.field_2603.method_1009(var10) && Hub.field_2603.method_289(var10) || !this.field_3614.getValue()) {
                         this.method_387();
                      }
@@ -92,7 +92,7 @@ public class VisualRangeModule extends Module {
                      Color var12 = Hub.field_2603.method_9(var11, Color.WHITE);
                      String var13 = "%s%s left visual range.".formatted(var11, Formatting.WHITE);
                      MutableText var14 = Text.literal(var13).styled(var1x -> var1x.withColor(var12.hashCode()));
-                     Class_1245.method_2(var14, Class_1245.method_38(Math.abs(var11.hashCode()) * -1 / 2), Priority.LOW);
+                     ChatUtil.method_2(var14, ChatUtil.method_38(Math.abs(var11.hashCode()) * -1 / 2), Priority.LOW);
                   }
                }
 
@@ -131,13 +131,13 @@ public class VisualRangeModule extends Module {
 
                      var5.styled(var0x -> var0x.withFormatting(Formatting.WHITE));
                      String var11 = "%d, %d, %d".formatted(var1x.getX(), var1x.getY(), var1x.getZ());
-                     MutableText var12 = Text.literal(new Class_1303().method_2((Object)var11).method_9("at \u0001"));
+                     MutableText var12 = Text.literal(new TextBuilder().method_2((Object)var11).method_9("at \u0001"));
                      HoverEvent var13 = new HoverEvent(Action.SHOW_TEXT, var12);
                      var5.styled(var1xx -> var1xx.withHoverEvent(var13));
                      var5.styled(
-                        var1xx -> var1xx.withClickEvent(Class_1245.method_52(new Class_1303().method_2(var11.replace(",", "")).method_9("highlight \u0001")))
+                        var1xx -> var1xx.withClickEvent(ChatUtil.method_52(new TextBuilder().method_2(var11.replace(",", "")).method_9("highlight \u0001")))
                      );
-                     Class_1245.method_2(var5, Class_1245.method_38(var4));
+                     ChatUtil.method_2(var5, ChatUtil.method_38(var4));
                      var2.set(true);
                   }
                }
@@ -153,10 +153,10 @@ public class VisualRangeModule extends Module {
       if (var1.method_127() instanceof EntitySpawnS2CPacket var2 && var2.getEntityType() == EntityType.ENDER_PEARL && this.field_3612.getValue()) {
          MutableText var6 = Text.literal("Ender Pearl entered visual range.");
          String var4 = "%.0f, %.0f, %.0f".formatted(var2.getX(), var2.getY(), var2.getZ());
-         MutableText var5 = Text.literal(new Class_1303().method_2((Object)var4).method_9("at \u0001"));
+         MutableText var5 = Text.literal(new TextBuilder().method_2((Object)var4).method_9("at \u0001"));
          var6.styled(var1x -> var1x.withHoverEvent(new HoverEvent(Action.SHOW_TEXT, var5)));
-         var6.styled(var1x -> var1x.withClickEvent(Class_1245.method_52(new Class_1303().method_2(var4.replace(",", "")).method_9("highlight \u0001"))));
-         Class_1245.method_2(var6, Class_1245.method_38(field_3603), Priority.MID);
+         var6.styled(var1x -> var1x.withClickEvent(ChatUtil.method_52(new TextBuilder().method_2(var4.replace(",", "")).method_9("highlight \u0001"))));
+         ChatUtil.method_2(var6, ChatUtil.method_38(field_3603), Priority.MID);
          this.method_387();
       }
    }

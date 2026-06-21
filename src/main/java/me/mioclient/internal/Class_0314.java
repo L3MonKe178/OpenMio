@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 
-public final class Class_0314 extends Class_1049<Class_1368, List<Class_1368>> implements Class_1309, Class_1146 {
+public final class Class_0314 extends Class_1049<Class_1368, List<Class_1368>> implements MioAPI, Class_1146 {
    public Class_0314() {
       super(new ArrayList<>());
       field_4220.method_14(this);

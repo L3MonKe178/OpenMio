@@ -1,14 +1,14 @@
 package me.mioclient.internal;
 
 import com.google.gson.annotations.SerializedName;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.HoverEvent.Action;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_1368 implements Class_0013 {
+public class Class_1368 implements Nameable {
    @SerializedName("x")
    public final double field_4446;
    @SerializedName("y")

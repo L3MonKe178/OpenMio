@@ -5,9 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.nio.file.Path;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 
-public final class Class_0950 implements Class_1309 {
+public final class Class_0950 implements MioAPI {
    public Class_0950() {
       super();
    }

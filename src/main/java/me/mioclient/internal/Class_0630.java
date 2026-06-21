@@ -15,7 +15,7 @@ import me.mioclient.setting.CustomSetting3;
 import me.mioclient.setting.Setting;
 import net.minecraft.command.CommandSource;
 
-public class Class_0630 extends Class_0618 {
+public class Class_0630 extends Command {
    public Class_0630() {
       super("global");
       this.method_9("globalsync", "syncall");

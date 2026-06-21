@@ -6,7 +6,7 @@ import me.mioclient.enum_.Class_0137;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -27,17 +27,19 @@ public class NoFallModule extends Module {
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_4157.getValue());
+      return FontRenderer.method_3(this.field_4157.getValue());
    }
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      this.field_4157.getValue().method_2(this);
+      if (this.field_4157 == null || this.field_4157.getValue() == null) return;
+      if (this.field_4157.getValue() != null) this.field_4157.getValue().method_2(this);
    }
 
    @Subscribe
    public void method_2(Event_10 var1) {
-      this.field_4157.getValue().method_2(var1);
+      if (this.field_4157 == null || this.field_4157.getValue() == null) return;
+      if (this.field_4157.getValue() != null) this.field_4157.getValue().method_2(var1);
    }
 
    public HashSet<BlockPos> method_78(Box var1) {

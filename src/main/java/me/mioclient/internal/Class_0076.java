@@ -9,7 +9,7 @@ import me.mioclient.record.Class_0702;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0076 extends Class_0618 {
+public final class Class_0076 extends Command {
    public Class_0076() {
       super("bind");
    }
@@ -27,12 +27,12 @@ public final class Class_0076 extends Class_0618 {
                                  Module var2 = (Module)var1x.getArgument("module", Module.class);
                                  Class_0702 var3 = (Class_0702)var1x.getArgument("key", Class_0702.class);
                                  var2.modifyKeybind(var1xx -> var1xx.method_9(var3.method_38()).method_9(var3.method_39()));
-                                 Class_1245.method_2(
+                                 ChatUtil.method_2(
                                     Text.literal("Bind for ")
                                        .append(this.method_5(var2.getName()))
                                        .append(" has been set to ")
                                        .append(this.method_5(Class_0018.method_2(var3.method_38(), var3.method_39()))),
-                                    Class_1245.method_38(-1)
+                                    ChatUtil.method_38(-1)
                                  );
                                  return 1;
                               }
@@ -45,7 +45,7 @@ public final class Class_0076 extends Class_0618 {
                   .then(RequiredArgumentBuilder.<CommandSource, Module>argument("module", new Class_0484()).executes(var1x -> {
                      Module var2 = (Module)var1x.getArgument("module", Module.class);
                      var2.modifyKeybind(var0 -> var0.method_9(-1));
-                     Class_1245.method_2(Text.literal("Bind for ").append(this.method_5(var2.getName())).append(" has been reset"), Class_1245.method_38(-1));
+                     ChatUtil.method_2(Text.literal("Bind for ").append(this.method_5(var2.getName())).append(" has been reset"), ChatUtil.method_38(-1));
                      return 1;
                   })))
                .then(LiteralArgumentBuilder.<CommandSource>literal("all").executes(var0 -> {
@@ -53,7 +53,7 @@ public final class Class_0076 extends Class_0618 {
                      var2.modifyKeybind(var0x -> var0x.method_9(-1));
                   }
 
-                  Class_1245.method_2(Text.literal("Bind for all modules has been reset"), Class_1245.method_38(-1));
+                  ChatUtil.method_2(Text.literal("Bind for all modules has been reset"), ChatUtil.method_38(-1));
                   return 1;
                }))
          );

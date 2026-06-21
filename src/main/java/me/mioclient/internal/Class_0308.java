@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.record.Class_0944;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +16,7 @@ import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class Class_0308 implements Class_1309 {
+public class Class_0308 implements MioAPI {
    public static final float field_995 = Float.intBitsToFloat(-1113550802);
    public static final float field_996 = Class_0464.field_1470;
    public static final float field_997 = field_996 * Float.intBitsToFloat(1050253722);

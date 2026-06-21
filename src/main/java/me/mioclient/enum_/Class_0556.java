@@ -1,13 +1,13 @@
 package me.mioclient.enum_;
 
 import java.awt.Color;
-import me.mioclient.api.Class_0013;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.api.Nameable;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.module.client.HUDModule;
 import me.mioclient.setting.ColorSetting;
 
-public enum Class_0556 implements Class_0013 {
+public enum Class_0556 implements Nameable {
    NONE("None") {
       @Override
       public Color method_2(HUDModule var1, float var2) {
@@ -64,6 +64,6 @@ public enum Class_0556 implements Class_0013 {
    public abstract Color method_2(HUDModule var1, float var2);
 
    public static float method_584() {
-      return 10.0F / (float)(Class_1016.field_3143.method_66() + 2);
+      return 10.0F / (float)(FontRenderer.field_3143.method_66() + 2);
    }
 }

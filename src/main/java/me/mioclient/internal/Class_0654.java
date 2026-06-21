@@ -1,10 +1,10 @@
 package me.mioclient.internal;
 
 import me.mioclient.api.Class_1194;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckLivingEntity;
 
-public class Class_0654 implements Class_1309 {
+public class Class_0654 implements MioAPI {
    public static boolean field_2106;
 
    public Class_0654() {

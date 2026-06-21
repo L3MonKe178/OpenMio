@@ -2,20 +2,20 @@ package me.mioclient.internal;
 
 import java.awt.Color;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.client.FontsModule;
 import me.mioclient.module.player.NameProtectModule;
 import net.minecraft.client.font.TextRenderer.TextLayerType;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.Text;
 
-public class Class_1016 implements Class_1309 {
+public class FontRenderer implements MioAPI {
    public static final NameProtectModule nameprotect = Hub.field_2595.method_78(NameProtectModule.class);
-   public static final Class_1016 field_3143 = new Class_1016();
+   public static final FontRenderer field_3143 = new FontRenderer();
    public static int field_3144 = 0;
    public Class_0436 field_3145;
 
-   public Class_1016() {
+   public FontRenderer() {
       super();
    }
 

@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0126;
 import me.mioclient.event.Event_37;
 import me.mioclient.event.Event_50;
@@ -43,7 +43,7 @@ public class MixinClientPlayNetworkHandler {
    )
    private void onExplosionVelocity(ExplosionS2CPacket var1, CallbackInfo var2) {
       Event_37 var3 = new Event_37(var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       } else {
@@ -93,7 +93,7 @@ public class MixinClientPlayNetworkHandler {
    )
    private void onUpdateSelectedSlot(UpdateSelectedSlotS2CPacket var1, CallbackInfo var2) {
       Event_59 var3 = new Event_59(var1.getSlot());
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }
@@ -104,7 +104,7 @@ public class MixinClientPlayNetworkHandler {
       at = {@At("TAIL")}
    )
    private void onBlockUpdateHook(BlockUpdateS2CPacket var1, CallbackInfo var2) {
-      Class_1309.field_4220.method_36(new Event_50());
+      MioAPI.field_4220.method_36(new Event_50());
    }
 
    @Inject(
@@ -112,6 +112,6 @@ public class MixinClientPlayNetworkHandler {
       at = {@At("TAIL")}
    )
    private void onChunkDeltaUpdateHook(ChunkDeltaUpdateS2CPacket var1, CallbackInfo var2) {
-      Class_1309.field_4220.method_36(new Event_50());
+      MioAPI.field_4220.method_36(new Event_50());
    }
 }

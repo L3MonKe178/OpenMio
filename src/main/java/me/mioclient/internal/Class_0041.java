@@ -2,10 +2,10 @@ package me.mioclient.internal;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.LinkedList;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import org.joml.Vector4i;
 
-public class Class_0041 implements Class_1309 {
+public class Class_0041 implements MioAPI {
    public static final LinkedList<Vector4i> field_81 = new LinkedList<>();
 
    public Class_0041() {

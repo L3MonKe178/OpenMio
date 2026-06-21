@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket;
 
-public class Event_52 extends Class_0605 {
+public class Event_52 extends Event {
    public PlayerInteractItemC2SPacket field_3958;
 
    public Event_52(PlayerInteractItemC2SPacket var1) {

@@ -32,7 +32,7 @@ public class Class_0484 implements ArgumentType<Module> {
          return false;
       });
       if (var3.isEmpty()) {
-         throw new DynamicCommandExceptionType(var0 -> Text.of(new Class_1303().method_2(String.valueOf(var0)).method_9("Module not found \u0001")))
+         throw new DynamicCommandExceptionType(var0 -> Text.of(new TextBuilder().method_2(String.valueOf(var0)).method_9("Module not found \u0001")))
             .create(var2);
       } else {
          return (Module)var3.get();

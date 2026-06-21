@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.awt.Color;
 import java.nio.ByteBuffer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.FloatType;
 import me.mioclient.enum_.LinesType;
 import net.minecraft.client.util.math.MatrixStack;
@@ -13,7 +13,7 @@ import org.joml.Matrix4fStack;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.system.MemoryUtil;
 
-public class Class_0385 implements Class_1309 {
+public class Class_0385 implements MioAPI {
    public boolean field_1232 = false;
    public double field_1233 = Double.longBitsToDouble(4607182418800017408L);
    public final LinesType field_1234;

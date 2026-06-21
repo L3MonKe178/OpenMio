@@ -10,11 +10,11 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0914;
 import me.mioclient.internal.Class_0978;
 import me.mioclient.internal.Class_1000;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1355;
 import me.mioclient.module.Category;
@@ -96,14 +96,15 @@ public class ShaderModule extends Module {
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_2017.getValue());
+      return FontRenderer.method_3(this.field_2017.getValue());
    }
 
    @Subscribe(
       method_800 = -99999999
    )
    public void method_9(Event_3 var1) {
-      Class_0914 var2 = this.field_2017.getValue().method_177();
+      if (this.field_2017 == null || this.field_2017.getValue() == null) return;
+      Class_0914 var2 = (this.field_2017.getValue() != null ? this.field_2017.getValue().method_177() : null);
       this.field_2056.clear();
 
       for (Entity var4 : field_4219.world.getEntities()) {
@@ -166,16 +167,16 @@ public class ShaderModule extends Module {
    }
 
    public boolean method_98(Entity var1) {
-      float var2 = (float)this.field_2018.getValue().intValue();
+      float var2 = (float)(this.field_2018.getValue() != null ? this.field_2018.getValue().intValue() : 0);
       if (var1 instanceof EndCrystalEntity) {
-         var2 = (float)this.field_2045.getValue().intValue();
+         var2 = (float)(this.field_2045.getValue() != null ? this.field_2045.getValue().intValue() : 0);
       }
 
       if (var1 instanceof ItemEntity) {
-         var2 = (float)this.field_2047.getValue().intValue();
+         var2 = (float)(this.field_2047.getValue() != null ? this.field_2047.getValue().intValue() : 0);
       }
 
-      boolean var3 = !Class_0485.method_4(var1.getBoundingBox()) || field_4219.player.distanceTo(var1) > var2;
+      boolean var3 = !RotationManager.method_4(var1.getBoundingBox()) || field_4219.player.distanceTo(var1) > var2;
       if (var1 instanceof PlayerEntity var4 && var4.isDead()) {
          return false;
       }

@@ -16,7 +16,7 @@ public class CategoryPanel extends Panel {
       }
    }
 
-   /** Class_1016.method_3 — title-case the category name. */
+   /** FontRenderer.method_3 — title-case the category name. */
    private static String prettyName(String n) {
       if (n == null || n.isEmpty()) return "";
       return Character.toUpperCase(n.charAt(0)) + n.substring(1).toLowerCase();

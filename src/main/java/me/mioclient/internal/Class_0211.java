@@ -11,7 +11,7 @@ public final class Class_0211 {
 
    public Class_0211(String var1, String var2) {
       this.identifier = Identifier.of(method_244(var1),
-            new Class_1303().method_2((Object)var2).method_2((Object)var1).method_9("sounds//.ogg"));
+            new TextBuilder().method_2((Object)var2).method_2((Object)var1).method_9("sounds//.ogg"));
       this.field_593 = var2;
       this.field_594 = var1;
    }

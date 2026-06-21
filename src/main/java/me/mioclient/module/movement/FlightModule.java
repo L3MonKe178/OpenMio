@@ -7,7 +7,7 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -41,7 +41,7 @@ public class FlightModule extends Module {
    @Override
    public String getInfo() {
       try {
-         return Class_1016.method_3(this.field_3487.getValue());
+         return FontRenderer.method_3(this.field_3487.getValue());
       } catch (Exception var2) {
          return null;
       }
@@ -63,8 +63,10 @@ public class FlightModule extends Module {
 
    @Subscribe
    public void method_2(Event_19 var1) {
-      this.field_3487.getValue().method_2(this, var1);
-      this.field_3492.getValue().method_2(var1);
+      if (this.field_3487 == null || this.field_3487.getValue() == null) return;
+      if (this.field_3487.getValue() != null) this.field_3487.getValue().method_2(this, var1);
+      if (this.field_3492 == null || this.field_3492.getValue() == null) return;
+      if (this.field_3492.getValue() != null) this.field_3492.getValue().method_2(var1);
    }
 
    @Subscribe
@@ -73,8 +75,10 @@ public class FlightModule extends Module {
          this.field_303 = System.currentTimeMillis();
       }
 
-      this.field_3487.getValue().method_2(this, var1);
-      this.field_3492.getValue().method_2(var1);
+      if (this.field_3487 == null || this.field_3487.getValue() == null) return;
+      if (this.field_3487.getValue() != null) this.field_3487.getValue().method_2(this, var1);
+      if (this.field_3492 == null || this.field_3492.getValue() == null) return;
+      if (this.field_3492.getValue() != null) this.field_3492.getValue().method_2(var1);
    }
 
    @Subscribe
@@ -87,11 +91,11 @@ public class FlightModule extends Module {
    public double method_874() {
       return this.field_3493.getValue()
          ? Class_0464.method_2(
-            (double)this.field_3488.getValue().floatValue(),
-            (double)this.field_3494.getValue().floatValue(),
-            (double)this.field_3495.getValue().floatValue(),
+            (double)(this.field_3488.getValue() != null ? this.field_3488.getValue().floatValue() : 0.0f),
+            (double)(this.field_3494.getValue() != null ? this.field_3494.getValue().floatValue() : 0.0f),
+            (double)(this.field_3495.getValue() != null ? this.field_3495.getValue().floatValue() : 0.0f),
             this.field_303
          )
-         : (double)this.field_3488.getValue().floatValue();
+         : (double)(this.field_3488.getValue() != null ? this.field_3488.getValue().floatValue() : 0.0f);
    }
 }

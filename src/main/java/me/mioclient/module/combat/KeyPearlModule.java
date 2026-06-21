@@ -4,9 +4,9 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.movement.ElytraFlyModule;
@@ -51,8 +51,8 @@ public class KeyPearlModule extends Module {
    @Subscribe
    public void method_9(Event_19 var1) {
       if (var1.method_213() == PreType.PRE) {
-         int var2 = Class_0136.method_5(Items.ENDER_PEARL);
-         int var3 = Class_0136.method_9(Items.ENDER_PEARL);
+         int var2 = PlayerUtil.method_5(Items.ENDER_PEARL);
+         int var3 = PlayerUtil.method_9(Items.ENDER_PEARL);
          int var4 = field_4219.player.getInventory().selectedSlot;
          boolean var5 = field_4219.crosshairTarget instanceof EntityHitResult && this.field_858.getValue();
          if (var3 != -1 && !var5 && !field_4219.player.isFallFlying() && !elytrafly.method_1183() && !field_4219.player.hasVehicle()) {
@@ -79,8 +79,8 @@ public class KeyPearlModule extends Module {
                         field_4219.player.isOnGround()
                      )
                   );
-               Class_1261.method_2(Hand.MAIN_HAND);
-               Class_1261.method_9(Hand.MAIN_HAND);
+               PacketUtil.method_2(Hand.MAIN_HAND);
+               PacketUtil.method_9(Hand.MAIN_HAND);
                this.method_7(var8 ? var3 : var4, var8);
                Hub.field_2599.method_867().stream().filter(var0 -> var0.field_4257.getValue()).forEach(Module::disable);
                this.disable();
@@ -93,9 +93,9 @@ public class KeyPearlModule extends Module {
 
    public void method_7(int var1, boolean var2) {
       if (var2) {
-         Class_0136.method_39(var1);
+         PlayerUtil.method_39(var1);
       } else {
-         Class_0136.method_16(var1);
+         PlayerUtil.method_16(var1);
       }
    }
 }

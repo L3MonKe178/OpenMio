@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.util.Hand;
 
-public class Event_55 extends Class_0605 {
+public class Event_55 extends Event {
    public final Hand field_19;
 
    public Event_55(Hand var1) {

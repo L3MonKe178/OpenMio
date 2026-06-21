@@ -16,7 +16,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
-public class Class_0343 extends Class_0618 {
+public class Class_0343 extends Command {
    public final String field_1143 = "https://api.mojang.com/users/profiles/minecraft/";
    public final String field_1144 = "https://laby.net/api/user/%s/get-names";
    public CompletableFuture<List<Class_1107>> field_1145;
@@ -37,7 +37,7 @@ public class Class_0343 extends Class_0618 {
                Hub.field_2619.method_2(() -> this.method_2(var1xx), 0);
                return null;
             });
-            Class_1245.method_2(Text.literal("Loading name history for ").append(this.method_5(var2)), Class_1245.method_38(-3));
+            ChatUtil.method_2(Text.literal("Loading name history for ").append(this.method_5(var2)), ChatUtil.method_38(-3));
             return 1;
          }
       }));
@@ -51,7 +51,7 @@ public class Class_0343 extends Class_0618 {
                            Desktop.getDesktop()
                               .browse(
                                  new URL(
-                                       new Class_1303().method_2((String)var0.getArgument("name", String.class)).method_9("https://namemc.com/profile/\u0001")
+                                       new TextBuilder().method_2((String)var0.getArgument("name", String.class)).method_9("https://namemc.com/profile/\u0001")
                                     )
                                     .toURI()
                               );
@@ -69,7 +69,7 @@ public class Class_0343 extends Class_0618 {
       return CompletableFuture.supplyAsync(
          () -> {
             String var2 = Class_0130.method_2(
-                  Class_0130.method_92(new Class_1303().method_2((Object)var1).method_9("https://api.mojang.com/users/profiles/minecraft/\u0001")).build()
+                  Class_0130.method_92(new TextBuilder().method_2((Object)var1).method_9("https://api.mojang.com/users/profiles/minecraft/\u0001")).build()
                )
                .body();
             JsonElement var3 = JsonParser.parseString(var2);
@@ -108,7 +108,7 @@ public class Class_0343 extends Class_0618 {
             }
 
             var2.append(var3.toString());
-            Class_1245.method_2(var2, Class_1245.method_38(-3));
+            ChatUtil.method_2(var2, ChatUtil.method_38(-3));
          } catch (Exception var6) {
             var6.printStackTrace();
          }
@@ -116,6 +116,6 @@ public class Class_0343 extends Class_0618 {
    }
 
    public void method_2(Throwable var1) {
-      Class_1245.method_2(Text.literal(var1.getCause().getMessage()), Class_1245.method_38(-3), Priority.HIGH);
+      ChatUtil.method_2(Text.literal(var1.getCause().getMessage()), ChatUtil.method_38(-3), Priority.HIGH);
    }
 }

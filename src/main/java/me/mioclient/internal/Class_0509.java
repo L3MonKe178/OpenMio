@@ -1,14 +1,14 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-public abstract class Class_0509 implements Class_1309 {
-   public final Class_0242 field_1616 = new Class_0242();
+public abstract class Class_0509 implements MioAPI {
+   public final Timer field_1616 = new Timer();
 
    public Class_0509() {
       super();

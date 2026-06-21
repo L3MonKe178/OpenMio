@@ -1,7 +1,7 @@
 package me.mioclient.record;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
@@ -12,7 +12,7 @@ import net.minecraft.component.type.MapIdComponent;
 import net.minecraft.item.map.MapState;
 import net.minecraft.util.Identifier;
 
-public final class Class_1356 implements Class_1309, TooltipComponent {
+public final class Class_1356 implements MioAPI, TooltipComponent {
    public final int field_4423;
    public final MapState field_4424;
    public static final Identifier field_4425 = Identifier.of("textures/map/map_background.png");

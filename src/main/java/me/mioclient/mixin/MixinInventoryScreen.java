@@ -1,8 +1,8 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.abstract_.AbstractModule_24;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
@@ -29,7 +29,7 @@ public class MixinInventoryScreen {
    private static void drawEntityHook(
       DrawContext var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, LivingEntity var9, CallbackInfo var10
    ) {
-      Class_0485.field_1538 = true;
+      RotationManager.field_1538 = true;
    }
 
    @Inject(
@@ -39,7 +39,7 @@ public class MixinInventoryScreen {
    private static void drawEntityHook2(
       DrawContext var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, LivingEntity var9, CallbackInfo var10
    ) {
-      Class_0485.field_1538 = false;
+      RotationManager.field_1538 = false;
    }
 
    @ModifyArgs(
@@ -51,7 +51,7 @@ public class MixinInventoryScreen {
    )
    private static void lambdaHook(Args var0) {
       if (AbstractModule_24.field_1777) {
-         var0.set(5, Class_0838.method_776());
+         var0.set(5, RenderUtil.method_776());
       }
    }
 }

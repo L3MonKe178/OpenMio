@@ -1,11 +1,11 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 
-public class Event_35 extends Class_0605 {
+public class Event_35 extends Event {
    public static final Event_35 field_3318 = new Event_35();
    public VoxelShape field_3319;
    public BlockPos field_355;

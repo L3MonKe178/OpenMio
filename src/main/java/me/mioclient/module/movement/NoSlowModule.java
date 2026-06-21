@@ -12,10 +12,10 @@ import me.mioclient.event.Event_47;
 import me.mioclient.event.Event_48;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0031;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0185;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0406;
 import me.mioclient.internal.Class_0464;
@@ -23,7 +23,7 @@ import me.mioclient.internal.Class_0617;
 import me.mioclient.internal.Class_0746;
 import me.mioclient.internal.Class_0982;
 import me.mioclient.internal.Class_1035;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.mixin.ducks.DuckPlayerMoveC2SPacket;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -69,14 +69,14 @@ public class NoSlowModule extends Module {
    public boolean field_1701;
    public boolean field_1702;
    public boolean field_1703;
-   public final Class_0242 field_1704;
+   public final Timer field_1704;
    public final Class_0031 field_1705;
    public final Class_0031 field_1706;
 
    public NoSlowModule() {
       super("NoSlow", "Cancels several things that may slow you down.", Category.MOVEMENT);
       Settings.initialize(this);
-      this.field_1704 = new Class_0242();
+      this.field_1704 = new Timer();
       this.field_1705 = new Class_0031(Float.intBitsToFloat(1073741824), true);
       this.field_1706 = new Class_0031(Float.intBitsToFloat(1073741824), true);
       this.setDrawn(false);
@@ -154,7 +154,7 @@ public class NoSlowModule extends Module {
          }
 
          if (Hub.field_2615.method_1161() > 1 && !this.field_1703) {
-            Class_1261.method_2(
+            PacketUtil.method_2(
                field_4219.player.getX(), field_4219.player.getY() + Double.longBitsToDouble(4589175226049939217L), field_4219.player.getZ(), false
             );
             this.field_1703 = true;
@@ -216,7 +216,7 @@ public class NoSlowModule extends Module {
                .method_3(
                   Math.min(
                      MathHelper.lerp(var1.method_880(), field_4219.player.prevPitch, field_4219.player.getPitch()) + Float.intBitsToFloat(1090519040),
-                     (float)Class_0245.field_685
+                     (float)Constants.field_685
                   )
                );
          } else if (this.method_138(265)) {
@@ -224,7 +224,7 @@ public class NoSlowModule extends Module {
                .method_3(
                   Math.max(
                      MathHelper.lerp(var1.method_880(), field_4219.player.prevPitch, field_4219.player.getPitch()) - Float.intBitsToFloat(1090519040),
-                     (float)(-Class_0245.field_685)
+                     (float)(-Constants.field_685)
                   )
                );
          }
@@ -252,18 +252,18 @@ public class NoSlowModule extends Module {
       if (this.method_251(field_4219.player.getStackInHand(var2))) {
          if (var2 == Hand.MAIN_HAND) {
             int var4 = field_4219.player.getInventory().selectedSlot;
-            Class_0136.method_78((var4 + 1) % 9);
-            Class_1261.method_2(var2);
-            Class_0136.method_78(var4);
+            PlayerUtil.method_78((var4 + 1) % 9);
+            PacketUtil.method_2(var2);
+            PlayerUtil.method_78(var4);
             return;
          }
 
-         int var3 = Class_0136.method_30(Class_0136.method_2((Predicate<ItemStack>)(var1x -> !this.method_251(var1x)), true));
+         int var3 = PlayerUtil.method_30(PlayerUtil.method_2((Predicate<ItemStack>)(var1x -> !this.method_251(var1x)), true));
          field_4219.interactionManager.clickSlot(0, var3, 40, SlotActionType.SWAP, field_4219.player);
-         Class_1261.method_2(var2);
+         PacketUtil.method_2(var2);
          field_4219.interactionManager.clickSlot(0, var3, 40, SlotActionType.SWAP, field_4219.player);
       } else {
-         Class_1261.method_2(var2);
+         PacketUtil.method_2(var2);
       }
    }
 

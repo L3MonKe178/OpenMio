@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 public abstract class Class_0370 extends Class_0145 {
    public final int field_1200;
    public final int field_1201;
-   public final Class_0242 field_1202 = new Class_0242();
+   public final Timer field_1202 = new Timer();
 
    public Class_0370(Class_0746 var1, int var2, int var3, int var4) {
       super(var1, var2);

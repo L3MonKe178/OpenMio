@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import nick.Loader;
 
-public final class Class_0245 {
+public final class Constants {
    public static final int field_684 = (Integer)Loader.getConstant(8242560);
    public static final int field_685 = (Integer)Loader.getConstant(6040919);
    public static final int field_686 = (Integer)Loader.getConstant(6786675);
@@ -12,7 +12,7 @@ public final class Class_0245 {
    public static final float field_690 = (Float)Loader.getConstant(5314762);
    public static final float field_691 = (Float)Loader.getConstant(4647205);
 
-   public Class_0245() {
+   public Constants() {
       super();
    }
 }

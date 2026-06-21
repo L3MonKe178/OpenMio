@@ -2,10 +2,10 @@ package me.mioclient.internal;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public class Class_0939<E extends Class_0013> extends Class_1049<E, List<E>> {
-   public Class_0939() {
+public class Registry<E extends Nameable> extends Class_1049<E, List<E>> {
+   public Registry() {
       super(new ArrayList<>());
    }
 
@@ -17,7 +17,7 @@ public class Class_0939<E extends Class_0013> extends Class_1049<E, List<E>> {
       if (var1 == null) {
          return false;
       } else {
-         for (Class_0013 var3 : this.field_3243) {
+         for (Nameable var3 : this.field_3243) {
             if (var3 != null && var3.getName() != null && var3.getName().equals(var1.getName())) {
                return false;
             }

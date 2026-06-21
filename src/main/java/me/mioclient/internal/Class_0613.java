@@ -19,7 +19,7 @@ import net.minecraft.util.math.Vec3d;
 
 public class Class_0613 extends Class_0716 {
    public static final AbstractModule_28 field_1894 = Hub.field_2595.method_78(AbstractModule_28.class);
-   public final Class_0242 field_1895 = new Class_0242();
+   public final Timer field_1895 = new Timer();
    public boolean field_1896;
    public boolean field_1897;
    public float field_1761;
@@ -92,7 +92,7 @@ public class Class_0613 extends Class_0716 {
                && !field_4219.player.isFallFlying()
                && !Class_0396.method_2(field_4219.player)
                && this.field_2275.method_558()) {
-               Class_1261.method_1099();
+               PacketUtil.method_1099();
                field_4219.player.startFallFlying();
             }
 

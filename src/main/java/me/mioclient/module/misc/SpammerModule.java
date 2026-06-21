@@ -11,9 +11,9 @@ import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_1222;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.internal.Class_1328;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -35,7 +35,7 @@ public class SpammerModule extends Module {
    public static IRCModule field_906 = Hub.field_2595.method_78(IRCModule.class);
    public final Random field_1830;
    public final List<String> field_1831;
-   public final Class_0242 field_1832;
+   public final Timer field_1832;
    public int current;
 
    public SpammerModule() {
@@ -43,7 +43,7 @@ public class SpammerModule extends Module {
       Settings.initialize(this);
       this.field_1830 = new Random();
       this.field_1831 = new ArrayList<>();
-      this.field_1832 = new Class_0242();
+      this.field_1832 = new Timer();
       this.current = 0;
       this.field_1824.method_9(this::method_142);
       this.field_1826.method_9(() -> {
@@ -68,11 +68,11 @@ public class SpammerModule extends Module {
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      if (this.field_1832.method_2((double)this.field_1825.getValue().floatValue(), TimeUnit.SECONDS) && !this.field_1831.isEmpty()) {
+      if (this.field_1832.method_2((double)(this.field_1825.getValue() != null ? this.field_1825.getValue().floatValue() : 0.0f), TimeUnit.SECONDS) && !this.field_1831.isEmpty()) {
          String var2 = this.field_1831
             .get(this.field_1828.getValue() && this.field_1831.size() > 1 ? this.field_1830.nextInt(this.field_1831.size() - 1) : this.current);
          if (!field_906.isToggled() || !var2.startsWith(field_906.field_567.getValue())) {
-            Class_1245.method_425(var2);
+            ChatUtil.method_425(var2);
          }
 
          this.current = (this.current + 1) % this.field_1831.size();
@@ -95,9 +95,9 @@ public class SpammerModule extends Module {
          this.field_1831.addAll(FileUtils.readLines(var1.toFile(), StandardCharsets.UTF_8));
       } catch (Exception var2) {
          if (!this.method_535()) {
-            Class_1245.method_2(
+            ChatUtil.method_2(
                Text.literal("Failed to open spammer file").styled(var0 -> var0.withColor(Formatting.RED)),
-               Class_1245.method_38(var2.toString().hashCode()),
+               ChatUtil.method_38(var2.toString().hashCode()),
                Priority.LOW
             );
          }

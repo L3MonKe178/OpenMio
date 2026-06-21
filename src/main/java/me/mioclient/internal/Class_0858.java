@@ -22,7 +22,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-public final class Class_0858 extends Class_0618 {
+public final class Class_0858 extends Command {
    public boolean field_1229;
    public String field_2767;
    public Class_1072 field_2768;
@@ -37,7 +37,7 @@ public final class Class_0858 extends Class_0618 {
       ((LiteralArgumentBuilder<CommandSource>)((LiteralArgumentBuilder<CommandSource>)((LiteralArgumentBuilder<CommandSource>)var1.then(this.method_9("delete", var0 -> var0.executes(var0x -> {
                   Class_0260 var1x = (Class_0260)var0x.getArgument("macro", Class_0260.class);
                   Hub.field_2607.method_9(var1x);
-                  Class_1245.method_2(Text.literal(Class_1016.method_3(var1x.getName())).append(" has been deleted"), Class_1245.method_38(-1));
+                  ChatUtil.method_2(Text.literal(FontRenderer.method_3(var1x.getName())).append(" has been deleted"), ChatUtil.method_38(-1));
                   return 1;
                })))).then(this.method_9("commands", this::method_2)))
             .then(
@@ -56,8 +56,8 @@ public final class Class_0858 extends Class_0618 {
                                              Class_0260 var5 = var3.method_2(var1x, var4);
                                              var5.method_9().add(var2);
                                              Hub.field_2607.method_2(var5);
-                                             Class_1245.method_2(
-                                                Text.literal("Macro ").append(var5.method_15()).append(" has been created"), Class_1245.method_38(-1)
+                                             ChatUtil.method_2(
+                                                Text.literal("Macro ").append(var5.method_15()).append(" has been created"), ChatUtil.method_38(-1)
                                              );
                                              return 1;
                                           })))
@@ -67,8 +67,8 @@ public final class Class_0858 extends Class_0618 {
                                           Class_0702 var3 = (Class_0702)var0.getArgument("key", Class_0702.class);
                                           Class_0260 var4 = var2.method_2(var1x, var3);
                                           Hub.field_2607.method_2(var4);
-                                          Class_1245.method_2(
-                                             Text.literal("Macro ").append(var4.method_15()).append(" has been created"), Class_1245.method_38(-1)
+                                          ChatUtil.method_2(
+                                             Text.literal("Macro ").append(var4.method_15()).append(" has been created"), ChatUtil.method_38(-1)
                                           );
                                           return 1;
                                        })
@@ -77,7 +77,7 @@ public final class Class_0858 extends Class_0618 {
                                  this.field_2767 = (String)var1x.getArgument("name", String.class);
                                  this.field_2768 = (Class_1072)var1x.getArgument("type", Class_1072.class);
                                  this.field_1229 = true;
-                                 Class_1245.method_2(Text.literal("Press a key"), Class_1245.method_38(-1));
+                                 ChatUtil.method_2(Text.literal("Press a key"), ChatUtil.method_38(-1));
                                  return 1;
                               })
                         )
@@ -85,11 +85,11 @@ public final class Class_0858 extends Class_0618 {
             )
          .then(LiteralArgumentBuilder.<CommandSource>literal("list").executes(var0 -> {
             int var1x = 0;
-            Class_1245.method_2(Text.literal("Macro list:"), Class_1245.method_38(-1));
+            ChatUtil.method_2(Text.literal("Macro list:"), ChatUtil.method_38(-1));
 
             for (Class_0260 var3 : (List<Class_0260>)Hub.field_2607.getRegistry()) {
                String var4 = "%s (%s)".formatted(var3.getName(), var3.getKeybind().method_4());
-               Class_1245.method_2(Text.literal(var4), Class_1245.method_38(var1x));
+               ChatUtil.method_2(Text.literal(var4), ChatUtil.method_38(var1x));
                var1x++;
             }
 
@@ -103,10 +103,10 @@ public final class Class_0858 extends Class_0618 {
                         Class_0260 var1x = (Class_0260)var0.getArgument("macro", Class_0260.class);
                         String var2 = (String)var0.getArgument("command", String.class);
                         if (var1x.method_2() == Class_1072.HOLD && var1x.method_9().size() >= 2) {
-                           String var3 = new Class_1303()
+                           String var3 = new TextBuilder()
                               .method_2(String.valueOf(Formatting.RED))
                               .method_9("\u0001You've reached the command limit of Hold Macro");
-                           Class_1245.method_2(Text.literal(var3), Class_1245.method_38(-1));
+                           ChatUtil.method_2(Text.literal(var3), ChatUtil.method_38(-1));
                            return 1;
                         } else {
                            var1x.method_9().add(var2);
@@ -126,12 +126,12 @@ public final class Class_0858 extends Class_0618 {
                                        var2.method_9().remove(var3);
                                        return 1;
                                     } else {
-                                       String var4 = new Class_1303()
+                                       String var4 = new TextBuilder()
                                           .method_2(this.method_2(var2))
                                           .method_2(String.valueOf(Formatting.WHITE))
                                           .method_2(String.valueOf(Formatting.RED))
                                           .method_9("\u0001Invalid index\u0001\n\u0001");
-                                       Class_1245.method_2(Text.literal(var4), Class_1245.method_38(-1));
+                                       ChatUtil.method_2(Text.literal(var4), ChatUtil.method_38(-1));
                                        return 1;
                                     }
                                  }
@@ -155,12 +155,12 @@ public final class Class_0858 extends Class_0618 {
                                     String var3 = (String)var1x.getArgument("command", String.class);
                                     int var4 = (Integer)var1x.getArgument("index", Integer.class) - 1;
                                     if (var4 > var2.method_9().size()) {
-                                       String var5 = new Class_1303()
+                                       String var5 = new TextBuilder()
                                           .method_2(this.method_2(var2))
                                           .method_2(String.valueOf(Formatting.WHITE))
                                           .method_2(String.valueOf(Formatting.RED))
                                           .method_9("\u0001Invalid index\u0001\n\u0001");
-                                       Class_1245.method_2(Text.literal(var5), Class_1245.method_38(-1));
+                                       ChatUtil.method_2(Text.literal(var5), ChatUtil.method_38(-1));
                                        return 1;
                                     } else {
                                        var2.method_9().set(var4, var3);
@@ -173,7 +173,7 @@ public final class Class_0858 extends Class_0618 {
             ))
          .executes(var1x -> {
             Class_0260 var2 = (Class_0260)var1x.getArgument("macro", Class_0260.class);
-            Class_1245.method_2(Text.literal(this.method_2(var2)), Class_1245.method_38(-1));
+            ChatUtil.method_2(Text.literal(this.method_2(var2)), ChatUtil.method_38(-1));
             return 1;
          });
    }
@@ -185,7 +185,7 @@ public final class Class_0858 extends Class_0618 {
    }
 
    public String method_2(Class_0260 var1) {
-      StringBuffer var2 = new StringBuffer(new Class_1303().method_2(var1.getName()).method_9("\u0001's command list: \n"));
+      StringBuffer var2 = new StringBuffer(new TextBuilder().method_2(var1.getName()).method_9("\u0001's command list: \n"));
 
       for (int var3 = 0; var3 < var1.method_9().size(); var3++) {
          var2.append(var3 + 1);
@@ -211,7 +211,7 @@ public final class Class_0858 extends Class_0618 {
 
          for (char var9 : var2.getRemaining().toCharArray()) {
             var4++;
-            if (var9 != Class_1032.method_928() && (var4 != 1 || var9 != ' ')) {
+            if (var9 != CommandManager.method_928() && (var4 != 1 || var9 != ' ')) {
                var5.append(var9);
             } else {
                var3 += var4;
@@ -221,7 +221,7 @@ public final class Class_0858 extends Class_0618 {
          }
 
          int var11 = var3;
-         return Class_1032.field_3191.getCompletionSuggestions(Class_1032.field_3191.parse(var5.toString(), null), var4).thenApply(var1x -> {
+         return CommandManager.field_3191.getCompletionSuggestions(CommandManager.field_3191.parse(var5.toString(), null), var4).thenApply(var1x -> {
             StringRange var2x = var1x.getRange();
             var2x = new StringRange(var2x.getStart() + var11, var2x.getEnd() + var11);
             List var3x = var1x.getList().stream().map(var1xx -> {
@@ -240,7 +240,7 @@ public final class Class_0858 extends Class_0618 {
       if (this.field_1229 && this.field_2768 != null && this.field_2767 != null) {
          Class_0260 var2 = this.field_2768.method_2(this.field_2767, new Class_0702(var1.method_614(), Class_0046.TOGGLE, var1.method_615()));
          Hub.field_2607.method_2(var2);
-         Class_1245.method_2(Text.literal("Macro ").append(var2.method_15()).append(" has been created"), Class_1245.method_38(-1));
+         ChatUtil.method_2(Text.literal("Macro ").append(var2.method_15()).append(" has been created"), ChatUtil.method_38(-1));
          this.field_1229 = false;
       }
    }

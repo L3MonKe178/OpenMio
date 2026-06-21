@@ -22,6 +22,6 @@ public class Class_1259 implements Class_1019 {
 
    @Override
    public Class_0635 method_31(Item var1) {
-      return new Class_0635(Class_0136.method_9(var1), 40);
+      return new Class_0635(PlayerUtil.method_9(var1), 40);
    }
 }

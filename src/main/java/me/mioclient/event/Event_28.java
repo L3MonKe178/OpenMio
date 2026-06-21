@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.particle.Particle;
 
-public class Event_28 extends Class_0605 {
+public class Event_28 extends Event {
    public Particle field_2942;
 
    public Event_28(Particle var1) {

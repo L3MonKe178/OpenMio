@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.util.function.Predicate;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0286;
 import me.mioclient.enum_.Class_0446;
 import me.mioclient.enum_.Class_0685;
@@ -21,11 +21,11 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.Hand;
 
-public class Class_0975 implements Class_1309 {
+public class Class_0975 implements MioAPI {
    public static final SwingModule swing = Hub.field_2595.method_78(SwingModule.class);
    public static AutoCrystalModule ac = Hub.field_2595.method_78(AutoCrystalModule.class);
    public static HitmarkerModule field_2993 = Hub.field_2595.method_78(HitmarkerModule.class);
-   public final Class_0242 field_2994 = new Class_0242();
+   public final Timer field_2994 = new Timer();
    public long field_2995;
    public int current;
 
@@ -58,7 +58,7 @@ public class Class_0975 implements Class_1309 {
          int var3 = field_4219.player.getInventory().selectedSlot;
          boolean var4 = this.method_879();
          this.current = var1;
-         Class_1261.method_36(this.current);
+         PacketUtil.method_36(this.current);
          Entity var5 = field_4219.world.getEntityById(var1);
          if (var5 != null
             && var5.getWorld() != null
@@ -78,14 +78,14 @@ public class Class_0975 implements Class_1309 {
 
          this.method_7(var6);
          if (var2) {
-            Class_1261.method_9(Hand.MAIN_HAND);
+            PacketUtil.method_9(Hand.MAIN_HAND);
          } else {
             field_4219.player.swingHand(var6);
          }
 
          if (var4 && ac.field_4080.getValue() == Class_0685.SILENT) {
             ac.method_1143();
-            Class_0136.method_16(var3);
+            PlayerUtil.method_16(var3);
          }
 
          return true;
@@ -118,13 +118,13 @@ public class Class_0975 implements Class_1309 {
       if (ac.field_4080.getValue() != Class_0685.NONE
          && field_4219.player.hasStatusEffect(StatusEffects.WEAKNESS)
          && !(field_4219.player.getMainHandStack().getItem() instanceof ToolItem)) {
-         int var1 = Class_0136.method_7((Predicate<ItemStack>)(var0 -> var0.getItem() instanceof SwordItem));
+         int var1 = PlayerUtil.method_7((Predicate<ItemStack>)(var0 -> var0.getItem() instanceof SwordItem));
          if (var1 != -1) {
             if (ac.field_4080.getValue() == Class_0685.SILENT) {
                ac.method_1143();
             }
 
-            Class_0136.method_16(var1);
+            PlayerUtil.method_16(var1);
             return true;
          }
       }

@@ -16,15 +16,15 @@ import me.mioclient.event.Event_51;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0127;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.combat.OffhandModule;
@@ -86,8 +86,8 @@ public abstract class AbstractModule_32 extends Module {
          .method_22("s")
          .method_2(this.field_4259, this.field_4263)
    );
-   public final Class_0242 field_3756 = new Class_0242();
-   public final Class_0242 field_4265 = new Class_0242();
+   public final Timer field_3756 = new Timer();
+   public final Timer field_4265 = new Timer();
    public boolean field_4266;
    public Vec3d field_4267;
    public Direction field_4138;
@@ -152,7 +152,7 @@ public abstract class AbstractModule_32 extends Module {
          if (!field_4219.player.isSpectator() && field_4219.player.isAlive() && !field_4219.player.isRiding() && !field_4219.player.isSleeping()) {
             if (!this.method_107()) {
                if (!this.field_4271 || !noslow.method_573()) {
-                  if (this.field_3756.method_9((long)this.field_4247.getValue().intValue()) && this.method_37()) {
+                  if (this.field_3756.method_9((long)(this.field_4247.getValue() != null ? this.field_4247.getValue().intValue() : 0)) && this.method_37()) {
                      List var1 = this.method_17();
                      int var2 = this.method_34();
                      synchronized (var1) {
@@ -188,7 +188,7 @@ public abstract class AbstractModule_32 extends Module {
 
    @Subscribe
    public void method_2(Event_51 var1) {
-      if (var1.method_213() == PreType.POST && (double)var1.method_575() > Class_0245.field_688 && this.field_4255.getValue()) {
+      if (var1.method_213() == PreType.POST && (double)var1.method_575() > Constants.field_688 && this.field_4255.getValue()) {
          this.disable();
       }
    }
@@ -221,7 +221,7 @@ public abstract class AbstractModule_32 extends Module {
                   return;
                }
 
-               Class_1261.method_9(Hand.MAIN_HAND);
+               PacketUtil.method_9(Hand.MAIN_HAND);
                break;
             }
          }
@@ -243,7 +243,7 @@ public abstract class AbstractModule_32 extends Module {
       }
 
       if (var1.method_127() instanceof OpenScreenS2CPacket var8 && !this.field_3756.method_9(100L)) {
-         Class_1261.method_2(new CloseHandledScreenC2SPacket(var8.getSyncId()));
+         PacketUtil.method_2(new CloseHandledScreenC2SPacket(var8.getSyncId()));
          var1.method_463();
       }
    }
@@ -255,8 +255,8 @@ public abstract class AbstractModule_32 extends Module {
                this.field_4239 = Class_1035.method_2(var3, Hub.field_2623.method_523());
                if (this.field_4239 != null) {
                   if (this.field_4252.getValue()) {
-                     float[] var4 = Class_0485.method_14(this.field_4239);
-                     Hub.field_2598.method_2(Class_0485.method_2(var4, field_4245.method_1051()), this.method_52() + 1);
+                     float[] var4 = RotationManager.method_14(this.field_4239);
+                     Hub.field_2598.method_2(RotationManager.method_2(var4, field_4245.method_1051()), this.method_52() + 1);
                   }
 
                   this.field_4265.reset();
@@ -272,7 +272,7 @@ public abstract class AbstractModule_32 extends Module {
          for (BlockPos var6 : var1) {
             if (this.field_4269 >= 30) {
                this.field_4269 = 0;
-               Class_1245.method_2(Text.literal(this.getName()).append(" is out of blocks!"), Class_1245.method_38(-2), Priority.HIGH);
+               ChatUtil.method_2(Text.literal(this.getName()).append(" is out of blocks!"), ChatUtil.method_38(-2), Priority.HIGH);
                this.field_4268 = 1337;
                this.disable();
                break;
@@ -302,7 +302,7 @@ public abstract class AbstractModule_32 extends Module {
                      }
                   }
 
-                  Class_1261.method_2(
+                  PacketUtil.method_2(
                      field_4219.player.getX(),
                      field_4219.player.getY(),
                      field_4219.player.getZ(),
@@ -321,10 +321,10 @@ public abstract class AbstractModule_32 extends Module {
          }
 
          if (this.field_4272 && this.method_374()) {
-            Class_1261.method_1100();
+            PacketUtil.method_1100();
          }
 
-         Class_0136.method_16(var11);
+         PlayerUtil.method_16(var11);
          this.field_4272 = false;
       }
    }
@@ -337,7 +337,7 @@ public abstract class AbstractModule_32 extends Module {
          if (this.field_4138 == null && !this.field_4249.getValue()) {
             return Class_1050.field_3246;
          } else {
-            float[] var2 = Class_0485.method_2(var1.toCenterPos(), this.field_4138);
+            float[] var2 = RotationManager.method_2(var1.toCenterPos(), this.field_4138);
             boolean var3 = this.field_4251.getValue();
             if (this.field_4138 != null) {
                var3 &= !Class_1225.method_2(Class_1172.field_3634.method_2(var1.offset(this.field_4138), this.field_4138.getOpposite()));
@@ -350,16 +350,16 @@ public abstract class AbstractModule_32 extends Module {
             } else {
                boolean var4 = true;
                if (!this.field_4272) {
-                  Class_0136.method_16(this.method_34());
+                  PlayerUtil.method_16(this.method_34());
                   if (this.method_374()) {
-                     Class_1261.method_1100();
+                     PacketUtil.method_1100();
                   }
 
                   this.field_4272 = true;
                }
 
                if (!var3 && this.method_5(var1)) {
-                  if (Class_0485.method_513() && field_4245.method_1052()) {
+                  if (RotationManager.method_513() && field_4245.method_1052()) {
                      var2[0] = (float)((double)var2[0] + Math.random() * Double.longBitsToDouble(4576918229175238656L));
                      var2[1] = (float)((double)var2[1] + Math.random() * Double.longBitsToDouble(4576918229175238656L));
                   }
@@ -371,11 +371,11 @@ public abstract class AbstractModule_32 extends Module {
 
                   this.field_4267 = var1.toCenterPos();
                   if (this.field_4138 != null) {
-                     this.field_4267 = this.field_4267.offset(this.field_4138, Class_0245.field_688);
+                     this.field_4267 = this.field_4267.offset(this.field_4138, Constants.field_688);
                   }
 
                   if (this.field_4252.getValue()) {
-                     Hub.field_2598.method_2(Class_0485.method_2(var2, field_4245.method_1051()), this.method_52());
+                     Hub.field_2598.method_2(RotationManager.method_2(var2, field_4245.method_1051()), this.method_52());
                   }
 
                   this.field_4268++;
@@ -394,8 +394,8 @@ public abstract class AbstractModule_32 extends Module {
    }
 
    public int method_34() {
-      return Class_0136.method_5(Items.OBSIDIAN) == -1
-         ? Class_0136.method_7(
+      return PlayerUtil.method_5(Items.OBSIDIAN) == -1
+         ? PlayerUtil.method_7(
             (Predicate<ItemStack>)(var0 -> {
                if (var0.getItem() instanceof BlockItem var1
                   && var1.getBlock() != Blocks.ANVIL
@@ -406,7 +406,7 @@ public abstract class AbstractModule_32 extends Module {
                return false;
             })
          )
-         : Class_0136.method_5(Items.OBSIDIAN);
+         : PlayerUtil.method_5(Items.OBSIDIAN);
    }
 
    public void method_7(BlockPos var1) {
@@ -467,7 +467,7 @@ public abstract class AbstractModule_32 extends Module {
    }
 
    public boolean method_374() {
-      return field_4245.method_1052() && Class_0485.method_513() && this.field_4249.getValue() && this.field_4266;
+      return field_4245.method_1052() && RotationManager.method_513() && this.field_4249.getValue() && this.field_4266;
    }
 
    public BlockPos method_425() {

@@ -15,7 +15,7 @@ public class Class_1081 {
    }
 
    public static Color method_2(int var0, float var1, float var2, int var3) {
-      return method_2(Class_0245.field_686, var0, var1, var2, var3);
+      return method_2(Constants.field_686, var0, var1, var2, var3);
    }
 
    public static Color method_2(int var0, int var1, float var2, float var3, int var4) {
@@ -27,7 +27,7 @@ public class Class_1081 {
 
    public static Color method_2(Color var0, Color var1, double var2, double var4) {
       double var6 = ((double)System.currentTimeMillis() + var4) % var2 / var2;
-      return var6 > Class_0245.field_688 ? method_2(var1, var0, (float)((var6 - Class_0245.field_688) * 2.0)) : method_2(var0, var1, (float)(var6 * 2.0));
+      return var6 > Constants.field_688 ? method_2(var1, var0, (float)((var6 - Constants.field_688) * 2.0)) : method_2(var0, var1, (float)(var6 * 2.0));
    }
 
    public static Color method_2(Color var0, Color var1, float var2) {

@@ -1,8 +1,8 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 
-public class Event_24 extends Class_0605 {
+public class Event_24 extends Event {
    public String field_483;
 
    public Event_24(String var1) {

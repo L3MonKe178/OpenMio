@@ -6,8 +6,8 @@ import java.util.concurrent.CompletableFuture;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_21;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -19,13 +19,13 @@ public class DiscordModule extends Module {
    public Setting<Boolean> field_2014;
    public CompletableFuture<IPCClient> field_2015;
    public long field_788;
-   public final Class_0242 field_2016;
+   public final Timer field_2016;
 
    public DiscordModule() {
       super("Discord", "Displays mioclient.me as your discord activity.", Category.CLIENT);
       Settings.initialize(this);
       this.field_788 = System.currentTimeMillis();
-      this.field_2016 = new Class_0242();
+      this.field_2016 = new Timer();
       this.setDrawn(false);
    }
 
@@ -76,7 +76,7 @@ public class DiscordModule extends Module {
          var3.setLargeImage("https://mioclient.me/assets/dcrpc3.png", this.method_649());
          var3.setStartTimestamp(this.field_788);
          if (this.field_2013.getValue()) {
-            var3.setDetails(new Class_1303().method_2(Hub.field_2609.method_802()).method_9("uid \u0001"));
+            var3.setDetails(new TextBuilder().method_2(Hub.field_2609.method_802()).method_9("uid \u0001"));
          }
 
          if (this.field_2014.getValue()) {
@@ -85,7 +85,7 @@ public class DiscordModule extends Module {
             if (!this.method_535()) {
                var4 = field_4219.player.networkHandler.getServerInfo();
                String var10000 = !field_4219.isInSingleplayer() && var4 != null ? var4.address : "singleplayer";
-               var5 = new Class_1303().method_2((Object)var10000).method_9("Playing \u0001");
+               var5 = new TextBuilder().method_2((Object)var10000).method_9("Playing \u0001");
             }
 
             var3.setState(var5);

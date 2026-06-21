@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.FoodComponent.StatusEffectEntry;
 import net.minecraft.entity.effect.StatusEffects;
 
-public enum Class_0776 implements Class_0013 {
+public enum Class_0776 implements Nameable {
    HUNGER("Hunger") {
       @Override
       public double method_2(FoodComponent var1) {

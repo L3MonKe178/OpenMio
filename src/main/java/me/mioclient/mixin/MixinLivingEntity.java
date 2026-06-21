@@ -3,7 +3,7 @@ package me.mioclient.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0705;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0286;
 import me.mioclient.enum_.Class_1229;
 import me.mioclient.enum_.StrafeType;
@@ -13,7 +13,7 @@ import me.mioclient.event.Event_64;
 import me.mioclient.internal.Class_0464;
 import me.mioclient.internal.Class_0654;
 import me.mioclient.internal.Class_0922;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.module.misc.SwingModule;
 import me.mioclient.module.movement.ElytraFlyModule;
@@ -111,7 +111,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
       cancellable = true
    )
    private void isFallFlyingHook(CallbackInfoReturnable<Boolean> var1) {
-      if (Class_1309.method_31(this)) {
+      if (MioAPI.method_31(this)) {
          if (fireworks.isToggled() && fireworks.field_2686.getValue() && fireworks.method_785() > 0) {
             var1.cancel();
             var1.setReturnValue(true);
@@ -145,7 +145,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
          this.prevLookYaw = this.getYaw(1.0F);
          this.prevLookPitch = this.getPitch();
          this.event = new Event_39(this.prevLookYaw, this.prevLookPitch, false);
-         Class_1309.field_4220.method_36(this.event);
+         MioAPI.field_4220.method_36(this.event);
          if (this.event.method_464()) {
             this.setYaw(this.event.method_500());
             this.setPitch(this.event.method_501());
@@ -176,7 +176,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
    )
    private float jumpFix(float var1) {
       this.event = new Event_39(this.getYaw(), this.getPitch(), true);
-      Class_1309.field_4220.method_36(this.event);
+      MioAPI.field_4220.method_36(this.event);
       return this.event.method_464() ? this.event.method_500() : var1;
    }
 
@@ -243,7 +243,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
                   boolean var7 = (Boolean)var1.getReturnValue();
                   if (this.prevFlying && !var7) {
                      if (efly.method_1179()) {
-                        Class_1261.method_1099();
+                        PacketUtil.method_1099();
                      }
 
                      var1.setReturnValue(efly.method_1179());
@@ -267,7 +267,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
       MinecraftClient var3 = MinecraftClient.getInstance();
       if (this.equals(var3.player)) {
          Event_29 var4 = new Event_29(var1);
-         Class_1309.field_4220.method_36(var4);
+         MioAPI.field_4220.method_36(var4);
          if (var4.method_464()) {
             var2.cancel();
             var2.setReturnValue(false);
@@ -284,7 +284,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
       MinecraftClient var3 = MinecraftClient.getInstance();
       if (this.equals(var3.player)) {
          Event_29 var4 = new Event_29(var1);
-         Class_1309.field_4220.method_36(var4);
+         MioAPI.field_4220.method_36(var4);
          if (var4.method_464()) {
             var2.cancel();
             var2.setReturnValue(null);
@@ -326,7 +326,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
    private void tickPre(Vec3d var1, float var2, CallbackInfoReturnable<Vec3d> var3) {
       if (Event_64.method_33(this)) {
          this.mio$moveEvent = new Event_64(this.getVelocity());
-         Class_1309.field_4220.method_36(this.mio$moveEvent);
+         MioAPI.field_4220.method_36(this.mio$moveEvent);
          Class_1334.method_2(this.getVelocity(), this.mio$moveEvent.method_380(), this.mio$moveEvent.method_395(), this.mio$moveEvent.method_396());
       }
    }
@@ -342,7 +342,7 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
    private void tickPre(Vec3d var1, CallbackInfo var2) {
       if (Event_64.method_33(this)) {
          this.mio$moveEvent = new Event_64(this.getVelocity());
-         Class_1309.field_4220.method_36(this.mio$moveEvent);
+         MioAPI.field_4220.method_36(this.mio$moveEvent);
          Class_1334.method_2(this.getVelocity(), this.mio$moveEvent.method_380(), this.mio$moveEvent.method_395(), this.mio$moveEvent.method_396());
       }
    }

@@ -12,11 +12,11 @@ import me.mioclient.event.Event_30;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_44;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.internal.Class_1035;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -41,7 +41,7 @@ public class AnnouncerModule extends Module {
    public Setting<Boolean> field_1415;
    public Setting<Boolean> field_1416;
    public Setting<Double> field_1417;
-   public final Class_0242 field_1418;
+   public final Timer field_1418;
    public double field_1419;
    public int field_1420;
    public int field_1421;
@@ -49,7 +49,7 @@ public class AnnouncerModule extends Module {
    public AnnouncerModule() {
       super("Announcer", "Lets the others know what you're doing.", Category.MISC);
       Settings.initialize(this);
-      this.field_1418 = new Class_0242();
+      this.field_1418 = new Timer();
       this.setDrawn(false);
    }
 
@@ -79,24 +79,24 @@ public class AnnouncerModule extends Module {
                      boolean var7 = Hub.field_2603.method_289(var5);
                      if ((this.field_1411.getValue() || !var6) && (this.field_1412.getValue() || !var7) && (this.field_1413.getValue() || var6 || var7)) {
                         if (this.field_1408.getValue() && this.field_1409.getValue()) {
-                           var5 = new Class_1303().method_2((Object)var5).method_9("\u0001 joined");
+                           var5 = new TextBuilder().method_2((Object)var5).method_9("\u0001 joined");
                            if (var6) {
-                              var5 = new Class_1303().method_2((Object)var5).method_9("\u0001 [friend]");
+                              var5 = new TextBuilder().method_2((Object)var5).method_9("\u0001 [friend]");
                            } else if (var7) {
-                              var5 = new Class_1303().method_2((Object)var5).method_9("\u0001 [enemy]");
+                              var5 = new TextBuilder().method_2((Object)var5).method_9("\u0001 [enemy]");
                            }
 
                            final String var5_a = var5;
-                           field_4219.executeSync(() -> this.method_2(var5_a, Class_1245.method_38(-254721)));
+                           field_4219.executeSync(() -> this.method_2(var5_a, ChatUtil.method_38(-254721)));
                         } else {
                            if (var6) {
-                              var5 = new Class_1303().method_2((Object)var5).method_9("My friend \u0001");
+                              var5 = new TextBuilder().method_2((Object)var5).method_9("My friend \u0001");
                            }
 
                            final String var5_b = var5;
                            field_4219.executeSync(
                               () -> this.method_2(
-                                    new Class_1303().method_2((Object)var5_b).method_9("\u0001 has joined the game!"), Class_1245.method_38(-254721)
+                                    new TextBuilder().method_2((Object)var5_b).method_9("\u0001 has joined the game!"), ChatUtil.method_38(-254721)
                                  )
                            );
                         }
@@ -114,23 +114,23 @@ public class AnnouncerModule extends Module {
                   if (var16.getProfile().getId().equals(var13)) {
                      String var17 = var16.getProfile().getName();
                      if (this.field_1408.getValue() && this.field_1409.getValue()) {
-                        var17 = new Class_1303().method_2((Object)var17).method_9("\u0001 left");
+                        var17 = new TextBuilder().method_2((Object)var17).method_9("\u0001 left");
                         if (Hub.field_2603.method_1009(var17)) {
-                           var17 = new Class_1303().method_2((Object)var17).method_9("\u0001 [friend]");
+                           var17 = new TextBuilder().method_2((Object)var17).method_9("\u0001 [friend]");
                         } else if (Hub.field_2603.method_289(var17)) {
-                           var17 = new Class_1303().method_2((Object)var17).method_9("\u0001 [enemy]");
+                           var17 = new TextBuilder().method_2((Object)var17).method_9("\u0001 [enemy]");
                         }
 
                         String var19 = var17;
-                        field_4219.executeSync(() -> this.method_2(var19, Class_1245.method_38(-254722)));
+                        field_4219.executeSync(() -> this.method_2(var19, ChatUtil.method_38(-254722)));
                      } else {
                         if (Hub.field_2603.method_1009(var17)) {
-                           var17 = new Class_1303().method_2((Object)var17).method_9("My friend \u0001");
+                           var17 = new TextBuilder().method_2((Object)var17).method_9("My friend \u0001");
                         }
 
                         String var8 = var17;
                         field_4219.executeSync(
-                           () -> this.method_2(new Class_1303().method_2((Object)var8).method_9("\u0001 has left the game!"), Class_1245.method_38(-254722))
+                           () -> this.method_2(new TextBuilder().method_2((Object)var8).method_9("\u0001 has left the game!"), ChatUtil.method_38(-254722))
                         );
                      }
 
@@ -171,8 +171,8 @@ public class AnnouncerModule extends Module {
                int var10003 = this.field_1420;
                this.method_483(
                   this.method_482()
-                     .replace("{amount}", new Class_1303().method_2(var10003).method_9("\u0001"))
-                     .replace("{name}", new Class_1303().method_2(var1.method_602().getItem().getName().getString()).method_9("\u0001"))
+                     .replace("{amount}", new TextBuilder().method_2(var10003).method_9("\u0001"))
+                     .replace("{name}", new TextBuilder().method_2(var1.method_602().getItem().getName().getString()).method_9("\u0001"))
                );
                this.field_1420 = 0;
                this.field_1418.reset();
@@ -190,12 +190,12 @@ public class AnnouncerModule extends Module {
             && this.field_1421 >= var2
             && this.field_1418.method_9((long)(Double.longBitsToDouble(4652007308841189376L) * this.field_1417.getValue()))) {
             String[] var3 = new String[]{
-               new Class_1303().method_2(Class_1035.method_30(var1.method_111()).getName().getString()).method_9("\u0001"), "Air", "Bedrock", "Barrier"
+               new TextBuilder().method_2(Class_1035.method_30(var1.method_111()).getName().getString()).method_9("\u0001"), "Air", "Bedrock", "Barrier"
             };
             int var10003 = this.field_1421;
             this.method_483(
                this.method_481()
-                  .replace("{amount}", new Class_1303().method_2(var10003).method_9("\u0001"))
+                  .replace("{amount}", new TextBuilder().method_2(var10003).method_9("\u0001"))
                   .replace("{name}", var3[new Random().nextInt(var3.length)])
             );
             this.field_1421 = 0;
@@ -271,12 +271,12 @@ public class AnnouncerModule extends Module {
    }
 
    public void method_483(String var1) {
-      this.method_2(var1, Class_1245.method_2(this));
+      this.method_2(var1, ChatUtil.method_2(this));
    }
 
    public void method_2(String var1, MessageSignatureData var2) {
       if (this.field_1408.getValue()) {
-         Class_1245.method_2(Text.literal(var1).styled(var0 -> var0.withColor(new Color(161, 161, 161).hashCode())), var2);
+         ChatUtil.method_2(Text.literal(var1).styled(var0 -> var0.withColor(new Color(161, 161, 161).hashCode())), var2);
       } else {
          field_4219.player.networkHandler.sendChatMessage(var1);
       }

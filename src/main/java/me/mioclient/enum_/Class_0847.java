@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
 import java.util.function.Function;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.RotationManager;
 import net.minecraft.util.math.BlockPos;
 
-public enum Class_0847 implements Class_1309 {
+public enum Class_0847 implements MioAPI {
    XP(var0 -> BlockPos.ofFloored(field_4219.player.getX() + (double)var0.intValue(), 0.0, 0.0)),
    XN(var0 -> BlockPos.ofFloored(field_4219.player.getX() - (double)var0.intValue(), 0.0, 0.0)),
    ZP(var0 -> BlockPos.ofFloored(0.0, 0.0, field_4219.player.getZ() + (double)var0.intValue())),
@@ -34,7 +34,7 @@ public enum Class_0847 implements Class_1309 {
    }
 
    public static Class_0847 method_294(float var0) {
-      return switch (Class_0485.method_221(var0)) {
+      return switch (RotationManager.method_221(var0)) {
          case 0 -> ZP;
          case 1 -> XN_ZP;
          case 2 -> XN;

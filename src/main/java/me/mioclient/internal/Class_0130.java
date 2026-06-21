@@ -9,9 +9,9 @@ import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.concurrent.CompletableFuture;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 
-public final class Class_0130 implements Class_1309 {
+public final class Class_0130 implements MioAPI {
    public Class_0130() {
       super();
    }

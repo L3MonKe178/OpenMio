@@ -3,7 +3,7 @@ package me.mioclient.setting;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import java.util.function.Predicate;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.internal.Class_0841;
 
 public final class CustomSetting<T extends Enum<T>> extends Setting<T> {
@@ -11,14 +11,14 @@ public final class CustomSetting<T extends Enum<T>> extends Setting<T> {
 
    public CustomSetting(String var1, T var2, Predicate<T> var3) {
       super(var1, (T)var2, var3);
-      if (!Class_0013.method_16(var2)) {
+      if (!Nameable.method_16(var2)) {
          throw new IllegalArgumentException();
       }
    }
 
    public CustomSetting(String var1, T var2) {
       super(var1, (T)var2);
-      if (!Class_0013.method_16(var2)) {
+      if (!Nameable.method_16(var2)) {
          throw new IllegalArgumentException();
       }
    }

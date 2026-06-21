@@ -1,8 +1,8 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0286 implements Class_0013 {
+public enum Class_0286 implements Nameable {
    VANILLA("Vanilla"),
    ONE_EIGHT("1.8"),
    ONE_TWELVE("1.12");

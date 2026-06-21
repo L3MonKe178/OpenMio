@@ -5,7 +5,7 @@ import me.mioclient.Hub;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0421;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.internal.Class_1081;
@@ -37,7 +37,7 @@ public class BreakHighlightModule extends Module {
    public void method_9(Event_3 var1) {
       for (Class_0421 var3 : Hub.field_2629.method_974()) {
          if (!(Class_0930.method_35(var3.method_111()) > this.field_46.getValue())
-            && Class_0485.method_4(new Box(var3.method_111()))
+            && RotationManager.method_4(new Box(var3.method_111()))
             && Class_1225.method_3(var3.method_111())) {
             Color var4 = this.field_49.getValue();
             Color var5 = this.field_50.getValue();
@@ -66,8 +66,8 @@ public class BreakHighlightModule extends Module {
                }
 
                if (var11 != null && (!Hub.field_2603.method_289(var10.getGameProfile().getName()) || this.field_48.getValue())) {
-                  var4 = Class_1081.method_9(var11, this.field_49.getValue().getAlpha());
-                  var5 = Class_1081.method_9(var11, this.field_50.getValue().getAlpha());
+                  var4 = Class_1081.method_9(var11, (this.field_49.getValue() != null ? this.field_49.getValue().getAlpha() : 255));
+                  var5 = Class_1081.method_9(var11, (this.field_50.getValue() != null ? this.field_50.getValue().getAlpha() : 255));
                }
             }
 

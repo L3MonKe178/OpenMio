@@ -13,8 +13,8 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0032;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_0919;
 import me.mioclient.module.Category;
@@ -38,7 +38,7 @@ public class TunnelsModule extends Module {
    public Setting<Color> field_385;
    public Setting<Color> field_386;
    public static final Mutable field_387 = new Mutable();
-   public final Class_0242 field_388;
+   public final Timer field_388;
    public final List<Class_0919> field_389;
    public final Queue<Class_0919> field_390;
    public final ObjectSet<Class_0919> field_391;
@@ -47,7 +47,7 @@ public class TunnelsModule extends Module {
    public TunnelsModule() {
       super("Tunnels", "Highlights dug-out tunnels.", Category.RENDER);
       Settings.initialize(this);
-      this.field_388 = new Class_0242();
+      this.field_388 = new Timer();
       this.field_389 = Collections.synchronizedList(new ArrayList<>());
       this.field_390 = new ArrayDeque<>();
       this.field_391 = new ObjectOpenHashSet();
@@ -97,14 +97,14 @@ public class TunnelsModule extends Module {
       if (!this.method_535()) {
          synchronized (this.field_389) {
             for (Class_0919 var4 : this.field_389) {
-               if (!(var4.method_832() < (double)this.field_384.getValue().intValue())) {
+               if (!(var4.method_832() < (double)(this.field_384.getValue() != null ? this.field_384.getValue().intValue() : 0))) {
                   float var5 = this.field_383.getValue();
                   if (var4.field_2899) {
                      var5 = (float)var4.field_1887.getLengthY();
                   }
 
                   Box var6 = var4.field_1887.withMaxY(var4.field_1887.minY + (double)var5);
-                  if (Class_0485.method_4(var6)) {
+                  if (RotationManager.method_4(var6)) {
                      Class_0612.method_5(var1.method_10(), var6, this.field_385.getValue());
                      Class_0612.method_2(var1.method_10(), var6, this.field_386.getValue(), this.field_382.getValue());
                   }

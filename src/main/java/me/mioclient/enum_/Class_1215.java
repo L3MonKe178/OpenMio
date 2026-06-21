@@ -1,16 +1,16 @@
 package me.mioclient.enum_;
 
 import java.util.Comparator;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
-public enum Class_1215 implements Class_0013 {
-   DISTANCE("Distance", Comparator.comparing(var0 -> var0.distanceTo(Class_1309.field_4219.player))),
-   CROSSHAIR("Crosshair", Comparator.comparing(var0 -> MathHelper.angleBetween(Class_1309.field_4219.player.getYaw(), Class_0485.method_14(var0)[0]))),
+public enum Class_1215 implements Nameable {
+   DISTANCE("Distance", Comparator.comparing(var0 -> var0.distanceTo(MioAPI.field_4219.player))),
+   CROSSHAIR("Crosshair", Comparator.comparing(var0 -> MathHelper.angleBetween(MioAPI.field_4219.player.getYaw(), RotationManager.method_14(var0)[0]))),
    HEALTH("Health", Comparator.comparing(Class_0396::method_2));
 
    public final String field_3803;

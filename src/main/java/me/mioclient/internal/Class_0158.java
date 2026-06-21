@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import java.awt.Color;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0937;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0274;
 import me.mioclient.module.abstract_.AbstractModule_26;
 import me.mioclient.module.client.FontsModule;
@@ -13,7 +13,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 
-public abstract class Class_0158 implements Class_1309, Class_0937 {
+public abstract class Class_0158 implements MioAPI, Class_0937 {
    public static final Color field_459 = new Color(0, 0, 0, 120);
    public static boolean field_460 = false;
    public final AbstractModule_26 field_461;
@@ -44,7 +44,7 @@ public abstract class Class_0158 implements Class_1309, Class_0937 {
          if (this.field_471 + 300L <= System.currentTimeMillis()) {
             float var8 = this.method_195() == 1
                ? this.method_59() + var7[0] + Float.intBitsToFloat(1073741824)
-               : this.method_59() - Float.intBitsToFloat(1073741824) - Class_1016.field_3143.method_221(this.field_461.getName());
+               : this.method_59() - Float.intBitsToFloat(1073741824) - FontRenderer.field_3143.method_221(this.field_461.getName());
             Class_0617.field_1951.method_2(this.field_461.getName(), var8, this.method_60(), this.method_195());
          }
       } else {
@@ -127,7 +127,7 @@ public abstract class Class_0158 implements Class_1309, Class_0937 {
 
    @Override
    public int method_66() {
-      int var1 = Class_1016.field_3143.method_66();
+      int var1 = FontRenderer.field_3143.method_66();
       if (FontsModule.field_364.isToggled()) {
          var1--;
       }

@@ -19,7 +19,7 @@ public class Class_0227 extends Class_1117 {
    public Class_0227(Screen var1, Path var2) {
       super();
       this.field_623 = var1;
-      this.field_622.method_714().add(new Class_0906(this.field_622, new Class_1303().method_2(this.method_4(var2)).method_9("Preset: \u0001")));
+      this.field_622.method_714().add(new Class_0906(this.field_622, new TextBuilder().method_2(this.method_4(var2)).method_9("Preset: \u0001")));
       Class_0836 var3 = this.method_38(var2);
       if (var3 != null) {
          this.field_622.method_9(new Class_1266(this.field_622, "Import", () -> this.method_2(var2, var3)));

@@ -14,8 +14,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
 
-public final class Class_0294 extends Class_0618 {
-   public final Class_0242 stopwatch = new Class_0242();
+public final class Class_0294 extends Command {
+   public final Timer stopwatch = new Timer();
    public boolean field_947;
 
    public Class_0294() {
@@ -27,7 +27,7 @@ public final class Class_0294 extends Class_0618 {
    public void exec(LiteralArgumentBuilder<CommandSource> var1) {
       var1.executes(var1x -> {
          field_4219.player.networkHandler.sendPacket(new RequestCommandCompletionsC2SPacket(0, "/"));
-         Class_1245.method_2(Text.literal("Fetching plugins..."), Class_1245.method_38(-3));
+         ChatUtil.method_2(Text.literal("Fetching plugins..."), ChatUtil.method_38(-3));
          this.stopwatch.reset();
          this.field_947 = true;
          return 1;
@@ -41,15 +41,15 @@ public final class Class_0294 extends Class_0618 {
             this.field_947 = false;
             List var2 = field_4219.player.networkHandler.getCommandDispatcher().getRoot().getChildren().stream().map(CommandNode::getName).toList();
             if (var2.isEmpty()) {
-               Class_1245.method_2(Text.literal("Couldn't get plugins"), Class_1245.method_38(-3));
+               ChatUtil.method_2(Text.literal("Couldn't get plugins"), ChatUtil.method_38(-3));
             } else {
-               Class_1245.method_2(this.method_5(var2), Class_1245.method_38(-3));
+               ChatUtil.method_2(this.method_5(var2), ChatUtil.method_38(-3));
             }
          }
 
          if (var1.method_127() instanceof CommandSuggestionsS2CPacket var4) {
             this.field_947 = false;
-            Class_1245.method_2(this.method_5(var4.getSuggestions().getList().stream().<String>map(Suggestion::getText).toList()), Class_1245.method_38(-3));
+            ChatUtil.method_2(this.method_5(var4.getSuggestions().getList().stream().<String>map(Suggestion::getText).toList()), ChatUtil.method_38(-3));
          }
       }
    }
@@ -64,7 +64,7 @@ public final class Class_0294 extends Class_0618 {
          }
       }
 
-      Text var6 = Texts.join(var2, var0 -> Text.literal(var0).styled(var0x -> Class_1245.method_2(var0x, () -> Class_1081.method_959().hashCode())));
+      Text var6 = Texts.join(var2, var0 -> Text.literal(var0).styled(var0x -> ChatUtil.method_2(var0x, () -> Class_1081.method_959().hashCode())));
       return Text.empty().append("Found plugins [").append(Text.literal(String.valueOf(var2.size())).formatted(Formatting.GRAY)).append("]: ").append(var6);
    }
 }

@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.internal.Class_1032;
+import me.mioclient.internal.CommandManager;
 import me.mioclient.internal.Class_1117;
 import me.mioclient.internal.Class_1299;
 import me.mioclient.module.render.BlurModule;
@@ -49,7 +49,7 @@ public abstract class MixinScreen {
    private void handleTextClickHook(Style var1, CallbackInfoReturnable<Boolean> var2) {
       if (this.field_22787.getNetworkHandler() != null) {
          String var3 = var1.getClickEvent().getValue();
-         if (var3.startsWith(Class_1032.method_927())) {
+         if (var3.startsWith(CommandManager.method_927())) {
             this.field_22787.getNetworkHandler().sendChatMessage(var3);
          }
       }

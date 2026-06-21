@@ -3,8 +3,8 @@ package me.mioclient.module.combat;
 import java.util.function.Predicate;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -25,7 +25,7 @@ public class AutoBowReleaseModule extends Module {
 
    @Subscribe
    public void method_9(Event_17 var1) {
-      if (!this.method_535() && Class_0136.method_29((Predicate<ItemStack>)(var0 -> var0.getItem() instanceof ArrowItem)) > 0) {
+      if (!this.method_535() && PlayerUtil.method_29((Predicate<ItemStack>)(var0 -> var0.getItem() instanceof ArrowItem)) > 0) {
          int var2 = this.field_267.getValue();
          if (field_4219.player.getItemUseTime() >= var2
             && field_4219.player.getActiveItem().getItem() instanceof RangedWeaponItem var3
@@ -35,9 +35,9 @@ public class AutoBowReleaseModule extends Module {
             }
 
             field_4219.interactionManager.stopUsingItem(field_4219.player);
-            Class_1261.method_2(
+            PacketUtil.method_2(
                new PlayerInteractItemC2SPacket(
-                  field_4219.player.getActiveHand(), Class_1261.method_1101(), field_4219.player.getYaw(), field_4219.player.getPitch()
+                  field_4219.player.getActiveHand(), PacketUtil.method_1101(), field_4219.player.getYaw(), field_4219.player.getPitch()
                )
             );
          }

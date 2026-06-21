@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.util.math.BlockPos;
 
-public class Event_44 extends Class_0605 {
+public class Event_44 extends Event {
    public BlockPos field_355;
 
    public Event_44(BlockPos var1) {

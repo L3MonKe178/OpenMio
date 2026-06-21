@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Map.Entry;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.deobf.Named;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
@@ -17,12 +17,12 @@ import me.mioclient.record.Class_0828;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
-public final class Class_0178 extends Class_1049<Class_0828, List<Class_0828>> implements Class_1309 {
+public final class Class_0178 extends Class_1049<Class_0828, List<Class_0828>> implements MioAPI {
    public final Map<Class_0828, Set<Class_1138>> field_502 = new HashMap<>();
 
    public Class_0178() {
       super(new ArrayList<>());
-      Class_1309.field_4220.method_14(this);
+      MioAPI.field_4220.method_14(this);
    }
 
    public void method_2(Named var1, BlockPos var2) {

@@ -7,7 +7,7 @@ import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0204;
 import me.mioclient.internal.Class_0809;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0969;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -86,10 +86,10 @@ public class TrajectoriesModule extends Module {
       }
 
       RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-      Class_0838.field_2672.method_780();
+      RenderUtil.field_2672.method_780();
       GL32C.glLineWidth(this.field_2364.getValue());
       Class_0809.method_2(var3);
-      Class_0838.field_2672.method_782();
+      RenderUtil.field_2672.method_782();
    }
 
    public boolean method_221(Entity var1) {

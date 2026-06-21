@@ -1,7 +1,7 @@
 package me.mioclient.predicate;
 
 import java.util.function.Predicate;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.module.movement.HoleSnapModule;
 
 public class Class_0020 implements Predicate {
@@ -14,6 +14,6 @@ public class Class_0020 implements Predicate {
 
    @Override
    public boolean test(Object var1) {
-      return !Class_0485.method_513();
+      return !RotationManager.method_513();
    }
 }

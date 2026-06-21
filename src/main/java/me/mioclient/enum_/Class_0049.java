@@ -1,8 +1,8 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0049 implements Class_0013 {
+public enum Class_0049 implements Nameable {
    PEARL("Pearl"),
    CLIP("Clip");
 

@@ -1,6 +1,6 @@
 package me.mioclient.internal;
 
-public class Class_0860 extends Class_0605 {
+public class Class_0860 extends Event {
    public Class_0860() {
       super();
    }

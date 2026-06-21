@@ -1,10 +1,10 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
-public enum Class_1298 implements Class_0013 {
+public enum Class_1298 implements Nameable {
    LADDER("Ladder", Items.LADDER),
    VINE("Vine", Items.VINE),
    SCAFFOLDING("Scaffolding", Items.SCAFFOLDING),

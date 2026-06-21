@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1232;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Priority;
 import me.mioclient.module.Module;
 import me.mioclient.module.client.NotificationsModule;
@@ -22,7 +22,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.ClickEvent.Action;
 import net.minecraft.util.Formatting;
 
-public class Class_1245 implements Class_1309 {
+public class ChatUtil implements MioAPI {
    public static final NotificationsModule field_3909 = Hub.field_2595.method_78(NotificationsModule.class);
    public static final MessageIndicator field_3910 = new MessageIndicator(-1, null, Text.empty(), "Mio");
    public static final Pattern field_3911 = Pattern.compile("^(\\w{3,16}) -> (\\w{3,16}): (.*)");
@@ -45,7 +45,7 @@ public class Class_1245 implements Class_1309 {
       field_3911
    );
 
-   public Class_1245() {
+   public ChatUtil() {
       super();
    }
 
@@ -156,7 +156,7 @@ public class Class_1245 implements Class_1309 {
    }
 
    public static ClickEvent method_52(String var0) {
-      return new ClickEvent(Action.SUGGEST_COMMAND, new Class_1303().method_2((Object)var0).method_2(Class_1032.method_927()).method_9("\u0001\u0001"));
+      return new ClickEvent(Action.SUGGEST_COMMAND, new TextBuilder().method_2((Object)var0).method_2(CommandManager.method_927()).method_9("\u0001\u0001"));
    }
 
    public static Text method_185(String var0) {

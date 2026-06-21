@@ -4,7 +4,7 @@ import java.awt.Color;
 import me.mioclient.Hub;
 import me.mioclient.internal.Class_0149;
 import me.mioclient.internal.Class_0585;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.setting.ColorSetting;
 import me.mioclient.setting.Setting;
 import net.minecraft.client.gui.DrawContext;
@@ -24,15 +24,15 @@ public class AbstractModule_29 extends AbstractModule_26 {
       this.field_2894.method_3(var2 != null);
       if (var2 != null) {
          float var3 = this.field_2894.method_45();
-         Class_1016.field_3143
-            .method_9(var1, var2, 0.0F, (Float.intBitsToFloat(1065353216) - var3) * (float)(-Class_1016.field_3143.method_66()), this.field_2893.getValue());
+         FontRenderer.field_3143
+            .method_9(var1, var2, 0.0F, (Float.intBitsToFloat(1065353216) - var3) * (float)(-FontRenderer.field_3143.method_66()), this.field_2893.getValue());
       }
    }
 
    @Override
    public float[] method_31() {
       String var1 = this.method_4();
-      return var1 == null ? new float[]{0.0F, 0.0F} : new float[]{Class_1016.field_3143.method_221(var1), (float)(Class_1016.field_3143.method_66() + 1)};
+      return var1 == null ? new float[]{0.0F, 0.0F} : new float[]{FontRenderer.field_3143.method_221(var1), (float)(FontRenderer.field_3143.method_66() + 1)};
    }
 
    public String method_4() {

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -28,7 +28,7 @@ public class AutoSignModule extends Module {
    @Subscribe
    public void method_29(Event_4 var1) {
       if (var1.method_127() instanceof SignEditorOpenS2CPacket var2) {
-         Class_1261.method_2(
+         PacketUtil.method_2(
             new UpdateSignC2SPacket(
                var2.getPos(),
                var2.isFront(),

@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0577;
 import me.mioclient.module.combat.AutoArmorModule;
 import net.minecraft.screen.slot.SlotActionType;
@@ -28,20 +28,20 @@ public class Class_1264 {
 
    public void method_273() {
       if (this.field_3966) {
-         Class_1309.field_4219
+         MioAPI.field_4219
             .interactionManager
             .clickSlot(
-               Class_1309.field_4219.player.currentScreenHandler.syncId,
+               MioAPI.field_4219.player.currentScreenHandler.syncId,
                8 - this.field_3967.field_1822,
                0,
                SlotActionType.QUICK_MOVE,
-               Class_1309.field_4219.player
+               MioAPI.field_4219.player
             );
          this.field_3965 = true;
       } else {
-         int var1 = Class_0136.method_30(this.field_3968);
+         int var1 = PlayerUtil.method_30(this.field_3968);
          Hub.field_2611.method_154(true);
-         Class_0136.method_5(var1, 8 - this.field_3967.method_596());
+         PlayerUtil.method_5(var1, 8 - this.field_3967.method_596());
          Hub.field_2611.method_154(false);
          this.field_3965 = true;
       }

@@ -5,9 +5,9 @@ import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Event_52;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0356;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1225;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -84,7 +84,7 @@ public class BowAimModule extends Module {
                }
 
                Vec3d var12 = var10.getCenter();
-               if (Class_0485.method_4(var10) && Class_1225.method_9(var12)) {
+               if (RotationManager.method_4(var10) && Class_1225.method_9(var12)) {
                   float[] var8 = method_2(var9, true, Float.intBitsToFloat(1073741824));
                   if (Float.isNaN(var8[0]) || Float.isNaN(var8[1])) {
                      return;
@@ -137,7 +137,7 @@ public class BowAimModule extends Module {
       }
 
       return new float[]{
-         (float)(Math.atan2(var8, var4) * Double.longBitsToDouble(4640537203540230144L) / Class_0245.field_687) - (float)Class_0245.field_685,
+         (float)(Math.atan2(var8, var4) * Double.longBitsToDouble(4640537203540230144L) / Constants.field_687) - (float)Constants.field_685,
          (float)(
             -Math.toDegrees(
                Math.atan(

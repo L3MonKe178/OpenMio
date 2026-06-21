@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import com.google.common.base.Converter;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
 public class Class_0841 extends Converter<Enum, JsonElement> {
    public final Class<? extends Enum> field_2697;
@@ -38,7 +38,7 @@ public class Class_0841 extends Converter<Enum, JsonElement> {
    }
 
    public static String method_5(Enum<?> var0) {
-      if (var0 instanceof Class_0013 var1) {
+      if (var0 instanceof Nameable var1) {
          return var1.getName();
       } else {
          throw new IllegalArgumentException();
@@ -46,7 +46,7 @@ public class Class_0841 extends Converter<Enum, JsonElement> {
    }
 
    public JsonElement method_7(Enum var1) {
-      if (var1 instanceof Class_0013 var2) {
+      if (var1 instanceof Nameable var2) {
          return new JsonPrimitive(var2.getName());
       } else {
          throw new IllegalArgumentException();
@@ -65,11 +65,11 @@ public class Class_0841 extends Converter<Enum, JsonElement> {
 
    public Enum method_9(JsonElement var1) {
       for (Enum var5 : this.field_2697.getEnumConstants()) {
-         if (!Class_0013.method_16(var5)) {
+         if (!Nameable.method_16(var5)) {
             throw new IllegalArgumentException();
          }
 
-         if (!Class_0345.method_29(var5) && var5 instanceof Class_0013 var6 && var1.getAsString().equalsIgnoreCase(var6.getName())) {
+         if (!Class_0345.method_29(var5) && var5 instanceof Nameable var6 && var1.getAsString().equalsIgnoreCase(var6.getName())) {
             return var5;
          }
       }

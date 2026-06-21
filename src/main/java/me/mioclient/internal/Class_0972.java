@@ -2,16 +2,16 @@ package me.mioclient.internal;
 
 import java.util.ArrayDeque;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_20;
 import me.mioclient.event.Subscribe;
 
-public class Class_0972 implements Class_1309 {
+public class Class_0972 implements MioAPI {
    public final ArrayDeque<Double> field_2988 = new ArrayDeque<>();
    public double field_1570;
    public double field_2989;
-   public Class_0242 field_2990 = new Class_0242();
+   public Timer field_2990 = new Timer();
 
    public Class_0972() {
       super();

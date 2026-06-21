@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
 import me.mioclient.enum_.PreType;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 
-public class Event_2 extends Class_0605 {
+public class Event_2 extends Event {
    public final PreType field_1857;
 
    public Event_2(PreType var1) {

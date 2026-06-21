@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Module;
 
-public final class Class_0005 implements Class_1309, Class_1146 {
+public final class Class_0005 implements MioAPI, Class_1146 {
    public final Map<Module, String> field_13 = new HashMap<>();
    public final Map<String, String> field_14 = new HashMap<>();
 

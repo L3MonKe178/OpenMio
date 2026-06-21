@@ -9,14 +9,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.record.Class_0501;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public final class Class_0447 extends Class_0939<Class_1009> implements Class_1309, Class_1146 {
+public final class Class_0447 extends Registry<Class_1009> implements MioAPI, Class_1146 {
    public String field_1435;
 
    public Class_0447() {
@@ -134,7 +134,7 @@ public final class Class_0447 extends Class_0939<Class_1009> implements Class_13
       if (var1 != null) {
          ArrayList var2 = new ArrayList();
          var1.forEachEffect(
-            var1x -> var2.add(new Class_1303().method_2(var1x.getAmplifier() + 1).method_2(var1x.getTranslationKey()).method_9("\u0001 \u0001"))
+            var1x -> var2.add(new TextBuilder().method_2(var1x.getAmplifier() + 1).method_2(var1x.getTranslationKey()).method_9("\u0001 \u0001"))
          );
          var2.sort(Comparator.comparing(var0x -> (String)var0x));
          return String.join("", var2);

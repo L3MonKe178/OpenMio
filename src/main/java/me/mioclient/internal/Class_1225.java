@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.StreamSupport;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0957;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0200;
 import me.mioclient.enum_.Class_1172;
 import me.mioclient.module.combat.AutoCrystalModule;
@@ -52,7 +52,7 @@ import net.minecraft.world.RaycastContext.ShapeType;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.WorldChunk;
 
-public class Class_1225 implements Class_1309 {
+public class Class_1225 implements MioAPI {
    public static final AutoCrystalModule field_3862 = Hub.field_2595.method_78(AutoCrystalModule.class);
    public static final List<Block> field_3863 = List.of(Blocks.BLACKSTONE, Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.GILDED_BLACKSTONE);
    public static final List<Block> field_3864 = List.of(

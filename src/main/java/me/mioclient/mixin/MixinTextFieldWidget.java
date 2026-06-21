@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import java.awt.Color;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0982;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -45,14 +45,14 @@ public class MixinTextFieldWidget {
          int var3 = var1.getY() - 1;
          int var4 = var1.getWidth() + 1;
          int var5 = var1.getHeight() + 1;
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(this.lastmatrix, (float)var2, (float)var3, (float)(var2 + var4), (float)(var3 + var5), new Color(135, 135, 135, 255).getRGB());
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(this.lastmatrix, (float)var2, (float)var3, (float)(var2 + var4 - 1), (float)(var3 + 1), new Color(85, 85, 85, 255).getRGB());
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(this.lastmatrix, (float)var2, (float)var3, (float)(var2 + 1), (float)(var3 + var5 - 1), new Color(85, 85, 85, 255).getRGB());
-         Class_0838.field_2672.method_2(this.lastmatrix, (float)(var2 + 1), (float)(var3 + var5 - 1), (float)(var2 + var4 - 1), (float)(var3 + var5), -1);
-         Class_0838.field_2672.method_2(this.lastmatrix, (float)(var2 + var4 - 1), (float)(var3 + 1), (float)(var2 + var4), (float)(var3 + var5), -1);
+         RenderUtil.field_2672.method_2(this.lastmatrix, (float)(var2 + 1), (float)(var3 + var5 - 1), (float)(var2 + var4 - 1), (float)(var3 + var5), -1);
+         RenderUtil.field_2672.method_2(this.lastmatrix, (float)(var2 + var4 - 1), (float)(var3 + 1), (float)(var2 + var4), (float)(var3 + var5), -1);
          return false;
       } else {
          return this.field_2095;

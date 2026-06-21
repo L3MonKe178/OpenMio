@@ -6,7 +6,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Event_39;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.render.FreeLookModule;
@@ -73,7 +73,7 @@ public class RotationLockModule extends Module {
 
    public float method_500() {
       return !this.field_1476.getValue()
-         ? (float)(Math.round((field_4219.player.getYaw() + Float.intBitsToFloat(1065353216)) / (float)Class_0245.field_684) * Class_0245.field_684)
+         ? (float)(Math.round((field_4219.player.getYaw() + Float.intBitsToFloat(1065353216)) / (float)Constants.field_684) * Constants.field_684)
          : this.field_1477.getValue();
    }
 

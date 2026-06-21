@@ -11,7 +11,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0412 extends Class_0618 {
+public class Class_0412 extends Command {
    public Class_0412() {
       super("walk");
    }

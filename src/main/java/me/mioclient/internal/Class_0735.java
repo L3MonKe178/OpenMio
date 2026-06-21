@@ -39,8 +39,8 @@ public class Class_0735 extends Class_0045 {
    public float method_59() {
       return (float)this.method_167().method_216()
          - (float)this.method_167().method_216() / Float.intBitsToFloat(1082130432)
-         - Class_1016.field_3143.method_221(this.getName())
-         + Class_1016.field_3143.method_221(this.getName()) * Float.intBitsToFloat(1056964608);
+         - FontRenderer.field_3143.method_221(this.getName())
+         + FontRenderer.field_3143.method_221(this.getName()) * Float.intBitsToFloat(1056964608);
    }
 
    @Override

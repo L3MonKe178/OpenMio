@@ -11,16 +11,16 @@ import me.mioclient.Hub;
 import me.mioclient.api.Class_0945;
 import me.mioclient.api.Class_1146;
 import me.mioclient.api.Class_1240;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.deobf.Named;
 import me.mioclient.enum_.Class_0046;
 import me.mioclient.event.Event_45;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.record.Class_0702;
 import me.mioclient.setting.Setting;
 import net.minecraft.util.Formatting;
 
-public class Module extends Named implements Class_1309, Class_1240, Class_0945<Setting<?>, List<Setting<?>>>, Class_1146 {
+public class Module extends Named implements MioAPI, Class_1240, Class_0945<Setting<?>, List<Setting<?>>>, Class_1146 {
    public final Category field_37;
    public List<Setting<?>> field_38 = new ArrayList<>();
    public String[] field_39;
@@ -52,10 +52,10 @@ public class Module extends Named implements Class_1309, Class_1240, Class_0945<
    }
 
    public String getInfoString() {
-      return new Class_1303()
+      return new TextBuilder()
          .method_2(
             this.getInfo() != null
-               ? new Class_1303()
+               ? new TextBuilder()
                   .method_2(String.valueOf(Formatting.GRAY))
                   .method_2(this.getInfo())
                   .method_2(String.valueOf(Formatting.WHITE))

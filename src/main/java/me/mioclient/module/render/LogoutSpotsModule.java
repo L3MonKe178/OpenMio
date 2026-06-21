@@ -27,13 +27,13 @@ import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0482;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0878;
 import me.mioclient.internal.Class_0922;
 import me.mioclient.internal.Class_0930;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.client.FontsModule;
@@ -115,7 +115,7 @@ public class LogoutSpotsModule extends Module {
                && (
                   !(
                         ((Class_0375)var6.getValue()).field_1211.getCenter().distanceTo(field_4219.gameRenderer.getCamera().getPos())
-                           > (double)this.field_2322.getValue().floatValue()
+                           > (double)(this.field_2322.getValue() != null ? this.field_2322.getValue().floatValue() : 0.0f)
                      )
                      || this.field_2322.getValue() == Float.intBitsToFloat(1133936640)
                )) {
@@ -131,7 +131,7 @@ public class LogoutSpotsModule extends Module {
                      RenderSystem.setShaderColor(
                         Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), this.field_2325.getValue()
                      );
-                     Class_0838.field_2672
+                     RenderUtil.field_2672
                         .method_2(var7, Float.intBitsToFloat(1065353216), var1.method_10(), field_4219.getBufferBuilders().getEntityVertexConsumers());
                      field_4219.getBufferBuilders().getEntityVertexConsumers().draw();
                      RenderSystem.setShaderColor(
@@ -140,13 +140,13 @@ public class LogoutSpotsModule extends Module {
                      field_2321 = false;
                   }
 
-                  Class_0482.method_5((double)this.field_2326.getValue().floatValue());
+                  Class_0482.method_5((double)(this.field_2326.getValue() != null ? this.field_2326.getValue().floatValue() : 0.0f));
                   Class_0482.method_2(this.field_2342.getValue(), this.field_2341.getValue());
                   Class_0482.method_2(var1.method_10(), var7);
                }
 
                if (this.field_2327.getValue()) {
-                  Class_0838.field_2672
+                  RenderUtil.field_2672
                      .method_2(
                         var1.method_10(), var3, ((Class_0375)var6.getValue()).method_172().getCenter(), this.field_2342.getValue(), this.field_2328.getValue()
                      );
@@ -157,33 +157,33 @@ public class LogoutSpotsModule extends Module {
                      .method_172()
                      .getCenter()
                      .withAxis(Axis.Y, ((Class_0375)var6.getValue()).method_172().maxY + Double.longBitsToDouble(4602678819172646912L));
-                  String var8 = new Class_1303().method_2((String)var6.getKey()).method_9("\u0001 logout spot");
+                  String var8 = new TextBuilder().method_2((String)var6.getKey()).method_9("\u0001 logout spot");
                   String var9 = this.method_2((Class_0375)var6.getValue());
                   float var10 = field_984.isToggled() ? Float.intBitsToFloat(1065353216) : 0.0F;
                   if (!var9.isEmpty()) {
-                     var8 = new Class_1303().method_2((Object)var9).method_2((Object)var8).method_9("\u0001\u0001");
+                     var8 = new TextBuilder().method_2((Object)var9).method_2((Object)var8).method_9("\u0001\u0001");
                   }
 
-                  double var11 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var15, (double)this.field_2330.getValue().floatValue());
-                  Class_0838.field_2672
+                  double var11 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var15, (double)(this.field_2330.getValue() != null ? this.field_2330.getValue().floatValue() : 0.0f));
+                  RenderUtil.field_2672
                      .method_2(
                         var1.method_10(),
                         var15,
                         Float.intBitsToFloat(-1124744561),
                         0.0F,
-                        -(Class_1016.field_3143.method_221(var8) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
+                        -(FontRenderer.field_3143.method_221(var8) / Float.intBitsToFloat(1073741824)) - Float.intBitsToFloat(1073741824),
                         Float.intBitsToFloat(1084227584) + var10,
                         var11 * Double.longBitsToDouble(4611686018427387904L),
                         this.field_2346.getValue()
                      );
-                  Class_0838.field_2672
+                  RenderUtil.field_2672
                      .method_2(
                         var1.method_881(),
                         var8,
                         var15,
                         0.0F,
                         0.0F,
-                        -(Class_1016.field_3143.method_221(var8) / Float.intBitsToFloat(1073741824)),
+                        -(FontRenderer.field_3143.method_221(var8) / Float.intBitsToFloat(1073741824)),
                         Float.intBitsToFloat(1073741824),
                         var11,
                         this.field_2345.getValue(),

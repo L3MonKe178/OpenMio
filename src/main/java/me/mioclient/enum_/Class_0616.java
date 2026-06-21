@@ -1,12 +1,12 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.Constants;
 import me.mioclient.module.misc.AntiAimModule;
 import net.minecraft.util.math.MathHelper;
 
-public enum Class_0616 implements Class_0013 {
+public enum Class_0616 implements Nameable {
    JITTER("Jitter") {
       @Override
       public float method_9(AntiAimModule var1, float var2) {
@@ -26,7 +26,7 @@ public enum Class_0616 implements Class_0013 {
    FLIP("Flip") {
       @Override
       public float method_9(AntiAimModule var1, float var2) {
-         float var3 = var1.field_2576.getValue() + (Class_1309.field_4219.player.age % 2 == 0 ? -var1.field_2574.getValue() : var1.field_2574.getValue());
+         float var3 = var1.field_2576.getValue() + (MioAPI.field_4219.player.age % 2 == 0 ? -var1.field_2574.getValue() : var1.field_2574.getValue());
          return MathHelper.wrapDegrees(var3);
       }
    },
@@ -39,7 +39,7 @@ public enum Class_0616 implements Class_0013 {
    RANDOM("Random") {
       @Override
       public float method_9(AntiAimModule var1, float var2) {
-         return (float)(Math.random() * (double)Class_0245.field_686);
+         return (float)(Math.random() * (double)Constants.field_686);
       }
    };
 

@@ -5,10 +5,10 @@ import me.mioclient.enum_.Class_0207;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1225;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -54,14 +54,14 @@ public class AbstractModule_36 extends Module {
    public Setting<Float> field_671;
    public Setting<Boolean> field_672;
    public Setting<Float> field_673;
-   public final Class_0242 field_674;
+   public final Timer field_674;
    public int field_675;
    public float[] field_676;
 
    public AbstractModule_36() {
       super("RaytraceBypass", "Does magic to bypass NCP raytracing. \n%sPatched in newer NCP versions.".formatted(Formatting.YELLOW), Category.EXPLOIT);
       Settings.initialize(this);
-      this.field_674 = new Class_0242();
+      this.field_674 = new Timer();
    }
 
    @Subscribe(
@@ -79,7 +79,7 @@ public class AbstractModule_36 extends Module {
 
    @Subscribe
    public void method_2(Event_10 var1) {
-      if (var1.method_127() instanceof PlayerInteractBlockC2SPacket var2 && this.field_674.method_9((long)this.field_665.getValue().intValue())) {
+      if (var1.method_127() instanceof PlayerInteractBlockC2SPacket var2 && this.field_674.method_9((long)(this.field_665.getValue() != null ? this.field_665.getValue().intValue() : 0))) {
          this.method_9(var2.getHand(), var2.getBlockHitResult());
       }
 
@@ -94,10 +94,10 @@ public class AbstractModule_36 extends Module {
          Object var3 = null;
          boolean var4 = false;
          if (this.field_667.getValue()) {
-            float[] var5 = Class_0485.method_78(var2.getPos().add(0.0, (double)this.field_666.getValue().intValue(), 0.0));
+            float[] var5 = RotationManager.method_78(var2.getPos().add(0.0, (double)(this.field_666.getValue() != null ? this.field_666.getValue().intValue() : 0), 0.0));
             HitResult var6 = this.method_38(var5[0], var5[1]);
             if (!this.method_9(var6)) {
-               var6 = this.method_105(Class_0485.method_78(var2.getPos())[0] + Float.intBitsToFloat(1127481344));
+               var6 = this.method_105(RotationManager.method_78(var2.getPos())[0] + Float.intBitsToFloat(1127481344));
             }
 
             if (!this.method_9(var6)) {
@@ -109,7 +109,7 @@ public class AbstractModule_36 extends Module {
             }
 
             if (var4 && this.field_672.getValue()) {
-               float var7 = Class_0485.method_78(var2.getPos())[0];
+               float var7 = RotationManager.method_78(var2.getPos())[0];
                this.field_676 = new float[]{var7, this.field_673.getValue()};
                this.method_38(this.field_676);
                return;
@@ -117,11 +117,11 @@ public class AbstractModule_36 extends Module {
 
             var3 = var6.getPos();
          } else {
-            var3 = var2.getPos().add(0.0, (double)this.field_666.getValue().intValue(), 0.0);
+            var3 = var2.getPos().add(0.0, (double)(this.field_666.getValue() != null ? this.field_666.getValue().intValue() : 0), 0.0);
          }
 
          if (var3 != null) {
-            float[] var9 = Class_0485.method_78((Vec3d)var3);
+            float[] var9 = RotationManager.method_78((Vec3d)var3);
             this.field_676 = var9;
             this.method_38(var9);
          }
@@ -141,9 +141,9 @@ public class AbstractModule_36 extends Module {
    }
 
    public HitResult method_38(float var1, float var2) {
-      Vec3d var3 = field_4219.player.getCameraPosVec(Class_0838.method_776());
-      float var4 = var2 * Class_0245.field_690;
-      float var5 = -var1 * Class_0245.field_690;
+      Vec3d var3 = field_4219.player.getCameraPosVec(RenderUtil.method_776());
+      float var4 = var2 * Constants.field_690;
+      float var5 = -var1 * Constants.field_690;
       float var6 = MathHelper.cos(var5);
       float var7 = MathHelper.sin(var5);
       float var8 = MathHelper.cos(var4);

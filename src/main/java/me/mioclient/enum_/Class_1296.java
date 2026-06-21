@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.world.biome.Biome.Precipitation;
 
-public enum Class_1296 implements Class_0013 {
+public enum Class_1296 implements Nameable {
    CLEAR("Clear", Precipitation.NONE),
    SNOW("Snow", Precipitation.SNOW),
    RAIN("Rain", Precipitation.RAIN),

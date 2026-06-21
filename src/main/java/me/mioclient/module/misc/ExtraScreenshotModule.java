@@ -20,15 +20,15 @@ import java.time.Duration;
 import java.util.Base64;
 import javax.imageio.ImageIO;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0568;
 import me.mioclient.enum_.Priority;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1134;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -46,19 +46,19 @@ public class ExtraScreenshotModule extends Module {
    public Setting<Boolean> field_2796;
    public Setting<Class_0211> field_2797;
    public Setting<Float> field_2798;
-   public final Class_0242 field_2799;
+   public final Timer field_2799;
    public int field_576;
 
    public ExtraScreenshotModule() {
       super("ExtraScreenshot", "Uploads your screenshots to Imgur/clipboard.", Category.MISC);
       Settings.initialize(this);
-      this.field_2799 = new Class_0242();
+      this.field_2799 = new Timer();
       this.field_576 = 0;
    }
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_2794.getValue());
+      return FontRenderer.method_3(this.field_2794.getValue());
    }
 
    @Override
@@ -70,10 +70,10 @@ public class ExtraScreenshotModule extends Module {
       if (this.field_2794.getValue() == Class_0568.IMGUR && !this.field_2799.method_9(1500L)) {
          this.field_576++;
          this.field_576 %= 3;
-         Class_1245.method_2(
+         ChatUtil.method_2(
             Text.literal(String.format("Wait %dms before uploading a screenshot", 1500L - this.field_2799.method_271()))
                .styled(var0 -> var0.withColor(Formatting.YELLOW)),
-            Class_1245.method_38(-34596741 + this.field_576),
+            ChatUtil.method_38(-34596741 + this.field_576),
             Priority.LOW
          );
       } else {
@@ -92,15 +92,15 @@ public class ExtraScreenshotModule extends Module {
                var14.dispose();
                Class_1134 var15 = new Class_1134(var13);
                this.method_2(var15);
-               Class_1245.method_2(Text.of("Copied screenshot to clipboard"), Class_1245.method_2(this));
+               ChatUtil.method_2(Text.of("Copied screenshot to clipboard"), ChatUtil.method_2(this));
             } catch (Exception var9) {
                var9.printStackTrace();
-               Class_1245.method_2(
-                  Text.literal("Failed to copy the screenshot").styled(var0 -> var0.withColor(Formatting.RED)), Class_1245.method_2(this), Priority.MID
+               ChatUtil.method_2(
+                  Text.literal("Failed to copy the screenshot").styled(var0 -> var0.withColor(Formatting.RED)), ChatUtil.method_2(this), Priority.MID
                );
             }
          } else if (this.field_2794.getValue() == Class_0568.IMGUR) {
-            Class_1245.method_2(Text.of("Uploading screenshot..."), Class_1245.method_2(this));
+            ChatUtil.method_2(Text.of("Uploading screenshot..."), ChatUtil.method_2(this));
 
             try {
                String var2 = URLEncoder.encode(Base64.getEncoder().encodeToString(var1), StandardCharsets.UTF_8);
@@ -108,11 +108,11 @@ public class ExtraScreenshotModule extends Module {
                   .uri(new URI("https://api.imgur.com/3/image"))
                   .headers("Content-Type", "application/x-www-form-urlencoded")
                   .headers("Authorization", "Client-ID e7c0b6a4c926098")
-                  .POST(BodyPublishers.ofString(new Class_1303().method_2((Object)var2).method_9("image=\u0001")))
+                  .POST(BodyPublishers.ofString(new TextBuilder().method_2((Object)var2).method_9("image=\u0001")))
                   .timeout(Duration.ofSeconds(10L))
                   .build();
                HttpResponse var4 = field_2792.send(var3, BodyHandlers.ofString());
-               JsonObject var5 = (JsonObject)Class_1309.field_4218.fromJson((String)var4.body(), JsonObject.class);
+               JsonObject var5 = (JsonObject)MioAPI.field_4218.fromJson((String)var4.body(), JsonObject.class);
                if (!var5.has("success") || !var5.has("data")) {
                   throw new IOException("Invalid server response");
                }
@@ -129,12 +129,12 @@ public class ExtraScreenshotModule extends Module {
                String var7 = var6.get("link").getAsString();
                StringSelection var8 = new StringSelection(var7);
                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(var8, null);
-               Class_1245.method_2(Text.of("Copied screenshot link"), Class_1245.method_38(-43296436));
+               ChatUtil.method_2(Text.of("Copied screenshot link"), ChatUtil.method_38(-43296436));
             } catch (Exception var11) {
                var11.printStackTrace();
-               Class_1245.method_2(
+               ChatUtil.method_2(
                   Text.literal("Failed to upload screenshot to Imgur").styled(var0 -> var0.withColor(Formatting.RED)),
-                  Class_1245.method_38(-43296435),
+                  ChatUtil.method_38(-43296435),
                   Priority.MID
                );
             }
@@ -150,7 +150,7 @@ public class ExtraScreenshotModule extends Module {
             break label47;
          } catch (Exception var7) {
             var7.printStackTrace();
-            Class_1245.method_2(Text.of("Failed to save the screenshot"), Class_1245.method_2(this), Priority.MID);
+            ChatUtil.method_2(Text.of("Failed to save the screenshot"), ChatUtil.method_2(this), Priority.MID);
          } finally {
             if (this.method_807()) {
                var1.close();
@@ -160,7 +160,7 @@ public class ExtraScreenshotModule extends Module {
          return;
       }
 
-      Class_1309.field_4221.submit(() -> {
+      MioAPI.field_4221.submit(() -> {
          try {
             this.method_425(var2);
          } catch (Exception var3) {

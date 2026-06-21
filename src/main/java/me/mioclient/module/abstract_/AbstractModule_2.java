@@ -17,7 +17,7 @@ import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_1138;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.combat.SelfFillModule;
@@ -56,7 +56,7 @@ public class AbstractModule_2 extends Module {
    public AbstractModule_2() {
       super(
          "ChorusControl",
-         new Class_1303().method_2(String.valueOf(Formatting.YELLOW)).method_9("Allows you to pick the position to teleport. \n\u0001Sneak to teleport."),
+         new TextBuilder().method_2(String.valueOf(Formatting.YELLOW)).method_9("Allows you to pick the position to teleport. \n\u0001Sneak to teleport."),
          Category.EXPLOIT
       );
       Settings.initialize(this);
@@ -112,7 +112,7 @@ public class AbstractModule_2 extends Module {
                      return;
                   }
 
-                  if (var5.toCenterPos().distanceTo(var4.getBoundingBox().getCenter()) >= (double)this.field_793.getValue().floatValue()) {
+                  if (var5.toCenterPos().distanceTo(var4.getBoundingBox().getCenter()) >= (double)(this.field_793.getValue() != null ? this.field_793.getValue().floatValue() : 0.0f)) {
                      this.method_293();
                      return;
                   }
@@ -202,6 +202,7 @@ public class AbstractModule_2 extends Module {
 
       Hub.field_2602.method_985().reset();
       Hub.field_2599.method_867().stream().filter(var0 -> var0.field_4256.getValue()).forEach(Module::disable);
-      field_4219.player.setYaw(this.field_791.getValue().method_3(this.field_806));
+      if (this.field_791 == null || this.field_791.getValue() == null) return;
+      field_4219.player.setYaw((this.field_791.getValue() != null ? this.field_791.getValue().method_3(this.field_806) : 0.0f));
    }
 }

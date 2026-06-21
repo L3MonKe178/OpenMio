@@ -13,7 +13,7 @@ import net.minecraft.util.math.Direction.Axis;
 public class Class_0321 extends Class_0716 {
    public long field_303;
    public float field_1086;
-   public final Class_0242 field_1087 = new Class_0242();
+   public final Timer field_1087 = new Timer();
 
    public Class_0321(ElytraFlyModule var1) {
       super(var1);
@@ -56,11 +56,11 @@ public class Class_0321 extends Class_0716 {
             field_4219.player.setVelocity(field_4219.player.getVelocity().withAxis(Axis.Y, Double.longBitsToDouble(-4620693217682128896L)));
          }
 
-         Class_1261.method_1099();
+         PacketUtil.method_1099();
          if (this.field_2275.field_4372.getValue() && var1.method_380() == 0.0 && var1.method_396() == 0.0 && this.field_1087.method_9(2500L)) {
             var1.method_7(
-               Math.sin(Math.toRadians((double)(field_4219.player.age % Class_0245.field_686))) * Double.longBitsToDouble(4584304132692975288L),
-               Math.cos(Math.toRadians((double)(field_4219.player.age % Class_0245.field_686))) * Double.longBitsToDouble(4584304132692975288L)
+               Math.sin(Math.toRadians((double)(field_4219.player.age % Constants.field_686))) * Double.longBitsToDouble(4584304132692975288L),
+               Math.cos(Math.toRadians((double)(field_4219.player.age % Constants.field_686))) * Double.longBitsToDouble(4584304132692975288L)
             );
          } else if (Class_0464.method_363()) {
             this.field_1087.reset();

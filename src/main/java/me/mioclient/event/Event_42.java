@@ -1,11 +1,11 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class Event_42 extends Class_0605 {
+public class Event_42 extends Event {
    public final Screen field_3088;
    public DrawContext field_2999;
    public float field_465;

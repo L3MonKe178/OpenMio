@@ -8,9 +8,9 @@ import me.mioclient.enum_.Class_1087;
 import me.mioclient.internal.Class_0041;
 import me.mioclient.internal.Class_0149;
 import me.mioclient.internal.Class_0745;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.exploit.NewChunksModule;
 import me.mioclient.record.Class_0853;
 import me.mioclient.setting.ColorSetting;
@@ -45,7 +45,7 @@ public class AbstractModule_4 extends AbstractModule_26 {
       super("Map", "minimap");
       this.field_2965.method_31("PointerColor");
       this.field_2965.method_8();
-      this.setDescription(new Class_1303().method_2(String.valueOf(Formatting.YELLOW)).method_9("\u0001Primarily used for NewChunks"));
+      this.setDescription(new TextBuilder().method_2(String.valueOf(Formatting.YELLOW)).method_9("\u0001Primarily used for NewChunks"));
       Class_0149 var1 = new Class_0149(this);
       var1.method_2(this);
       this.method_2(var1);
@@ -61,7 +61,7 @@ public class AbstractModule_4 extends AbstractModule_26 {
          );
          Class_0745.method_474();
          RenderSystem.setShaderColor(Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), var3);
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_9(
                var1.getMatrices(),
                Float.intBitsToFloat(-1082130432),
@@ -70,7 +70,7 @@ public class AbstractModule_4 extends AbstractModule_26 {
                this.field_2964.getValue(),
                this.field_2966.getValue()
             );
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(
                var1.getMatrices(),
                Float.intBitsToFloat(-1073741824),
@@ -116,7 +116,7 @@ public class AbstractModule_4 extends AbstractModule_26 {
 
    public boolean method_2(ChunkPos var1) {
       int var2 = (int)Math.ceil(
-         Math.hypot((double)this.field_2963.getValue().floatValue(), (double)this.field_2964.getValue().floatValue())
+         Math.hypot((double)(this.field_2963.getValue() != null ? this.field_2963.getValue().floatValue() : 0.0f), (double)(this.field_2964.getValue() != null ? this.field_2964.getValue().floatValue() : 0.0f))
             / Double.longBitsToDouble(4625196817309499392L)
       );
       return var1.getSquaredDistance(field_4219.player.getChunkPos()) <= var2 * var2;
@@ -136,15 +136,15 @@ public class AbstractModule_4 extends AbstractModule_26 {
       var1.getMatrices().push();
       var1.getMatrices().translate(var2, var3, 0.0F);
       if (this.field_2962.getValue() == Class_1087.DOT) {
-         var1.fill(-1, -1, 1, 1, this.field_2965.getValue().hashCode());
+         var1.fill(-1, -1, 1, 1, (this.field_2965.getValue() != null ? this.field_2965.getValue().hashCode() : 0));
       } else if (this.field_2962.getValue() == Class_1087.ARROW) {
          var1.getMatrices().scale(Float.intBitsToFloat(1028443341), Float.intBitsToFloat(1028443341), Float.intBitsToFloat(1065353216));
          var1.getMatrices().multiply(RotationAxis.POSITIVE_Z.rotationDegrees(Float.intBitsToFloat(1110704128) + field_4219.gameRenderer.getCamera().getYaw()));
          GlStateManager._texParameter(3553, 10240, 9729);
          RenderSystem.setShaderColor(
-            (float)this.field_2965.getValue().getRed() / Float.intBitsToFloat(1132396544),
-            (float)this.field_2965.getValue().getGreen() / Float.intBitsToFloat(1132396544),
-            (float)this.field_2965.getValue().getBlue() / Float.intBitsToFloat(1132396544),
+            (float)(this.field_2965.getValue() != null ? this.field_2965.getValue().getRed() : 0) / Float.intBitsToFloat(1132396544),
+            (float)(this.field_2965.getValue() != null ? this.field_2965.getValue().getGreen() : 0) / Float.intBitsToFloat(1132396544),
+            (float)(this.field_2965.getValue() != null ? this.field_2965.getValue().getBlue() : 0) / Float.intBitsToFloat(1132396544),
             Float.intBitsToFloat(1065353216)
          );
          var1.drawTexture(field_2959, -128, -128, 0, 0, 256, 256);

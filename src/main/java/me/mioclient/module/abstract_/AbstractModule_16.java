@@ -23,14 +23,15 @@ public class AbstractModule_16 extends AbstractModule_32 {
 
    @Override
    public String getInfo() {
-      return this.field_1331.getValue().getName();
+      return (this.field_1331.getValue() != null ? this.field_1331.getValue().getName() : "");
    }
 
    @Override
    public List<BlockPos> method_17() {
       ArrayList var1 = new ArrayList();
 
-      for (Vec3i var5 : this.field_1331.getValue().method_440()) {
+      if (this.field_1331 == null || this.field_1331.getValue() == null) return null;
+      for (Vec3i var5 : (this.field_1331.getValue() != null ? this.field_1331.getValue().method_440() : new Vec3i[0])) {
          BlockPos var6 = BlockPos.ofFloored(field_4219.player.getPos()).add(var5);
          if (Hub.field_2629.method_251(var6) >= this.field_1333.getValue()) {
             var1.add(var6);

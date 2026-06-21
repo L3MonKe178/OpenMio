@@ -6,7 +6,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import me.mioclient.module.Module;
 import net.minecraft.command.CommandSource;
 
-public final class Class_0480 extends Class_0618 {
+public final class Class_0480 extends Command {
    public Class_0480() {
       super("toggle");
    }

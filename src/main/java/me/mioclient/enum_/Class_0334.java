@@ -1,10 +1,10 @@
 package me.mioclient.enum_;
 
 import java.awt.Color;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.module.exploit.NewChunksModule;
 
-public enum Class_0334 implements Class_0013 {
+public enum Class_0334 implements Nameable {
    NEW("New"),
    OLD("Old") {
       @Override

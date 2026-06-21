@@ -1,14 +1,14 @@
 package me.mioclient.internal;
 
 import java.awt.Color;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.player.SpeedMineModule;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
 
-public final class Class_0277 implements Class_1309 {
+public final class Class_0277 implements MioAPI {
    public final BlockPos field_875;
    public float field_876;
    public float field_877;
@@ -34,7 +34,7 @@ public final class Class_0277 implements Class_1309 {
    }
 
    public float method_200() {
-      return MathHelper.clamp(MathHelper.lerp(Class_0838.method_776(), this.field_876, this.field_877), 0.0F, Float.intBitsToFloat(1065353216));
+      return MathHelper.clamp(MathHelper.lerp(RenderUtil.method_776(), this.field_876, this.field_877), 0.0F, Float.intBitsToFloat(1065353216));
    }
 
    public void method_310(float var1) {

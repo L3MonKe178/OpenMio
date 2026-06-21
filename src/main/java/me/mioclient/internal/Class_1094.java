@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0692;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_4;
@@ -19,7 +19,7 @@ import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
 
-public final class Class_1094 implements Class_1309 {
+public final class Class_1094 implements MioAPI {
    public static final SpeedMineModule speedmine = Hub.field_2595.method_78(SpeedMineModule.class);
    public static ItemStack field_3403;
    public final List<Class_0421> field_3404 = Collections.synchronizedList(new ArrayList<>());

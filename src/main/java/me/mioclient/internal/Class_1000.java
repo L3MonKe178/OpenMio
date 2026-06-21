@@ -1,10 +1,10 @@
 package me.mioclient.internal;
 
 import me.mioclient.api.Class_1171;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.gl.Framebuffer;
 
-public final class Class_1000 implements Class_1309 {
+public final class Class_1000 implements MioAPI {
    public static Framebuffer field_2895;
 
    public Class_1000() {

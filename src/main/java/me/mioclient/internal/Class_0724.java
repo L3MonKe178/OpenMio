@@ -8,9 +8,9 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 
-public class Class_0724 implements Class_1309, Class_1146 {
+public class Class_0724 implements MioAPI, Class_1146 {
    public String field_2299 = "";
 
    public Class_0724() {
@@ -50,7 +50,7 @@ public class Class_0724 implements Class_1309, Class_1146 {
                JsonObject var1x = new JsonObject();
                var1x.addProperty("content", var1);
                HttpClient var2 = HttpClient.newHttpClient();
-               HttpRequest var3 = Class_0130.method_2(Hub.field_2621.method_695(), BodyPublishers.ofString(Class_1309.field_4218.toJson(var1x)))
+               HttpRequest var3 = Class_0130.method_2(Hub.field_2621.method_695(), BodyPublishers.ofString(MioAPI.field_4218.toJson(var1x)))
                   .header("User-Agent", "MioClient/2.0")
                   .headers("Content-Type", "application/json")
                   .build();

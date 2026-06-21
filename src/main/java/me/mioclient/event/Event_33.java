@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
 import me.mioclient.enum_.PreType;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.entity.Entity;
 
-public class Event_33 extends Class_0605 {
+public class Event_33 extends Event {
    public final PreType field_1339;
    public Entity field_581;
 

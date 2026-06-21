@@ -61,9 +61,9 @@ public class ParticlesModule extends Module {
          }
 
          if (this.field_2712.nextInt(4) == 0) {
-            this.method_2(var2, this.field_2716.getValue().hashCode());
+            this.method_2(var2, (this.field_2716.getValue() != null ? this.field_2716.getValue().hashCode() : 0));
          } else {
-            this.method_2(var2, this.field_2717.getValue().hashCode());
+            this.method_2(var2, (this.field_2717.getValue() != null ? this.field_2717.getValue().hashCode() : 0));
          }
 
          var2.scale(this.field_2714.getValue());
@@ -71,29 +71,30 @@ public class ParticlesModule extends Module {
       }
 
       if (this.field_2719.getValue() && var1.method_853() instanceof FireworkParticle var5) {
-         this.method_2(var5, this.field_2721.getValue().hashCode());
+         this.method_2(var5, (this.field_2721.getValue() != null ? this.field_2721.getValue().hashCode() : 0));
          var5.scale(this.field_2720.getValue());
       }
 
       if (this.field_2719.getValue() && var1.method_853() instanceof Explosion var6) {
-         this.method_2(var6, this.field_2721.getValue().hashCode());
+         this.method_2(var6, (this.field_2721.getValue() != null ? this.field_2721.getValue().hashCode() : 0));
          var6.scale(this.field_2720.getValue());
       }
 
       if (this.field_2722.getValue() && var1.method_853() instanceof DamageParticle var7) {
-         this.method_2(var7, this.field_2725.getValue().hashCode());
+         this.method_2(var7, (this.field_2725.getValue() != null ? this.field_2725.getValue().hashCode() : 0));
          var7.scale(this.field_2723.getValue());
          var7.move(this.field_2724.getValue());
       }
 
       if (this.field_2726.getValue() && var1.method_853() instanceof PortalParticle var8) {
-         this.method_2(var8, this.field_2728.getValue().hashCode());
+         this.method_2(var8, (this.field_2728.getValue() != null ? this.field_2728.getValue().hashCode() : 0));
          var8.scale(this.field_2727.getValue());
       }
 
       if (this.field_2729.getValue() && var1.method_853() instanceof AscendingParticle var9) {
          if (var9 instanceof WhiteAshParticle) {
-            this.method_2(var9, this.field_2731.getValue().brighter().hashCode());
+            if (this.field_2731 == null || this.field_2731.getValue() == null) return;
+            this.method_2(var9, (this.field_2731.getValue() != null ? this.field_2731.getValue().brighter() : null).hashCode());
          }
 
          if (var9 instanceof AshParticle) {

@@ -130,7 +130,7 @@ public class Class_0532 implements Class_0322<LivingEntity, Class_1183> {
    public Vec3d method_2(Direction var1, Direction var2, BlockPos var3) {
       for (Vec3d var5 : this.method_38(var3, var1)) {
          if (!(var5.distanceTo(field_4219.player.getEyePos()) > (double)this.field_1492)) {
-            float var6 = Class_0485.method_78(var5)[0];
+            float var6 = RotationManager.method_78(var5)[0];
             Direction var7 = Direction.fromRotation((double)var6);
             if (var2 == var7) {
                return var5;

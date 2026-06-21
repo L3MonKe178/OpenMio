@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Subscribe;
@@ -9,7 +9,7 @@ import me.mioclient.module.movement.HoleSnapModule;
 import me.mioclient.module.movement.WarpModule;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
-public final class Class_0444 implements Class_1309 {
+public final class Class_0444 implements MioAPI {
    public static boolean field_1422;
    public static WarpModule field_1423 = Hub.field_2595.method_78(WarpModule.class);
    public final HoleSnapModule field_1424;

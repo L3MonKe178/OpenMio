@@ -72,10 +72,10 @@ public class Class_0381 extends Class_0145 {
          var8 = "...";
       }
 
-      Class_1016.field_3143
+      FontRenderer.field_3143
          .method_9(
             var1,
-            new Class_1303().method_2((Object)var8).method_2((Object)var7).method_9("\u0001 \u0001"),
+            new TextBuilder().method_2((Object)var8).method_2((Object)var7).method_9("\u0001 \u0001"),
             (float)(this.field_418.getX() + 4),
             (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
             this.method_852().field_2876.getValue()

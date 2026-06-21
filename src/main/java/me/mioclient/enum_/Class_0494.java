@@ -1,26 +1,26 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.module.player.AutoTameModule;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 
-public enum Class_0494 implements Class_0013 {
+public enum Class_0494 implements Nameable {
    TAME("Tame") {
       @Override
       public Vec3d method_5(TameableEntity var1) {
          if (var1.getOwner() != null) {
             return null;
          } else {
-            int var2 = Class_0136.method_7(AutoTameModule.method_9(var1));
+            int var2 = PlayerUtil.method_7(AutoTameModule.method_9(var1));
             if (var2 == -1) {
                return null;
             } else {
-               Class_0136.method_16(var2);
+               PlayerUtil.method_16(var2);
                Class_1035.method_2(var1, Hand.MAIN_HAND);
                return var1.getBoundingBox().getCenter();
             }
@@ -32,8 +32,8 @@ public enum Class_0494 implements Class_0013 {
       public Vec3d method_5(TameableEntity var1) {
          if (!var1.isInSittingPose()
             && !var1.isSitting()
-            && Class_1309.field_4219.player == var1.getOwner()
-            && !var1.isBreedingItem(Class_1309.field_4219.player.getMainHandStack())) {
+            && MioAPI.field_4219.player == var1.getOwner()
+            && !var1.isBreedingItem(MioAPI.field_4219.player.getMainHandStack())) {
             Class_1035.method_2(var1, Hand.MAIN_HAND);
             return var1.getBoundingBox().getCenter();
          } else {
@@ -45,8 +45,8 @@ public enum Class_0494 implements Class_0013 {
       @Override
       public Vec3d method_5(TameableEntity var1) {
          if ((var1.isInSittingPose() || var1.isSitting())
-            && Class_1309.field_4219.player == var1.getOwner()
-            && !var1.isBreedingItem(Class_1309.field_4219.player.getMainHandStack())) {
+            && MioAPI.field_4219.player == var1.getOwner()
+            && !var1.isBreedingItem(MioAPI.field_4219.player.getMainHandStack())) {
             Class_1035.method_2(var1, Hand.MAIN_HAND);
             return var1.getBoundingBox().getCenter();
          } else {

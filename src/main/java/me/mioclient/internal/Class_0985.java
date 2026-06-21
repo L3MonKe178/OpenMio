@@ -20,7 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 
-public class Class_0985 extends Class_0618 {
+public class Class_0985 extends Command {
    public final Map<Class_0060, List<Class_0600>> field_3031 = new HashMap<>();
    public boolean field_943;
 

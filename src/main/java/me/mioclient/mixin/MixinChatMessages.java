@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.util.Optional;
 import me.mioclient.Hub;
 import me.mioclient.internal.Class_0436;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.client.FontsModule;
 import me.mioclient.module.misc.BetterChatModule;
 import net.minecraft.client.MinecraftClient;
@@ -38,7 +38,7 @@ public class MixinChatMessages {
       )}
    )
    private static TextHandler mio$breakRenderedChatMessageLines(TextHandler var0) {
-      Class_0436 var1 = Class_1016.field_3143.method_914();
+      Class_0436 var1 = FontRenderer.field_3143.method_914();
       return (TextHandler)(var1 != null && fonts.isToggled() && fonts.field_370.getValue() ? var1.method_477() : var0);
    }
 

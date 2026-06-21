@@ -5,7 +5,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import java.lang.reflect.Field;
 import java.nio.FloatBuffer;
 import me.mioclient.api.Class_0637;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.util.Identifier;
@@ -13,7 +13,7 @@ import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL32C;
 
-public class Class_1088 implements Class_1309 {
+public class Class_1088 implements MioAPI {
    public static final FloatBuffer field_3354 = BufferUtils.createFloatBuffer(16);
    public static final Class_0637 field_3355 = method_230("DEPTH");
    public static final Class_0637 field_3356 = method_230("BLEND");

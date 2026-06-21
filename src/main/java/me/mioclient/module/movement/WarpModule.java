@@ -92,7 +92,7 @@ public class WarpModule extends Module {
                }
             }
 
-            Hub.field_2617.method_2(this, (float)this.field_1109.getValue().intValue());
+            Hub.field_2617.method_2(this, (float)(this.field_1109.getValue() != null ? this.field_1109.getValue().intValue() : 0));
          }
       }
    }
@@ -102,7 +102,7 @@ public class WarpModule extends Module {
       if (this.field_1108.getValue() == Class_1269.ALTERNATIVE) {
          if (var1.method_213() == PreType.PRE) {
             if (!this.field_1117.field_4427.isEmpty() && this.method_385()) {
-               Hub.field_2617.method_2(this, (float)this.field_1109.getValue().intValue());
+               Hub.field_2617.method_2(this, (float)(this.field_1109.getValue() != null ? this.field_1109.getValue().intValue() : 0));
                field_4219.player.networkHandler.sendPacket(this.field_1117.field_4427.poll());
             } else if (!this.field_1117.field_4427.isEmpty() && !this.field_1118) {
                Hub.field_2617.method_38(this);

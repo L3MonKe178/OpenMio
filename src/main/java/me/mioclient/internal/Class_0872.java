@@ -10,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import org.lwjgl.glfw.GLFW;
 
 public class Class_0872 extends Class_1015<String> {
-   public final Class_0242 field_2779 = new Class_0242();
+   public final Timer field_2779 = new Timer();
    public boolean field_1309 = false;
    public String field_2780;
    public int field_2781 = 0;
@@ -75,13 +75,13 @@ public class Class_0872 extends Class_1015<String> {
          if (this.field_3142) {
             var2.push();
             String var7 = this.method_453();
-            float var8 = Class_1016.field_3143.method_221(new Class_1303().method_2(this.field_2780.substring(0, this.field_2781)).method_9("\u0001_"));
+            float var8 = FontRenderer.field_3143.method_221(new TextBuilder().method_2(this.field_2780.substring(0, this.field_2781)).method_9("\u0001_"));
             if (var8 > (float)(this.method_167().method_216() - this.method_170() * 2)) {
                var2.translate((float)(this.method_167().method_216() - this.method_170() * 2) - var8, 0.0F, 0.0F);
             }
 
             if (!this.field_2780.isEmpty()) {
-               Class_1016.field_3143
+               FontRenderer.field_3143
                   .method_9(
                      var1,
                      this.field_2780,
@@ -92,11 +92,11 @@ public class Class_0872 extends Class_1015<String> {
             }
 
             if (!var7.isBlank()) {
-               Class_1016.field_3143
+               FontRenderer.field_3143
                   .method_9(
                      var1,
                      var7,
-                     (float)(this.field_418.getX() + 4) + Class_1016.field_3143.method_221(this.field_2780.substring(0, this.field_2781)),
+                     (float)(this.field_418.getX() + 4) + FontRenderer.field_3143.method_221(this.field_2780.substring(0, this.field_2781)),
                      (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                      this.method_852().field_2876.getValue()
                   );
@@ -104,14 +104,14 @@ public class Class_0872 extends Class_1015<String> {
 
             var2.pop();
          } else {
-            String var9 = new Class_1303().method_2(this.field_3138.getValue()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001");
+            String var9 = new TextBuilder().method_2(this.field_3138.getValue()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001");
             this.method_2(
                var2,
                var9,
-               () -> Class_1016.field_3143
+               () -> FontRenderer.field_3143
                      .method_9(
                         var1,
-                        new Class_1303().method_2(this.field_3138.getValue()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001"),
+                        new TextBuilder().method_2(this.field_3138.getValue()).method_2(this.field_3138.getName()).method_9("\u0001: \u0001"),
                         (float)(this.field_418.getX() + 4),
                         (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                         this.method_852().field_2876.getValue()

@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_62;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
@@ -22,7 +22,7 @@ public class MixinScreenHandler {
       )}
    )
    private boolean insertItemHook(Slot var1) {
-      Class_1309.field_4220.method_36(new Event_62(var1));
+      MioAPI.field_4220.method_36(new Event_62(var1));
       return true;
    }
 }

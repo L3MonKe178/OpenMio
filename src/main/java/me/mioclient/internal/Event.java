@@ -1,9 +1,9 @@
 package me.mioclient.internal;
 
-public class Class_0605 {
+public class Event {
    public boolean field_1879;
 
-   public Class_0605() {
+   public Event() {
       super();
    }
 

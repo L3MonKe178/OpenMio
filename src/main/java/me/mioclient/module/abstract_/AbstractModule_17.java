@@ -8,11 +8,11 @@ import me.mioclient.Hub;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_50;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0719;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.module.Category;
@@ -36,13 +36,13 @@ public class AbstractModule_17 extends AbstractModule_32 {
    public Setting<Boolean> field_2101;
    public Setting<Boolean> field_2102;
    public Setting<Boolean> field_2103;
-   public final Class_0242 field_2104;
+   public final Timer field_2104;
    public boolean field_2105;
 
    public AbstractModule_17() {
       super("FeetPlace", "Surrounds your feet with obby.", Category.COMBAT, "surround");
       Settings.initialize(this);
-      this.field_2104 = new Class_0242();
+      this.field_2104 = new Timer();
       this.method_5(true);
    }
 
@@ -70,7 +70,7 @@ public class AbstractModule_17 extends AbstractModule_32 {
 
    @Override
    public int method_34() {
-      return this.field_2103.getValue() ? Class_0136.method_5(Items.OBSIDIAN) : super.method_34();
+      return this.field_2103.getValue() ? PlayerUtil.method_5(Items.OBSIDIAN) : super.method_34();
    }
 
    @Override
@@ -186,7 +186,7 @@ public class AbstractModule_17 extends AbstractModule_32 {
    }
 
    public float method_9(float var1, BlockPos var2) {
-      return MathHelper.angleBetween(var1, Class_0485.method_78(var2.toCenterPos())[0]) + (float)var2.getY() * Float.intBitsToFloat(981668463);
+      return MathHelper.angleBetween(var1, RotationManager.method_78(var2.toCenterPos())[0]) + (float)var2.getY() * Float.intBitsToFloat(981668463);
    }
 
    public void method_662() {

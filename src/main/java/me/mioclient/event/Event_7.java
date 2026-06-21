@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.Event;
 
-public final class Event_7 extends Class_0605 implements Class_1309 {
+public final class Event_7 extends Event implements MioAPI {
    public Event_7() {
       super();
    }

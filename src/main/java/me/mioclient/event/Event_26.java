@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class Event_26 extends Class_0605 {
+public class Event_26 extends Event {
    public static final Event_26 field_3861 = new Event_26();
    public MatrixStack field_2997;
    public DrawContext field_2999;

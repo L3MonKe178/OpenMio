@@ -19,7 +19,7 @@ public abstract class Class_0045 extends Class_0145 {
    public void method_2(DrawContext var1, MatrixStack var2, double var3, double var5) {
       if (!this.field_89.method_911()) {
          super.method_2(var1, var2, var3, var5);
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                this.getName(),
@@ -43,13 +43,13 @@ public abstract class Class_0045 extends Class_0145 {
    @Override
    public boolean method_5(double var1, double var3) {
       return var1 > (double)((float)this.field_418.getX() + this.method_59())
-         && var1 < (double)((float)this.field_418.getX() + this.method_59() + Class_1016.field_3143.method_221(this.getName()))
+         && var1 < (double)((float)this.field_418.getX() + this.method_59() + FontRenderer.field_3143.method_221(this.getName()))
          && var3 > (double)((float)(this.field_418.getY() + this.field_419) + this.method_60())
          && var3
             < (double)(
                (float)(this.field_418.getY() + this.field_419)
                   + this.method_60()
-                  + (float)Class_1016.field_3143.method_66()
+                  + (float)FontRenderer.field_3143.method_66()
                   + this.method_850() * Float.intBitsToFloat(1073741824)
             );
    }

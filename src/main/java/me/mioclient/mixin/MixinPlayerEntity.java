@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.mojang.authlib.GameProfile;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0415;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0304;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_33;
@@ -80,9 +80,9 @@ public abstract class MixinPlayerEntity extends LivingEntity implements Class_04
       cancellable = true
    )
    private void clipAtLedgeHook(CallbackInfoReturnable<Boolean> var1) {
-      if (Class_1309.field_4219.player != null) {
+      if (MioAPI.field_4219.player != null) {
          Event_8 var2 = new Event_8();
-         Class_1309.field_4220.method_36(var2);
+         MioAPI.field_4220.method_36(var2);
          if (var2.method_464()) {
             var1.setReturnValue(true);
          }
@@ -98,11 +98,11 @@ public abstract class MixinPlayerEntity extends LivingEntity implements Class_04
    )
    private float clipAtLedgeHook2(float var1) {
       if (scaffold.isToggled() && scaffold.field_151.getValue()) {
-         Item var2 = Class_1309.field_4219.player.getStackInHand(Hand.MAIN_HAND).getItem();
+         Item var2 = MioAPI.field_4219.player.getStackInHand(Hand.MAIN_HAND).getItem();
          if (!(var2 instanceof BlockItem)) {
             return var1;
          } else {
-            VoxelShape var3 = ((BlockItem)var2).getBlock().getDefaultState().getCollisionShape(Class_1309.field_4219.world, BlockPos.ORIGIN);
+            VoxelShape var3 = ((BlockItem)var2).getBlock().getDefaultState().getCollisionShape(MioAPI.field_4219.world, BlockPos.ORIGIN);
             return var3 != null && !var3.isEmpty() ? (float)var3.getBoundingBox().getLengthY() : var1;
          }
       } else {
@@ -117,7 +117,7 @@ public abstract class MixinPlayerEntity extends LivingEntity implements Class_04
    )
    public void attackHookPre(Entity var1, CallbackInfo var2) {
       Event_33 var3 = new Event_33(PreType.PRE, var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }
@@ -129,7 +129,7 @@ public abstract class MixinPlayerEntity extends LivingEntity implements Class_04
    )
    private void attackHookPost(Entity var1, CallbackInfo var2) {
       Event_33 var3 = new Event_33(PreType.POST, var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
    }
 
    @WrapWithCondition(
@@ -151,7 +151,7 @@ public abstract class MixinPlayerEntity extends LivingEntity implements Class_04
       )}
    )
    private boolean attack(LivingEntity var1, double var2, double var4, double var6) {
-      return !((Object)this instanceof Class_0922) || var1 != Class_1309.field_4219.player;
+      return !((Object)this instanceof Class_0922) || var1 != MioAPI.field_4219.player;
    }
 
    @Inject(

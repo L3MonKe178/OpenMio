@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
 import java.util.Locale;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import net.minecraft.util.math.Vec3d;
 
-public enum Class_1056 implements Class_0013 {
+public enum Class_1056 implements Nameable {
    NONE("None"),
    COORDS("Coords") {
       @Override
@@ -16,7 +16,7 @@ public enum Class_1056 implements Class_0013 {
    DISTANCE("Distance") {
       @Override
       public String method_37(Vec3d var1) {
-         return String.format("%.1fm", var1.distanceTo(Class_1309.field_4219.player.getPos())).replaceAll(",", ".");
+         return String.format("%.1fm", var1.distanceTo(MioAPI.field_4219.player.getPos())).replaceAll(",", ".");
       }
    };
 

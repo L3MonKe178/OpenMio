@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.screen.slot.Slot;
 
-public class Event_62 extends Class_0605 {
+public class Event_62 extends Event {
    public final Slot field_3478;
 
    public Event_62(Slot var1) {

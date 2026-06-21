@@ -4,7 +4,7 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Class_0274;
 import me.mioclient.internal.Class_0121;
 import me.mioclient.internal.Class_0723;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.Setting;
 import me.mioclient.setting.StringSetting;
@@ -21,10 +21,10 @@ public class AbstractModule_7 extends AbstractModule_26 {
          () -> {
             String var1x = this.method_61();
             return Text.literal(
-               new Class_1303()
+               new TextBuilder()
                   .method_2((Object)var1x)
                   .method_2(String.valueOf(this.field_99.getValue() ? Formatting.WHITE : ""))
-                  .method_2(this.field_100.getValue().trim())
+                  .method_2((this.field_100.getValue() != null ? this.field_100.getValue().trim() : ""))
                   .method_9("\u0001\u0001\u0001")
             );
          },

@@ -1,12 +1,12 @@
 package me.mioclient.internal;
 
 import java.util.concurrent.ConcurrentHashMap;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_45;
 import me.mioclient.event.Subscribe;
 import me.mioclient.module.Module;
 
-public class Class_0508 implements Class_1309 {
+public class Class_0508 implements MioAPI {
    public final ConcurrentHashMap<Module, Boolean> field_1614 = new ConcurrentHashMap<>();
    public float field_1615 = Float.intBitsToFloat(1065353216);
 

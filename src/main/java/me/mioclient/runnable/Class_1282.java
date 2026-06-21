@@ -1,11 +1,11 @@
 package me.mioclient.runnable;
 
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.module.player.SpeedMineModule;
 import net.minecraft.item.Item;
 
-public class Class_1282 implements Runnable, Class_1309 {
+public class Class_1282 implements Runnable, MioAPI {
    public final SpeedMineModule field_4152;
    public final long field_4153;
    public final Item field_4154;
@@ -25,7 +25,7 @@ public class Class_1282 implements Runnable, Class_1309 {
    public void run() {
       if (this.field_4152.method_1122() == null || this.field_4152.method_1122().equals(this)) {
          if (!field_4219.player.getInventory().getStack(this.field_4156).isOf(this.field_4154)) {
-            Class_0136.method_39(this.field_4155);
+            PlayerUtil.method_39(this.field_4155);
          }
       }
    }

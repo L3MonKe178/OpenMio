@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
 import java.awt.Color;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.entity.Entity;
 
-public class Event_14 extends Class_0605 {
+public class Event_14 extends Event {
    public static final Event_14 field_3221 = new Event_14();
    public Entity field_581;
    public int field_3222;

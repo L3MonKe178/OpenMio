@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Map.Entry;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_17;
@@ -43,7 +43,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class Class_0303 implements Class_1309 {
+public class Class_0303 implements MioAPI {
    public final List<BlockEntity> field_970 = Collections.synchronizedList(new ArrayList<>());
    public final Map<BlockPos, Class_0944> field_971 = Collections.synchronizedMap(new HashMap<>());
    public final Set<BlockPos> field_972 = Collections.synchronizedSet(new HashSet<>());
@@ -53,7 +53,7 @@ public class Class_0303 implements Class_1309 {
    public BlockPos unconfirmedBreak = null;
    public ItemStack field_975;
    public ItemStack field_976;
-   public final Class_0242 field_977 = new Class_0242();
+   public final Timer field_977 = new Timer();
    public int field_978;
 
    public Class_0303() {
@@ -190,7 +190,7 @@ public class Class_0303 implements Class_1309 {
             var1.method_9(var2.method_862().getDefaultState().getOutlineShape(field_4219.world, var1.method_111()));
          }
 
-         if (Class_0485.method_513()) {
+         if (RotationManager.method_513()) {
             if (Hub.field_2602.method_984().method_9(300L)) {
                if (var1.method_111().equals(this.unconfirmedBreak)) {
                   var1.method_9(VoxelShapes.empty());

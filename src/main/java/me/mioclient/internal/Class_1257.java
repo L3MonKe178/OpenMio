@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import java.net.SocketAddress;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 
@@ -76,7 +76,7 @@ public final class Class_1257 {
       String var1 = null;
 
       try {
-         SocketAddress var2 = Class_1309.field_4219.getNetworkHandler().getConnection().getAddress();
+         SocketAddress var2 = MioAPI.field_4219.getNetworkHandler().getConnection().getAddress();
          var1 = var2.toString();
          int var3 = var1.indexOf(47);
          if (var3 > 0) {

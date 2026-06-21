@@ -2,15 +2,15 @@ package me.mioclient.internal;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0937;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 
-public class Class_0967 extends Class_0746 implements Class_1309 {
+public class Class_0967 extends Class_0746 implements MioAPI {
    public Category field_37;
 
    public Class_0967(Category var1) {
-      super(Class_1016.method_3(var1.getName()));
+      super(FontRenderer.method_3(var1.getName()));
       this.field_37 = var1;
 
       for (Module var3 : Hub.field_2599.method_2(var1)) {

@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0078;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Module;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.Class0211Setting;
@@ -23,7 +23,7 @@ import me.mioclient.setting.CustomSetting3;
 import me.mioclient.setting.Setting;
 import net.minecraft.command.CommandSource;
 
-public class Class_1233 implements ArgumentType<String>, Class_1309 {
+public class Class_1233 implements ArgumentType<String>, MioAPI {
    public final String field_3879;
    public final Module field_3880;
 
@@ -77,7 +77,7 @@ public class Class_1233 implements ArgumentType<String>, Class_1309 {
                Hub.field_2606
                   .method_533()
                   .stream()
-                  .map(var0 -> new Class_1303().method_2(var0.getName()).method_2(var0.method_243()).method_9("\u0001:\u0001")),
+                  .map(var0 -> new TextBuilder().method_2(var0.getName()).method_2(var0.method_243()).method_9("\u0001:\u0001")),
                var2
             )
             : ArgumentType.super.listSuggestions(var1, var2);

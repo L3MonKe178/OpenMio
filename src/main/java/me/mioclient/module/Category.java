@@ -1,8 +1,8 @@
 package me.mioclient.module;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Category implements Class_0013 {
+public enum Category implements Nameable {
    COMBAT("Combat"),
    MISC("Misc"),
    RENDER("Render"),

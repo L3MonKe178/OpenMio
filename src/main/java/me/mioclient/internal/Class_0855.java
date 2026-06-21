@@ -6,7 +6,7 @@ import java.util.List;
 public class Class_0855 {
    public static final int field_2753 = 5;
    public final List<String> field_2754 = new ArrayList<>();
-   public final Class_0242 field_2755 = new Class_0242();
+   public final Timer field_2755 = new Timer();
    public int field_1323 = 0;
 
    public Class_0855() {

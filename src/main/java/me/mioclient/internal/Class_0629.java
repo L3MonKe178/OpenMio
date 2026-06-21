@@ -7,10 +7,10 @@ import java.lang.invoke.LambdaMetafactory;
 import java.util.function.Consumer;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0597;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0016;
 import me.mioclient.internal.Class_0482;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0878;
 import me.mioclient.mixin.ducks.DuckAnimalModel;
 import me.mioclient.mixin.ducks.DuckLivingEntityRenderer;
@@ -35,7 +35,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 
 public class Class_0629
-implements Class_1309,
+implements MioAPI,
 Class_0597<LivingEntity> {
     public static AnimationsModule animations = Hub.field_2595.method_78(AnimationsModule.class);
     public boolean field_2003;
@@ -201,7 +201,7 @@ Class_0597<LivingEntity> {
         return t;
     }
 
-    public static Class_0485 rotations() {
+    public static RotationManager rotations() {
         return Hub.field_2598;
     }
 }

@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import me.mioclient.enum_.Class_0511;
 import me.mioclient.event.Event_21;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1117;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -17,7 +17,7 @@ public class FontsModule extends Module {
    public final AtomicBoolean field_365 = new AtomicBoolean(false);
    public static final Runnable field_366 = () -> {
       if (field_4219.player != null || field_4219.currentScreen instanceof Class_1117) {
-         Class_1016.field_3143.method_2(Class_1016.field_3143.method_915());
+         FontRenderer.field_3143.method_2(FontRenderer.field_3143.method_915());
       }
    };
    public Setting<String> field_367;
@@ -43,7 +43,7 @@ public class FontsModule extends Module {
    @Subscribe
    public void method_2(Event_21 var1) {
       if (GLFW.glfwGetMouseButton(field_4219.getWindow().getHandle(), 0) != 1 && this.field_365.get()) {
-         Class_1016.field_3143.method_2(Class_1016.field_3143.method_915());
+         FontRenderer.field_3143.method_2(FontRenderer.field_3143.method_915());
          this.field_365.set(false);
       }
    }

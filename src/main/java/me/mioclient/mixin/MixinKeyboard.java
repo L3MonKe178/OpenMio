@@ -1,6 +1,6 @@
 package me.mioclient.mixin;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_18;
 import me.mioclient.event.Event_60;
 import me.mioclient.module.misc.BetterChatModule;
@@ -33,7 +33,7 @@ public class MixinKeyboard {
    private void onKey(long var1, int var3, int var4, int var5, int var6, CallbackInfo var7) {
       if (var3 >= 0 && this.field_1678.currentScreen == null && var5 == 1) {
          Event_18 var8 = new Event_18(var3, false);
-         Class_1309.field_4220.method_36(var8);
+         MioAPI.field_4220.method_36(var8);
          if (var8.method_464()) {
             var7.cancel();
          }
@@ -47,7 +47,7 @@ public class MixinKeyboard {
    public void onChar(long var1, int var3, int var4, CallbackInfo var5) {
       if (this.field_1678.currentScreen == null && var1 == this.field_1678.getWindow().getHandle()) {
          Event_60 var6 = new Event_60(var3);
-         Class_1309.field_4220.method_36(var6);
+         MioAPI.field_4220.method_36(var6);
       }
    }
 

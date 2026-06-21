@@ -9,11 +9,11 @@ import me.mioclient.event.Event_17;
 import me.mioclient.event.Event_25;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0356;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -41,7 +41,7 @@ public class ArrowsModule extends Module {
    public Setting<Float> field_655;
    public Setting<Integer> field_656;
    public final Map<StatusEffect, Long> field_657;
-   public final Class_0242 field_658;
+   public final Timer field_658;
    public int field_659;
    public Potion field_660;
 
@@ -49,7 +49,7 @@ public class ArrowsModule extends Module {
       super("Arrows", "Will swap between effect arrows in your inventory.", Category.COMBAT, "projectiles");
       Settings.initialize(this);
       this.field_657 = new HashMap<>();
-      this.field_658 = new Class_0242();
+      this.field_658 = new Timer();
    }
 
    @Override
@@ -72,7 +72,7 @@ public class ArrowsModule extends Module {
                      if (var8 != this.field_659) {
                         this.field_658.reset();
                         Hub.field_2611.method_154(true);
-                        Class_0136.method_5(Class_0136.method_30(this.field_659), Class_0136.method_30(var8));
+                        PlayerUtil.method_5(PlayerUtil.method_30(this.field_659), PlayerUtil.method_30(var8));
                         Hub.field_2611.method_154(false);
                         this.field_659 = -1;
                      }
@@ -88,9 +88,9 @@ public class ArrowsModule extends Module {
             }
          } else {
             int var4 = field_4219.player.getInventory().selectedSlot;
-            Class_0136.method_16((var4 + 1) % 9);
-            Class_1261.method_2(Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, Direction.DOWN);
-            Class_0136.method_16(var4);
+            PlayerUtil.method_16((var4 + 1) % 9);
+            PacketUtil.method_2(Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, Direction.DOWN);
+            PlayerUtil.method_16(var4);
             var1.method_463();
          }
       }
@@ -147,7 +147,7 @@ public class ArrowsModule extends Module {
 
          for (AbstractClientPlayerEntity var5 : field_4219.world.getPlayers()) {
             if (field_4219.player != var5 && !Hub.field_2603.method_30(var5)) {
-               float[] var6 = Class_0485.method_14(var5);
+               float[] var6 = RotationManager.method_14(var5);
                float var7 = MathHelper.angleBetween(field_4219.player.getYaw(), var6[0])
                   - var5.getDimensions(var5.getPose()).width() * Float.intBitsToFloat(1056964608);
                float var8 = MathHelper.angleBetween(field_4219.player.getPitch(), var6[1])
@@ -181,7 +181,7 @@ public class ArrowsModule extends Module {
             if (var10) {
                StatusEffectInstance var11 = var3.getStatusEffect(var9);
                float var12 = ((Class_0558)var11).mio$getDurationRation();
-               if (var12 * Float.intBitsToFloat(1120403456) < (float)this.field_656.getValue().intValue()) {
+               if (var12 * Float.intBitsToFloat(1120403456) < (float)(this.field_656.getValue() != null ? this.field_656.getValue().intValue() : 0)) {
                   var10 = false;
                }
             }
@@ -209,16 +209,16 @@ public class ArrowsModule extends Module {
 
    public void method_269() {
       int var1 = field_4219.player.getInventory().selectedSlot;
-      int var2 = Class_0136.method_5(Items.BOW);
+      int var2 = PlayerUtil.method_5(Items.BOW);
       Hub.field_2598.method_2(new float[]{field_4219.player.getYaw(), Float.intBitsToFloat(-1028390912)}, 999);
       if (var2 != -1 && !field_4219.player.isUsingItem()) {
-         Class_0136.method_78(var2);
+         PlayerUtil.method_78(var2);
          field_4219.interactionManager.interactItem(field_4219.player, Hand.MAIN_HAND);
          if (!field_653.get()) {
             field_653.set(true);
             Hub.field_2619.method_2(() -> {
                field_4219.interactionManager.stopUsingItem(field_4219.player);
-               Class_0136.method_78(var1);
+               PlayerUtil.method_78(var1);
                field_653.set(false);
                this.disable();
             }, 3);

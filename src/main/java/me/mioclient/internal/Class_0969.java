@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0687;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.render.TrajectoriesModule;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
@@ -47,7 +47,7 @@ import net.minecraft.world.RaycastContext.ShapeType;
 import org.joml.Quaterniond;
 import org.joml.Vector3d;
 
-public class Class_0969 implements Class_1309 {
+public class Class_0969 implements MioAPI {
    public static TrajectoriesModule field_2978 = Hub.field_2595.method_78(TrajectoriesModule.class);
    public static final HitResult field_2979 = new HitResult(Vec3d.ZERO) {
       public Type getType() {
@@ -143,7 +143,7 @@ public class Class_0969 implements Class_1309 {
             this.method_2(
                var1,
                Double.longBitsToDouble(-4597049319638433792L),
-               Class_0245.field_688,
+               Constants.field_688,
                var3,
                Double.longBitsToDouble(4587366580439587226L),
                Double.longBitsToDouble(4605380978949069210L),
@@ -185,9 +185,9 @@ public class Class_0969 implements Class_1309 {
       double var21;
       double var23;
       if (var6 == 0.0) {
-         var19 = -Math.sin(var15 * (double)Class_0245.field_690) * Math.cos(var17 * (double)Class_0245.field_690);
-         var21 = -Math.sin((var17 + var2) * (double)Class_0245.field_690);
-         var23 = Math.cos(var15 * (double)Class_0245.field_690) * Math.cos(var17 * (double)Class_0245.field_690);
+         var19 = -Math.sin(var15 * (double)Constants.field_690) * Math.cos(var17 * (double)Constants.field_690);
+         var21 = -Math.sin((var17 + var2) * (double)Constants.field_690);
+         var23 = Math.cos(var15 * (double)Constants.field_690) * Math.cos(var17 * (double)Constants.field_690);
       } else {
          Vec3d var25 = var1.getOppositeRotationVector(Float.intBitsToFloat(1065353216));
          Quaterniond var26 = new Quaterniond().setAngleAxis(var6, var25.x, var25.y, var25.z);
@@ -266,7 +266,7 @@ public class Class_0969 implements Class_1309 {
                var3
             );
          } else if (var1 instanceof ThrownEntity) {
-            this.method_2(var1, Class_0245.field_688, Double.longBitsToDouble(4587366580439587226L), Double.longBitsToDouble(4605380978949069210L), var2, var3);
+            this.method_2(var1, Constants.field_688, Double.longBitsToDouble(4587366580439587226L), Double.longBitsToDouble(4605380978949069210L), var2, var3);
          } else {
             if (!(var1 instanceof WitherSkullEntity) && !(var1 instanceof FireballEntity) && !(var1 instanceof DragonFireballEntity)) {
                return false;
@@ -312,10 +312,10 @@ public class Class_0969 implements Class_1309 {
    public void method_5(Entity var1, double var2) {
       double var4 = MathHelper.lerp(var2, (double)var1.prevYaw, (double)var1.getYaw());
       double var6 = MathHelper.lerp(var2, (double)var1.prevPitch, (double)var1.getPitch());
-      double var8 = Math.cos(-var4 * (double)Class_0245.field_690 - Double.longBitsToDouble(4614256656748904448L));
-      double var10 = Math.sin(-var4 * (double)Class_0245.field_690 - Double.longBitsToDouble(4614256656748904448L));
-      double var12 = -Math.cos(-var6 * (double)Class_0245.field_690);
-      double var14 = Math.sin(-var6 * (double)Class_0245.field_690);
+      double var8 = Math.cos(-var4 * (double)Constants.field_690 - Double.longBitsToDouble(4614256656748904448L));
+      double var10 = Math.sin(-var4 * (double)Constants.field_690 - Double.longBitsToDouble(4614256656748904448L));
+      double var12 = -Math.cos(-var6 * (double)Constants.field_690);
+      double var14 = Math.sin(-var6 * (double)Constants.field_690);
       this.field_2983
          .set(
             MathHelper.lerp(var2, var1.prevX, var1.getX()),
@@ -328,9 +328,9 @@ public class Class_0969 implements Class_1309 {
       double var16 = this.field_2984.length();
       this.field_2984
          .mul(
-            Double.longBitsToDouble(4603579539098121011L) / var16 + Class_0245.field_688,
-            Double.longBitsToDouble(4603579539098121011L) / var16 + Class_0245.field_688,
-            Double.longBitsToDouble(4603579539098121011L) / var16 + Class_0245.field_688
+            Double.longBitsToDouble(4603579539098121011L) / var16 + Constants.field_688,
+            Double.longBitsToDouble(4603579539098121011L) / var16 + Constants.field_688,
+            Double.longBitsToDouble(4603579539098121011L) / var16 + Constants.field_688
          );
       this.field_2985 = Double.longBitsToDouble(4584304132692975288L);
       this.field_2986 = Double.longBitsToDouble(4606461842859638129L);

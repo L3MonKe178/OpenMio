@@ -3,14 +3,14 @@ package me.mioclient.internal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0937;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0274;
 import me.mioclient.module.client.HUDModule;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 
-public class Class_0535 implements Class_1309, Class_0937 {
+public class Class_0535 implements MioAPI, Class_0937 {
    public static HUDModule hud = Hub.field_2595.method_78(HUDModule.class);
    public final Class_0587<Class_0158> field_1683 = new Class_0587<>();
    public final Class_0274 field_464;

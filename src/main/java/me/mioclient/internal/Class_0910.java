@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1054;
 import me.mioclient.event.Event_10;
 import me.mioclient.mixin.ducks.DuckPlayerMoveC2SPacket;
@@ -9,7 +9,7 @@ import me.mioclient.module.abstract_.AbstractModule_28;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
-public final class Class_0910 implements Class_1309 {
+public final class Class_0910 implements MioAPI {
    public final AbstractModule_28 field_2886;
    public boolean field_821;
 
@@ -21,7 +21,7 @@ public final class Class_0910 implements Class_1309 {
    public void method_40() {
       if (this.method_295()) {
          if (this.field_2886.field_3745.getValue() == Class_1054.SILENT) {
-            Class_1261.method_2(
+            PacketUtil.method_2(
                field_4219.player.getX(),
                field_4219.player.getY(),
                field_4219.player.getZ(),

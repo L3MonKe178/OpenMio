@@ -6,8 +6,8 @@ import java.util.List;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -52,14 +52,14 @@ public class SpiralModule extends Module {
       for (int var2 = Math.max(this.current, 1); var2 < Math.max(this.current, 1) + 2; var2++) {
          Vec3d var3 = this.field_510.get(var2 - 1);
          Vec3d var4 = this.field_510.get(var2);
-         Class_0838.field_2672.method_2(var1.method_10(), var3, var4, Color.white);
+         RenderUtil.field_2672.method_2(var1.method_10(), var3, var4, Color.white);
       }
    }
 
    @Subscribe
    public void method_2(Event_1 var1) {
       Vec3d var2 = this.method_214(this.current);
-      float var3 = Class_0485.method_78(var2)[0];
+      float var3 = RotationManager.method_78(var2)[0];
       field_4219.player.setYaw(var3);
       if (Class_1334.method_5(var2, field_4219.player.getPos()) < Float.intBitsToFloat(1077936128)) {
          this.current++;

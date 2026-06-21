@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.module.player.SpeedMineModule;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-public enum Class_1186 implements Class_0013 {
+public enum Class_1186 implements Nameable {
    PLAIN("Plain") {
       @Override
       public Box method_2(SpeedMineModule var1, Box var2, float var3) {

@@ -6,7 +6,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0917 extends Class_0618 {
+public final class Class_0917 extends Command {
    public Class_0917() {
       super("yaw");
    }
@@ -18,11 +18,11 @@ public final class Class_0917 extends Class_0618 {
             .executes(
                var0 -> {
                   field_4219.player.setYaw((Float)var0.getArgument("yaw", Float.class));
-                  Class_1245.method_2(
+                  ChatUtil.method_2(
                      Text.literal(
-                        new Class_1303().method_2(String.valueOf(var0.getArgument("yaw", Float.class))).method_9("Player's yaw has been set to \u0001.")
+                        new TextBuilder().method_2(String.valueOf(var0.getArgument("yaw", Float.class))).method_9("Player's yaw has been set to \u0001.")
                      ),
-                     Class_1245.method_38(-1)
+                     ChatUtil.method_38(-1)
                   );
                   return 1;
                }

@@ -12,10 +12,10 @@ import me.mioclient.event.Event_18;
 import me.mioclient.event.Event_46;
 import me.mioclient.event.Event_57;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -31,16 +31,16 @@ public class AntiAFKModule extends Module {
    public Setting<Boolean> field_3236;
    public Setting<Boolean> field_3237;
    public Setting<Boolean> field_3238;
-   public final Class_0242 field_3239;
-   public final Class_0242 field_3240;
+   public final Timer field_3239;
+   public final Timer field_3240;
    public boolean field_3241;
    public boolean field_3242;
 
    public AntiAFKModule() {
       super("AntiAFK", "Prevents you from being kicked for AFK-ing.", Category.MISC);
       Settings.initialize(this);
-      this.field_3239 = new Class_0242();
-      this.field_3240 = new Class_0242();
+      this.field_3239 = new Timer();
+      this.field_3240 = new Timer();
    }
 
    @Override
@@ -56,7 +56,7 @@ public class AntiAFKModule extends Module {
             field_4219.options.jumpKey.setPressed(false);
          }
 
-         if (this.field_3240.method_2((double)this.field_3232.getValue().floatValue(), TimeUnit.SECONDS)) {
+         if (this.field_3240.method_2((double)(this.field_3232.getValue() != null ? this.field_3232.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
             List var2 = this.method_941();
             Collections.shuffle(var2);
             if (!var2.isEmpty()) {
@@ -76,12 +76,12 @@ public class AntiAFKModule extends Module {
          && this.method_942()
          && var1.method_213() == PreType.PRE
          && var1.method_1033() != null
-         && Class_1245.method_107(var1.method_1033().getString())) {
+         && ChatUtil.method_107(var1.method_1033().getString())) {
          field_4219.executeSync(
             () -> field_4219.player
                   .networkHandler
                   .sendChatCommand(
-                     new Class_1303()
+                     new TextBuilder()
                         .method_2((int)Math.floor(Math.random() * Double.longBitsToDouble(4666723172467343360L)))
                         .method_2(field_4219.player.getName().getString())
                         .method_9("r Hello! This is auto reply talking. \u0001 is currently AFK :'). [\u0001]")
@@ -126,8 +126,8 @@ public class AntiAFKModule extends Module {
       if (this.field_3236.getValue()) {
          Random var2 = new Random();
          var1.add(() -> {
-            field_4219.player.setYaw(var2.nextFloat((float)Class_0245.field_686));
-            field_4219.player.setPitch(var2.nextFloat(Float.intBitsToFloat(1127481344)) - (float)Class_0245.field_685);
+            field_4219.player.setYaw(var2.nextFloat((float)Constants.field_686));
+            field_4219.player.setPitch(var2.nextFloat(Float.intBitsToFloat(1127481344)) - (float)Constants.field_685);
          });
       }
 

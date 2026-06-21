@@ -2,7 +2,7 @@ package me.mioclient.module.misc;
 
 import me.mioclient.event.Event_42;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0982;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -22,7 +22,7 @@ public class ChestSearchBarModule extends Module {
 
    @Subscribe
    public void onRender(Event_42 var1) {
-      Class_0982.field_3024.onDrawGui(var1.method_881(), var1.method_562(), var1.method_10(), var1.method_59(), var1.method_60(), Class_0838.method_776());
+      Class_0982.field_3024.onDrawGui(var1.method_881(), var1.method_562(), var1.method_10(), var1.method_59(), var1.method_60(), RenderUtil.method_776());
    }
 
    public boolean match(ItemStack var1, boolean var2) {

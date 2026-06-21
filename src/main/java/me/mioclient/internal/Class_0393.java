@@ -11,7 +11,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0393 extends Class_0618 {
+public class Class_0393 extends Command {
    public Class_0393() {
       super("elytra");
    }
@@ -38,7 +38,7 @@ public class Class_0393 extends Class_0618 {
                      }
 
                      this.method_2(() -> {
-                        Class_1261.method_1099();
+                        PacketUtil.method_1099();
                         field_4219.player.startFallFlying();
                      });
                      return 1;

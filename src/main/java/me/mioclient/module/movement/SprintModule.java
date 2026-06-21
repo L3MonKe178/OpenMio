@@ -14,11 +14,11 @@ import me.mioclient.event.Event_39;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.mixin.ducks.DuckEntity;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -52,7 +52,7 @@ public class SprintModule extends Module {
    public Setting<Boolean> field_1027;
    public Setting<Boolean> field_1028;
    public Setting<Boolean> field_1029;
-   public final Class_0242 field_1030;
+   public final Timer field_1030;
    public float field_1031;
    public boolean field_1032;
    public boolean field_1033;
@@ -60,13 +60,13 @@ public class SprintModule extends Module {
    public SprintModule() {
       super("Sprint", "Sprints automatically.", Category.MOVEMENT);
       Settings.initialize(this);
-      this.field_1030 = new Class_0242();
+      this.field_1030 = new Timer();
       this.field_1031 = 0.0F;
    }
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_1022.getValue());
+      return FontRenderer.method_3(this.field_1022.getValue());
    }
 
    @Subscribe
@@ -85,7 +85,7 @@ public class SprintModule extends Module {
                && Class_0464.method_363()
                && Class_0464.method_496() != field_4219.player.getYaw()
                && !this.field_1033) {
-               Class_1261.method_2(
+               PacketUtil.method_2(
                   new Full(
                      field_4219.player.getX(),
                      field_4219.player.getY(),
@@ -204,11 +204,11 @@ public class SprintModule extends Module {
             if (var1.method_213() == PreType.PRE) {
                this.field_1032 = field_4219.player.isSprinting();
                if (this.field_1032) {
-                  Class_1261.method_2(field_4219.player, Mode.STOP_SPRINTING, 0);
+                  PacketUtil.method_2(field_4219.player, Mode.STOP_SPRINTING, 0);
                }
             } else if (this.field_1032) {
                field_4219.player.setSprinting(true);
-               Class_1261.method_2(field_4219.player, Mode.START_SPRINTING, 0);
+               PacketUtil.method_2(field_4219.player, Mode.START_SPRINTING, 0);
             }
          }
       }

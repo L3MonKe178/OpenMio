@@ -6,8 +6,8 @@ import me.mioclient.enum_.Class_0440;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_24;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.mixin.ducks.DuckCommandExecutionC2SPacket;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -96,7 +96,7 @@ public class AntiCyrillicModule extends Module {
    @Override
    public String getInfo() {
       try {
-         return Class_1016.method_3(this.field_1461.getValue());
+         return FontRenderer.method_3(this.field_1461.getValue());
       } catch (Exception var2) {
          return null;
       }
@@ -127,9 +127,9 @@ public class AntiCyrillicModule extends Module {
 
             for (int var5 = var3.length - 1; var5 >= 0; var5--) {
                if (var5 == 0) {
-                  var4.insert(0, new Class_1303().method_2(var3[0]).method_9("\u0001 "));
+                  var4.insert(0, new TextBuilder().method_2(var3[0]).method_9("\u0001 "));
                } else {
-                  var4.insert(0, new Class_1303().method_2(this.method_492(var3[var5])).method_9("\u0001 "));
+                  var4.insert(0, new TextBuilder().method_2(this.method_492(var3[var5])).method_9("\u0001 "));
                }
             }
 
@@ -151,7 +151,7 @@ public class AntiCyrillicModule extends Module {
       for (int var4 = var3 - 1; var4 >= 0; var4--) {
          char var5 = var2.charAt(var4);
          if (field_1462.containsKey(var5)) {
-            var2 = new Class_1303()
+            var2 = new TextBuilder()
                .method_2(var2.substring(var4 + 1))
                .method_2(field_1462.get(var5))
                .method_2(var2.substring(0, var4))

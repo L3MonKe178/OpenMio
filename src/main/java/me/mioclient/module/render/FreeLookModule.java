@@ -3,7 +3,7 @@ package me.mioclient.module.render;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.player.FreecamModule;
@@ -38,7 +38,7 @@ public class FreeLookModule extends Module {
    public void method_2(Event_17 var1) {
       if (!freecam.isToggled()) {
          field_4219.options.setPerspective(this.method_466());
-         field_4219.crosshairTarget = field_4219.player.raycast(field_4219.player.getBlockInteractionRange(), Class_0838.method_776(), false);
+         field_4219.crosshairTarget = field_4219.player.raycast(field_4219.player.getBlockInteractionRange(), RenderUtil.method_776(), false);
       }
    }
 

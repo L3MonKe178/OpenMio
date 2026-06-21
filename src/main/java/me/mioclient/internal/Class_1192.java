@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.AbstractMap.SimpleEntry;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_63;
 import me.mioclient.event.Subscribe;
 import me.mioclient.module.Module;
@@ -32,7 +32,7 @@ import me.mioclient.module.abstract_.AbstractModule_40;
 import me.mioclient.module.abstract_.AbstractModule_5;
 import me.mioclient.module.abstract_.AbstractModule_7;
 
-public final class Class_1192 implements Class_1309, Class_1146 {
+public final class Class_1192 implements MioAPI, Class_1146 {
    public Class_1192() {
       super();
       field_4220.method_14(this);

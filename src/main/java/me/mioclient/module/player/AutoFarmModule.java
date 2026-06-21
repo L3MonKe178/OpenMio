@@ -6,8 +6,8 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Class_0195;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -49,20 +49,21 @@ public class AutoFarmModule extends Module {
    public Setting<Boolean> field_2258;
    public Setting<Boolean> field_2259;
    public Setting<Boolean> field_2260;
-   public final Class_0242 field_2261;
-   public final Class_0242 field_2262;
+   public final Timer field_2261;
+   public final Timer field_2262;
    public int field_2263;
 
    public AutoFarmModule() {
       super("AutoFarm", "Farms your crops for you.", Category.PLAYER);
       Settings.initialize(this);
-      this.field_2261 = new Class_0242();
-      this.field_2262 = new Class_0242();
+      this.field_2261 = new Timer();
+      this.field_2262 = new Timer();
    }
 
    @Subscribe
    public void method_9(Event_7 var1) {
-      for (BlockPos var3 : this.field_2245.getValue().method_2(this)) {
+      if (this.field_2245 == null || this.field_2245.getValue() == null) return;
+      for (BlockPos var3 : (this.field_2245.getValue() != null ? this.field_2245.getValue().method_2(this) : java.util.Collections.<BlockPos>emptyList())) {
          if (this.field_2263 >= this.field_2247.getValue()) {
             break;
          }
@@ -92,7 +93,7 @@ public class AutoFarmModule extends Module {
 
    public void method_9(BlockPos var1, Direction var2, boolean var3) {
       if (!(field_4219.world.getBlockState(var1).getBlock() instanceof SaplingBlock)) {
-         if (this.field_2251.getValue() && this.field_2261.method_2((double)this.field_2252.getValue().floatValue(), TimeUnit.SECONDS)) {
+         if (this.field_2251.getValue() && this.field_2261.method_2((double)(this.field_2252.getValue() != null ? this.field_2252.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
             if (var3 || !this.field_2253.getValue()) {
                field_4219.interactionManager.updateBlockBreakingProgress(var1, var2);
                field_4219.player.swingHand(Hand.MAIN_HAND);
@@ -100,7 +101,7 @@ public class AutoFarmModule extends Module {
                this.field_2263++;
                this.field_2261.reset();
                if (this.field_2249.getValue()) {
-                  Hub.field_2598.method_2(Class_0485.method_78(var1.toCenterPos()), 0);
+                  Hub.field_2598.method_2(RotationManager.method_78(var1.toCenterPos()), 0);
                }
             }
          }
@@ -113,13 +114,13 @@ public class AutoFarmModule extends Module {
       this.field_2262.reset();
       this.field_2263++;
       if (this.field_2249.getValue()) {
-         Hub.field_2598.method_2(Class_0485.method_78(var1.toCenterPos()), 0);
+         Hub.field_2598.method_2(RotationManager.method_78(var1.toCenterPos()), 0);
       }
    }
 
    public void method_9(BlockPos var1, Hand var2) {
       if (this.field_2249.getValue()) {
-         Hub.field_2598.method_2(Class_0485.method_78(Vec3d.ofBottomCenter(var1)), 0);
+         Hub.field_2598.method_2(RotationManager.method_78(Vec3d.ofBottomCenter(var1)), 0);
       }
 
       field_4219.interactionManager.interactBlock(field_4219.player, var2, new BlockHitResult(Vec3d.ofBottomCenter(var1), Direction.UP, var1, false));

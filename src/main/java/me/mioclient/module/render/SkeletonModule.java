@@ -5,7 +5,7 @@ import java.awt.Color;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0809;
 import me.mioclient.mixin.ducks.DuckLivingEntityRenderer;
 import me.mioclient.module.Category;
@@ -98,7 +98,7 @@ public class SkeletonModule extends Module {
             var2.multiply(
                new Quaternionf()
                   .setAngleAxis(
-                     (double)(var13 + Float.intBitsToFloat(1127481344)) * Class_0245.field_687 / Double.longBitsToDouble(4640537203540230144L),
+                     (double)(var13 + Float.intBitsToFloat(1127481344)) * Constants.field_687 / Double.longBitsToDouble(4640537203540230144L),
                      0.0,
                      Double.longBitsToDouble(-4616189618054758400L),
                      0.0
@@ -108,7 +108,7 @@ public class SkeletonModule extends Module {
                var2.multiply(
                   new Quaternionf()
                      .setAngleAxis(
-                        (double)((float)Class_0245.field_685 + var14) * Class_0245.field_687 / Double.longBitsToDouble(4640537203540230144L),
+                        (double)((float)Constants.field_685 + var14) * Constants.field_687 / Double.longBitsToDouble(4640537203540230144L),
                         Double.longBitsToDouble(-4616189618054758400L),
                         0.0,
                         0.0
@@ -199,7 +199,7 @@ public class SkeletonModule extends Module {
                var2.multiply(
                   new Quaternionf()
                      .setAngleAxis(
-                        (double)((float)Class_0245.field_685 + var14) * Class_0245.field_687 / Double.longBitsToDouble(4640537203540230144L),
+                        (double)((float)Constants.field_685 + var14) * Constants.field_687 / Double.longBitsToDouble(4640537203540230144L),
                         Double.longBitsToDouble(4607182418800017408L),
                         0.0,
                         0.0
@@ -214,7 +214,7 @@ public class SkeletonModule extends Module {
             var2.multiply(
                new Quaternionf()
                   .setAngleAxis(
-                     (double)(var13 + Float.intBitsToFloat(1127481344)) * Class_0245.field_687 / Double.longBitsToDouble(4640537203540230144L),
+                     (double)(var13 + Float.intBitsToFloat(1127481344)) * Constants.field_687 / Double.longBitsToDouble(4640537203540230144L),
                      0.0,
                      Double.longBitsToDouble(4607182418800017408L),
                      0.0

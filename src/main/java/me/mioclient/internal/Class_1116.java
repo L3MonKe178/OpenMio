@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 public final class Class_1116 {
    public static final long field_3455 = 750L;
    public final SpeedMineModule field_3456;
-   public final Class_0242 field_3457 = new Class_0242();
+   public final Timer field_3457 = new Timer();
    public boolean field_3458;
    public BlockPos field_355;
 

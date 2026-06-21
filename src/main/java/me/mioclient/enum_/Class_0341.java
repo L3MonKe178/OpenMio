@@ -3,9 +3,9 @@ package me.mioclient.enum_;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0341 implements Class_0013 {
+public enum Class_0341 implements Nameable {
    HH(new SimpleDateFormat("HH"), "Hours"),
    HH_MM(new SimpleDateFormat("HH:mm"), "Minutes"),
    HH_MM_SS(new SimpleDateFormat("HH:mm:ss"), "Seconds");

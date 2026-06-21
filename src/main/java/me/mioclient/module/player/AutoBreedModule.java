@@ -9,10 +9,10 @@ import java.util.function.Predicate;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0250;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -42,13 +42,13 @@ public class AutoBreedModule extends Module {
    public Setting<Boolean> field_815;
    public Setting<Boolean> field_816;
    public Setting<Boolean> field_817;
-   public final Class_0242 field_818;
+   public final Timer field_818;
    public final List<Class_0250> field_819;
 
    public AutoBreedModule() {
       super("AutoBreed", "Breeds animals in between each other automatically.", Category.PLAYER);
       Settings.initialize(this);
-      this.field_818 = new Class_0242();
+      this.field_818 = new Timer();
       this.field_819 = Collections.synchronizedList(new ArrayList<>());
    }
 
@@ -61,7 +61,7 @@ public class AutoBreedModule extends Module {
    public void method_5(Event_7 var1) {
       this.field_819.forEach(Class_0250::method_273);
       this.field_819.removeIf(var0 -> var0.method_275() >= 6000);
-      if (this.field_818.method_2((double)this.field_809.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (this.field_818.method_2((double)(this.field_809.getValue() != null ? this.field_809.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          int var2 = 0;
 
          label49:
@@ -76,19 +76,19 @@ public class AutoBreedModule extends Module {
                }
 
                if (this.method_9(var5) && var5.distanceTo(field_4219.player) <= this.field_807.getValue()) {
-                  int var8 = Class_0136.method_7(method_2(var5));
+                  int var8 = PlayerUtil.method_7(method_2(var5));
                   if (var8 == -1) {
                      return;
                   }
 
                   Vec3d var9 = var5.getBoundingBox().getCenter();
                   if (var9 != null) {
-                     Class_0136.method_16(var8);
+                     PlayerUtil.method_16(var8);
                      Class_1035.method_2(var5, Hand.MAIN_HAND);
                      this.field_819.add(new Class_0250(var5));
                      var2++;
                      if (this.field_810.getValue()) {
-                        Hub.field_2598.method_2(Class_0485.method_78(var9), 5);
+                        Hub.field_2598.method_2(RotationManager.method_78(var9), 5);
                      }
 
                      if (var2 >= this.field_808.getValue()) {

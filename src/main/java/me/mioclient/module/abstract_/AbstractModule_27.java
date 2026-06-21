@@ -3,7 +3,7 @@ package me.mioclient.module.abstract_;
 import java.nio.file.Path;
 import me.mioclient.internal.Class_0149;
 import me.mioclient.internal.Class_0889;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1328;
 import net.minecraft.client.gui.DrawContext;
 import org.apache.commons.lang3.SystemUtils;
@@ -26,7 +26,7 @@ public class AbstractModule_27 extends AbstractModule_26 {
    @Override
    public void method_2(DrawContext var1) {
       if (!this.method_1170()) {
-         Class_1016.field_3143.method_9(var1, this.method_4(), 0.0F, 0.0F, this.method_9(this.field_1844.method_60()));
+         FontRenderer.field_3143.method_9(var1, this.method_4(), 0.0F, 0.0F, this.method_9(this.field_1844.method_60()));
       }
    }
 
@@ -34,7 +34,7 @@ public class AbstractModule_27 extends AbstractModule_26 {
    public float[] method_31() {
       return this.method_1170()
          ? new float[]{0.0F, 0.0F}
-         : new float[]{Class_1016.field_3143.method_221(this.method_4()), (float)Class_1016.field_3143.method_66()};
+         : new float[]{FontRenderer.field_3143.method_221(this.method_4()), (float)FontRenderer.field_3143.method_66()};
    }
 
    public static Path method_1169() {

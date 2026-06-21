@@ -202,7 +202,7 @@ public class Class_0050 extends Class_0145 implements Class_0988 {
          }
       }
 
-      Class_1016.field_3143
+      FontRenderer.field_3143
          .method_9(
             var1,
             this.field_109.getName(),
@@ -212,11 +212,11 @@ public class Class_0050 extends Class_0145 implements Class_0988 {
          );
       if (this.method_852().field_2860.getValue() && !this.field_105.isEmpty()) {
          String var13 = this.field_111 ? "-" : "+";
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                var13,
-               (float)(this.field_418.getX() + this.field_418.method_216() - 4) - Class_1016.field_3143.method_221(var13),
+               (float)(this.field_418.getX() + this.field_418.method_216() - 4) - FontRenderer.field_3143.method_221(var13),
                (float)this.field_418.getY() + this.method_850() - var8 + (float)this.field_419,
                this.method_852().field_2876.getValue()
             );
@@ -233,12 +233,12 @@ public class Class_0050 extends Class_0145 implements Class_0988 {
       }
 
       if (!var14.getString().isEmpty()) {
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                var14,
                (float)this.field_418.getX()
-                  + Class_1016.field_3143.method_221(this.field_109.getName())
+                  + FontRenderer.field_3143.method_221(this.field_109.getName())
                   + (float)this.method_852().field_2853.getValue().intValue(),
                (float)this.field_418.getY() + this.method_850() - var8 + (float)this.field_419 + Float.intBitsToFloat(1065353216),
                Float.intBitsToFloat(1056964608),

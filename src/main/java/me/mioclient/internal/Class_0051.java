@@ -2,11 +2,11 @@ package me.mioclient.internal;
 
 import java.awt.Color;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.client.HUDModule;
 import net.minecraft.client.gui.DrawContext;
 
-public final class Class_0051 implements Class_1309 {
+public final class Class_0051 implements MioAPI {
    public static HUDModule hud = Hub.field_2595.method_78(HUDModule.class);
    public boolean field_116;
    public boolean field_117;

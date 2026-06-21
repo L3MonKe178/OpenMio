@@ -2,14 +2,14 @@ package me.mioclient.internal;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0937;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1200;
 import me.mioclient.enum_.Class_1290;
 import me.mioclient.module.abstract_.AbstractModule_41;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 
-public abstract class Class_0145 implements Class_1309, Class_0937 {
+public abstract class Class_0145 implements MioAPI, Class_0937 {
    public final Class_0031 field_417 = new Class_0031(Float.intBitsToFloat(1082130432));
    public final Class_0746 field_418;
    public int field_419;

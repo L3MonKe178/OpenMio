@@ -10,7 +10,7 @@ import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0152 extends Class_0618 {
+public final class Class_0152 extends Command {
    public static boolean field_442 = false;
    public static final String field_443 = "ㅤ";
 
@@ -35,8 +35,8 @@ public final class Class_0152 extends Class_0618 {
    public void method_183() {
       Hub.field_2597.method_357();
       field_442 = true;
-      String var1 = Class_1032.method_927();
-      Class_1032.method_270("ㅤ");
+      String var1 = CommandManager.method_927();
+      CommandManager.method_270("ㅤ");
 
       for (Module var3 : (List<me.mioclient.module.Module>)Hub.field_2599.getRegistry()) {
          var3.modifyKeybind(var0 -> var0.method_9(-1));

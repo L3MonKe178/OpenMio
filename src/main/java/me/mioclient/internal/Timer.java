@@ -2,10 +2,10 @@ package me.mioclient.internal;
 
 import java.util.concurrent.TimeUnit;
 
-public class Class_0242 {
+public class Timer {
    public long field_677 = -1L;
 
-   public Class_0242() {
+   public Timer() {
       super();
    }
 

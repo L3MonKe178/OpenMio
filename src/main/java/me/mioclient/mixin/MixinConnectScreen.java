@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_22;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.multiplayer.ConnectScreen;
@@ -30,7 +30,7 @@ public class MixinConnectScreen {
          var6 = new ServerInfo("mioclient", var2.getAddress(), ServerType.OTHER);
       }
 
-      Class_1309.field_4220.method_36(new Event_22(var6.address));
+      MioAPI.field_4220.method_36(new Event_22(var6.address));
       Hub.field_2602.method_2(var6);
    }
 }

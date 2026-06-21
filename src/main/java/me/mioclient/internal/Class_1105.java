@@ -5,7 +5,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import net.minecraft.command.CommandSource;
 
-public final class Class_1105 extends Class_0618 {
+public final class Class_1105 extends Command {
    public Class_1105() {
       super("folder");
       this.method_9("openfolder");

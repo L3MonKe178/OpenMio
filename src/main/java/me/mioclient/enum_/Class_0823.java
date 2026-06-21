@@ -1,11 +1,11 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.RotationManager;
 import net.minecraft.util.math.Vec3d;
 
-public enum Class_0823 implements Class_1309, Class_0013 {
+public enum Class_0823 implements MioAPI, Nameable {
    KEEP("Keep"),
    INVERT("Invert"),
    POS("Pos");
@@ -25,7 +25,7 @@ public enum Class_0823 implements Class_1309, Class_0013 {
       if (this == KEEP) {
          return field_4219.player.getYaw();
       } else {
-         float var2 = Class_0485.method_78(var1)[0];
+         float var2 = RotationManager.method_78(var1)[0];
          if (this == INVERT) {
             var2 += 180.0F;
          }

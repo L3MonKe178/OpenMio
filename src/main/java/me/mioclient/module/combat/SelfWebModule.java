@@ -6,10 +6,10 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_1035;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -54,22 +54,22 @@ public class SelfWebModule extends Module {
          BlockPos var2 = BlockPos.ofFloored(field_4219.player.getPos());
          BlockState var3 = field_4219.world.getBlockState(var2);
          if (var3.isReplaceable() && !var3.isLiquid() && field_4219.player.isOnGround()) {
-            int var4 = Class_0136.method_5(Items.COBWEB);
+            int var4 = PlayerUtil.method_5(Items.COBWEB);
             int var5 = field_4219.player.getInventory().selectedSlot;
             if (var4 == -1) {
-               Class_1245.method_2(Text.literal(this.getName()).append(" is out of blocks!"), Class_1245.method_38(-2), Priority.HIGH);
+               ChatUtil.method_2(Text.literal(this.getName()).append(" is out of blocks!"), ChatUtil.method_38(-2), Priority.HIGH);
                this.disable();
             } else {
                Direction var6 = Class_1035.method_78(var2);
                if (var6 != null) {
-                  Class_0136.method_16(var4);
+                  PlayerUtil.method_16(var4);
                   Box var7 = field_4219.player.getBoundingBox();
                   field_4219.player.setBoundingBox(new Box(0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
                   Class_1035.method_2(var2, var6, false, Hand.MAIN_HAND);
                   field_4219.player.setBoundingBox(var7);
-                  Class_0136.method_16(var5);
+                  PlayerUtil.method_16(var5);
                   if (this.field_486.getValue()) {
-                     Hub.field_2598.method_2(new float[]{var1.method_500(), (float)Class_0245.field_685}, 5);
+                     Hub.field_2598.method_2(new float[]{var1.method_500(), (float)Constants.field_685}, 5);
                   }
 
                   if (this.field_487.getValue()) {

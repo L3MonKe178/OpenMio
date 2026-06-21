@@ -31,7 +31,7 @@ public class CustomDeathTextModule extends Module {
 
    public Text method_210() {
       return (Text)(this.field_493.getValue() == Class_1379.CUSTOM
-         ? Text.of(this.field_494.getValue().trim())
+         ? Text.of((this.field_494.getValue() != null ? this.field_494.getValue().trim() : ""))
          : Text.literal(field_495[ThreadLocalRandom.current().nextInt(field_495.length)]));
    }
 }

@@ -1,10 +1,10 @@
 package me.mioclient.internal;
 
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.render.VertexConsumerProvider;
 
-public class Class_1355 implements Class_1309 {
+public class Class_1355 implements MioAPI {
    public static Class_0914 field_4416;
    public static Class_0914 field_4417;
    public static Class_0914 field_4418;

@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-public final class Event_58 extends Class_0605 {
+public final class Event_58 extends Event {
    public final BlockPos field_3484;
    public final Direction field_3485;
 

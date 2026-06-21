@@ -6,7 +6,7 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Side3;
 import me.mioclient.event.Event_12;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -23,14 +23,14 @@ public class AutoClickerModule extends Module {
    public Setting<Integer> field_1444;
    public Setting<Float> field_1445;
    public Setting<Boolean> field_1446;
-   public final Class_0242 field_1447;
+   public final Timer field_1447;
    public float field_1448;
    public final List<Long> field_1449;
 
    public AutoClickerModule() {
       super("AutoClicker", "Spams attack as you hold down the attack button.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_1447 = new Class_0242();
+      this.field_1447 = new Timer();
       this.field_1448 = Float.intBitsToFloat(1065353216);
       this.field_1449 = new ArrayList<>();
    }
@@ -43,7 +43,7 @@ public class AutoClickerModule extends Module {
    @Subscribe
    public void method_2(Event_12 var1) {
       this.field_1449.removeIf(var0 -> System.currentTimeMillis() - var0 >= 1000L);
-      long var2 = 1000L / (long)this.field_1444.getValue().intValue();
+      long var2 = 1000L / (long)(this.field_1444.getValue() != null ? this.field_1444.getValue().intValue() : 0);
       if (!this.field_1445.method_105()) {
          var2 = (long)((float)var2 * this.field_1448);
       }
@@ -66,9 +66,11 @@ public class AutoClickerModule extends Module {
 
    public void method_489() {
       if (!multitask.isToggled() || !field_4219.player.isUsingItem() && field_4219.currentScreen == null) {
+         if (this.field_1443 == null || this.field_1443.getValue() == null) return;
          KeyBinding.onKeyPressed(((me.mioclient.mixin.ducks.DuckKeyBinding)(Object)this.field_1443.getValue().method_688()).getKey());
       } else {
-         this.field_1443.getValue().method_687();
+         if (this.field_1443 == null || this.field_1443.getValue() == null) return;
+      if (this.field_1443.getValue() != null) this.field_1443.getValue().method_687();
       }
    }
 }

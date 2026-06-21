@@ -3,7 +3,7 @@ package me.mioclient.module.abstract_;
 import java.awt.Color;
 import me.mioclient.internal.Class_0055;
 import me.mioclient.internal.Class_0149;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.ColorSetting;
@@ -33,10 +33,10 @@ public class AbstractModule_33 extends AbstractModule_26 {
          var2 = Float.intBitsToFloat(1065353216);
       }
 
-      Color var3 = Class_1081.method_2(this.field_2552.getValue(), (float)this.field_2552.getValue().getAlpha() / Float.intBitsToFloat(1132396544) * var2);
-      Color var4 = Class_1081.method_2(this.field_2553.getValue(), (float)this.field_2553.getValue().getAlpha() / Float.intBitsToFloat(1132396544) * var2);
-      Class_0838.field_2672.method_9(var1.getMatrices(), 0.0F, 0.0F, Float.intBitsToFloat(1126301696), Float.intBitsToFloat(1113063424), var3);
-      Class_0838.field_2672
+      Color var3 = Class_1081.method_2(this.field_2552.getValue(), (float)(this.field_2552.getValue() != null ? this.field_2552.getValue().getAlpha() : 255) / Float.intBitsToFloat(1132396544) * var2);
+      Color var4 = Class_1081.method_2(this.field_2553.getValue(), (float)(this.field_2553.getValue() != null ? this.field_2553.getValue().getAlpha() : 255) / Float.intBitsToFloat(1132396544) * var2);
+      RenderUtil.field_2672.method_9(var1.getMatrices(), 0.0F, 0.0F, Float.intBitsToFloat(1126301696), Float.intBitsToFloat(1113063424), var3);
+      RenderUtil.field_2672
          .method_2(
             var1.getMatrices(),
             Float.intBitsToFloat(-1082130432),

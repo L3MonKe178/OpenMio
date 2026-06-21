@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.enum_.Class_0304;
 import me.mioclient.enum_.Class_0911;
 import me.mioclient.enum_.Priority;
@@ -19,7 +19,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
 
-public final class Class_0881 extends Class_0618 {
+public final class Class_0881 extends Command {
    public final Class_0304 field_2790;
 
    public Class_0881(Class_0304 var1) {
@@ -32,7 +32,7 @@ public final class Class_0881 extends Class_0618 {
       var1.then(LiteralArgumentBuilder.<CommandSource>literal("add").then(RequiredArgumentBuilder.<CommandSource, String>argument("name", new Class_0246()).executes(var1x -> {
          String var2 = (String)var1x.getArgument("name", String.class);
          if (Hub.field_2603.method_253(var2) == this.field_2790) {
-            Class_1245.method_2(this.method_5(var2).append(this.method_460(" is already in your %s list")), Class_1245.method_38(-1));
+            ChatUtil.method_2(this.method_5(var2).append(this.method_460(" is already in your %s list")), ChatUtil.method_38(-1));
          } else {
             if (this.field_2790 == Class_0304.ENEMY) {
                Hub.field_2603.method_175(var2);
@@ -40,20 +40,20 @@ public final class Class_0881 extends Class_0618 {
                Hub.field_2603.method_632(var2);
             }
 
-            Class_1245.method_2(this.method_5(var2).append(this.method_460(" has been added to your %s list")), Class_1245.method_38(-1));
+            ChatUtil.method_2(this.method_5(var2).append(this.method_460(" has been added to your %s list")), ChatUtil.method_38(-1));
          }
 
          return 1;
       })));
       var1.then(
-         Class_0618.method_2("remove", "delete", "del")
+         Command.method_2("remove", "delete", "del")
             .then(RequiredArgumentBuilder.<CommandSource, String>argument("name", StringArgumentType.word()).suggests(this::method_7).executes(var1x -> {
                String var2 = (String)var1x.getArgument("name", String.class);
                if (Hub.field_2603.method_253(var2) == this.field_2790) {
                   Hub.field_2603.method_869(var2);
-                  Class_1245.method_2(this.method_5(var2).append(this.method_460(" has been removed from your %s list")), Class_1245.method_38(-1));
+                  ChatUtil.method_2(this.method_5(var2).append(this.method_460(" has been removed from your %s list")), ChatUtil.method_38(-1));
                } else {
-                  Class_1245.method_2(this.method_5(var2).append(this.method_460(" is not your %s")), Class_1245.method_38(-1));
+                  ChatUtil.method_2(this.method_5(var2).append(this.method_460(" is not your %s")), ChatUtil.method_38(-1));
                }
 
                return 1;
@@ -68,7 +68,7 @@ public final class Class_0881 extends Class_0618 {
                      .filter(var1xx -> var1xx.method_242() == this.field_2790)
                      .map(var0 -> Text.of(var0.getName()))
                      .toList();
-                  Class_1245.method_2(Text.literal(this.method_460("%S list: ")).append(Texts.join(var2, Text.of(", "))), Class_1245.method_38(-1));
+                  ChatUtil.method_2(Text.literal(this.method_460("%S list: ")).append(Texts.join(var2, Text.of(", "))), ChatUtil.method_38(-1));
                   return 1;
                }
             )
@@ -86,18 +86,18 @@ public final class Class_0881 extends Class_0618 {
                            var2 = var1x.method_201();
                         } catch (Exception var6) {
                            if (var6 instanceof FileNotFoundException) {
-                              Class_1245.method_2(
+                              ChatUtil.method_2(
                                  Text.literal(String.format("Couldn't find %s friends file", var1x.method_827()))
                                     .styled(var0x -> var0x.withColor(Formatting.RED)),
-                                 Class_1245.method_38(-1),
+                                 ChatUtil.method_38(-1),
                                  Priority.LOW
                               );
                            } else {
                               var6.printStackTrace();
-                              Class_1245.method_2(
+                              ChatUtil.method_2(
                                  Text.literal(String.format("Couldn't import friends from %s due to an unknown error, check your log file", var1x.method_827()))
                                     .styled(var0x -> var0x.withColor(Formatting.RED)),
-                                 Class_1245.method_38(-1),
+                                 ChatUtil.method_38(-1),
                                  Priority.LOW
                               );
                            }
@@ -114,7 +114,7 @@ public final class Class_0881 extends Class_0618 {
                            }
                         }
 
-                        Class_1245.method_2(Text.literal(String.format("Added %d new friends from %s", var3, var1x.method_827())), Class_1245.method_38(-1));
+                        ChatUtil.method_2(Text.literal(String.format("Added %d new friends from %s", var3, var1x.method_827())), ChatUtil.method_38(-1));
                         return 1;
                      }
                   )
@@ -124,11 +124,11 @@ public final class Class_0881 extends Class_0618 {
 
    public CompletableFuture<Suggestions> method_7(CommandContext<CommandSource> var1, SuggestionsBuilder var2) {
       return CommandSource.suggestMatching(
-         ((List<me.mioclient.record.Class_0210>)Hub.field_2603.getRegistry()).stream().filter(var1x -> var1x.method_242() == this.field_2790).map(Class_0013::getName), var2
+         ((List<me.mioclient.record.Class_0210>)Hub.field_2603.getRegistry()).stream().filter(var1x -> var1x.method_242() == this.field_2790).map(Nameable::getName), var2
       );
    }
 
    public String method_460(String var1) {
-      return var1.replace("%s", this.field_2790.method_349()).replace("%S", Class_1016.method_3(this.field_2790.method_349()));
+      return var1.replace("%s", this.field_2790.method_349()).replace("%S", FontRenderer.method_3(this.field_2790.method_349()));
    }
 }

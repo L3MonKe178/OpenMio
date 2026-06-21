@@ -11,7 +11,7 @@ import me.mioclient.event.Event_51;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -47,7 +47,7 @@ public class StepModule extends Module {
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_2120.getValue());
+      return FontRenderer.method_3(this.field_2120.getValue());
    }
 
    @Subscribe(

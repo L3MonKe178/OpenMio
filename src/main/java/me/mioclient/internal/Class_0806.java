@@ -1,12 +1,12 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Event_9;
 import me.mioclient.module.movement.SpeedModule;
 
-public abstract class Class_0806 implements Class_1309 {
+public abstract class Class_0806 implements MioAPI {
    public final SpeedModule field_2537;
    public double field_2538 = Double.longBitsToDouble(4598847156609680094L);
    public double field_1570;

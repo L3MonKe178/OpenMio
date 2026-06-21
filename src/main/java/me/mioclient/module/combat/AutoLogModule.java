@@ -6,11 +6,11 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_11;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -48,12 +48,12 @@ public class AutoLogModule extends Module {
    public Setting<Boolean> field_203;
    public Setting<Float> field_204;
    public Runnable field_205;
-   public final Class_0242 field_206;
+   public final Timer field_206;
 
    public AutoLogModule() {
       super("AutoLog", "Logs you out so you don't have to fight anyone.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_206 = new Class_0242();
+      this.field_206 = new Timer();
    }
 
    @Override
@@ -73,13 +73,13 @@ public class AutoLogModule extends Module {
             if (!this.field_193.getValue() || Class_0382.method_29(field_4219.player)) {
                if (this.field_200.getValue() && this.method_90()) {
                   this.method_91("Your elytra durability is too low!");
-               } else if (this.field_203.getValue() && field_4219.player.getY() < (double)this.field_204.getValue().floatValue()) {
-                  this.method_91(new Class_1303().method_2(String.valueOf(this.field_204.getValue())).method_9("You are below Y level \u0001"));
+               } else if (this.field_203.getValue() && field_4219.player.getY() < (double)(this.field_204.getValue() != null ? this.field_204.getValue().floatValue() : 0.0f)) {
+                  this.method_91(new TextBuilder().method_2(String.valueOf(this.field_204.getValue())).method_9("You are below Y level \u0001"));
                } else if (!((float)field_4219.player.age / Float.intBitsToFloat(1101004800) < this.field_191.getValue())) {
                   if (this.field_195.getValue()) {
                      for (PlayerEntity var3 : field_4219.world.getPlayers()) {
                         if (!Hub.field_2603.method_1009(var3.getName().getString()) && var3 != field_4219.player) {
-                           this.method_91(new Class_1303().method_2(var3.getName().getString()).method_9("\u0001 has entered your render distance!"));
+                           this.method_91(new TextBuilder().method_2(var3.getName().getString()).method_9("\u0001 has entered your render distance!"));
                         }
                      }
                   }
@@ -145,7 +145,7 @@ public class AutoLogModule extends Module {
                         }
 
                         if (var5 <= this.field_190.getValue() && var4) {
-                           this.method_91(new Class_1303().method_2(var5).method_9("Your health is too low! (\u0001)."));
+                           this.method_91(new TextBuilder().method_2(var5).method_9("Your health is too low! (\u0001)."));
                         }
                      }
                   }
@@ -177,13 +177,13 @@ public class AutoLogModule extends Module {
    public boolean method_90() {
       ItemStack var1 = field_4219.player.getInventory().getArmorStack(EquipmentSlot.CHEST.getEntitySlotId());
       if (var1.isOf(Items.ELYTRA) && var1.isDamageable()) {
-         boolean var2 = Class_0136.method_29(var1) > (float)this.field_201.getValue().intValue();
+         boolean var2 = PlayerUtil.method_29(var1) > (float)(this.field_201.getValue() != null ? this.field_201.getValue().intValue() : 0);
          if (var2) {
             return false;
          } else {
             if (this.field_202.getValue()) {
                for (ItemStack var4 : field_4219.player.getInventory().main) {
-                  if (var4.isOf(Items.ELYTRA) && (!var4.isDamageable() || Class_0136.method_29(var4) > (float)this.field_201.getValue().intValue())) {
+                  if (var4.isOf(Items.ELYTRA) && (!var4.isDamageable() || PlayerUtil.method_29(var4) > (float)(this.field_201.getValue() != null ? this.field_201.getValue().intValue() : 0))) {
                      return false;
                   }
                }
@@ -209,7 +209,7 @@ public class AutoLogModule extends Module {
                Text.empty()
                   .append(
                      Text.of(
-                        new Class_1303()
+                        new TextBuilder()
                            .method_2((Object)var1)
                            .method_2(String.valueOf(Formatting.RED))
                            .method_2(String.valueOf(Formatting.GRAY))

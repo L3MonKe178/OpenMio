@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_16;
 import me.mioclient.event.Event_56;
 import me.mioclient.mixin.ducks.DuckKeyBinding;
@@ -38,10 +38,10 @@ public class MixinKeyboardInput extends Input {
    )
    private void tickHookPre(boolean var1, float var2, CallbackInfo var3) {
       Event_56 var4 = new Event_56((KeyboardInput)(Object)this, var1 ? var2 : -1.0F);
-      Class_1309.field_4220.method_36(var4);
+      MioAPI.field_4220.method_36(var4);
       if (var4.method_464()) {
          Event_16 var5 = new Event_16(var4.method_276(), var4.method_277());
-         Class_1309.field_4220.method_36(var5);
+         MioAPI.field_4220.method_36(var5);
          var3.cancel();
       }
    }
@@ -53,7 +53,7 @@ public class MixinKeyboardInput extends Input {
    )
    private void tickHook(boolean var1, float var2, CallbackInfo var3) {
       Event_16 var4 = new Event_16((KeyboardInput)(Object)this, var1 ? var2 : -1.0F);
-      Class_1309.field_4220.method_36(var4);
+      MioAPI.field_4220.method_36(var4);
    }
 
    @Redirect(

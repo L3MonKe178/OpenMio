@@ -34,7 +34,7 @@ public class Class_0275 implements Class_0597<EndCrystalEntity> {
       float var6 = EndCrystalEntityRenderer.getYOffset(var1, var2);
       float var7 = ((float)var1.endCrystalAge + var2) * 3.0F;
       var3.scale(2.0F * this.method_174(), 2.0F * this.method_174(), 2.0F * this.method_174());
-      var3.translate(0.0, -Class_0245.field_688, 0.0);
+      var3.translate(0.0, -Constants.field_688, 0.0);
       if (var1.shouldShowBottom() && !animations.method_136()) {
          Class_0482.method_2(var4, var5.mio$getBottom());
       }

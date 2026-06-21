@@ -2,7 +2,7 @@ package me.mioclient.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0286;
 import me.mioclient.internal.Class_0860;
 import me.mioclient.internal.Class_1355;
@@ -90,15 +90,15 @@ public abstract class MixinHeldItemRenderer {
    ) {
       if (viewmodel.isToggled()) {
          boolean var12 = var6.contains(DataComponentTypes.FOOD) || var6.getItem() instanceof PotionItem;
-         boolean var13 = Class_1309.field_4219.player.getActiveItem().getItem() == var6.getItem();
-         if (var12 && Class_1309.field_4219.player.getActiveItem() == var6 && !viewmodel.field_1910.getValue()) {
+         boolean var13 = MioAPI.field_4219.player.getActiveItem().getItem() == var6.getItem();
+         if (var12 && MioAPI.field_4219.player.getActiveItem() == var6 && !viewmodel.field_1910.getValue()) {
             return;
          }
 
          if (var4 == Hand.MAIN_HAND) {
             float var14 = var12 && var13 ? 0.0F : -viewmodel.field_1913.getValue();
             float var15 = var12 && var13 ? 0.0F : viewmodel.field_1915.getValue();
-            if (Class_1309.field_4219.player.getMainArm() == Arm.LEFT) {
+            if (MioAPI.field_4219.player.getMainArm() == Arm.LEFT) {
                var14 = -var14;
             }
 
@@ -110,7 +110,7 @@ public abstract class MixinHeldItemRenderer {
          } else {
             float var16 = var12 && var13 ? 0.0F : viewmodel.field_1923.getValue();
             float var17 = var12 && var13 ? 0.0F : viewmodel.field_1925.getValue();
-            if (Class_1309.field_4219.player.getMainArm() == Arm.LEFT) {
+            if (MioAPI.field_4219.player.getMainArm() == Arm.LEFT) {
                var16 = -var16;
             }
 
@@ -130,7 +130,7 @@ public abstract class MixinHeldItemRenderer {
    private void renderArmHook(MatrixStack var1, VertexConsumerProvider var2, int var3, float var4, float var5, Arm var6, CallbackInfo var7) {
       if (viewmodel.isToggled() && viewmodel.field_1912.getValue()) {
          float var8 = -viewmodel.field_1913.getValue();
-         if (Class_1309.field_4219.player.getMainArm() == Arm.LEFT) {
+         if (MioAPI.field_4219.player.getMainArm() == Arm.LEFT) {
             var8 = -var8;
          }
 
@@ -186,7 +186,7 @@ public abstract class MixinHeldItemRenderer {
       )
    )
    private void multiplyHook(MatrixStack var1, Quaternionf var2) {
-      Class_1309.field_4220.method_36(new Class_0860());
+      MioAPI.field_4220.method_36(new Class_0860());
       if (!viewmodel.isToggled() || !viewmodel.field_1908.getValue()) {
          var1.multiply(var2);
       }
@@ -208,7 +208,7 @@ public abstract class MixinHeldItemRenderer {
             var3 = 1.0F;
          }
 
-         boolean var4 = !ItemStack.areItemsAndComponentsEqual(this.field_4047, Class_1309.field_4219.player.getMainHandStack());
+         boolean var4 = !ItemStack.areItemsAndComponentsEqual(this.field_4047, MioAPI.field_4219.player.getMainHandStack());
          float var5 = var2 ? -0.6F : -0.4F;
          return MathHelper.clamp((var4 ? 0.0F : var3 * var3 * var3) - this.field_4043, var5, 0.4F);
       } else {

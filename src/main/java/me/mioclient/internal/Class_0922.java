@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import com.mojang.authlib.GameProfile;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_4;
 import net.minecraft.client.network.OtherClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -41,18 +41,18 @@ public class Class_0922 extends OtherClientPlayerEntity {
          super.setHealth(Float.intBitsToFloat(1091567616));
          this.clearStatusEffects();
          this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
-         Class_1309.field_4219.particleManager.addEmitter(this, ParticleTypes.TOTEM_OF_UNDYING, 30);
-         Class_1309.field_4219
+         MioAPI.field_4219.particleManager.addEmitter(this, ParticleTypes.TOTEM_OF_UNDYING, 30);
+         MioAPI.field_4219
             .world
             .playSound(
-               Class_1309.field_4219.player,
+               MioAPI.field_4219.player,
                this.getBlockPos(),
                SoundEvents.ITEM_TOTEM_USE,
                SoundCategory.PLAYERS,
                Float.intBitsToFloat(1065353216),
                Float.intBitsToFloat(1065353216)
             );
-         Class_1309.field_4220.method_36(new Event_4(new EntityStatusS2CPacket(this, (byte)35)));
+         MioAPI.field_4220.method_36(new Event_4(new EntityStatusS2CPacket(this, (byte)35)));
       }
    }
 

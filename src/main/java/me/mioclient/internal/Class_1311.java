@@ -20,13 +20,13 @@ public class Class_1311 extends Class_1031 {
       this.method_2(
          var2,
          var7,
-         () -> Class_1016.field_3143
+         () -> FontRenderer.field_3143
                .method_9(
                   var1,
                   var7,
                   (float)this.field_418.getX()
                      + (float)this.method_167().method_216() * Float.intBitsToFloat(1056964608)
-                     - Class_1016.field_3143.method_221(var7) * Float.intBitsToFloat(1056964608),
+                     - FontRenderer.field_3143.method_221(var7) * Float.intBitsToFloat(1056964608),
                   (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                   this.method_852().field_2876.getValue()
                )

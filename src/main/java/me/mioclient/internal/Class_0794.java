@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0415;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,7 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
-public class Class_0794 implements Class_1309 {
+public class Class_0794 implements MioAPI {
    public boolean field_2498;
    public boolean field_2499 = true;
    public boolean field_2500;

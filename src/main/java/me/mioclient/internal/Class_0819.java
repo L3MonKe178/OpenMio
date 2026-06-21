@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import java.util.Comparator;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.combat.PusherModule;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,7 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
-public final class Class_0819 implements Class_1309 {
+public final class Class_0819 implements MioAPI {
    public static final List<Block> field_2593 = List.of(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.REINFORCED_DEEPSLATE, Blocks.RESPAWN_ANCHOR);
    public final PusherModule field_2594;
 
@@ -35,7 +35,7 @@ public final class Class_0819 implements Class_1309 {
          )
          .filter(var1 -> !this.field_2594.field_3009.getValue() || Class_0382.method_29((LivingEntity)var1))
          .filter(this::method_52)
-         .min(Comparator.comparing(var0 -> MathHelper.angleBetween(field_4219.player.getYaw(), Class_0485.method_14(var0)[0])))
+         .min(Comparator.comparing(var0 -> MathHelper.angleBetween(field_4219.player.getYaw(), RotationManager.method_14(var0)[0])))
          .orElse(null);
    }
 

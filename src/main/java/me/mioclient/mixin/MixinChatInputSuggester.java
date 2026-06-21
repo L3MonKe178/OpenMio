@@ -5,8 +5,8 @@ import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.suggestion.Suggestions;
 import java.util.concurrent.CompletableFuture;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_1032;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.CommandManager;
 import net.minecraft.client.gui.screen.ChatInputSuggestor;
 import net.minecraft.client.gui.screen.ChatInputSuggestor.SuggestionWindow;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin({ChatInputSuggestor.class})
-public abstract class MixinChatInputSuggester implements Class_1309 {
+public abstract class MixinChatInputSuggester implements MioAPI {
    @Shadow
    @Final
    TextFieldWidget field_21599;
@@ -51,12 +51,12 @@ public abstract class MixinChatInputSuggester implements Class_1309 {
       locals = LocalCapture.CAPTURE_FAILHARD
    )
    public void refresh(CallbackInfo var1, String var2, StringReader var3) {
-      String var4 = Class_1032.method_927();
+      String var4 = CommandManager.method_927();
       if (var3.canRead(var4.length()) && var3.getString().startsWith(var4, var3.getCursor())) {
          var3.setCursor(var3.getCursor() + var4.length());
-         CommandDispatcher var5 = Class_1032.field_3191;
+         CommandDispatcher var5 = CommandManager.field_3191;
          if (this.field_21610 == null) {
-            this.field_21610 = var5.parse(var3, Class_1032.field_3190);
+            this.field_21610 = var5.parse(var3, CommandManager.field_3190);
          }
 
          int var6 = this.field_21599.getCursor();

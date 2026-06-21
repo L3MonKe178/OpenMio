@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.awt.Color;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0650;
 import me.mioclient.module.client.UIModule;
 import net.minecraft.client.gui.DrawContext;
@@ -31,12 +31,12 @@ import net.minecraft.util.math.ColorHelper.Argb;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL20;
 
-public class Class_0838 implements Class_1309 {
-   public static final Class_0838 field_2672 = new Class_0838();
+public class RenderUtil implements MioAPI {
+   public static final RenderUtil field_2672 = new RenderUtil();
    public static float field_2673;
    public static MatrixStack field_2674;
 
-   public Class_0838() {
+   public RenderUtil() {
       super();
    }
 
@@ -445,7 +445,7 @@ public class Class_0838 implements Class_1309 {
    }
 
    public void method_2(DrawContext var1, String var2, Vec3d var3, float var4, float var5, double var6, Color var8, boolean var9) {
-      this.method_2(var1, var2, var3, var4, var5, -Class_1016.field_3143.method_221(var2) / 2.0F, 0.0F, var6, var8, var9);
+      this.method_2(var1, var2, var3, var4, var5, -FontRenderer.field_3143.method_221(var2) / 2.0F, 0.0F, var6, var8, var9);
    }
 
    public void method_2(DrawContext var1, String var2, Vec3d var3, float var4, float var5, float var6, float var7, double var8, Color var10, boolean var11) {
@@ -456,9 +456,9 @@ public class Class_0838 implements Class_1309 {
       var1.getMatrices().multiply(field_4219.getEntityRenderDispatcher().getRotation());
       var1.getMatrices().scale(0.025F * (float)var8, -0.025F * (float)var8, (float)(0.025F * var8));
       if (var11) {
-         Class_1016.field_3143.method_9(var1, var2, var6, var7, var10);
+         FontRenderer.field_3143.method_9(var1, var2, var6, var7, var10);
       } else {
-         Class_1016.field_3143.method_2(var1, var2, var6, var7, var10);
+         FontRenderer.field_3143.method_2(var1, var2, var6, var7, var10);
       }
 
       var1.getMatrices().pop();

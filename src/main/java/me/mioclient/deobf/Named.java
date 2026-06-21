@@ -1,10 +1,10 @@
 package me.mioclient.deobf;
 
 import java.util.Objects;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 
-public class Named implements Class_1309, Class_0013 {
+public class Named implements MioAPI, Nameable {
    public final String field_327;
    public String field_2189 = "";
 

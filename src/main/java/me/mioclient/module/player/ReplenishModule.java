@@ -7,8 +7,8 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Class_0710;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0464;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -37,19 +37,19 @@ public class ReplenishModule extends Module {
    public Setting<Boolean> field_1348;
    public Setting<Boolean> field_1349;
    public final List<Item> field_1350;
-   public final Class_0242 field_1351;
+   public final Timer field_1351;
 
    public ReplenishModule() {
       super("Replenish", "Replenishes your hotbar.", Category.PLAYER);
       Settings.initialize(this);
       this.field_1350 = DefaultedList.ofSize(9, Items.AIR);
-      this.field_1351 = new Class_0242();
+      this.field_1351 = new Timer();
       this.setDrawn(false);
    }
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      if (this.field_1351.method_9((long)this.field_1343.getValue().intValue()) && field_4219.player.currentScreenHandler.getCursorStack().isEmpty()) {
+      if (this.field_1351.method_9((long)(this.field_1343.getValue() != null ? this.field_1343.getValue().intValue() : 0)) && field_4219.player.currentScreenHandler.getCursorStack().isEmpty()) {
          if ((!Class_0464.method_363() || !this.field_1348.getValue()) && (!(field_4219.player.getVelocity().getY() > 0.0) || !this.field_1349.getValue())) {
             boolean var2 = field_4219.currentScreen instanceof HandledScreen;
 
@@ -77,22 +77,23 @@ public class ReplenishModule extends Module {
    }
 
    public boolean method_2(Item var1, int var2) {
-      if (!this.field_1342.getValue().method_2(var1, this.field_1341.getValue())) {
+      if (this.field_1342 == null || this.field_1342.getValue() == null) return false;
+      if (!(this.field_1342.getValue() != null ? this.field_1342.getValue().method_2(var1, this.field_1341.getValue()) : false)) {
          return false;
       } else {
          boolean var3 = field_219.isToggled() && field_219.field_4106.getValue();
-         int var4 = Class_0136.method_2(
+         int var4 = PlayerUtil.method_2(
             var1, var1x -> var1x != field_4219.player.getOffHandStack() && (!var3 || var1x.getItem() != Items.TOTEM_OF_UNDYING), true
          );
          if (var4 == -1 && var1 == Items.TOTEM_OF_UNDYING && !var3) {
-            var4 = Class_0136.method_2((Predicate<ItemStack>)(var1x -> this.method_35(var1x.getItem()) && var1x != field_4219.player.getOffHandStack()), true);
+            var4 = PlayerUtil.method_2((Predicate<ItemStack>)(var1x -> this.method_35(var1x.getItem()) && var1x != field_4219.player.getOffHandStack()), true);
          }
 
          if (var4 < 36 && var4 != -1) {
             if (this.method_113(var2)) {
                field_4219.interactionManager.clickSlot(field_4219.player.currentScreenHandler.syncId, var4, 0, SlotActionType.QUICK_MOVE, field_4219.player);
             } else {
-               Class_0136.method_5(var4, Class_0136.method_30(var2));
+               PlayerUtil.method_5(var4, PlayerUtil.method_30(var2));
             }
 
             return true;
@@ -121,10 +122,11 @@ public class ReplenishModule extends Module {
 
    public boolean method_465(int var1) {
       ItemStack var2 = field_4219.player.getInventory().getStack(var1);
-      if (!this.field_1342.getValue().method_2(var2.getItem(), this.field_1341.getValue())) {
+      if (this.field_1342 == null || this.field_1342.getValue() == null) return false;
+      if (!(this.field_1342.getValue() != null ? this.field_1342.getValue().method_2(var2.getItem(), this.field_1341.getValue()) : false)) {
          return false;
       } else {
-         float var3 = (float)this.field_1344.getValue().intValue() / Float.intBitsToFloat(1115684864);
+         float var3 = (float)(this.field_1344.getValue() != null ? this.field_1344.getValue().intValue() : 0) / Float.intBitsToFloat(1115684864);
          if (!var2.isEmpty() && var2.getItem() != Items.AIR && var2.isStackable() && !((float)var2.getCount() / (float)var2.getMaxCount() >= var3)) {
             int var4 = -1;
             int var5 = 0;
@@ -157,12 +159,12 @@ public class ReplenishModule extends Module {
                   Hub.field_2611.method_154(true);
                   field_4219.interactionManager.clickSlot(var10, var4, 0, SlotActionType.PICKUP, field_4219.player);
                   field_4219.interactionManager.clickSlot(var10, var4, 1, SlotActionType.PICKUP, field_4219.player);
-                  field_4219.interactionManager.clickSlot(var10, Class_0136.method_30(var1), 0, SlotActionType.PICKUP, field_4219.player);
+                  field_4219.interactionManager.clickSlot(var10, PlayerUtil.method_30(var1), 0, SlotActionType.PICKUP, field_4219.player);
                   Hub.field_2611.method_154(false);
-               } else if (Class_0136.method_162()) {
+               } else if (PlayerUtil.method_162()) {
                   field_4219.interactionManager.clickSlot(var10, var4, 0, SlotActionType.QUICK_MOVE, field_4219.player);
                } else {
-                  Class_0136.method_5(var4, Class_0136.method_30(var1));
+                  PlayerUtil.method_5(var4, PlayerUtil.method_30(var1));
                }
 
                return true;

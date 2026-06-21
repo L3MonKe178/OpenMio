@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0046;
 import me.mioclient.enum_.Class_1072;
 import me.mioclient.event.Event_18;
@@ -12,7 +12,7 @@ import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.record.Class_0702;
 
-public final class Class_0092 extends Class_0939<Class_0260> implements Class_1309, Class_1146 {
+public final class Class_0092 extends Registry<Class_0260> implements MioAPI, Class_1146 {
    public Class_0092() {
       super();
       field_4220.method_14(this);

@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.UUID;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0062;
 import me.mioclient.event.Event_3;
 import me.mioclient.module.render.ESPModule;
@@ -42,7 +42,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0104 implements Class_1309 {
+public class Class_0104 implements MioAPI {
    public final ESPModule field_328;
    public final HashMap<UUID, String> field_329 = new HashMap<>();
 
@@ -54,7 +54,7 @@ public class Class_0104 implements Class_1309 {
    public boolean method_98(Entity var1) {
       if (var1 == null || var1.getBoundingBox() == null) {
          return false;
-      } else if (!Class_0485.method_4(var1.getBoundingBox())) {
+      } else if (!RotationManager.method_4(var1.getBoundingBox())) {
          return false;
       } else {
          Vec3d var2 = field_4219.gameRenderer.getCamera().getPos();
@@ -73,7 +73,7 @@ public class Class_0104 implements Class_1309 {
       if (var1 == null) {
          return false;
       } else {
-         return !Class_0485.method_4(new Box(var1.getPos()))
+         return !RotationManager.method_4(new Box(var1.getPos()))
             ? false
             : (var1 instanceof ChestBlockEntity || var1 instanceof BarrelBlockEntity) && this.field_328.field_3839.getValue()
                || var1 instanceof BedBlockEntity && this.field_328.field_3842.getValue()
@@ -101,11 +101,11 @@ public class Class_0104 implements Class_1309 {
    public void method_2(Event_3 var1, String var2, Vec3d var3, float var4, Color var5, Color var6) {
       double var7 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var3, (double)var4);
       if (var6 != null) {
-         Class_0838.field_2672
-            .method_2(var1.method_10(), var3, 0.0F, 0.0F, Class_1016.field_3143.method_221(var2), (float)Class_1016.field_3143.method_66(), var7, var6);
+         RenderUtil.field_2672
+            .method_2(var1.method_10(), var3, 0.0F, 0.0F, FontRenderer.field_3143.method_221(var2), (float)FontRenderer.field_3143.method_66(), var7, var6);
       }
 
-      Class_0838.field_2672.method_2(var1.method_881(), var2, var3, 0.0F, 0.0F, var7, var5, true);
+      RenderUtil.field_2672.method_2(var1.method_881(), var2, var3, 0.0F, 0.0F, var7, var5, true);
    }
 
    public void method_2(UUID var1) {
@@ -113,7 +113,7 @@ public class Class_0104 implements Class_1309 {
          HttpRequest var3 = HttpRequest.newBuilder()
             .uri(
                new URI(
-                  new Class_1303().method_2(var1.toString().replace("-", "")).method_9("https://sessionserver.mojang.com/session/minecraft/profile/\u0001")
+                  new TextBuilder().method_2(var1.toString().replace("-", "")).method_9("https://sessionserver.mojang.com/session/minecraft/profile/\u0001")
                )
             )
             .timeout(Duration.of(3L, ChronoUnit.SECONDS))

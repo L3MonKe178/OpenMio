@@ -47,7 +47,7 @@ public abstract class Class_1015<T> extends Class_0145 {
 
    public void method_2(MatrixStack var1, String var2, Runnable var3) {
       var1.push();
-      this.method_468(Class_1016.field_3143.method_221(var2));
+      this.method_468(FontRenderer.field_3143.method_221(var2));
       float var4 = -this.field_3139.method_45();
       boolean var5 = var4 != 0.0F && !(this instanceof Class_0414);
       if (var5) {

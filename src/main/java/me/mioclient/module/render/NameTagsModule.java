@@ -21,17 +21,17 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_27;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0714;
 import me.mioclient.internal.Class_0745;
 import me.mioclient.internal.Class_0756;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0930;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -140,10 +140,10 @@ public class NameTagsModule extends Module {
          for (PlayerEntity var5 : this.field_1741) {
             if ((var5 != field_4219.player || freecam.isToggled()) && (!var5.isDead() || this.field_1712.getValue())) {
                this.field_1742 = Hub.field_2610.method_326() && Hub.field_2610.method_68(var5.getGameProfile().getName()) != null && this.field_1727.getValue();
-               boolean var6 = !Class_0485.method_4(var5.getBoundingBox())
-                  || field_4219.gameRenderer.getCamera().getPos().distanceTo(var5.getPos()) > (double)this.field_1710.getValue().intValue();
+               boolean var6 = !RotationManager.method_4(var5.getBoundingBox())
+                  || field_4219.gameRenderer.getCamera().getPos().distanceTo(var5.getPos()) > (double)(this.field_1710.getValue() != null ? this.field_1710.getValue().intValue() : 0);
                if (!var6) {
-                  float var7 = Class_0838.method_776();
+                  float var7 = RenderUtil.method_776();
                   double var8 = MathHelper.lerp((double)var7, var5.lastRenderX, var5.getX()) - var2.x;
                   double var10 = MathHelper.lerp((double)var7, var5.lastRenderY, var5.getY()) - var2.y;
                   double var12 = MathHelper.lerp((double)var7, var5.lastRenderZ, var5.getZ()) - var2.z;
@@ -171,7 +171,7 @@ public class NameTagsModule extends Module {
       RenderSystem.disableBlend();
       Class_0745.method_30(false);
       RenderSystem.polygonOffset(Float.intBitsToFloat(1065353216), Float.intBitsToFloat(-979615744));
-      Class_1016.field_3143.method_474();
+      FontRenderer.field_3143.method_474();
       RenderSystem.polygonOffset(Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1167867904));
       GL20.glDepthRange(0.0, Double.longBitsToDouble(4607182418800017408L));
       RenderSystem.polygonOffset(Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1236736768));
@@ -193,9 +193,9 @@ public class NameTagsModule extends Module {
       for (PlayerEntity var4 : this.field_1741) {
          if (field_4219.player != var4) {
             float var5 = (float)Class_0930.method_2(
-               field_4219.gameRenderer.getCamera().getPos(), var4.getPos(), (double)this.field_1711.getValue().floatValue()
+               field_4219.gameRenderer.getCamera().getPos(), var4.getPos(), (double)(this.field_1711.getValue() != null ? this.field_1711.getValue().floatValue() : 0.0f)
             );
-            float var6 = Class_0838.method_776();
+            float var6 = RenderUtil.method_776();
             double var7 = MathHelper.lerp((double)var6, var4.lastRenderX, var4.getX()) - var2.x;
             double var9 = MathHelper.lerp((double)var6, var4.lastRenderY, var4.getY()) - var2.y;
             double var11 = MathHelper.lerp((double)var6, var4.lastRenderZ, var4.getZ()) - var2.z;
@@ -213,7 +213,7 @@ public class NameTagsModule extends Module {
             var1.scale(-var5 * Float.intBitsToFloat(1020054733), -var5 * Float.intBitsToFloat(1020054733), var5 * Float.intBitsToFloat(1020054733));
             String var21 = this.method_263(var4);
             float var22 = (float)((double)(-this.method_221(var21)) * Double.longBitsToDouble(4602678819172646912L));
-            Class_0838.field_2672
+            RenderUtil.field_2672
                .method_9(
                   var1,
                   var22 - Float.intBitsToFloat(1065353216),
@@ -236,7 +236,7 @@ public class NameTagsModule extends Module {
       this.field_1744 = this.field_1743 = false;
       boolean var4 = animations.method_128() && var3 != field_4219.player;
       float var5 = var3.getHeight() * (var4 ? animations.field_346.getValue() : Float.intBitsToFloat(1065353216)) + Float.intBitsToFloat(1056964608);
-      float var6 = (float)Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var3.getPos(), (double)this.field_1711.getValue().floatValue());
+      float var6 = (float)Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var3.getPos(), (double)(this.field_1711.getValue() != null ? this.field_1711.getValue().floatValue() : 0.0f));
       var2.push();
       var2.translate(0.0F, var5, 0.0F);
       var2.multiply(field_4219.getEntityRenderDispatcher().getRotation());
@@ -292,7 +292,7 @@ public class NameTagsModule extends Module {
 
       boolean var12 = field_984.isToggled();
       float var13 = Float.intBitsToFloat(1065353216);
-      Class_1016.field_3143.method_9(var1, var7, var8, var13, var11);
+      FontRenderer.field_3143.method_9(var1, var7, var8, var13, var11);
       field_1709 = true;
       this.method_9(var1, var2, var3);
       field_1709 = false;
@@ -512,7 +512,7 @@ public class NameTagsModule extends Module {
                var18 = var18.substring(0, Math.min(var17 ? 3 : 2, var18.length()));
                if (!var18.equalsIgnoreCase("Cu")) {
                   if (!var17) {
-                     var18 = new Class_1303().method_2(var15.getIntValue()).method_2((Object)var18).method_9("\u0001\u0001");
+                     var18 = new TextBuilder().method_2(var15.getIntValue()).method_2((Object)var18).method_9("\u0001\u0001");
                   }
 
                   this.method_2(
@@ -540,7 +540,7 @@ public class NameTagsModule extends Module {
             this.method_2(
                var1,
                String.format("%d%s", var9, "%"),
-               (float)(((double)var5 - Class_0245.field_688) * (double)var7) + Float.intBitsToFloat(1065353216),
+               (float)(((double)var5 - Constants.field_688) * (double)var7) + Float.intBitsToFloat(1065353216),
                var25,
                (double)(var7 * Float.intBitsToFloat(1069547520)),
                new Color(var4.getItemBarColor(), false),
@@ -560,7 +560,7 @@ public class NameTagsModule extends Module {
       if (var8) {
          Class_0745.method_2(var1.getMatrices(), var2, (int)var11, 0, var7.hashCode(), true);
       } else {
-         Class_1016.field_3143.method_9(var1, var2, var11, 0.0F, var7);
+         FontRenderer.field_3143.method_9(var1, var2, var11, 0.0F, var7);
       }
 
       var10.pop();
@@ -655,11 +655,11 @@ public class NameTagsModule extends Module {
    }
 
    public float method_575() {
-      return (float)Class_1016.field_3143.method_66();
+      return (float)FontRenderer.field_3143.method_66();
    }
 
    public float method_221(String var1) {
-      return Class_1016.field_3143.method_221(var1);
+      return FontRenderer.field_3143.method_221(var1);
    }
 
    public boolean method_222(Entity var1) {

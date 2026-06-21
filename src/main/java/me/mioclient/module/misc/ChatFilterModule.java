@@ -6,8 +6,8 @@ import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_24;
 import me.mioclient.event.Event_46;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1032;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.CommandManager;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -30,8 +30,8 @@ public class ChatFilterModule extends Module {
    public void onEnable() {
       if (Hub.field_2627.isEmpty()) {
          String var1 = "You don't have any chat filters set. Use the \"%schatfilter add <id> <filter>\" command to add new filters."
-            .formatted(Class_1032.method_927());
-         Class_1245.method_2(Text.of(var1), Class_1245.method_2(this), Priority.LOW);
+            .formatted(CommandManager.method_927());
+         ChatUtil.method_2(Text.of(var1), ChatUtil.method_2(this), Priority.LOW);
       }
 
       this.field_2115 = null;

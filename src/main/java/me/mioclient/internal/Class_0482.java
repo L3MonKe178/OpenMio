@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import me.mioclient.api.Class_0597;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.record.Class_0661;
@@ -23,7 +23,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector4f;
 
-public class Class_0482 implements Class_1309 {
+public class Class_0482 implements MioAPI {
    public static final Vector4f field_1525 = new Vector4f();
    public static final Vector4f field_1526 = new Vector4f();
    public static final Vector4f field_1527 = new Vector4f();
@@ -46,14 +46,14 @@ public class Class_0482 implements Class_1309 {
       method_800 = -9999
    )
    public static void method_9(Event_3 var0) {
-      Class_0838.field_2672.method_780();
+      RenderUtil.field_2672.method_780();
       RenderSystem.setShader(GameRenderer::getPositionColorProgram);
       field_1531.method_529();
       RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
       RenderSystem.lineWidth((float)field_1536);
       field_1532.method_529();
       RenderSystem.lineWidth(1.0F);
-      Class_0838.field_2672.method_782();
+      RenderUtil.field_2672.method_782();
    }
 
    public static void method_2(Color var0, Color var1) {
@@ -72,7 +72,7 @@ public class Class_0482 implements Class_1309 {
    public static void method_2(MatrixStack var0, Entity var1) {
       var0.push();
       Vec3d var2 = field_4219.gameRenderer.getCamera().getPos();
-      float var3 = Class_0838.method_776();
+      float var3 = RenderUtil.method_776();
       if (var1 instanceof Class_0878) {
          var3 = 1.0F;
       }
@@ -88,7 +88,7 @@ public class Class_0482 implements Class_1309 {
       var0.translate(var11, var13, var15);
       Class_0597 var17 = method_16(var1);
       if (var17 != null) {
-         var17.method_2(var1, Class_0838.method_776(), var0);
+         var17.method_2(var1, RenderUtil.method_776(), var0);
       }
 
       var0.pop();

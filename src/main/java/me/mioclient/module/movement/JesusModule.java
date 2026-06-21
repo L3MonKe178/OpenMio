@@ -50,7 +50,7 @@ public class JesusModule extends Module {
                   0.0,
                   this.field_1268.getValue() == Class_0525.DOLPHIN
                      ? Double.longBitsToDouble(4585911017040021081L)
-                     : Double.longBitsToDouble(4590429028186199163L) * (double)this.field_1270.getValue().floatValue(),
+                     : Double.longBitsToDouble(4590429028186199163L) * (double)(this.field_1270.getValue() != null ? this.field_1270.getValue().floatValue() : 0.0f),
                   0.0
                );
          }

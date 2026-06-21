@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_2;
 import me.mioclient.module.render.ChamsModule;
@@ -54,7 +54,7 @@ public class MixinRenderPhase {
    )
    private void startDraw(CallbackInfo var1) {
       if (this.mio$isGlintTexturing) {
-         Class_1309.field_4220.method_36(new Event_2(PreType.PRE));
+         MioAPI.field_4220.method_36(new Event_2(PreType.PRE));
       }
    }
 
@@ -64,7 +64,7 @@ public class MixinRenderPhase {
    )
    private void endDrawing(CallbackInfo var1) {
       if (this.mio$isGlintTexturing) {
-         Class_1309.field_4220.method_36(new Event_2(PreType.POST));
+         MioAPI.field_4220.method_36(new Event_2(PreType.POST));
       }
    }
 }

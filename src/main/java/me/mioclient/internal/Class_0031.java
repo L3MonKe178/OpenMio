@@ -37,7 +37,7 @@ public class Class_0031 {
       }
 
       this.field_55 = this.field_57 + (this.field_55 - this.field_57) * var1;
-      if (this.field_55 == this.field_56 || (double)Math.abs(this.field_56 - this.field_55) < Class_0245.field_688) {
+      if (this.field_55 == this.field_56 || (double)Math.abs(this.field_56 - this.field_55) < Constants.field_688) {
          this.method_36(this.field_56);
       }
 

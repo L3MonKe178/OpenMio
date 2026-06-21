@@ -2,10 +2,10 @@ package me.mioclient.api;
 
 import net.minecraft.text.Text;
 
-public interface Class_0013 {
+public interface Nameable {
    String getName();
 
-   default Class_0013 method_14(String var1) {
+   default Nameable method_14(String var1) {
       return () -> var1;
    }
 
@@ -14,6 +14,6 @@ public interface Class_0013 {
    }
 
    static boolean method_16(Object var0) {
-      return var0 instanceof Class_0013;
+      return var0 instanceof Nameable;
    }
 }

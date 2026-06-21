@@ -9,7 +9,7 @@ import me.mioclient.event.Event_26;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0144;
 import me.mioclient.internal.Class_0211;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.mixin.ducks.DuckPlayerInteractEntityC2SPacket;
 import me.mioclient.module.Category;
@@ -173,9 +173,9 @@ public class HitmarkerModule extends Module {
       BufferBuilder var8 = Tessellator.getInstance().begin(DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
       var8.vertex(var7, var2, var3, 0.0F).color(var6[0], var6[1], var6[2], var6[3]);
       var8.vertex(var7, var4, var5, 0.0F).color(var6[0], var6[1], var6[2], var6[3]);
-      Class_0838.field_2672.method_779();
+      RenderUtil.field_2672.method_779();
       RenderSystem.setShader(GameRenderer::getPositionColorProgram);
       BufferRenderer.drawWithGlobalProgram(var8.end());
-      Class_0838.field_2672.method_781();
+      RenderUtil.field_2672.method_781();
    }
 }

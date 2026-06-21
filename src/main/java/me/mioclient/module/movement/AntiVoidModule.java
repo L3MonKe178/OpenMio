@@ -3,7 +3,7 @@ package me.mioclient.module.movement;
 import me.mioclient.enum_.Class_1360;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -27,7 +27,7 @@ public class AntiVoidModule extends Module {
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_127.getValue());
+      return FontRenderer.method_3(this.field_127.getValue());
    }
 
    @Subscribe

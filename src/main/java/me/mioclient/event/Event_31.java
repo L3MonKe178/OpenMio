@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.util.math.Vec3d;
 
-public class Event_31 extends Class_0605 {
+public class Event_31 extends Event {
    public double field_608;
    public double field_609;
    public double field_2311;

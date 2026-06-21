@@ -29,7 +29,7 @@ public class Class_0513 extends Class_0045 {
    @Override
    public float method_59() {
       return (float)this.method_167().method_216() / Float.intBitsToFloat(1082130432)
-         - Class_1016.field_3143.method_221(this.getName()) / Float.intBitsToFloat(1073741824);
+         - FontRenderer.field_3143.method_221(this.getName()) / Float.intBitsToFloat(1073741824);
    }
 
    @Override

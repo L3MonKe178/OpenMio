@@ -10,7 +10,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0304;
 import me.mioclient.event.Event_32;
 import me.mioclient.event.Event_60;
@@ -20,18 +20,16 @@ import me.mioclient.module.client.UIModule;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.command.CommandSource;
-import nick.Commands;
 
-public final class Class_1032 extends Class_0939<Class_0618> implements Class_1309, Class_1146 {
+public final class CommandManager extends Registry<Command> implements MioAPI, Class_1146 {
    public static UIModule clickgui = Hub.field_2595.method_78(UIModule.class);
    public static final CommandSource field_3190 = new ClientCommandSource(null, field_4219);
    public static final CommandDispatcher<CommandSource> field_3191 = new CommandDispatcher();
    public static String field_3192 = ";";
 
-   public Class_1032() {
+   public CommandManager() {
       super();
       field_4220.method_14(this);
-      Commands.initialize(this);   // no-op in our renamed deobf — kept for symmetry
       MioCommands.init(this);      // replaces the above for our package layout
       this.method_929();
       this.method_931();
@@ -56,7 +54,7 @@ public final class Class_1032 extends Class_0939<Class_0618> implements Class_13
 
    public void method_929() {
       if (Hub.field_2630.method_264()) {
-         this.method_2((Class_0618)(new Class_1321()));
+         this.method_2((Command)(new Class_1321()));
       }
    }
 
@@ -74,7 +72,7 @@ public final class Class_1032 extends Class_0939<Class_0618> implements Class_13
 
    public static void method_7(String var0) {
       Event_32 var1 = new Event_32(var0);
-      Class_1309.field_4220.method_36(var1);
+      MioAPI.field_4220.method_36(var1);
       if (!var1.method_464()) {
          try {
             field_3191.execute(field_3191.parse(var0, field_3190));
@@ -84,11 +82,11 @@ public final class Class_1032 extends Class_0939<Class_0618> implements Class_13
    }
 
    public void method_931() {
-      this.method_2((Class_0618)(new Class_0881(Class_0304.FRIEND)));
-      this.method_2((Class_0618)(new Class_0881(Class_0304.ENEMY)));
+      this.method_2((Command)(new Class_0881(Class_0304.FRIEND)));
+      this.method_2((Command)(new Class_0881(Class_0304.ENEMY)));
    }
 
-   public boolean method_2(Class_0618 var1) {
+   public boolean method_2(Command var1) {
       LiteralArgumentBuilder var2 = LiteralArgumentBuilder.<CommandSource>literal(var1.getName());
       var1.exec(var2);
       LiteralCommandNode var3 = field_3191.register(var2);

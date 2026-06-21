@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0836;
 import me.mioclient.record.Class_0371;
 import net.minecraft.command.CommandSource;
@@ -27,7 +27,7 @@ public class Class_0897 implements ArgumentType<String> {
       String var4 = (String)var0.getArgument(var2, String.class);
       Optional var5 = Hub.field_2597.method_2(var3).method_2(var1x -> var1x.getName().equalsIgnoreCase(var4));
       if (var5.isEmpty()) {
-         throw new DynamicCommandExceptionType(var0x -> Text.of(new Class_1303().method_2(String.valueOf(var0x)).method_9("Preset not found \u0001")))
+         throw new DynamicCommandExceptionType(var0x -> Text.of(new TextBuilder().method_2(String.valueOf(var0x)).method_9("Preset not found \u0001")))
             .create(var4);
       } else {
          return (Class_0371)var5.get();
@@ -54,6 +54,6 @@ public class Class_0897 implements ArgumentType<String> {
          } catch (Exception var5) {
             return null;
          }
-      }, Class_1309.field_4221);
+      }, MioAPI.field_4221);
    }
 }

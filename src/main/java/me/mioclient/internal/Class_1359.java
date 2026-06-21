@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0399;
 import me.mioclient.enum_.Class_1269;
 import me.mioclient.event.Event_1;
@@ -13,7 +13,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.common.CommonPongC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
-public class Class_1359 implements Class_1309 {
+public class Class_1359 implements MioAPI {
    public final Queue<Packet<?>> field_4427 = new LinkedList<>();
    public final WarpModule field_4428;
 

@@ -1,11 +1,11 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.module.render.ZoomModule;
 
-public class Class_0095 implements Class_1309 {
+public class Class_0095 implements MioAPI {
    public final ZoomModule field_307;
 
    public Class_0095(ZoomModule var1) {

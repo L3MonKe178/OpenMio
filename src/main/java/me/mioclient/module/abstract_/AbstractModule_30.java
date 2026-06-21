@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.enum_.Class_0499;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.module.Category;
@@ -52,7 +52,7 @@ public class AbstractModule_30 extends AbstractModule_32 {
 
    @Override
    public int method_34() {
-      return this.field_350 ? Class_0136.method_5(Items.ANVIL) : super.method_34();
+      return this.field_350 ? PlayerUtil.method_5(Items.ANVIL) : super.method_34();
    }
 
    public Class_0014 method_137() {
@@ -63,7 +63,7 @@ public class AbstractModule_30 extends AbstractModule_32 {
          if (var5.isAlive() && field_4219.player != var5 && !Hub.field_2603.method_30(var5) && (!this.field_349.getValue() || Class_0382.method_29(var5))) {
             BlockPos var6 = Class_0382.method_9(var5).up(2);
             double var7 = field_4219.player.getEyePos().distanceTo(var5.getPos());
-            if (!(var7 > (double)this.field_348.getValue().floatValue())
+            if (!(var7 > (double)(this.field_348.getValue() != null ? this.field_348.getValue().floatValue() : 0.0f))
                && field_4219.world.getBlockState(var6.down()).isReplaceable()
                && Class_1035.method_7(var6, false)) {
                Direction var9 = Class_1035.method_9(var6, this.field_4250.getValue());

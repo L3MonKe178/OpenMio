@@ -1,7 +1,7 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.player.NukerModule;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.Block;
@@ -9,7 +9,7 @@ import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.util.math.BlockPos;
 
-public enum Class_0626 implements Class_0013 {
+public enum Class_0626 implements Nameable {
    SHULKERS("Shulkers") {
       @Override
       public boolean method_2(BlockPos var1, Block var2, NukerModule var3) {
@@ -19,7 +19,7 @@ public enum Class_0626 implements Class_0013 {
    BEDS("Bed") {
       @Override
       public boolean method_2(BlockPos var1, Block var2, NukerModule var3) {
-         return var2 instanceof BedBlock && Class_1309.field_4219.world.getBlockState(var1).get(BedBlock.PART) == BedPart.HEAD;
+         return var2 instanceof BedBlock && MioAPI.field_4219.world.getBlockState(var1).get(BedBlock.PART) == BedPart.HEAD;
       }
    },
    WHITELIST("WhiteList") {

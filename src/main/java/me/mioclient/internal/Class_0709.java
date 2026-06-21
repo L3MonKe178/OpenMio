@@ -54,14 +54,14 @@ public class Class_0709 extends SimpleChannelInboundHandler<ByteBuf> {
                .method_2(
                   () -> {
                      try {
-                        Class_1245.method_2(
+                        ChatUtil.method_2(
                            Text.literal(
-                              new Class_1303()
-                                 .method_2(Class_1032.method_927())
+                              new TextBuilder()
+                                 .method_2(CommandManager.method_927())
                                  .method_2(String.valueOf(Formatting.GREEN))
                                  .method_9("\u0001Connected to the chat server. Type \u0001irc help to view all commands.")
                            ),
-                           Class_1245.method_38(-836156)
+                           ChatUtil.method_38(-836156)
                         );
                      } catch (Exception var1x) {
                      }
@@ -87,7 +87,7 @@ public class Class_0709 extends SimpleChannelInboundHandler<ByteBuf> {
          String var10003 = File.separator;
          String var10004 = File.separator;
          File var1 = new File(
-            new Class_1303().method_2((Object)var10004).method_2((Object)var10003).method_2((Object)var10002).method_9("\u0001\u0001Mio\u0001.authtoken")
+            new TextBuilder().method_2((Object)var10004).method_2((Object)var10003).method_2((Object)var10002).method_9("\u0001\u0001Mio\u0001.authtoken")
          );
          if (!var1.exists() || var1.length() <= 3L) {
             return null;

@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.BiConsumer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_5;
 import me.mioclient.event.Subscribe;
@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.WorldChunk;
 
-public class Class_0032 implements Class_1309 {
+public class Class_0032 implements MioAPI {
    public final int field_60;
    public final BiConsumer<ChunkPos, WorldChunk> field_61;
    public final BiConsumer<ChunkPos, WorldChunk> field_62;

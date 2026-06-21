@@ -4,9 +4,9 @@ import java.util.Comparator;
 import me.mioclient.Hub;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -58,14 +58,14 @@ public class AimAssistModule extends Module {
                this.field_3269 = null;
             } else if (field_4219.targetedEntity != this.field_3269) {
                if (this.field_3268.getValue()) {
-                  float[] var2 = Class_0485.method_78(this.field_3269.getBoundingBox().getCenter());
+                  float[] var2 = RotationManager.method_78(this.field_3269.getBoundingBox().getCenter());
                   field_4219.player.setYaw(var2[0]);
                   field_4219.player.setPitch(var2[1]);
                } else {
                   double var5 = method_34(this.field_3269);
                   if (var5 > Double.longBitsToDouble(4607182418800017408L) || var5 < Double.longBitsToDouble(-4616189618054758400L)) {
-                     float var4 = (float)(var5 * (double)this.field_3262.getValue().floatValue() * Double.longBitsToDouble(4576918229175238656L));
-                     field_4219.player.setYaw(field_4219.player.getYaw(Class_0838.method_776()) - var4);
+                     float var4 = (float)(var5 * (double)(this.field_3262.getValue() != null ? this.field_3262.getValue().floatValue() : 0.0f) * Double.longBitsToDouble(4576918229175238656L));
+                     field_4219.player.setYaw(field_4219.player.getYaw(RenderUtil.method_776()) - var4);
                   }
                }
             }
@@ -78,7 +78,7 @@ public class AimAssistModule extends Module {
          && var1 != field_4219.player
          && var1.isAlive()
          && (!this.field_3265.getValue() || !var1.isInvisible())
-         && method_2(var1, (double)this.field_3263.getValue().floatValue())
+         && method_2(var1, (double)(this.field_3263.getValue() != null ? this.field_3263.getValue().floatValue() : 0.0f))
          && field_4219.player.distanceTo(var1) <= this.field_3261.getValue()
          && (!this.field_3267.getValue() || !Hub.field_2603.method_1009(((PlayerEntity)var1).getGameProfile().getName()))
          && this.method_30(var1);
@@ -97,20 +97,20 @@ public class AimAssistModule extends Module {
 
    public static double method_34(Entity var0) {
       return (
-               (double)(field_4219.player.getYaw(Class_0838.method_776()) - method_35(var0)) % (double)Class_0245.field_686
+               (double)(field_4219.player.getYaw(RenderUtil.method_776()) - method_35(var0)) % (double)Constants.field_686
                   + Double.longBitsToDouble(4647961106050973696L)
             )
-            % (double)Class_0245.field_686
+            % (double)Constants.field_686
          - Double.longBitsToDouble(4640537203540230144L);
    }
 
    public static boolean method_2(Entity var0, double var1) {
-      var1 = (double)((float)(var1 * Class_0245.field_688));
+      var1 = (double)((float)(var1 * Constants.field_688));
       double var3 = (
-               (double)(field_4219.player.getYaw(Class_0838.method_776()) - method_35(var0)) % (double)Class_0245.field_686
+               (double)(field_4219.player.getYaw(RenderUtil.method_776()) - method_35(var0)) % (double)Constants.field_686
                   + Double.longBitsToDouble(4647961106050973696L)
             )
-            % (double)Class_0245.field_686
+            % (double)Constants.field_686
          - Double.longBitsToDouble(4640537203540230144L);
       return var3 > 0.0 && var3 < var1 || -var1 < var3 && var3 < 0.0;
    }

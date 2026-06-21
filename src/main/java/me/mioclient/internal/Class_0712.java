@@ -9,7 +9,7 @@ import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_26;
 import net.minecraft.command.CommandSource;
 
-public final class Class_0712 extends Class_0618 {
+public final class Class_0712 extends Command {
    public final Set<Module> field_2264 = new HashSet<>();
 
    public Class_0712() {
@@ -30,7 +30,7 @@ public final class Class_0712 extends Class_0618 {
 
          return 1;
       });
-      var1.then(Class_0618.method_2("restore", "backup").executes(var1x -> {
+      var1.then(Command.method_2("restore", "backup").executes(var1x -> {
          for (Module var3 : (List<me.mioclient.module.Module>)Hub.field_2599.getRegistry()) {
             if (!(var3 instanceof AbstractModule_26)) {
                var3.method_38(this.field_2264.contains(var3));

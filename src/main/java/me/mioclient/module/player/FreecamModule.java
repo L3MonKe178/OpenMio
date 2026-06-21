@@ -12,10 +12,10 @@ import me.mioclient.event.Event_52;
 import me.mioclient.event.Event_56;
 import me.mioclient.event.Event_57;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0411;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -82,14 +82,14 @@ public class FreecamModule extends Module {
 
       field_4219.options.setPerspective(Perspective.FIRST_PERSON);
       this.field_2828 = this.field_806;
-      double[] var2 = Class_0464.method_2(this.field_1760, this.field_2822, (double)this.field_2823.getValue().floatValue());
+      double[] var2 = Class_0464.method_2(this.field_1760, this.field_2822, (double)(this.field_2823.getValue() != null ? this.field_2823.getValue().floatValue() : 0.0f));
       this.field_806 = this.field_806.add(var2[0], 0.0, var2[1]);
       if (field_4219.options.jumpKey.isPressed()) {
-         this.field_806 = this.field_806.add(0.0, (double)this.field_2824.getValue().floatValue(), 0.0);
+         this.field_806 = this.field_806.add(0.0, (double)(this.field_2824.getValue() != null ? this.field_2824.getValue().floatValue() : 0.0f), 0.0);
       }
 
       if (field_4219.options.sneakKey.isPressed()) {
-         this.field_806 = this.field_806.subtract(0.0, (double)this.field_2824.getValue().floatValue(), 0.0);
+         this.field_806 = this.field_806.subtract(0.0, (double)(this.field_2824.getValue() != null ? this.field_2824.getValue().floatValue() : 0.0f), 0.0);
       }
 
       this.field_2822.tick(false, Float.intBitsToFloat(1065353216));
@@ -108,16 +108,16 @@ public class FreecamModule extends Module {
       if (var1.method_213() != PreType.POST
          && this.field_2826.getValue()
          && field_4219.crosshairTarget != null
-         && (!Class_0485.method_513() || var2 || this.field_2827.getValue())) {
-         var1.method_5(Class_0485.method_78(field_4219.crosshairTarget.getPos()));
+         && (!RotationManager.method_513() || var2 || this.field_2827.getValue())) {
+         var1.method_5(RotationManager.method_78(field_4219.crosshairTarget.getPos()));
       }
    }
 
    @Subscribe
    public void method_5(Event_36 var1) {
       boolean var2 = field_4219.player.getStackInHand(var1.method_12()).getItem() instanceof BucketItem;
-      if (var2 || this.field_2826.getValue() && Class_0485.method_513()) {
-         float[] var3 = Class_0485.method_78(var1.method_382().getPos());
+      if (var2 || this.field_2826.getValue() && RotationManager.method_513()) {
+         float[] var3 = RotationManager.method_78(var1.method_382().getPos());
          Hub.field_2598.method_2(var3, 1000);
       }
    }
@@ -125,7 +125,7 @@ public class FreecamModule extends Module {
    @Subscribe
    public void method_2(Event_52 var1) {
       if (this.field_2826.getValue() && field_4219.crosshairTarget != null && !this.field_2827.getValue()) {
-         var1.method_9(Class_0485.method_78(field_4219.crosshairTarget.getPos()));
+         var1.method_9(RotationManager.method_78(field_4219.crosshairTarget.getPos()));
       }
    }
 
@@ -154,7 +154,7 @@ public class FreecamModule extends Module {
       this.field_1543 = this.field_1761;
       this.field_1760 = (float)((double)this.field_1760 + var1);
       this.field_1761 = (float)((double)this.field_1761 + var3);
-      this.field_1761 = MathHelper.clamp(this.field_1761, (float)(-Class_0245.field_685), (float)Class_0245.field_685);
+      this.field_1761 = MathHelper.clamp(this.field_1761, (float)(-Constants.field_685), (float)Constants.field_685);
    }
 
    public double method_460(float var1) {

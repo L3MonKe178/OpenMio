@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1153;
 import me.mioclient.enum_.Class_0214;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0351;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0700;
@@ -75,7 +75,8 @@ public class AbstractModule_42 extends AbstractModule_32 {
       ArrayList var1 = new ArrayList();
 
       for (Class_0681 var3 : Hub.field_2605.method_223()) {
-         if (this.field_768.getValue().method_2(this).method_2(var3)
+         if (this.field_768 == null || this.field_768.getValue() == null) continue;
+         if (this.field_768.getValue() != null && this.field_768.getValue().method_2(this).method_2(var3)
             && (this.field_776.getValue() && this.field_776.method_176() || !var3.method_406().equals(Class_0382.method_425()))) {
             var1.add(var3.method_406());
          }
@@ -86,9 +87,9 @@ public class AbstractModule_42 extends AbstractModule_32 {
 
    @Override
    public int method_34() {
-      return this.field_766.getValue().isEmpty()
+      return (this.field_766.getValue() != null ? this.field_766.getValue().isEmpty() : true)
          ? super.method_34()
-         : Class_0136.method_7((Predicate<ItemStack>)(var1 -> this.field_766.getValue().contains(this.method_263(var1))));
+         : PlayerUtil.method_7((Predicate<ItemStack>)(var1 -> (this.field_766.getValue() != null ? this.field_766.getValue().contains(this.method_263(var1)) : false)));
    }
 
    public Block method_263(ItemStack var1) {

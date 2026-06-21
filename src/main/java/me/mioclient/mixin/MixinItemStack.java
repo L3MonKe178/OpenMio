@@ -1,6 +1,6 @@
 package me.mioclient.mixin;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_30;
 import me.mioclient.internal.Class_0114;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -30,7 +30,7 @@ public abstract class MixinItemStack {
    private void finishUsing(World var1, LivingEntity var2, CallbackInfoReturnable<ItemStack> var3) {
       if (var2 instanceof ClientPlayerEntity) {
          Event_30 var4 = new Event_30((ItemStack)(Object)this);
-         Class_1309.field_4220.method_36(var4);
+         MioAPI.field_4220.method_36(var4);
       }
    }
 

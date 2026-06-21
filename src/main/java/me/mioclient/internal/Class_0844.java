@@ -3,14 +3,14 @@ package me.mioclient.internal;
 import java.util.List;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1291;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1172;
 import me.mioclient.module.combat.CombatmineModule;
 import me.mioclient.module.player.SpeedMineModule;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 
-public abstract class Class_0844 implements Class_1309, Class_1291 {
+public abstract class Class_0844 implements MioAPI, Class_1291 {
    public static SpeedMineModule speedmine = Hub.field_2595.method_78(SpeedMineModule.class);
    public final CombatmineModule field_2705;
 

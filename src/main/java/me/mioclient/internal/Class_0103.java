@@ -31,7 +31,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.Explosion.DestructionType;
 
-public final class Class_0103 extends Class_0618 {
+public final class Class_0103 extends Command {
    public static FreecamModule freecam = Hub.field_2595.method_78(FreecamModule.class);
    public final List<Class_0905> field_323 = new ArrayList<>();
    public Class_0922 field_324;
@@ -57,9 +57,9 @@ public final class Class_0103 extends Class_0618 {
                   this.field_325 = !this.field_325;
                   if (this.field_325) {
                      this.field_323.clear();
-                     Class_1245.method_2(Text.literal("Started recording."), Class_1245.method_38(-1));
+                     ChatUtil.method_2(Text.literal("Started recording."), ChatUtil.method_38(-1));
                   } else {
-                     Class_1245.method_2(Text.literal("Stopped recording."), Class_1245.method_38(-1));
+                     ChatUtil.method_2(Text.literal("Stopped recording."), ChatUtil.method_38(-1));
                   }
 
                   return 1;
@@ -92,12 +92,12 @@ public final class Class_0103 extends Class_0618 {
          field_4219.world.addEntity(this.field_324);
          this.field_324.setOnGround(field_4219.player.isOnGround());
          this.field_327 = var1;
-         Class_1245.method_2(Text.literal(new Class_1303().method_2((Object)var1).method_9("\u0001 has been spawned.")), Class_1245.method_38(-1));
+         ChatUtil.method_2(Text.literal(new TextBuilder().method_2((Object)var1).method_9("\u0001 has been spawned.")), ChatUtil.method_38(-1));
       } else {
          field_4219.world.removeEntity(-9344, RemovalReason.DISCARDED);
          this.field_324 = null;
          String var2 = this.field_327 == null ? var1 : this.field_327;
-         Class_1245.method_2(Text.literal(new Class_1303().method_2((Object)var2).method_9("\u0001 has been removed.")), Class_1245.method_38(-1));
+         ChatUtil.method_2(Text.literal(new TextBuilder().method_2((Object)var2).method_9("\u0001 has been removed.")), ChatUtil.method_38(-1));
       }
    }
 

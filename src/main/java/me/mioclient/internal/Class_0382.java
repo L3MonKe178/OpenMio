@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0388;
 import me.mioclient.module.movement.ElytraFlyModule;
 import net.minecraft.block.Blocks;
@@ -20,7 +20,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 
-public class Class_0382 implements Class_1309 {
+public class Class_0382 implements MioAPI {
    public Class_0382() {
       super();
    }
@@ -48,7 +48,7 @@ public class Class_0382 implements Class_1309 {
    public static Direction method_426() {
       Input var0 = field_4219.player.input;
       double[] var1 = Class_0464.method_2(field_4219.player.getYaw(), var0, Double.longBitsToDouble(4607182418800017408L));
-      return Direction.fromRotation(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Class_0245.field_685);
+      return Direction.fromRotation(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Constants.field_685);
    }
 
    public static List<BlockPos> method_5(LivingEntity var0) {

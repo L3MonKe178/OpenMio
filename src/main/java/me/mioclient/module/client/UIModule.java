@@ -15,7 +15,7 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
 import me.mioclient.internal.Class_0406;
-import me.mioclient.internal.Class_1032;
+import me.mioclient.internal.CommandManager;
 import me.mioclient.internal.Class_1117;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -96,8 +96,8 @@ public final class UIModule extends Module {
       }
 
       this.field_2846.method_9(() -> {
-         if (!this.field_2846.getValue().equals(Class_1032.method_927())) {
-            Class_1032.method_270(this.field_2846.getValue());
+         if (!(this.field_2846.getValue() != null ? this.field_2846.getValue().equals(CommandManager.method_927()) : null)) {
+            CommandManager.method_270(this.field_2846.getValue());
          }
       });
       this.field_2846.method_7(true);

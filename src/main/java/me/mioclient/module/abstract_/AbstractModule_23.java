@@ -10,7 +10,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0723;
 import me.mioclient.internal.Class_0747;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.CustomSetting;
 import me.mioclient.setting.Setting;
@@ -37,7 +37,7 @@ public class AbstractModule_23 extends AbstractModule_26 {
       if (this.field_1380.getValue() == Class_1272.ALPHABET) {
          this.field_1381.sort(Comparator.comparing(var0 -> var0.method_65().getInfoString()));
       } else {
-         this.field_1381.sort(Comparator.comparingDouble(var0 -> (double)(-Class_1016.field_3143.method_221(var0.method_65().getInfoString()))));
+         this.field_1381.sort(Comparator.comparingDouble(var0 -> (double)(-FontRenderer.field_3143.method_221(var0.method_65().getInfoString()))));
       }
    }
 }

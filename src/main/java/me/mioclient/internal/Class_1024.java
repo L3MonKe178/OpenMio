@@ -10,13 +10,13 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public class Class_1024 implements ArgumentType<String>, Class_1309 {
+public class Class_1024 implements ArgumentType<String>, MioAPI {
    public final Module field_3175;
 
    public Class_1024(Module var1) {
@@ -37,7 +37,7 @@ public class Class_1024 implements ArgumentType<String>, Class_1309 {
       String var3 = (String)var0.getArgument(var2, String.class);
       Optional var4 = var1.getRegistry().stream().filter(var1x -> var1x.getConfigName().equalsIgnoreCase(var3)).findFirst();
       if (var4.isEmpty()) {
-         throw new DynamicCommandExceptionType(var0x -> Text.literal(new Class_1303().method_2(String.valueOf(var0x)).method_9("Setting not found \u0001")))
+         throw new DynamicCommandExceptionType(var0x -> Text.literal(new TextBuilder().method_2(String.valueOf(var0x)).method_9("Setting not found \u0001")))
             .create(var3);
       } else {
          return (Setting<?>)var4.get();

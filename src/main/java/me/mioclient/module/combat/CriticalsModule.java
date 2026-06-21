@@ -9,8 +9,8 @@ import me.mioclient.internal.Class_0030;
 import me.mioclient.internal.Class_0144;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -34,7 +34,7 @@ public class CriticalsModule extends Module {
 
    @Override
    public String getInfo() {
-      return this.field_3406.getValue().getName();
+      return (this.field_3406.getValue() != null ? this.field_3406.getValue().getName() : "");
    }
 
    @Subscribe
@@ -56,7 +56,7 @@ public class CriticalsModule extends Module {
    public void method_300() {
       float[] var1 = new float[]{field_4219.player.getYaw(), field_4219.player.getPitch()};
       if (field_3405.field_582 != null && field_3405.isToggled()) {
-         var1 = Class_0485.method_2(Class_0485.method_14(field_3405.field_582), Hub.field_2598.method_509());
+         var1 = RotationManager.method_2(RotationManager.method_14(field_3405.field_582), Hub.field_2598.method_509());
       }
 
       switch ((Class_0448)this.field_3406.getValue()) {
@@ -68,7 +68,7 @@ public class CriticalsModule extends Module {
             }
             break;
          case GRIM:
-            Class_1261.method_2(
+            PacketUtil.method_2(
                field_4219.player.getX(),
                field_4219.player.getY() - Double.longBitsToDouble(4517329193108106637L),
                field_4219.player.getZ(),
@@ -81,7 +81,7 @@ public class CriticalsModule extends Module {
             float var2 = Math.clamp(
                var1[1], Float.intBitsToFloat(-1028390912) + AbstractModule_28.field_3741, Float.intBitsToFloat(1119092736) - AbstractModule_28.field_3741
             );
-            Class_1261.method_2(
+            PacketUtil.method_2(
                field_4219.player.getX(),
                field_4219.player.getY() + Double.longBitsToDouble(4589175226049939217L),
                field_4219.player.getZ(),
@@ -89,7 +89,7 @@ public class CriticalsModule extends Module {
                var2 + AbstractModule_28.field_3741,
                false
             );
-            Class_1261.method_2(
+            PacketUtil.method_2(
                field_4219.player.getX(),
                field_4219.player.getY() + Double.longBitsToDouble(4586718062093245874L),
                field_4219.player.getZ(),
@@ -117,7 +117,7 @@ public class CriticalsModule extends Module {
 
    public void method_9(double... var1) {
       for (double var5 : var1) {
-         Class_1261.method_2(new PositionAndOnGround(field_4219.player.getX(), field_4219.player.getY() + var5, field_4219.player.getZ(), false));
+         PacketUtil.method_2(new PositionAndOnGround(field_4219.player.getX(), field_4219.player.getY() + var5, field_4219.player.getZ(), false));
       }
    }
 

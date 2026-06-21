@@ -1,6 +1,6 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.gl.SimpleFramebuffer;
@@ -8,7 +8,7 @@ import net.minecraft.client.render.OutlineVertexConsumerProvider;
 import net.minecraft.entity.Entity;
 import org.lwjgl.glfw.GLFW;
 
-public abstract class Class_0726 implements Class_1309 {
+public abstract class Class_0726 implements MioAPI {
    public OutlineVertexConsumerProvider field_2301;
    public Framebuffer field_2302;
    public Class_1119 field_2303;
@@ -22,7 +22,7 @@ public abstract class Class_0726 implements Class_1309 {
       this.field_2302 = new SimpleFramebuffer(
          field_4219.getWindow().getFramebufferWidth(), field_4219.getWindow().getFramebufferHeight(), false, MinecraftClient.IS_SYSTEM_MAC
       );
-      this.field_2303 = new Class_1119("/base.vert", new Class_1303().method_2((Object)var1).method_9("/\u0001.frag"));
+      this.field_2303 = new Class_1119("/base.vert", new TextBuilder().method_2((Object)var1).method_9("/\u0001.frag"));
    }
 
    public void method_2(String var1, String var2) {
@@ -31,7 +31,7 @@ public abstract class Class_0726 implements Class_1309 {
          field_4219.getWindow().getFramebufferWidth(), field_4219.getWindow().getFramebufferHeight(), false, MinecraftClient.IS_SYSTEM_MAC
       );
       this.field_2303 = new Class_1119(
-         new Class_1303().method_2((Object)var1).method_9("/\u0001.vert"), new Class_1303().method_2((Object)var2).method_9("/\u0001.frag")
+         new TextBuilder().method_2((Object)var1).method_9("/\u0001.vert"), new TextBuilder().method_2((Object)var2).method_9("/\u0001.frag")
       );
    }
 

@@ -6,7 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1081;
@@ -47,7 +47,7 @@ public class VoidESPModule extends Module {
    public void method_2(Event_1 var1) {
       this.field_138.removeIf(var0 -> Class_1035.method_30(var0) == Blocks.BEDROCK);
 
-      for (BlockPos var3 : Class_1225.method_2(field_4219.gameRenderer.getCamera().getPos(), (float)this.field_132.getValue().intValue(), false)) {
+      for (BlockPos var3 : Class_1225.method_2(field_4219.gameRenderer.getCamera().getPos(), (float)(this.field_132.getValue() != null ? this.field_132.getValue().intValue() : 0), false)) {
          if (var3.getY() == field_4219.world.getBottomY() && Class_1035.method_30(var3) != Blocks.BEDROCK && !this.field_138.contains(var3)) {
             this.field_138.add(var3);
          }
@@ -62,19 +62,19 @@ public class VoidESPModule extends Module {
    @Subscribe
    public void method_9(Event_3 var1) {
       for (BlockPos var3 : this.field_138) {
-         if (Class_0485.method_4(new Box(var3))) {
+         if (RotationManager.method_4(new Box(var3))) {
             Vec3d var4 = field_4219.gameRenderer.getCamera().getPos();
-            if (!var3.isWithinDistance(var4, (double)this.field_132.getValue().intValue())) {
+            if (!var3.isWithinDistance(var4, (double)(this.field_132.getValue() != null ? this.field_132.getValue().intValue() : 0))) {
                this.field_138.remove(var3);
             } else {
                Color var5 = this.field_136.getValue();
                Color var6 = this.field_137.getValue();
                double var7 = var4.distanceTo(var3.toCenterPos());
-               if (this.field_133.getValue() && var7 >= (double)this.field_134.getValue().floatValue()) {
+               if (this.field_133.getValue() && var7 >= (double)(this.field_134.getValue() != null ? this.field_134.getValue().floatValue() : 0.0f)) {
                   float var9 = Float.intBitsToFloat(1065353216)
                      - (float)MathHelper.clamp(
-                        (var7 - (double)this.field_134.getValue().floatValue())
-                           / (double)((float)this.field_132.getValue().intValue() - this.field_134.getValue()),
+                        (var7 - (double)(this.field_134.getValue() != null ? this.field_134.getValue().floatValue() : 0.0f))
+                           / (double)((float)(this.field_132.getValue() != null ? this.field_132.getValue().intValue() : 0) - this.field_134.getValue()),
                         0.0,
                         Double.longBitsToDouble(4607182418800017408L)
                      );

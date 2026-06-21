@@ -18,7 +18,7 @@ public class Class_0056<S> extends LiteralCommandNode<S> {
    }
 
    public CompletableFuture<Suggestions> listSuggestions(CommandContext<S> var1, SuggestionsBuilder var2) {
-      for (Class_0618 var4 : (List<Class_0618>)Hub.field_2600.getRegistry()) {
+      for (me.mioclient.internal.Command var4 : (List<me.mioclient.internal.Command>)Hub.field_2600.getRegistry()) {
          if (var4.getName().startsWith(var2.getRemainingLowerCase())) {
             return Suggestions.empty();
          }

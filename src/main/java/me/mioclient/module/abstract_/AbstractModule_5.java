@@ -65,7 +65,7 @@ public class AbstractModule_5 extends AbstractModule_26 {
                (double)(this.field_2657.getValue() - 2)
                   * (
                      Double.longBitsToDouble(4607182418800017408L)
-                        - Math.min(var6, (double)this.field_2656.getValue().floatValue()) / (double)this.field_2656.getValue().floatValue()
+                        - Math.min(var6, (double)(this.field_2656.getValue() != null ? this.field_2656.getValue().floatValue() : 0.0f)) / (double)(this.field_2656.getValue() != null ? this.field_2656.getValue().floatValue() : 0.0f)
                   )
             );
          var3.vertex(var1.getMatrices().peek().getPositionMatrix(), (float)var4, var8, 0.0F)
@@ -94,6 +94,6 @@ public class AbstractModule_5 extends AbstractModule_26 {
 
    @Override
    public float[] method_31() {
-      return new float[]{(float)this.field_2658.getValue().intValue(), (float)this.field_2657.getValue().intValue()};
+      return new float[]{(float)(this.field_2658.getValue() != null ? this.field_2658.getValue().intValue() : 0), (float)(this.field_2657.getValue() != null ? this.field_2657.getValue().intValue() : 0)};
    }
 }

@@ -11,7 +11,7 @@ import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0077;
 import me.mioclient.internal.Class_0168;
 import me.mioclient.internal.Class_0435;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0771;
 import me.mioclient.internal.Class_0994;
 import me.mioclient.internal.Class_1035;
@@ -20,7 +20,7 @@ import me.mioclient.internal.Class_1128;
 import me.mioclient.internal.Class_1164;
 import me.mioclient.internal.Class_1174;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -63,7 +63,7 @@ public final class CombatmineModule extends Module {
    public CombatmineModule() {
       super(
          "AutoMine",
-         new Class_1303()
+         new TextBuilder()
             .method_2(String.valueOf(Formatting.RED))
             .method_9("Mines out traps for your enemies and farms obsidian. \n\u0001Requires SpeedMine module enabled."),
          Category.COMBAT,
@@ -134,11 +134,11 @@ public final class CombatmineModule extends Module {
 
    public void method_2(BlockPos var1, Direction var2, boolean var3) {
       if (this.field_3695.getValue()) {
-         float[] var4 = Class_0485.method_78(var1.toCenterPos());
+         float[] var4 = RotationManager.method_78(var1.toCenterPos());
          if (this.field_3694.getValue()) {
             Vec3d var5 = Class_1225.method_2(var1, Class_1172.field_3634);
             if (var5 != null) {
-               var4 = Class_0485.method_78(var5);
+               var4 = RotationManager.method_78(var5);
             }
          }
 

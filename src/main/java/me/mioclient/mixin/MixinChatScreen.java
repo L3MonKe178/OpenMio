@@ -16,10 +16,10 @@ import java.util.concurrent.CompletableFuture;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0333;
 import me.mioclient.internal.Class_0227;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0855;
-import me.mioclient.internal.Class_1032;
+import me.mioclient.internal.CommandManager;
 import me.mioclient.mixin.ducks.DuckChatInputSuggester;
 import me.mioclient.mixin.ducks.DuckSuggestionWindow;
 import me.mioclient.module.client.HUDModule;
@@ -83,14 +83,14 @@ public class MixinChatScreen extends Screen {
       at = {@At("RETURN")}
    )
    private void renderHook1(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      boolean var6 = this.field_2382.getText().startsWith(Class_1032.method_927());
+      boolean var6 = this.field_2382.getText().startsWith(CommandManager.method_927());
       if (irc.isToggled() && irc.field_566.getValue() && this.field_2382.getText().startsWith(irc.field_567.getValue())) {
          var6 = true;
       }
 
       Color var7 = UIModule.field_2843.field_2879.getValue();
       if (var6) {
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_2(var1.getMatrices(), 1.0F, (float)(this.height - 2) - hud.method_338(), (float)(this.width - 2), (float)(this.height - 2), var7);
       }
    }
@@ -104,7 +104,7 @@ public class MixinChatScreen extends Screen {
    )
    private boolean renderHook2(DrawContext var1, int var2, int var3, int var4, int var5, int var6) {
       float var7 = (float)var3 + (float)(var5 - var3) * (1.0F - hud.method_338() / 13.5F);
-      Class_0838.field_2672.method_9(var1.getMatrices(), (float)var2, var7, (float)var4, (float)var5, new Color(var6, true));
+      RenderUtil.field_2672.method_9(var1.getMatrices(), (float)var2, var7, (float)var4, (float)var5, new Color(var6, true));
       return false;
    }
 
@@ -116,7 +116,7 @@ public class MixinChatScreen extends Screen {
       )
    )
    private void renderHook3(TextFieldWidget var1, DrawContext var2, int var3, int var4, float var5) {
-      if ((double)(hud.method_338() / 13.5F) > Class_0245.field_689) {
+      if ((double)(hud.method_338() / 13.5F) > Constants.field_689) {
          var1.render(var2, var3, var4, var5);
       }
    }
@@ -130,10 +130,10 @@ public class MixinChatScreen extends Screen {
       )}
    )
    private void renderHook4(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      if (this.field_2382.getText().startsWith(Class_1032.method_927())) {
+      if (this.field_2382.getText().startsWith(CommandManager.method_927())) {
          DuckSuggestionWindow var6 = (DuckSuggestionWindow)((DuckChatInputSuggester)this.field_21616).getWindow();
          CompletableFuture var7 = ((DuckChatInputSuggester)this.field_21616).getSuggestion();
-         if (var7 != null && var7.isDone() && this.field_2382.getText().startsWith(Class_1032.method_927())) {
+         if (var7 != null && var7.isDone() && this.field_2382.getText().startsWith(CommandManager.method_927())) {
             String var8 = "";
             Suggestions var9 = (Suggestions)var7.join();
             ParseResults var10 = ((DuckChatInputSuggester)this.field_21616).getParse();

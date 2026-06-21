@@ -37,19 +37,19 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0127;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0358;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0719;
 import me.mioclient.internal.Class_0794;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.mixin.ducks.DuckEntityStatusS2CPacket;
 import me.mioclient.module.Category;
@@ -167,18 +167,18 @@ public class AutoCrystalModule extends Module {
    public Setting<Float> field_4118;
    public Setting<Class_1172> field_4119;
    public Setting<Boolean> field_4120;
-   public final Class_0242 field_4121;
+   public final Timer field_4121;
    public final AtomicReference<Class_1275> field_4122;
    public final AtomicReference<Vec3d> field_4123;
    public final AtomicBoolean field_4124;
-   public final Class_0242 field_4125;
-   public final Class_0242 field_4126;
-   public final Class_0242 field_4127;
-   public final Class_0242 field_4128;
-   public final Class_0242 field_4129;
-   public final Class_0242 field_4130;
-   public final Class_0242 field_4131;
-   public final Class_0242 field_4132;
+   public final Timer field_4125;
+   public final Timer field_4126;
+   public final Timer field_4127;
+   public final Timer field_4128;
+   public final Timer field_4129;
+   public final Timer field_4130;
+   public final Timer field_4131;
+   public final Timer field_4132;
    public final LinkedList<Long> field_4133;
    public final List<Integer> field_4134;
    public final Mutable field_4135;
@@ -205,18 +205,18 @@ public class AutoCrystalModule extends Module {
    public AutoCrystalModule() {
       super("AutoCrystal", "Kills people with end crystals (if you're good).", Category.COMBAT, "crystalaura", "ca", "ac");
       Settings.initialize(this);
-      this.field_4121 = new Class_0242();
+      this.field_4121 = new Timer();
       this.field_4122 = new AtomicReference<>();
       this.field_4123 = new AtomicReference<>();
       this.field_4124 = new AtomicBoolean();
-      this.field_4125 = new Class_0242();
-      this.field_4126 = new Class_0242();
-      this.field_4127 = new Class_0242();
-      this.field_4128 = new Class_0242();
-      this.field_4129 = new Class_0242();
-      this.field_4130 = new Class_0242();
-      this.field_4131 = new Class_0242();
-      this.field_4132 = new Class_0242();
+      this.field_4125 = new Timer();
+      this.field_4126 = new Timer();
+      this.field_4127 = new Timer();
+      this.field_4128 = new Timer();
+      this.field_4129 = new Timer();
+      this.field_4130 = new Timer();
+      this.field_4131 = new Timer();
+      this.field_4132 = new Timer();
       this.field_4133 = new LinkedList<>();
       this.field_4134 = Collections.synchronizedList(new ArrayList<>());
       this.field_4135 = new Mutable();
@@ -300,7 +300,7 @@ public class AutoCrystalModule extends Module {
                ItemEntity var10 = (ItemEntity)var4;
                if (var10.getStack().getItem() == Items.OBSIDIAN && var10.getStack().getCount() >= 8 && var4.isAlive()) {
                   Box var11 = var2.getBoundingBox();
-                  if (var4.getBoundingBox().intersects(var11.withMinY(var11.getCenter().getY()).expand(Class_0245.field_688, 0.0, Class_0245.field_688))) {
+                  if (var4.getBoundingBox().intersects(var11.withMinY(var11.getCenter().getY()).expand(Constants.field_688, 0.0, Constants.field_688))) {
                      this.field_4141 = true;
                      break;
                   }
@@ -375,20 +375,20 @@ public class AutoCrystalModule extends Module {
 
       if (!this.method_639()) {
          this.method_1130();
-         if (this.field_4126.method_9((long)this.field_4051.getValue().intValue())) {
+         if (this.field_4126.method_9((long)(this.field_4051.getValue() != null ? this.field_4051.getValue().intValue() : 0))) {
             Class_0127.method_7(this::method_1129);
          }
 
          Vec3d var4 = this.field_4123.get();
          if (this.field_4081.getValue()) {
-            if (var4 != null && (!Class_0485.method_514() || this.method_1131())) {
-               Hub.field_2598.method_2(Class_0485.method_2(Class_0485.method_78(var4), Hub.field_2598.method_509()), 100, true);
+            if (var4 != null && (!RotationManager.method_514() || this.method_1131())) {
+               Hub.field_2598.method_2(RotationManager.method_2(RotationManager.method_78(var4), Hub.field_2598.method_509()), 100, true);
                if (this.field_4125.method_9(500L)) {
                   this.field_4122.lazySet(null);
                   this.field_4123.lazySet(null);
                }
-            } else if (Class_0485.method_514() && !this.method_1131() && this.field_4147 != null) {
-               Class_1261.method_2(
+            } else if (RotationManager.method_514() && !this.method_1131() && this.field_4147 != null) {
+               PacketUtil.method_2(
                   field_4219.player.getX(),
                   field_4219.player.getY(),
                   field_4219.player.getZ(),
@@ -408,7 +408,7 @@ public class AutoCrystalModule extends Module {
          for (int var2 = 1; var2 < Class_0719.method_2(this.field_2290, this.field_4089); var2++) {
             Box var3 = Hub.field_2612.method_2(this.field_2290, var2 - 1);
             Box var4 = Hub.field_2612.method_2(this.field_2290, var2);
-            Class_0838.field_2672.method_2(var1.method_10(), Class_0719.method_2(var3), Class_0719.method_2(var4), this.field_4093.getValue());
+            RenderUtil.field_2672.method_2(var1.method_10(), Class_0719.method_2(var3), Class_0719.method_2(var4), this.field_4093.getValue());
          }
       }
    }
@@ -513,7 +513,8 @@ public class AutoCrystalModule extends Module {
                var10 = true;
             }
 
-            if (this.field_4057.getValue().method_1214() && !this.field_4139 && var10) {
+            if (this.field_4057 == null || this.field_4057.getValue() == null) return;
+            if ((this.field_4057.getValue() != null ? this.field_4057.getValue().method_1214() : false) && !this.field_4139 && var10) {
                this.field_4130.reset();
                Class_0127.method_7(this::method_1129);
                if (this.field_4057.getValue() == Class_1384.STRICT) {
@@ -542,26 +543,27 @@ public class AutoCrystalModule extends Module {
          var2 = this.method_4(var1.method_406(), Class_1225.method_36(var1.method_406()));
       }
 
-      for (double var5 = -Math.floor((double)this.field_4052.getValue().floatValue());
-         var5 < Math.ceil((double)this.field_4052.getValue().floatValue());
+      for (double var5 = -Math.floor((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
+         var5 < Math.ceil((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
          var5 += Double.longBitsToDouble(4607182418800017408L)
       ) {
-         for (double var7 = -Math.floor((double)this.field_4052.getValue().floatValue());
-            var7 < Math.ceil((double)this.field_4052.getValue().floatValue());
+         for (double var7 = -Math.floor((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
+            var7 < Math.ceil((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
             var7 += Double.longBitsToDouble(4607182418800017408L)
          ) {
-            for (double var9 = -Math.floor((double)this.field_4052.getValue().floatValue());
-               var9 < Math.ceil((double)this.field_4052.getValue().floatValue());
+            for (double var9 = -Math.floor((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
+               var9 < Math.ceil((double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f));
                var9 += Double.longBitsToDouble(4607182418800017408L)
             ) {
                this.field_4135.set(field_4219.player.getX() + var5, field_4219.player.getEyeY() + var7, field_4219.player.getZ() + var9);
                boolean var11 = Class_1225.method_36(this.field_4135);
                if (var3 == null || var3.method_446() == Class_1163.OBSIDIAN || var11) {
                   double var12 = field_4219.player.getEyePos().distanceTo(this.field_4135.toCenterPos());
-                  if (!(var12 > (double)this.field_4052.getValue().floatValue()) && var4.method_185(this.field_4135)) {
-                     List var14 = this.field_4119.getValue().method_38(this.field_4135);
+                  if (!(var12 > (double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f)) && var4.method_185(this.field_4135)) {
+                     if (this.field_4119 == null || this.field_4119.getValue() == null) continue;
+                     List var14 = (this.field_4119.getValue() != null ? this.field_4119.getValue().method_38(this.field_4135) : java.util.Collections.emptyList());
                      boolean var15 = Class_1225.method_2(var14);
-                     if ((var15 || !(var12 > (double)this.field_4053.getValue().floatValue()) || this.field_4063.getValue())
+                     if ((var15 || !(var12 > (double)(this.field_4053.getValue() != null ? this.field_4053.getValue().floatValue() : 0.0f)) || this.field_4063.getValue())
                         && (!this.field_4059.getValue() || !Class_1035.method_39(this.field_4135).isEmpty())) {
                         double var16 = (double)Class_1323.method_2(
                            Vec3d.ofCenter(this.field_4135, Double.longBitsToDouble(4607182418800017408L)),
@@ -578,7 +580,7 @@ public class AutoCrystalModule extends Module {
                               .method_2(var18.method_444(), var16, var18.method_445(), Class_0247.method_2(var18.method_444(), var18.method_445()))) {
                            Class_1163 var19 = Class_1163.NONE;
                            if (var2 == null || var1.method_406().equals(this.field_4135) || !((double)Math.round(var2.method_445()) >= var18.method_445())) {
-                              if (!var15 && var12 > (double)this.field_4053.getValue().floatValue()) {
+                              if (!var15 && var12 > (double)(this.field_4053.getValue() != null ? this.field_4053.getValue().floatValue() : 0.0f)) {
                                  var19 = Class_1163.RAYTRACE;
                               }
 
@@ -646,7 +648,7 @@ public class AutoCrystalModule extends Module {
                      }
                   } else {
                      int var14 = -1;
-                     int var10 = Class_0136.method_5(Items.END_CRYSTAL);
+                     int var10 = PlayerUtil.method_5(Items.END_CRYSTAL);
                      if (!this.field_4061.getValue()
                         || Class_1035.method_2(var4, this.field_4058.getValue(), true, true, true, this.field_4062.getValue(), this.field_4120.getValue())) {
                         if (field_4219.world.getBlockState(var4.up()).getBlock() == Blocks.FIRE) {
@@ -663,13 +665,13 @@ public class AutoCrystalModule extends Module {
 
                            if (!var12 || this.skip && field_4219.player.currentScreenHandler.getCursorStack().isEmpty()) {
                               if (var12 && var10 == -1) {
-                                 var10 = Class_0136.method_9(Items.END_CRYSTAL);
+                                 var10 = PlayerUtil.method_9(Items.END_CRYSTAL);
                               }
 
                               if (this.field_4113.getValue() != Class_0285.NONE && !var2 && !this.method_1133() && var10 != -1) {
                                  var14 = field_4219.player.getInventory().selectedSlot;
                                  if (var12) {
-                                    Class_0136.method_39(var10);
+                                    PlayerUtil.method_39(var10);
                                     var11 = true;
                                     this.field_4124.set(var13);
                                  } else if (this.method_514() && this.field_4114.getValue() == Class_1140.PICK) {
@@ -684,7 +686,7 @@ public class AutoCrystalModule extends Module {
                                        this.field_1071 = var14;
                                     }
 
-                                    Class_0136.method_16(var10);
+                                    PlayerUtil.method_16(var10);
                                  }
                               }
 
@@ -693,13 +695,13 @@ public class AutoCrystalModule extends Module {
                                  if (this.method_514() || var11) {
                                     if (var14 != -1) {
                                        if (var11) {
-                                          Class_0136.method_39(var10);
+                                          PlayerUtil.method_39(var10);
                                        } else if (this.field_4113.getValue() == Class_0285.SILENT) {
                                           if (this.method_514() && this.field_4114.getValue() == Class_1140.PICK) {
                                              field_4219.interactionManager.pickFromInventory(var10);
                                           } else {
                                              this.method_1143();
-                                             Class_0136.method_16(var14);
+                                             PlayerUtil.method_16(var14);
                                           }
                                        }
                                     }
@@ -725,14 +727,15 @@ public class AutoCrystalModule extends Module {
 
    public void method_2(BlockPos var1, boolean var2, Direction var3) {
       if (var1 != null && var3 != null) {
-         if (var1.equals(this.field_4136) || this.field_4136 == null || this.field_4057.getValue().method_1214()) {
+         if (this.field_4057 == null || this.field_4057.getValue() == null) return;
+         if (var1.equals(this.field_4136) || this.field_4136 == null || (this.field_4057.getValue() != null ? this.field_4057.getValue().method_1214() : false)) {
             List var4 = Class_1035.method_39(var1);
             Direction var5 = var3;
             if (!var4.isEmpty()) {
                var5 = (Direction)var4.get(0);
             }
 
-            Vec3d var6 = var1.toCenterPos().offset(var5, Class_0245.field_688);
+            Vec3d var6 = var1.toCenterPos().offset(var5, Constants.field_688);
             double var7 = Double.longBitsToDouble(9218868437227405311L);
             double[] var9 = new double[]{Double.longBitsToDouble(4587366580439587226L), Double.longBitsToDouble(4606732058837280358L)};
 
@@ -746,7 +749,7 @@ public class AutoCrystalModule extends Module {
                         .raycast(new RaycastContext(field_4219.player.getEyePos(), var25, ShapeType.COLLIDER, FluidHandling.NONE, field_4219.player));
                      double var27 = var26.getPos().distanceTo(field_4219.player.getEyePos());
                      if ((var26.getType() == Type.MISS || var26.getBlockPos().equals(var1))
-                        && var25.distanceTo(field_4219.player.getEyePos()) <= (double)this.field_4052.getValue().floatValue()
+                        && var25.distanceTo(field_4219.player.getEyePos()) <= (double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f)
                         && var27 < var7
                         && (var4.contains(var26.getSide()) || !this.field_4059.getValue())) {
                         var6 = var26.getPos();
@@ -762,7 +765,7 @@ public class AutoCrystalModule extends Module {
             }
 
             Hand var29 = var2 ? Hand.OFF_HAND : Hand.MAIN_HAND;
-            Class_1261.method_2(var29, new BlockHitResult(var1.toCenterPos().offset(var5, Class_0245.field_688), var5, var1, false));
+            PacketUtil.method_2(var29, new BlockHitResult(var1.toCenterPos().offset(var5, Constants.field_688), var5, var1, false));
             field_4219.player.swingHand(var29);
             this.field_3020 = var1;
             if (this.field_4091.getValue()) {
@@ -776,44 +779,44 @@ public class AutoCrystalModule extends Module {
 
    public void method_214(BlockPos var1) {
       if (this.method_1136()) {
-         int var2 = Class_0136.method_5(Items.END_CRYSTAL);
+         int var2 = PlayerUtil.method_5(Items.END_CRYSTAL);
          if (this.field_4113.getValue() == Class_0285.SILENT && this.field_4114.getValue() == Class_1140.ALTERNATIVE) {
-            var2 = Class_0136.method_9(Items.END_CRYSTAL);
+            var2 = PlayerUtil.method_9(Items.END_CRYSTAL);
          }
 
          if (field_4219.player.getOffHandStack().isOf(Items.END_CRYSTAL) || var2 != -1) {
             int var3 = field_4219.player.getInventory().selectedSlot;
-            int var4 = Class_0136.method_5(Items.OBSIDIAN);
+            int var4 = PlayerUtil.method_5(Items.OBSIDIAN);
             Direction var5 = Class_1035.method_9(var1, this.field_4059.getValue());
             boolean var6 = this.method_514() && this.field_4114.getValue() == Class_1140.ALTERNATIVE
                || this.field_4114.getValue() == Class_1140.PICK && this.method_1141() && speedmine.method_1118() != null;
             boolean var7 = this.field_4065.getValue() && var5 == null && field_144.method_1052();
             Hand var8 = Hand.MAIN_HAND;
             if (var6 && var4 == -1) {
-               var4 = Class_0136.method_9(Items.OBSIDIAN);
+               var4 = PlayerUtil.method_9(Items.OBSIDIAN);
             }
 
             if (var4 != -1 && (var5 != null || this.field_4065.getValue()) && Class_1035.method_7(var1, false)) {
                if (var4 != var3) {
                   if (var6) {
-                     Class_0136.method_39(var4);
+                     PlayerUtil.method_39(var4);
                   } else if (this.method_514() && this.field_4114.getValue() == Class_1140.PICK) {
                      field_4219.interactionManager.pickFromInventory(var4);
                   } else {
                      speedmine.field_4030 = true;
-                     Class_0136.method_16(var4);
+                     PlayerUtil.method_16(var4);
                   }
                }
 
                if (var7) {
-                  Class_1261.method_1100();
+                  PacketUtil.method_1100();
                   var8 = Hand.OFF_HAND;
                }
 
                Class_1035.method_2(var1, var5, this.field_4065.getValue(), var8);
                this.field_4132.reset();
                if (var7) {
-                  Class_1261.method_1100();
+                  PacketUtil.method_1100();
                }
 
                if (this.field_4082.getValue() && this.field_4081.getValue()) {
@@ -828,11 +831,11 @@ public class AutoCrystalModule extends Module {
                this.field_4137 = var1;
                if (var3 != -1 && var4 != var3) {
                   if (var6) {
-                     Class_0136.method_39(var4);
+                     PlayerUtil.method_39(var4);
                   } else if (this.method_514() && this.field_4114.getValue() == Class_1140.PICK) {
                      field_4219.interactionManager.pickFromInventory(var4);
                   } else {
-                     Class_0136.method_16(var3);
+                     PlayerUtil.method_16(var3);
                   }
                }
             }
@@ -842,7 +845,7 @@ public class AutoCrystalModule extends Module {
 
    public void method_1130() {
       if (this.field_4066.getValue()
-         && this.field_4127.method_9((long)this.field_4067.getValue().intValue())
+         && this.field_4127.method_9((long)(this.field_4067.getValue() != null ? this.field_4067.getValue().intValue() : 0))
          && !this.method_1132()
          && !this.method_107(this.field_2290)) {
          if (this.field_4130.method_9((long)Hub.field_2602.method_983())
@@ -939,8 +942,8 @@ public class AutoCrystalModule extends Module {
 
    public void method_22(Vec3d var1) {
       if (var1 != null) {
-         if (Class_0485.method_513() && field_144.field_3745.getValue() == Class_1054.SILENT && !this.method_7(100L)) {
-            float[] var2 = Class_0485.method_78(var1);
+         if (RotationManager.method_513() && field_144.field_3745.getValue() == Class_1054.SILENT && !this.method_7(100L)) {
+            float[] var2 = RotationManager.method_78(var1);
             Hub.field_2598.method_29(var2);
             this.field_4147 = var2;
          }
@@ -968,8 +971,8 @@ public class AutoCrystalModule extends Module {
                break;
             }
 
-            Class_1261.method_36(var3);
-            Class_1261.method_9(Hand.MAIN_HAND);
+            PacketUtil.method_36(var3);
+            PacketUtil.method_9(Hand.MAIN_HAND);
             this.field_4134.add(var3);
          }
       }
@@ -1054,7 +1057,7 @@ public class AutoCrystalModule extends Module {
             Class_0247 var11 = Class_0247.method_2(var5, var9);
             if ((!this.field_4107.getValue() || Class_0382.method_29(var5))
                && (
-                  !(Class_0719.method_2(var6).distanceTo(Vec3d.ofBottomCenter(var1)) > (double)this.field_4104.getValue().floatValue())
+                  !(Class_0719.method_2(var6).distanceTo(Vec3d.ofBottomCenter(var1)) > (double)(this.field_4104.getValue() != null ? this.field_4104.getValue().floatValue() : 0.0f))
                      || var11.field_696
                      || this.field_4141
                )) {
@@ -1062,7 +1065,7 @@ public class AutoCrystalModule extends Module {
                   if (this.field_4105.getValue() && var9 > (double)Class_0396.method_2((net.minecraft.entity.Entity)var5)) {
                      return null;
                   }
-               } else if ((!(var7 > var9) && !(var9 < Class_0245.field_688) || var11.field_696) && (var3 == null || var9 > var3.method_445())) {
+               } else if ((!(var7 > var9) && !(var9 < Constants.field_688) || var11.field_696) && (var3 == null || var9 > var3.method_445())) {
                   var3 = new Class_0398(var5, var9, Class_1163.NONE, var11);
                }
             }
@@ -1106,14 +1109,15 @@ public class AutoCrystalModule extends Module {
             return true;
          }
 
-         List var1 = this.field_4119.getValue().method_38(this.field_4137);
+         if (this.field_4119 == null || this.field_4119.getValue() == null) return false;
+         List var1 = (this.field_4119.getValue() != null ? this.field_4119.getValue().method_38(this.field_4137) : java.util.Collections.emptyList());
          boolean var2 = Class_1225.method_2(var1);
          double var3 = field_4219.player.getEyePos().distanceTo(this.field_4137.toCenterPos());
-         if (var3 > (double)this.field_4052.getValue().floatValue()) {
+         if (var3 > (double)(this.field_4052.getValue() != null ? this.field_4052.getValue().floatValue() : 0.0f)) {
             return true;
          }
 
-         if (!var2 && var3 > (double)this.field_4053.getValue().floatValue() && !this.field_4063.getValue()) {
+         if (!var2 && var3 > (double)(this.field_4053.getValue() != null ? this.field_4053.getValue().floatValue() : 0.0f) && !this.field_4063.getValue()) {
             return true;
          }
 
@@ -1136,7 +1140,7 @@ public class AutoCrystalModule extends Module {
 
    public void method_1137() {
       if (!this.method_535() && this.method_1135() && this.field_1071 != -1) {
-         Class_0136.method_16(this.field_1071);
+         PlayerUtil.method_16(this.field_1071);
          this.field_1071 = -1;
       }
    }

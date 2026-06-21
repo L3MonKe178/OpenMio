@@ -1,6 +1,6 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_9;
 import net.minecraft.client.input.Input;
 import net.minecraft.entity.effect.StatusEffects;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 
-public class Class_0464 implements Class_1309 {
+public class Class_0464 implements MioAPI {
    public static float field_1470 = Float.intBitsToFloat(1049827580);
    public static float field_1471 = field_1470 * Float.intBitsToFloat(1045220557);
 
@@ -20,7 +20,7 @@ public class Class_0464 implements Class_1309 {
 
    public static double[] method_2(Event_9 var0, double var1) {
       if (method_363()) {
-         double[] var3 = method_2(field_4219.player.getYaw(Class_0838.method_776()), field_4219.player.input, var1);
+         double[] var3 = method_2(field_4219.player.getYaw(RenderUtil.method_776()), field_4219.player.input, var1);
          var0.method_7(var3[0], var3[1]);
          return var3;
       } else {
@@ -35,9 +35,9 @@ public class Class_0464 implements Class_1309 {
       float var6 = var0;
       if (var4 != 0.0F) {
          if (var5 > 0.0F) {
-            var6 = var0 + (float)(var4 > 0.0F ? -Class_0245.field_684 : Class_0245.field_684);
+            var6 = var0 + (float)(var4 > 0.0F ? -Constants.field_684 : Constants.field_684);
          } else if (var5 < 0.0F) {
-            var6 = var0 + (float)(var4 > 0.0F ? Class_0245.field_684 : -Class_0245.field_684);
+            var6 = var0 + (float)(var4 > 0.0F ? Constants.field_684 : -Constants.field_684);
          }
 
          var5 = 0.0F;
@@ -149,7 +149,7 @@ public class Class_0464 implements Class_1309 {
    public static float method_496() {
       if (field_4219.player.isFallFlying()) {
          double[] var3 = method_2(field_4219.player.getYaw(), field_4219.player.input, Double.longBitsToDouble(4607182418800017408L));
-         return (float)(Math.toDegrees(Math.atan2(var3[1], var3[0])) - (double)Class_0245.field_685);
+         return (float)(Math.toDegrees(Math.atan2(var3[1], var3[0])) - (double)Constants.field_685);
       } else {
          float var0 = field_4219.player.getYaw();
          Input var1 = field_4219.player.input;
@@ -159,11 +159,11 @@ public class Class_0464 implements Class_1309 {
          }
 
          if (var1.pressingRight && !var2) {
-            var0 += (float)(Class_0245.field_685 * (var1.pressingBack ? -1 : 1));
+            var0 += (float)(Constants.field_685 * (var1.pressingBack ? -1 : 1));
          }
 
          if (var1.pressingLeft && !var2) {
-            var0 -= (float)(Class_0245.field_685 * (var1.pressingBack ? -1 : 1));
+            var0 -= (float)(Constants.field_685 * (var1.pressingBack ? -1 : 1));
          }
 
          return var0;

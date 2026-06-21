@@ -10,9 +10,9 @@ import me.mioclient.Hub;
 import me.mioclient.api.Class_0468;
 import me.mioclient.event.Event_50;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0922;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.mixin.ducks.DuckLivingEntity;
@@ -89,7 +89,7 @@ public class AbstractModule_8 extends AbstractModule_32 {
 
    @Override
    public int method_34() {
-      return this.field_2289.getValue() ? Class_0136.method_5(Items.OBSIDIAN) : super.method_34();
+      return this.field_2289.getValue() ? PlayerUtil.method_5(Items.OBSIDIAN) : super.method_34();
    }
 
    @Subscribe
@@ -155,7 +155,7 @@ public class AbstractModule_8 extends AbstractModule_32 {
             }
          }
 
-         return field_4219.player.getEyePos().distanceTo(var1.toCenterPos()) > (double)this.field_2281.getValue().floatValue()
+         return field_4219.player.getEyePos().distanceTo(var1.toCenterPos()) > (double)(this.field_2281.getValue() != null ? this.field_2281.getValue().floatValue() : 0.0f)
             ? true
             : !this.field_2286.getValue() && var1.getY() == this.field_2290.getBlockPos().getY() && !field_4219.world.getBlockState(var1.up()).isReplaceable();
       }
@@ -250,7 +250,7 @@ public class AbstractModule_8 extends AbstractModule_32 {
          .getPlayers()
          .stream()
          .filter(this::method_36)
-         .min(Comparator.comparing(var0 -> MathHelper.angleBetween(field_4219.player.getYaw(), Class_0485.method_14(var0)[0])))
+         .min(Comparator.comparing(var0 -> MathHelper.angleBetween(field_4219.player.getYaw(), RotationManager.method_14(var0)[0])))
          .orElse(null);
    }
 

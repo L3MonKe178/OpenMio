@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 import net.minecraft.command.CommandSource;
 
-public class Class_1344 extends Class_0618 {
+public class Class_1344 extends Command {
    public final ExecutorService field_4336 = Executors.newCachedThreadPool();
    public final HttpClient field_4337 = HttpClient.newHttpClient();
    public static final Pattern field_4338 = Pattern.compile("[a-zA-Z0-9_]{1,16}");
@@ -42,8 +42,8 @@ public class Class_1344 extends Class_0618 {
 
                String var12 = var1;
                if (var2 != null && !var2.isEmpty()) {
-                  var12 = new Class_1303().method_2((Object)var1).method_9("\u0001?playerName=");
-                  var12 = new Class_1303().method_2((Object)var2).method_2((Object)var12).method_9("\u0001\u0001");
+                  var12 = new TextBuilder().method_2((Object)var1).method_9("\u0001?playerName=");
+                  var12 = new TextBuilder().method_2((Object)var2).method_2((Object)var12).method_9("\u0001\u0001");
                }
 
                boolean var5 = false;
@@ -51,7 +51,7 @@ public class Class_1344 extends Class_0618 {
                for (int var6 = 0; var6 < 2; var6++) {
                   try {
                      HttpRequest var7 = HttpRequest.newBuilder()
-                        .uri(new URI(new Class_1303().method_2((Object)var12).method_9("https://api.2b2t.vc/\u0001")))
+                        .uri(new URI(new TextBuilder().method_2((Object)var12).method_9("https://api.2b2t.vc/\u0001")))
                         .GET()
                         .header("User-Agent", "MioClient/2.0")
                         .header("Accept", "application/json")

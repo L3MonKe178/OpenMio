@@ -32,7 +32,7 @@ public class Class_1138 {
    }
 
    public void method_2(MatrixStack var1, Color var2, Color var3, float var4, boolean var5) {
-      if (this.field_3523 != null && Class_0485.method_4(this.field_3523)) {
+      if (this.field_3523 != null && RotationManager.method_4(this.field_3523)) {
          float var6 = this.method_37(var4);
          Class_0612.method_5(var1, this.field_3523, var5 ? Class_1081.method_9(var2, (int)((float)var2.getAlpha() * var6)) : var2);
          Class_0612.method_2(var1, this.field_3523, var5 ? Class_1081.method_9(var3, (int)((float)var3.getAlpha() * var6)) : var3, this.field_1889);

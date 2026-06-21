@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0957;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.combat.AutoCrystalModule;
 import me.mioclient.module.combat.CombatmineModule;
 import net.minecraft.enchantment.Enchantments;
@@ -21,7 +21,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_1323 implements Class_1309 {
+public class Class_1323 implements MioAPI {
    public static AutoCrystalModule field_219 = Hub.field_2595.method_78(AutoCrystalModule.class);
    public static CombatmineModule field_4276 = Hub.field_2595.method_78(CombatmineModule.class);
 
@@ -54,7 +54,7 @@ public class Class_1323 implements Class_1309 {
          return 0.0F;
       } else {
          Vec3d var8 = new Vec3d(
-            MathHelper.lerp(Class_0245.field_688, var2.minX, var2.maxX), var2.minY, MathHelper.lerp(Class_0245.field_688, var2.minZ, var2.maxZ)
+            MathHelper.lerp(Constants.field_688, var2.minX, var2.maxX), var2.minY, MathHelper.lerp(Constants.field_688, var2.minZ, var2.maxZ)
          );
          double var9 = var3 * Double.longBitsToDouble(4611686018427387904L);
          double var11 = var8.distanceTo(var0) / var9;

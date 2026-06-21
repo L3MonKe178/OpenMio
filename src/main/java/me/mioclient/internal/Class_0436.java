@@ -93,7 +93,7 @@ public class Class_0436 implements Glyph {
       int var9;
       if (var6) {
          Class_0352 var8 = new Class_0352(var1, var5, Float.intBitsToFloat(1048576000), this.field_1377);
-         var9 = var8.method_2(var2, var3 + Class_1016.method_917(), var4 + Class_1016.method_917());
+         var9 = var8.method_2(var2, var3 + FontRenderer.method_917(), var4 + FontRenderer.method_917());
          var8 = new Class_0352(var1, var5, Float.intBitsToFloat(1065353216), this.field_1377);
          var9 = Math.max(var9, var8.method_2(var2, var3, var4));
       } else {
@@ -107,7 +107,7 @@ public class Class_0436 implements Glyph {
    public int method_2(MatrixStack var1, String var2, float var3, float var4, int var5, boolean var6) {
       int var8;
       if (var6) {
-         var8 = this.method_9(var1, var2, var3 + Class_1016.method_917(), var4 + Class_1016.method_917(), var5, true);
+         var8 = this.method_9(var1, var2, var3 + FontRenderer.method_917(), var4 + FontRenderer.method_917(), var5, true);
          var8 = Math.max(var8, this.method_9(var1, var2, var3, var4, var5, false));
       } else {
          var8 = this.method_9(var1, var2, var3, var4, var5, false);
@@ -141,7 +141,7 @@ public class Class_0436 implements Glyph {
       float var7 = (float)(var4 >> 8 & 0xFF) / Float.intBitsToFloat(1132396544);
       float var8 = (float)(var4 & 0xFF) / Float.intBitsToFloat(1132396544);
       var1.push();
-      var1.translate((float)Class_1016.method_918(), (float)Class_1016.method_916(), 0.0F);
+      var1.translate((float)FontRenderer.method_918(), (float)FontRenderer.method_916(), 0.0F);
       var1.scale(Float.intBitsToFloat(1056964608), Float.intBitsToFloat(1056964608), Float.intBitsToFloat(1056964608));
       if (!field_1371.method_435()) {
          field_1371.method_9(DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);

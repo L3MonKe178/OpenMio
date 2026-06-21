@@ -1,7 +1,7 @@
 package me.mioclient.record;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0200;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0878;
@@ -33,7 +33,7 @@ public final class Class_0375 {
    }
 
    public static Class_0375 method_2(PlayerEntity var0, String var1) {
-      Class_0878 var2 = new Class_0878(Class_1309.field_4219.world);
+      Class_0878 var2 = new Class_0878(MioAPI.field_4219.world);
       var2.method_78(var0);
       var2.hurtTime = var2.deathTime = 0;
       long var3 = System.currentTimeMillis();

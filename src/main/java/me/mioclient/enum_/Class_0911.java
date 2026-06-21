@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtIo;
@@ -33,7 +33,7 @@ public enum Class_0911 {
                return Collections.emptyList();
             } else {
                ArrayList var5 = new ArrayList();
-               JsonArray var6 = (JsonArray)Class_1309.field_4218.fromJson(new String(var4, StandardCharsets.UTF_8), JsonArray.class);
+               JsonArray var6 = (JsonArray)MioAPI.field_4218.fromJson(new String(var4, StandardCharsets.UTF_8), JsonArray.class);
 
                for (int var7 = 0; var7 < var6.size(); var7++) {
                   JsonObject var8 = var6.get(var7).getAsJsonObject();
@@ -64,7 +64,7 @@ public enum Class_0911 {
                return Collections.emptyList();
             } else {
                ArrayList var4 = new ArrayList();
-               JsonArray var5 = (JsonArray)Class_1309.field_4218.fromJson(new String(var3, StandardCharsets.UTF_8), JsonArray.class);
+               JsonArray var5 = (JsonArray)MioAPI.field_4218.fromJson(new String(var3, StandardCharsets.UTF_8), JsonArray.class);
 
                for (int var6 = 0; var6 < var5.size(); var6++) {
                   JsonObject var7 = var5.get(var6).getAsJsonObject();

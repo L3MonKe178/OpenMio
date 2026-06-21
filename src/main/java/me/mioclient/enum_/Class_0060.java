@@ -1,7 +1,7 @@
 package me.mioclient.enum_;
 
 import java.util.function.Predicate;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_1019;
 import me.mioclient.internal.Class_0867;
 import me.mioclient.internal.Class_0891;
@@ -10,7 +10,7 @@ import me.mioclient.internal.Class_1160;
 import me.mioclient.internal.Class_1259;
 import net.minecraft.item.Item;
 
-public enum Class_0060 implements Class_0013 {
+public enum Class_0060 implements Nameable {
    field_175("swap", var0 -> true, new Class_0891()),
    field_176("alternative", var0 -> true, new Class_1160()),
    field_177("armor", Class_0985::method_38, new Class_0867()),

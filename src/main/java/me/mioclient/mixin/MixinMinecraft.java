@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import com.llamalad7.mixinextras.sugar.Local;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_11;
 import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_21;
@@ -98,7 +98,7 @@ public class MixinMinecraft {
    )
    public void disconnect(Screen var1, CallbackInfo var2) {
       Event_20 var3 = new Event_20();
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
    }
 
    @ModifyExpressionValue(
@@ -132,7 +132,7 @@ public class MixinMinecraft {
    private void setScreenHookPre(Screen var1, CallbackInfo var2) {
       this.mio$lastScreen = this.field_1755;
       Event_53 var3 = new Event_53(this.mio$lastScreen, var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }
@@ -149,7 +149,7 @@ public class MixinMinecraft {
    )
    private void setScreenHookPost(Screen var1, CallbackInfo var2) {
       Event_61 var3 = new Event_61(this.mio$lastScreen, var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }
@@ -160,7 +160,7 @@ public class MixinMinecraft {
       at = {@At("HEAD")}
    )
    private void tickHook(CallbackInfo var1) {
-      Class_1309.field_4220.method_36(Event_21.field_3173);
+      MioAPI.field_4220.method_36(Event_21.field_3173);
    }
 
    @ModifyExpressionValue(
@@ -221,7 +221,7 @@ public class MixinMinecraft {
       )}
    )
    private void render(boolean var1, CallbackInfo var2, @Local int var3) {
-      Class_1309.field_4220.method_36(new Event_11(var3 >= 1));
+      MioAPI.field_4220.method_36(new Event_11(var3 >= 1));
    }
 
    @ModifyExpressionValue(

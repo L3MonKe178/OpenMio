@@ -13,14 +13,14 @@ import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ObjectSets;
 import java.util.function.Consumer;
 import me.mioclient.api.Class_0230;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.deobf.Named;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
-public final class Class_0473 implements Class_1309, Class_0230 {
+public final class Class_0473 implements MioAPI, Class_0230 {
    public final ObjectSet<Named> field_1512 = ObjectSets.synchronize(new ObjectOpenHashSet());
 
    public Class_0473() {
@@ -31,8 +31,8 @@ public final class Class_0473 implements Class_1309, Class_0230 {
       BaritoneAPI.getSettings().logger.value = (Consumer<Text>)var0 -> {
          MutableText var1 = var0.copy();
          var1.getSiblings().add(0, Text.literal(" "));
-         var1.getSiblings().add(0, Class_1245.method_287());
-         field_4219.inGameHud.getChatHud().addMessage(var1, null, Class_1245.field_3910);
+         var1.getSiblings().add(0, ChatUtil.method_287());
+         field_4219.inGameHud.getChatHud().addMessage(var1, null, ChatUtil.field_3910);
       };
    }
 

@@ -36,7 +36,7 @@ public final class Class_0963 extends Class_0806 {
 
             this.field_1570 = Math.min(this.field_1570, (double)this.field_2537.field_2192.getValue().floatValue());
             this.field_1570 = Math.max(this.field_1570, Class_0464.method_78(true));
-            double[] var2 = Class_0464.method_2(field_4219.player.getYaw(Class_0838.method_776()), field_4219.player.input, this.field_1570);
+            double[] var2 = Class_0464.method_2(field_4219.player.getYaw(RenderUtil.method_776()), field_4219.player.input, this.field_1570);
             if (!field_4219.world.isSpaceEmpty(field_4219.player.getBoundingBox().stretch(var2[0], 0.0, var2[1]))) {
                this.field_2537.reset();
                this.field_1570 = Class_0464.method_78(true);

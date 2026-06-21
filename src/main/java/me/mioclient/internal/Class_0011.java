@@ -21,7 +21,7 @@ public class Class_0011 extends ByteToMessageDecoder {
       short var7 = var6.readShort();
       Class_0098 var8 = Class_1169.method_9(var7);
       if (var8 == null) {
-         throw new NullPointerException(new Class_1303().method_2(var7).method_9("Couldn't find incoming packet with ID \u0001"));
+         throw new NullPointerException(new TextBuilder().method_2(var7).method_9("Couldn't find incoming packet with ID \u0001"));
       } else {
          var3.add(var8.method_9(var4));
       }

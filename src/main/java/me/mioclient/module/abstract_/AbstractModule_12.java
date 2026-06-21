@@ -6,8 +6,8 @@ import me.mioclient.Hub;
 import me.mioclient.event.Event_26;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0149;
-import me.mioclient.internal.Class_0245;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.Constants;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.client.FontsModule;
 import me.mioclient.module.client.HUDModule;
@@ -56,14 +56,14 @@ public class AbstractModule_12 extends AbstractModule_26 {
                   }
 
                   float var10 = (float)(var3 - var7) - Float.intBitsToFloat(1081291571) - (float)(this.field_2000.getValue() ? 0 : 2);
-                  Class_1016.field_3143
+                  FontRenderer.field_3143
                      .method_9(
                         var1.method_881(),
                         var8,
                         (float)var2 / Float.intBitsToFloat(1073741824)
                            + (float)var4
                            + Float.intBitsToFloat(1091567616)
-                           - Class_1016.field_3143.method_221(var8) * Float.intBitsToFloat(1056964608) * var9
+                           - FontRenderer.field_3143.method_221(var8) * Float.intBitsToFloat(1056964608) * var9
                            - var9,
                         var10,
                         var9,
@@ -101,7 +101,7 @@ public class AbstractModule_12 extends AbstractModule_26 {
          var1 = 65;
       } else if (field_4219.player.hasVehicle() && field_4219.player.getVehicle() instanceof LivingEntity var2) {
          var1 = (int)(
-            (double)Class_0245.field_684
+            (double)Constants.field_684
                + Math.ceil((double)((var2.getMaxHealth() - Float.intBitsToFloat(1065353216)) / Float.intBitsToFloat(1101004800)))
                   * Double.longBitsToDouble(4621819117588971520L)
          );

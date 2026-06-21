@@ -25,14 +25,14 @@ public class Class_0906 extends Class_0145 {
 
       for (int var8 = 0; var8 < var7.length; var8++) {
          float var9 = this.field_2841 && this.method_5(var3, var5) ? Float.intBitsToFloat(1065353216) : 0.0F;
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                var7[var8],
                (float)(this.field_418.getX() + this.method_852().field_2853.getValue()),
                (float)(this.field_418.getY() + this.field_419)
                   + this.method_850()
-                  + (float)(var8 * Class_1016.field_3143.method_66())
+                  + (float)(var8 * FontRenderer.field_3143.method_66())
                   + Float.intBitsToFloat(1065353216)
                   - var9,
                Color.white
@@ -44,7 +44,7 @@ public class Class_0906 extends Class_0145 {
 
    @Override
    public int method_66() {
-      return super.method_66() + Class_1016.field_3143.method_66() * (this.field_2840.get().split("\n").length - 1) + 1;
+      return super.method_66() + FontRenderer.field_3143.method_66() * (this.field_2840.get().split("\n").length - 1) + 1;
    }
 
    public void method_460(boolean var1) {

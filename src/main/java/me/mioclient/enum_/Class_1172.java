@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.Constants;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 
-public enum Class_1172 implements Class_1309, Class_0013 {
-   field_3631("Fast", new Vec3d(Class_0245.field_688, Class_0245.field_688, Class_0245.field_688)),
-   field_3632("X2", new Vec3d(Class_0245.field_688, 0.05, Class_0245.field_688), new Vec3d(Class_0245.field_688, 1.0, Class_0245.field_688)),
+public enum Class_1172 implements MioAPI, Nameable {
+   field_3631("Fast", new Vec3d(Constants.field_688, Constants.field_688, Constants.field_688)),
+   field_3632("X2", new Vec3d(Constants.field_688, 0.05, Constants.field_688), new Vec3d(Constants.field_688, 1.0, Constants.field_688)),
    field_3633("X4", new Vec3d(0.05, 0.05, 0.05), new Vec3d(0.05, 0.05, 0.95), new Vec3d(0.95, 0.05, 0.05), new Vec3d(0.95, 0.05, 0.95)),
    field_3634(
       "X8",

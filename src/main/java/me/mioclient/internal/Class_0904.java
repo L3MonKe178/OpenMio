@@ -1,10 +1,10 @@
 package me.mioclient.internal;
 
 import java.util.LinkedList;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.util.math.MathHelper;
 
-public final class Class_0904 implements Class_1309 {
+public final class Class_0904 implements MioAPI {
    public final LinkedList<Long> field_2834 = new LinkedList<>();
    public int field_2835;
 

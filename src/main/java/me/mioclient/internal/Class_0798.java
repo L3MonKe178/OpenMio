@@ -28,7 +28,7 @@ public class Class_0798 implements ArgumentType<Class_0836> {
       String var2 = var1.readString();
       Class_0836 var3 = Class_0836.method_113(var2);
       if (var3 == null) {
-         throw new DynamicCommandExceptionType(var0 -> Text.of(new Class_1303().method_2(String.valueOf(var0)).method_9("Preset category not found \u0001")))
+         throw new DynamicCommandExceptionType(var0 -> Text.of(new TextBuilder().method_2(String.valueOf(var0)).method_9("Preset category not found \u0001")))
             .create(var2);
       } else {
          return var3;

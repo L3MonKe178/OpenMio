@@ -11,7 +11,7 @@ import me.mioclient.event.Event_32;
 import me.mioclient.event.Subscribe;
 import net.minecraft.command.CommandSource;
 
-public class Class_0283 extends Class_0618 {
+public class Class_0283 extends Command {
    public final List<String> field_884 = new ArrayList<>();
    public boolean field_885;
    public int field_31;
@@ -46,7 +46,7 @@ public class Class_0283 extends Class_0618 {
          this.field_884.clear();
          Hub.field_2619.method_2(() -> {
             for (String var2x : var2) {
-               Class_1032.method_7(var2x);
+               CommandManager.method_7(var2x);
             }
          }, this.field_31);
       }

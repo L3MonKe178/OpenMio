@@ -15,8 +15,8 @@ import me.mioclient.event.Event_46;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0211;
 import me.mioclient.internal.Class_0585;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -94,9 +94,9 @@ public class BetterChatModule extends Module {
       String var2 = var1.method_219();
       if (!field_3920.matcher(var2).matches()) {
          if (this.field_3942.getValue()) {
-            String var3 = new Class_1303().method_2(this.field_3943.getValue()).method_9(" \u0001");
+            String var3 = new TextBuilder().method_2(this.field_3943.getValue()).method_9(" \u0001");
             int var4 = MathHelper.clamp(256 - var2.length(), 0, var3.length());
-            var1.method_220(new Class_1303().method_2(var3.substring(0, var4)).method_2((Object)var2).method_9("\u0001\u0001"));
+            var1.method_220(new TextBuilder().method_2(var3.substring(0, var4)).method_2((Object)var2).method_9("\u0001\u0001"));
          }
       }
    }
@@ -110,12 +110,12 @@ public class BetterChatModule extends Module {
    public void method_5(Event_46 var1) {
       if (this.field_3925.getValue() && (this.method_2(var1.method_1036()) || !this.field_3926.getValue())) {
          MutableText var2 = Text.empty()
-            .append(Text.literal(this.field_3932.getValue()).styled(var1x -> var1x.withColor(this.field_3929.getValue().hashCode())))
-            .append(Text.literal(this.field_3927.getValue().method_2(new Date())).styled(var1x -> var1x.withColor(this.field_3928.getValue().hashCode())))
-            .append(Text.literal(this.field_3933.getValue()).styled(var1x -> var1x.withColor(this.field_3929.getValue().hashCode())))
+            .append(Text.literal(this.field_3932.getValue()).styled(var1x -> var1x.withColor((this.field_3929.getValue() != null ? this.field_3929.getValue().hashCode() : 0))))
+            .append(Text.literal((this.field_3927.getValue() != null ? this.field_3927.getValue().method_2(new Date()) : "")).styled(var1x -> var1x.withColor((this.field_3928.getValue() != null ? this.field_3928.getValue().hashCode() : 0))))
+            .append(Text.literal(this.field_3933.getValue()).styled(var1x -> var1x.withColor((this.field_3929.getValue() != null ? this.field_3929.getValue().hashCode() : 0))))
             .append(" ");
          if (this.field_3930.getValue()) {
-            var2 = Text.empty().append(Class_1245.method_2(var2.getString(), () -> this.field_3931.getValue() * 10, this.field_3928.getValue()));
+            var2 = Text.empty().append(ChatUtil.method_2(var2.getString(), () -> this.field_3931.getValue() * 10, this.field_3928.getValue()));
          }
 
          var1.method_9(var2.append(var1.method_1033()));
@@ -125,7 +125,7 @@ public class BetterChatModule extends Module {
    public void method_7(Event_46 var1) {
       if (this.field_3934.getValue()) {
          String var2 = var1.method_1033().getString().toLowerCase();
-         if (!field_3924.isToggled() || !Class_1245.method_107(var2)) {
+         if (!field_3924.isToggled() || !ChatUtil.method_107(var2)) {
             if (!this.field_3949 && var2.contains(field_4219.getSession().getUsername().toLowerCase())) {
                Hub.field_2606.method_2(this.field_3935.getValue()).method_230(this.field_3936.getValue());
             }

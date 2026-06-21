@@ -9,12 +9,12 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0698;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0121;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0723;
 import me.mioclient.setting.CustomSetting;
 import me.mioclient.setting.Setting;
@@ -29,14 +29,14 @@ public class AbstractModule_3 extends AbstractModule_26 {
    public final HttpClient field_3435 = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10L)).build();
    public String field_3436 = "0.00";
    public Formatting field_3437 = Formatting.WHITE;
-   public final Class_0242 field_3438 = new Class_0242();
+   public final Timer field_3438 = new Timer();
 
    public AbstractModule_3() {
       super("Crypto");
       this.method_2(
          new Class_0723(
             this,
-            new Class_0121(() -> Text.literal("%s %s%s".formatted(this.field_3433.getValue().toUpperCase(), this.field_3437, this.field_3436)), () -> true)
+            new Class_0121(() -> Text.literal("%s %s%s".formatted((this.field_3433.getValue() != null ? this.field_3433.getValue().toUpperCase() : ""), this.field_3437, this.field_3436)), () -> true)
          )
       );
       this.field_3433.method_9(() -> {
@@ -65,7 +65,7 @@ public class AbstractModule_3 extends AbstractModule_26 {
          this.field_3437 = Formatting.WHITE;
       } else {
          String var1 = this.field_3433.getValue().toUpperCase(Locale.ROOT);
-         String var2 = this.field_3434.getValue().getName().toUpperCase(Locale.ROOT);
+         String var2 = (this.field_3434.getValue() != null ? this.field_3434.getValue().getName() : "").toUpperCase(Locale.ROOT);
 
          try {
             URI var3 = new URI("https://api.coinconvert.net/convert/%s/%s?amount=1".formatted(var1, var2));
@@ -77,7 +77,7 @@ public class AbstractModule_3 extends AbstractModule_26 {
                return;
             }
 
-            JsonObject var6 = (JsonObject)Class_1309.field_4218.fromJson((String)var5.body(), JsonObject.class);
+            JsonObject var6 = (JsonObject)MioAPI.field_4218.fromJson((String)var5.body(), JsonObject.class);
             if (var6.has("status") && var6.has(var2)) {
                float var7 = var6.get(var2).getAsFloat();
                String var8 = "%.2f".formatted(var7);

@@ -5,11 +5,11 @@ import com.llamalad7.mixinextras.sugar.Local;
 import java.util.List;
 import java.util.Optional;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_41;
 import me.mioclient.event.Event_42;
 import me.mioclient.internal.Class_0018;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0593;
 import me.mioclient.internal.Class_0982;
 import me.mioclient.mixin.ducks.DuckDrawContext;
@@ -40,7 +40,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({HandledScreen.class})
-public class MixinHandledScreen implements Class_1309 {
+public class MixinHandledScreen implements MioAPI {
    private static final ChestSearchBarModule chestsearchbar = Hub.field_2595.method_78(ChestSearchBarModule.class);
    private static final AbstractModule_37 tooltips = Hub.field_2595.method_78(AbstractModule_37.class);
    @Shadow
@@ -119,7 +119,7 @@ public class MixinHandledScreen implements Class_1309 {
       at = {@At("HEAD")}
    )
    private void renderWithTooltipHook(DrawContext var1, int var2, int var3, CallbackInfo var4) {
-      if (tooltips.isToggled() && this.mio$lastSlot != null && Class_0136.method_29(this.mio$lastSlot.getStack().getItem()) && Class_0018.method_22(342)) {
+      if (tooltips.isToggled() && this.mio$lastSlot != null && PlayerUtil.method_29(this.mio$lastSlot.getStack().getItem()) && Class_0018.method_22(342)) {
          this.field_2787 = this.mio$lastSlot;
       }
    }
@@ -133,7 +133,7 @@ public class MixinHandledScreen implements Class_1309 {
    )
    private void renderWithTooltip(DrawContext var1, TextRenderer var2, List<Text> var3, Optional<TooltipData> var4, int var5, int var6) {
       boolean var7 = !Class_0018.method_22(342);
-      if (!var7 && this.mio$lastSlot != null && Class_0136.method_29(this.mio$lastSlot.getStack().getItem())) {
+      if (!var7 && this.mio$lastSlot != null && PlayerUtil.method_29(this.mio$lastSlot.getStack().getItem())) {
          var5 = this.mio$lastTooltipX;
          var6 = this.mio$lastTooltipY;
       } else {
@@ -143,7 +143,7 @@ public class MixinHandledScreen implements Class_1309 {
 
       List var8 = Class_0593.method_2(var1, var3, var4);
       Event_41 var9 = new Event_41((Screen)(Object)this, var8, var5, var6, this.lastMX, this.lastMY);
-      Class_1309.field_4220.method_36(var9);
+      MioAPI.field_4220.method_36(var9);
       if (!var9.method_464()) {
          ((DuckDrawContext)var1).drawTooltipsHook(var2, var9.method_563(), var5, var6, HoveredTooltipPositioner.INSTANCE);
       }

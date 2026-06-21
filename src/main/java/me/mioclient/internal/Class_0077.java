@@ -1,14 +1,14 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.combat.CombatmineModule;
 import me.mioclient.module.player.SpeedMineModule;
 import net.minecraft.util.math.BlockPos;
 
-public final class Class_0077 implements Class_1309 {
+public final class Class_0077 implements MioAPI {
    public static SpeedMineModule speedmine = Hub.field_2595.method_78(SpeedMineModule.class);
-   public final Class_0242 field_276 = new Class_0242();
+   public final Timer field_276 = new Timer();
    public final CombatmineModule field_277;
    public BlockPos field_278;
 

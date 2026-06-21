@@ -2,10 +2,10 @@ package me.mioclient.record;
 
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_41;
 import me.mioclient.internal.Class_0018;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.abstract_.AbstractModule_37;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -19,7 +19,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.map.MapState;
 import net.minecraft.util.Formatting;
 
-public final class Class_0089 implements Class_1309, TooltipComponent {
+public final class Class_0089 implements MioAPI, TooltipComponent {
    public final List<ItemStack> field_298;
    public static final AbstractModule_37 field_299 = Hub.field_2595.method_78(AbstractModule_37.class);
 
@@ -61,7 +61,7 @@ public final class Class_0089 implements Class_1309, TooltipComponent {
          } else {
             context.drawItem(var11, var12 + 1, var13 + 1);
             context.drawItemInSlot(
-               textRenderer, var11, var12 + 1, var13 + 1, var14 ? new Class_1303().method_2(String.valueOf(Formatting.RED)).method_9("\u00010") : null
+               textRenderer, var11, var12 + 1, var13 + 1, var14 ? new TextBuilder().method_2(String.valueOf(Formatting.RED)).method_9("\u00010") : null
             );
          }
 

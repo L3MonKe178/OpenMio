@@ -1,11 +1,11 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import me.mioclient.internal.Class_1334;
 import net.minecraft.entity.MovementType;
 import net.minecraft.util.math.Vec3d;
 
-public class Event_9 extends Class_0605 {
+public class Event_9 extends Event {
    public final Vec3d field_3852;
    public final Vec3d field_3853;
    public MovementType field_3854;

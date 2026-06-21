@@ -3,10 +3,10 @@
  */
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.internal.Class_0145;
 import me.mioclient.internal.Class_0414;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -26,7 +26,7 @@ extends Class_0145 {
     @Override
     public void method_2(DrawContext drawContext, MatrixStack matrixStack, double d, double d2) {
         super.method_2(drawContext, matrixStack, d, d2);
-        Class_1016.field_3143.method_9(drawContext, this.field_547, (float)this.method_167().getX() + (float)this.method_167().method_216() / Float.intBitsToFloat(0x40000000) - Class_1016.field_3143.method_221(this.field_547) / Float.intBitsToFloat(0x40000000), (float)(this.field_546.getY() + this.field_419) + this.method_850() - Float.intBitsToFloat(1065353216) - this.method_169(), this.method_852().field_2876.getValue());
+        FontRenderer.field_3143.method_9(drawContext, this.field_547, (float)this.method_167().getX() + (float)this.method_167().method_216() / Float.intBitsToFloat(0x40000000) - FontRenderer.field_3143.method_221(this.field_547) / Float.intBitsToFloat(0x40000000), (float)(this.field_546.getY() + this.field_419) + this.method_850() - Float.intBitsToFloat(1065353216) - this.method_169(), this.method_852().field_2876.getValue());
     }
 
     @Override
@@ -37,8 +37,8 @@ extends Class_0145 {
         super.method_2(d, d2, n);
         if (this.field_546.method_909().method_194() && n == 0) {
             for (Enum enum_ : (Enum[])((Enum)this.field_546.method_910().getValue()).getDeclaringClass().getEnumConstants()) {
-                Class_0013 class_0013;
-                if (!(enum_ instanceof Class_0013) || !(class_0013 = (Class_0013)((Object)enum_)).getName().equalsIgnoreCase(this.field_547)) continue;
+                Nameable class_0013;
+                if (!(enum_ instanceof Nameable) || !(class_0013 = (Nameable)((Object)enum_)).getName().equalsIgnoreCase(this.field_547)) continue;
                 this.field_546.method_910().method_78(enum_);
                 this.field_546.method_27(this.field_548);
             }

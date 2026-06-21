@@ -15,7 +15,7 @@ public class Class_1222 {
          return var0;
       } else {
          for (String var5 : var1) {
-            String var6 = new Class_1303().method_2((Object)var5).method_2(var0.toString()).method_9("\u0001\u0001");
+            String var6 = new TextBuilder().method_2((Object)var5).method_2(var0.toString()).method_9("\u0001\u0001");
             Path var7 = Path.of(var6);
             if (var7.toFile().exists()) {
                return var7;

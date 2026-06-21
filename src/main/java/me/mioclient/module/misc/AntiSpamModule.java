@@ -9,7 +9,7 @@ import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_46;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.record.Class_0123;
@@ -64,7 +64,7 @@ public class AntiSpamModule extends Module {
 
          long var2 = this.field_3857.get(this.field_3860).method_144();
          if (var2 > 1L && this.field_3858.getValue()) {
-            var1.method_9(Text.empty().append(var1.method_1033()).append(Text.literal(new Class_1303().method_2(var2).method_9(" [x\u0001]"))));
+            var1.method_9(Text.empty().append(var1.method_1033()).append(Text.literal(new TextBuilder().method_2(var2).method_9(" [x\u0001]"))));
          }
       } else if (this.field_3860 != null) {
          this.field_3857.computeIfPresent(this.field_3860, (var1x, var2x) -> new Class_0123<>(var2x.method_144() + 1L, var1.method_1034()));

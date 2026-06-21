@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.authlib.GameProfile;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1194;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0813;
 import me.mioclient.enum_.Class_1229;
 import me.mioclient.enum_.PreType;
@@ -39,7 +39,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({ClientPlayerEntity.class})
-public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity implements Class_1309, Class_1194 {
+public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity implements MioAPI, Class_1194 {
    private static ElytraFlyModule elytrafly = Hub.field_2595.method_78(ElytraFlyModule.class);
    private static SwingModule swing = Hub.field_2595.method_78(SwingModule.class);
    private static NoSlowModule noslow = Hub.field_2595.method_78(NoSlowModule.class);

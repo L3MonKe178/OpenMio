@@ -19,16 +19,16 @@ import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0104;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_0719;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.internal.Class_0978;
 import me.mioclient.internal.Class_1000;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1135;
 import me.mioclient.internal.Class_1225;
 import me.mioclient.internal.Class_1288;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1355;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -203,14 +203,14 @@ public class ESPModule extends Module {
                && this.field_3824.getValue()
                && (this.field_3825.getValue() == Class_0062.BOTH || this.field_3825.getValue() == Class_0062.TEXT)) {
                Vec3d var7 = field_4219.gameRenderer.getCamera().getPos();
-               if (var5 instanceof ItemEntity && var5.getPos().distanceTo(var7) > (double)this.field_3826.getValue().intValue()) {
+               if (var5 instanceof ItemEntity && var5.getPos().distanceTo(var7) > (double)(this.field_3826.getValue() != null ? this.field_3826.getValue().intValue() : 0)) {
                   continue;
                }
 
                if (!this.field_3827.getValue()) {
                   String var20 = var6.getStack().getName().getString();
                   if (var6.getStack().getCount() > 1) {
-                     var20 = new Class_1303().method_2(var6.getStack().getCount()).method_2((Object)var20).method_9("\u0001 x\u0001");
+                     var20 = new TextBuilder().method_2(var6.getStack().getCount()).method_2((Object)var20).method_9("\u0001 x\u0001");
                   }
 
                   this.field_3850
@@ -270,8 +270,8 @@ public class ESPModule extends Module {
          }
 
          Vec3d var5 = var4.method_1151().getCenter();
-         double var6 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var5, (double)this.field_3830.getValue().floatValue());
-         float var8 = (float)Class_1016.field_3143.method_66();
+         double var6 = Class_0930.method_2(field_4219.gameRenderer.getCamera().getPos(), var5, (double)(this.field_3830.getValue() != null ? this.field_3830.getValue().floatValue() : 0.0f));
+         float var8 = (float)FontRenderer.field_3143.method_66();
          float var9 = 0.0F;
          if (var4.method_1152().size() == 1) {
             this.method_2(var1.method_10(), var4, var6, (float)var4.method_1152().size() * var8);
@@ -282,8 +282,8 @@ public class ESPModule extends Module {
 
          for (Entry var11 : var4.method_1152().entrySet()) {
             String var12 = Class_1288.method_5((String)var11.getKey(), (Integer)var11.getValue());
-            float var13 = -Class_1016.field_3143.method_221(var12) / Float.intBitsToFloat(1073741824);
-            Class_0838.field_2672.method_2(var1.method_881(), var12, var5, 0.0F, 0.0F, var13, var9, var6, this.field_3828.getValue(), true);
+            float var13 = -FontRenderer.field_3143.method_221(var12) / Float.intBitsToFloat(1073741824);
+            RenderUtil.field_2672.method_2(var1.method_881(), var12, var5, 0.0F, 0.0F, var13, var9, var6, this.field_3828.getValue(), true);
             var9 -= var8;
          }
       }
@@ -302,7 +302,7 @@ public class ESPModule extends Module {
    }
 
    public void method_2(MatrixStack var1, Class_1288 var2, double var3, float var5) {
-      Class_0838.field_2672
+      RenderUtil.field_2672
          .method_2(
             var1, var2.method_1151().getCenter(), 0.0F, 0.0F, var2.method_1153() + Float.intBitsToFloat(1065353216), var5, var3, this.field_3829.getValue()
          );

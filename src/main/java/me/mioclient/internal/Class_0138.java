@@ -5,7 +5,7 @@ import me.mioclient.module.exploit.IllegalDisconnectModule;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_0138 extends Class_0618 {
+public final class Class_0138 extends Command {
    public Class_0138() {
       super("disconnect");
       this.method_9("dc");

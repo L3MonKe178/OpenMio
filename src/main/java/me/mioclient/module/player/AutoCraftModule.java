@@ -11,12 +11,12 @@ import me.mioclient.enum_.NoneType;
 import me.mioclient.event.Event_17;
 import me.mioclient.event.Event_53;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.record.Class_0123;
@@ -66,14 +66,14 @@ public class AutoCraftModule extends Module {
    public Setting<Boolean> field_2481;
    public Setting<Integer> field_2482;
    public Setting<Boolean> field_2483;
-   public final Class_0242 field_2484;
-   public final Class_0242 field_2485;
+   public final Timer field_2484;
+   public final Timer field_2485;
 
    public AutoCraftModule() {
       super("AutoCraft", "Automatically crafts listed items.", Category.PLAYER, "craftbot");
       Settings.initialize(this);
-      this.field_2484 = new Class_0242();
-      this.field_2485 = new Class_0242();
+      this.field_2484 = new Timer();
+      this.field_2485 = new Timer();
    }
 
    @Subscribe
@@ -84,21 +84,21 @@ public class AutoCraftModule extends Module {
             Class_0123 var3 = this.method_732();
             if (var3 != null) {
                if (this.field_2480.getValue()) {
-                  Class_1261.method_2(Class_0485.method_78(((BlockPos)var3.method_144()).toCenterPos()), field_4219.player.isOnGround());
+                  PacketUtil.method_2(RotationManager.method_78(((BlockPos)var3.method_144()).toCenterPos()), field_4219.player.isOnGround());
                }
 
-               Class_1261.method_2(
+               PacketUtil.method_2(
                   Hand.MAIN_HAND,
                   new BlockHitResult(((BlockPos)var3.method_144()).toCenterPos(), (Direction)var3.method_145(), (BlockPos)var3.method_144(), false)
                );
-               Class_1261.method_9(Hand.MAIN_HAND);
+               PacketUtil.method_9(Hand.MAIN_HAND);
                this.field_2485.reset();
             }
          }
 
          if (field_4219.player.currentScreenHandler instanceof CraftingScreenHandler
-            && !this.field_2469.getValue().isEmpty()
-            && this.field_2484.method_9((long)this.field_2471.getValue().intValue())) {
+            && !(this.field_2469.getValue() != null ? this.field_2469.getValue().isEmpty() : true)
+            && this.field_2484.method_9((long)(this.field_2471.getValue() != null ? this.field_2471.getValue().intValue() : 0))) {
             CraftingScreenHandler var13 = (CraftingScreenHandler)field_4219.player.currentScreenHandler;
             ItemStack var4 = var2.value().getResult(field_4219.world.getRegistryManager());
             if (!var4.isOf(Items.FIREWORK_ROCKET)) {
@@ -122,7 +122,7 @@ public class AutoCraftModule extends Module {
 
                if (var6 != -1 && var13.getSlot(1).getStack().isEmpty()) {
                   this.field_2484.reset();
-                  Class_0136.method_5(var6, 1);
+                  PlayerUtil.method_5(var6, 1);
                   return;
                }
 
@@ -164,7 +164,8 @@ public class AutoCraftModule extends Module {
                }
             }
 
-            field_4219.interactionManager.clickSlot(var13.syncId, 0, 1, this.field_2473.getValue().method_1103(), field_4219.player);
+            if (this.field_2473 == null || this.field_2473.getValue() == null) return;
+            field_4219.interactionManager.clickSlot(var13.syncId, 0, 1, (this.field_2473.getValue() != null ? this.field_2473.getValue().method_1103() : null), field_4219.player);
             if (this.field_2473.getValue() == NoneType.PICKUP && var4.getCount() + var13.getCursorStack().getCount() > var13.getCursorStack().getMaxCount()) {
                field_4219.interactionManager.clickSlot(var13.syncId, -999, 0, SlotActionType.PICKUP, field_4219.player);
             }
@@ -172,7 +173,7 @@ public class AutoCraftModule extends Module {
             if (this.field_2475.getValue()) {
                Hub.field_2619.method_2(() -> {
                   int var0 = field_4219.player.currentScreenHandler.syncId;
-                  Class_1261.method_2(new CloseHandledScreenC2SPacket(var0));
+                  PacketUtil.method_2(new CloseHandledScreenC2SPacket(var0));
                   field_4219.player.currentScreenHandler = field_4219.player.playerScreenHandler;
                }, 1);
             }
@@ -191,7 +192,7 @@ public class AutoCraftModule extends Module {
    }
 
    public RecipeEntry<?> method_731() {
-      if (this.field_2469.getValue().isEmpty()) {
+      if ((this.field_2469.getValue() != null ? this.field_2469.getValue().isEmpty() : true)) {
          return null;
       } else {
          for (RecipeEntry var2 : field_4219.world.getRecipeManager().values()) {
@@ -203,7 +204,8 @@ public class AutoCraftModule extends Module {
                      var4 = field_2468;
                   }
 
-                  if (this.field_2469.getValue().contains(var3.getItem()) && this.method_9((Collection<Ingredient>)var4) && this.method_37(var3.getItem())) {
+                  if (this.field_2469 == null || this.field_2469.getValue() == null) continue;
+                  if ((this.field_2469.getValue() != null ? this.field_2469.getValue().contains(var3.getItem()) : false) && this.method_9((Collection<Ingredient>)var4) && this.method_37(var3.getItem())) {
                      return var2;
                   }
                }
@@ -268,7 +270,7 @@ public class AutoCraftModule extends Module {
             boolean var5 = false;
 
             for (ItemStack var9 : var12.getMatchingStacks()) {
-               if (this.field_2470.getValue().contains(var9.getItem())) {
+               if ((this.field_2470.getValue() != null ? this.field_2470.getValue().contains(var9.getItem()) : false)) {
                   return false;
                }
 

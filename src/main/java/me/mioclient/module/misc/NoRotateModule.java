@@ -5,7 +5,7 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.mixin.ducks.DuckPlayerPositionLookS2CPacket;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -52,7 +52,7 @@ public class NoRotateModule extends Module {
    @Subscribe
    public void method_5(Event_4 var1) {
       if (!field_4219.isInSingleplayer() && !field_4219.player.isHoldingOntoLadder()) {
-         if (!Class_0485.method_513() || field_4219.player.age > 20) {
+         if (!RotationManager.method_513() || field_4219.player.age > 20) {
             if (var1.method_127() instanceof PlayerPositionLookS2CPacket var2 && !this.method_535() && field_4219.player.age > 5) {
                float var5 = field_4219.player.getYaw();
                float var4 = field_4219.player.getPitch();

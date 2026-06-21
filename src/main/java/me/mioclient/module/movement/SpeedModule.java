@@ -11,7 +11,7 @@ import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_51;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
 import me.mioclient.internal.Class_0806;
@@ -40,13 +40,13 @@ public class SpeedModule extends Module {
    public Setting<Boolean> field_2195;
    public Setting<Boolean> field_2196;
    public boolean field_2197;
-   public final Class_0242 field_2198;
+   public final Timer field_2198;
    public final Class_1295<StrafeType, Class_0806> field_2199;
 
    public SpeedModule() {
       super("Speed", "Makes you move faster.", Category.MOVEMENT);
       Settings.initialize(this);
-      this.field_2198 = new Class_0242();
+      this.field_2198 = new Timer();
       this.field_2199 = new Class_1295<>(this.field_2191);
       this.field_2199.method_2(StrafeType.STRAFE, new Class_0992(this));
       this.field_2199.method_2(StrafeType.STRAFE_STRICT, new Class_1376(this));
@@ -62,7 +62,7 @@ public class SpeedModule extends Module {
 
    @Override
    public String getInfo() {
-      return this.field_2191.getValue().getName();
+      return (this.field_2191.getValue() != null ? this.field_2191.getValue().getName() : "");
    }
 
    @Override

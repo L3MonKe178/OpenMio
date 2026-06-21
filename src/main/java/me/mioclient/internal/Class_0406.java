@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0937;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_26;
@@ -19,14 +19,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 
-public class Class_0406 extends Class_1117 implements Class_1309 {
+public class Class_0406 extends Class_1117 implements MioAPI {
    public Class_1015<?> field_1306 = null;
    public static final int[] field_1307 = new int[]{265, 265, 264, 264, 263, 262, 263, 262, 66, 65};
    public int current = 0;
    public boolean field_1308;
    public boolean field_1309;
    public TextFieldWidget field_1310;
-   public final Class_0242 field_1311 = new Class_0242();
+   public final Timer field_1311 = new Timer();
    public String field_1312;
    public List<Class_0050> field_1313 = new ArrayList<>();
 
@@ -88,17 +88,17 @@ public class Class_0406 extends Class_1117 implements Class_1309 {
 
       this.field_1313.removeIf(Class_0050::isClosed);
       if (this.field_1310.isFocused()) {
-         Class_1016 var10000 = Class_1016.field_3143;
+         FontRenderer var10000 = FontRenderer.field_3143;
          String var10001 = this.field_1310.getText();
          String var10002 = this.field_1312;
-         float var5 = var10000.method_221(new Class_1303().method_2((Object)var10002).method_2((Object)var10001).method_9("\u0001\u0001_"));
-         var10000 = Class_1016.field_3143;
+         float var5 = var10000.method_221(new TextBuilder().method_2((Object)var10002).method_2((Object)var10001).method_9("\u0001\u0001_"));
+         var10000 = FontRenderer.field_3143;
          var10002 = this.field_1310.getText();
          String var10003 = String.valueOf(Formatting.GRAY);
          String var10004 = this.field_1312;
          var10000.method_9(
             var1,
-            new Class_1303()
+            new TextBuilder()
                .method_2(this.method_453())
                .method_2(String.valueOf(Formatting.WHITE))
                .method_2((Object)var10004)
@@ -107,17 +107,17 @@ public class Class_0406 extends Class_1117 implements Class_1309 {
                .method_9("\u0001\u0001\u0001\u0001\u0001"),
             (float)field_4219.getWindow().getScaledWidth() / Float.intBitsToFloat(1073741824) - var5 / Float.intBitsToFloat(1073741824),
             (float)field_4219.getWindow().getScaledHeight() / Float.intBitsToFloat(1073741824)
-               - (float)Class_1016.field_3143.method_66() / Float.intBitsToFloat(1073741824),
+               - (float)FontRenderer.field_3143.method_66() / Float.intBitsToFloat(1073741824),
             Color.white
          );
       } else if (Hub.field_2609.method_802() != 8) {
          String var6 = "Ctrl + F to activate search.";
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                var6,
-               (float)field_4219.getWindow().getScaledWidth() - Class_1016.field_3143.method_221(var6),
-               (float)(field_4219.getWindow().getScaledHeight() - Class_1016.field_3143.method_66()),
+               (float)field_4219.getWindow().getScaledWidth() - FontRenderer.field_3143.method_221(var6),
+               (float)(field_4219.getWindow().getScaledHeight() - FontRenderer.field_3143.method_66()),
                Class_1081.method_2(Color.GRAY, Color.WHITE, Double.longBitsToDouble(4656510908468559872L), Double.longBitsToDouble(4643000109586448384L))
             );
       }
@@ -164,7 +164,7 @@ public class Class_0406 extends Class_1117 implements Class_1309 {
                      String var11 = var8.method_65().getName();
                      String var12 = this.field_1310.getText();
                      String var13 = this.field_1312;
-                     if (var11.equalsIgnoreCase(new Class_1303().method_2((Object)var13).method_2((Object)var12).method_9("\u0001\u0001"))) {
+                     if (var11.equalsIgnoreCase(new TextBuilder().method_2((Object)var13).method_2((Object)var12).method_9("\u0001\u0001"))) {
                         var8.field_111 = true;
                         var8.method_70();
                         break label53;
@@ -180,7 +180,7 @@ public class Class_0406 extends Class_1117 implements Class_1309 {
                TextFieldWidget var10000 = this.field_1310;
                String var10001 = this.field_1310.getText();
                String var10002 = this.field_1312;
-               var10000.setText(new Class_1303().method_2((Object)var10002).method_2((Object)var10001).method_9("\u0001\u0001"));
+               var10000.setText(new TextBuilder().method_2((Object)var10002).method_2((Object)var10001).method_9("\u0001\u0001"));
             }
             break;
          case 259:

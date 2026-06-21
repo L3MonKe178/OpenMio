@@ -1,8 +1,8 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public enum Class_0099 implements Class_0013 {
+public enum Class_0099 implements Nameable {
    BLINK("Blink"),
    PULSE("Pulse");
 

@@ -1,6 +1,6 @@
 package me.mioclient.api;
 
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.client.UIModule;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
@@ -46,12 +46,12 @@ public interface Class_0937 {
    }
 
    default float method_850() {
-      int fh = Class_1016.field_3143 == null ? 9 : Class_1016.field_3143.method_66();
+      int fh = FontRenderer.field_3143 == null ? 9 : FontRenderer.field_3143.method_66();
       return (float)(this.method_851() - fh + 1) / 2.0F;
    }
 
    default int method_851() {
-      int fh = Class_1016.field_3143 == null ? 9 : Class_1016.field_3143.method_66();
+      int fh = FontRenderer.field_3143 == null ? 9 : FontRenderer.field_3143.method_66();
       int pad = (UIModule.field_2843 == null || UIModule.field_2843.field_2851 == null) ? 0 : UIModule.field_2843.field_2851.getValue();
       return 2 + fh + pad;
    }

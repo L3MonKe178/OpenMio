@@ -57,7 +57,7 @@ public class Class_1031 extends Class_1015<Boolean> {
             this.method_2(
                var2,
                var8,
-               () -> Class_1016.field_3143
+               () -> FontRenderer.field_3143
                      .method_9(
                         var1,
                         var8,
@@ -70,11 +70,11 @@ public class Class_1031 extends Class_1015<Boolean> {
 
          if (this.field_3138.field_3118 && !this.field_3138.field_3120) {
             String var9 = this.field_3138.field_111 ? "-" : "+";
-            Class_1016.field_3143
+            FontRenderer.field_3143
                .method_9(
                   var1,
                   var9,
-                  (float)(this.field_418.getX() + this.field_418.method_216() - 4) - Class_1016.field_3143.method_221(var9),
+                  (float)(this.field_418.getX() + this.field_418.method_216() - 4) - FontRenderer.field_3143.method_221(var9),
                   (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                   this.method_852().field_2876.getValue()
                );
@@ -82,11 +82,11 @@ public class Class_1031 extends Class_1015<Boolean> {
 
          if (this.field_3138.field_3120) {
             String var10 = "...";
-            Class_1016.field_3143
+            FontRenderer.field_3143
                .method_9(
                   var1,
                   var10,
-                  (float)(this.field_418.getX() + this.field_418.method_216() - 4) - Class_1016.field_3143.method_221(var10),
+                  (float)(this.field_418.getX() + this.field_418.method_216() - 4) - FontRenderer.field_3143.method_221(var10),
                   (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419,
                   this.method_852().field_2876.getValue()
                );

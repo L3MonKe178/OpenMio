@@ -47,7 +47,7 @@ public class Class_0926 extends Class_0716 implements Class_1041 {
             var4.movementForward = Float.intBitsToFloat(1065353216);
          }
 
-         double[] var5 = Class_0464.method_2(field_4219.player.getYaw(Class_0838.method_776()), var4, (double)var3);
+         double[] var5 = Class_0464.method_2(field_4219.player.getYaw(RenderUtil.method_776()), var4, (double)var3);
          var1.method_7(var5[0], var5[1]);
          this.field_2275.field_4392.reset();
       }

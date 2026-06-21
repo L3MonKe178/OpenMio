@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import me.mioclient.api.Class_0896;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.gl.PostEffectPass;
@@ -33,7 +33,7 @@ public class Class_0234 {
    }
 
    public static Class_0234 method_2(String var0, Consumer<Class_0234> var1) {
-      return new Class_0234(Identifier.of(Class_1309.method_244() ? "mio" : "minecraft", String.format("shaders/post/%s.json", var0)), var1);
+      return new Class_0234(Identifier.of(MioAPI.method_244() ? "mio" : "minecraft", String.format("shaders/post/%s.json", var0)), var1);
    }
 
    public void method_266() {

@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.api.Class_0875;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.option.Perspective;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -19,7 +19,7 @@ import net.minecraft.entity.passive.SquidEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.passive.WolfVariant;
 
-public class Class_0396 implements Class_1309 {
+public class Class_0396 implements MioAPI {
    public Class_0396() {
       super();
    }

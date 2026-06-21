@@ -7,7 +7,7 @@ import java.util.Set;
 import me.mioclient.Hub;
 import net.minecraft.command.CommandSource;
 
-public class Class_0553 extends Class_0618 {
+public class Class_0553 extends Command {
    public Class_0553() {
       super("glint");
    }

@@ -10,12 +10,12 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.misc.ChatFilterModule;
 import me.mioclient.record.Class_1127;
 import net.minecraft.util.Formatting;
 
-public class Class_0295 implements Class_1309, Class_1146 {
+public class Class_0295 implements MioAPI, Class_1146 {
    public static ChatFilterModule field_302 = Hub.field_2595.method_78(ChatFilterModule.class);
    public final List<Class_1127> field_948 = Collections.synchronizedList(new ArrayList<>());
 

@@ -10,13 +10,13 @@ import me.mioclient.enum_.Class_0626;
 import me.mioclient.enum_.Class_1213;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -49,8 +49,8 @@ public class NukerModule extends Module {
    public Setting<Boolean> field_3159;
    public Setting<Set<Block>> field_3160;
    public final List<Class_0455> field_3161;
-   public final Class_0242 field_3162;
-   public final Class_0242 field_3163;
+   public final Timer field_3162;
+   public final Timer field_3163;
    public BlockPos field_3164;
    public int field_3165;
 
@@ -58,15 +58,15 @@ public class NukerModule extends Module {
       super("Nuker", "Breaks blocks nearby.", Category.PLAYER);
       Settings.initialize(this);
       this.field_3161 = new ArrayList<>();
-      this.field_3162 = new Class_0242();
-      this.field_3163 = new Class_0242();
+      this.field_3162 = new Timer();
+      this.field_3163 = new Timer();
       this.field_3164 = null;
       this.field_3159.method_334();
    }
 
    @Override
    public String getInfo() {
-      return Class_1016.method_3(this.field_3149.getValue());
+      return FontRenderer.method_3(this.field_3149.getValue());
    }
 
    @Override
@@ -80,11 +80,11 @@ public class NukerModule extends Module {
          this.field_3161.removeIf(var0 -> System.currentTimeMillis() - var0.field_1456 > 1000L);
          this.field_3164 = null;
          this.field_3165 = 0;
-         if (this.field_3163.method_9((long)this.field_3152.getValue().intValue())) {
-            if (!field_3148.isToggled() || field_3148.method_4((long)this.field_3152.getValue().intValue())) {
+         if (this.field_3163.method_9((long)(this.field_3152.getValue() != null ? this.field_3152.getValue().intValue() : 0))) {
+            if (!field_3148.isToggled() || field_3148.method_4((long)(this.field_3152.getValue() != null ? this.field_3152.getValue().intValue() : 0))) {
                boolean var2 = this.field_3157.getValue() || field_3148.field_3990.getValue();
-               List<BlockPos> var3 = this.field_3150.getValue().method_2(this);
-               var3.sort(Comparator.comparing(var1x -> this.field_3151.getValue().field_1223.apply(var1x)));
+               List<BlockPos> var3 = (this.field_3150.getValue() != null ? this.field_3150.getValue().method_2(this) : java.util.Collections.emptyList());
+               var3.sort(Comparator.comparing(var1x -> (this.field_3151.getValue() != null ? this.field_3151.getValue().field_1223 : null).apply(var1x)));
 
                for (BlockPos var5 : var3) {
                   if (this.method_920()) {
@@ -117,7 +117,7 @@ public class NukerModule extends Module {
          }
 
          if (this.field_3156.getValue()) {
-            Hub.field_2598.method_2(Class_0485.method_2(var1.toCenterPos(), var2), 5);
+            Hub.field_2598.method_2(RotationManager.method_2(var1.toCenterPos(), var2), 5);
          }
 
          this.field_3165++;
@@ -138,20 +138,20 @@ public class NukerModule extends Module {
             this.field_3162.reset();
             if (this.field_3157.getValue()) {
                if (field_3146.method_1052()) {
-                  Class_0136.method_16(var10);
-                  Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
-                  Class_1261.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var2);
-                  Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
-                  Class_1261.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164.add(0, 500, 0), var2);
+                  PlayerUtil.method_16(var10);
+                  PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
+                  PacketUtil.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var2);
+                  PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
+                  PacketUtil.method_2(Action.ABORT_DESTROY_BLOCK, this.field_3164.add(0, 500, 0), var2);
                } else {
-                  Class_1261.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var2);
-                  Class_1261.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
+                  PacketUtil.method_2(Action.START_DESTROY_BLOCK, this.field_3164, var2);
+                  PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, this.field_3164, var2);
                }
 
-               Class_1261.method_9(Hand.MAIN_HAND);
+               PacketUtil.method_9(Hand.MAIN_HAND);
                this.field_3161.add(new Class_0455(this.field_3164, System.currentTimeMillis()));
             } else {
-               Class_0136.method_16(var10);
+               PlayerUtil.method_16(var10);
                field_4219.interactionManager.updateBlockBreakingProgress(var1, var2);
                field_4219.player.swingHand(Hand.MAIN_HAND);
             }
@@ -170,14 +170,14 @@ public class NukerModule extends Module {
          return false;
       } else {
          double var2 = Math.sqrt(var1.getSquaredDistance(field_4219.player.getEyePos()));
-         if (!Class_1225.method_2(var1) && var2 > (double)this.field_3154.getValue().floatValue()) {
+         if (!Class_1225.method_2(var1) && var2 > (double)(this.field_3154.getValue() != null ? this.field_3154.getValue().floatValue() : 0.0f)) {
             return false;
          } else if (this.field_3149.getValue() == Class_0626.SHULKERS && Hub.field_2622.method_101(var1)) {
             return false;
          } else {
             return this.field_3159.getValue() && Hub.field_2630.method_264() && !Hub.field_2630.method_263(var1)
                ? false
-               : this.field_3149.getValue().method_2(var1, Class_1035.method_30(var1), this);
+               : (this.field_3149.getValue() != null ? this.field_3149.getValue().method_2(var1, Class_1035.method_30(var1), this) : false);
          }
       }
    }

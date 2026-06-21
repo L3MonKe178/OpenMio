@@ -19,7 +19,7 @@ public class Class_0251 {
             var5 = var0.charAt(var6 + 1);
          }
 
-         if ((double)Class_1016.field_3143.method_221(new Class_1303().method_2(var7).method_2(var4.toString()).method_9("\u0001\u0001")) < var1) {
+         if ((double)FontRenderer.field_3143.method_221(new TextBuilder().method_2(var7).method_2(var4.toString()).method_9("\u0001\u0001")) < var1) {
             var4.append(var7);
          } else {
             var3.add(var4.toString());

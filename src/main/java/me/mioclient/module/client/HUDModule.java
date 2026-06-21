@@ -13,7 +13,7 @@ import me.mioclient.internal.Class_0031;
 import me.mioclient.internal.Class_0158;
 import me.mioclient.internal.Class_0617;
 import me.mioclient.internal.Class_1117;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.exploit.AntiLevitationModule;
@@ -85,7 +85,7 @@ public class HUDModule extends Module {
          int var2 = var1;
          Setting var3 = this.add(
             new ColorSetting(
-                  new Class_1303().method_2(var1).method_9("Color\u0001"),
+                  new TextBuilder().method_2(var1).method_9("Color\u0001"),
                   Color.white,
                   var2x -> this.field_961.getValue() == Class_0556.RAW && this.field_959.method_194() && var2 <= this.field_964.getValue()
                )

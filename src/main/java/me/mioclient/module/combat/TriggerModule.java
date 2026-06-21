@@ -5,7 +5,7 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
@@ -35,12 +35,12 @@ public class TriggerModule extends Module {
    public Setting<Boolean> field_3064;
    public Setting<Boolean> field_3065;
    public Setting<Boolean> field_3066;
-   public final Class_0242 field_3067;
+   public final Timer field_3067;
 
    public TriggerModule() {
       super("Trigger", "Attacks entities under your crosshair.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_3067 = new Class_0242();
+      this.field_3067 = new Timer();
    }
 
    @Subscribe

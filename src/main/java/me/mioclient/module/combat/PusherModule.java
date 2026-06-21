@@ -6,16 +6,16 @@ import me.mioclient.enum_.Class_1172;
 import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0819;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.internal.Class_1149;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.record.Class_0531;
@@ -55,7 +55,7 @@ public class PusherModule extends Module {
    public Setting<Float> field_3015;
    public Setting<Boolean> field_3016;
    public Setting<Float> field_3017;
-   public final Class_0242 field_3018;
+   public final Timer field_3018;
    public PlayerEntity field_2290;
    public boolean field_3019;
    public BlockPos field_3020;
@@ -66,7 +66,7 @@ public class PusherModule extends Module {
    public PusherModule() {
       super("Pusher", "Pushes your enemies out of their holes.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_3018 = new Class_0242();
+      this.field_3018 = new Timer();
       this.field_3022 = new Class_1149();
       this.field_3023 = new Class_0819(this);
       Hub.field_2616.method_2(new Class_0828(this, this.field_3013, this.field_3014, this.field_3015, this.field_3017, () -> true, this.field_3016, 450));
@@ -87,7 +87,7 @@ public class PusherModule extends Module {
       if (field_4219.isInSingleplayer()) {
          if (!this.field_3021) {
             Hub.field_2619
-               .method_2(() -> Class_1245.method_2(Text.literal("Pusher doesn't work in singleplayer."), Class_1245.method_38(-2), Priority.HIGH), 1);
+               .method_2(() -> ChatUtil.method_2(Text.literal("Pusher doesn't work in singleplayer."), ChatUtil.method_38(-2), Priority.HIGH), 1);
             this.field_3021 = true;
          }
       } else if (!field_4219.player.isUsingItem() || this.field_3006.getValue()) {
@@ -102,7 +102,7 @@ public class PusherModule extends Module {
                }
             }
 
-            if (this.field_3018.method_9((long)this.field_3002.getValue().intValue())) {
+            if (this.field_3018.method_9((long)(this.field_3002.getValue() != null ? this.field_3002.getValue().intValue() : 0))) {
                this.field_3019 = false;
                this.field_3018.reset();
                this.method_882();
@@ -113,10 +113,10 @@ public class PusherModule extends Module {
    }
 
    public void method_882() {
-      int var1 = Class_0136.method_5(Items.REDSTONE_BLOCK);
+      int var1 = PlayerUtil.method_5(Items.REDSTONE_BLOCK);
       boolean var2 = false;
       if (var1 == -1) {
-         var1 = Class_0136.method_5(Items.REDSTONE_TORCH);
+         var1 = PlayerUtil.method_5(Items.REDSTONE_TORCH);
          var2 = true;
       }
 
@@ -134,13 +134,13 @@ public class PusherModule extends Module {
          if (var4 != null) {
             this.field_3019 = true;
             if (this.field_3004.getValue()) {
-               Hub.field_2598.method_2(Class_0485.method_2(var4.method_406().toCenterPos(), var4.method_20()), 500);
+               Hub.field_2598.method_2(RotationManager.method_2(var4.method_406().toCenterPos(), var4.method_20()), 500);
             }
 
-            Class_0136.method_16(var1);
+            PlayerUtil.method_16(var1);
             Class_1035.method_2(var4.method_406(), var4.method_20(), false, Hand.MAIN_HAND);
-            Class_1261.method_9(Hand.MAIN_HAND);
-            Class_0136.method_16(var3);
+            PacketUtil.method_9(Hand.MAIN_HAND);
+            PlayerUtil.method_16(var3);
             if (this.field_3012.getValue()) {
                Hub.field_2616.method_2(this, var4.method_406());
             }
@@ -150,7 +150,7 @@ public class PusherModule extends Module {
 
    public void method_883() {
       if (!this.field_3019) {
-         int var1 = Class_0136.method_2(Items.PISTON, Items.STICKY_PISTON);
+         int var1 = PlayerUtil.method_2(Items.PISTON, Items.STICKY_PISTON);
          int var2 = field_4219.player.getInventory().selectedSlot;
          if (var1 != -1) {
             Class_0531 var3 = null;
@@ -174,11 +174,11 @@ public class PusherModule extends Module {
 
             if (var3 != null) {
                this.field_3020 = var3.method_406();
-               Hub.field_2598.method_2(Class_0485.method_78(var3.method_564()), 500);
-               Class_0136.method_16(var1);
+               Hub.field_2598.method_2(RotationManager.method_78(var3.method_564()), 500);
+               PlayerUtil.method_16(var1);
                Class_1035.method_2(var3.method_406(), var3.method_20(), false, Hand.MAIN_HAND);
-               Class_1261.method_9(Hand.MAIN_HAND);
-               Class_0136.method_16(var2);
+               PacketUtil.method_9(Hand.MAIN_HAND);
+               PlayerUtil.method_16(var2);
                if (this.field_3012.getValue()) {
                   Hub.field_2616.method_2(this, var3.method_406());
                }
@@ -234,7 +234,7 @@ public class PusherModule extends Module {
             }
 
             for (Vec3d var9 : Class_1172.field_3634.method_2(var7, var6.getOpposite())) {
-               Direction var10 = this.field_3022.method_4(Class_0485.method_78(var9));
+               Direction var10 = this.field_3022.method_4(RotationManager.method_78(var9));
                if (var10 == var2.getOpposite()) {
                   return new Class_0531(var6, var1, var9);
                }

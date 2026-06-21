@@ -103,7 +103,7 @@ public class NoRenderModule extends Module {
          float var4 = var1.method_11().getWidth();
          if (var2 <= (double)var4 && var1.method_11() != field_4219.player) {
             float var5 = (float)(var2 / (double)var4);
-            float var6 = (float)this.field_755.getValue().intValue() / Float.intBitsToFloat(1132396544);
+            float var6 = (float)(this.field_755.getValue() != null ? this.field_755.getValue().intValue() : 0) / Float.intBitsToFloat(1132396544);
             var1.method_425(var6 + var5 * (Float.intBitsToFloat(1065353216) - var6));
             this.field_765 = var1.method_937();
          } else {
@@ -182,7 +182,8 @@ public class NoRenderModule extends Module {
    }
 
    public boolean method_2(ParticleEffect var1) {
-      return this.isToggled() && this.field_742.getValue() ? !this.field_744.getValue().method_2(var1.getType(), this.field_743.getValue()) : false;
+      if (this.field_744 == null || this.field_744.getValue() == null) return false;
+      return this.isToggled() && this.field_742.getValue() ? !(this.field_744.getValue() != null ? this.field_744.getValue().method_2(var1.getType(), this.field_743.getValue()) : false) : false;
    }
 
    public boolean method_230(Entity var1) {
@@ -190,7 +191,8 @@ public class NoRenderModule extends Module {
    }
 
    public boolean method_2(EntityType<?> var1) {
-      return this.isToggled() && this.field_761.getValue() ? !this.field_764.getValue().method_2(var1, this.field_762.getValue()) : false;
+      if (this.field_764 == null || this.field_764.getValue() == null) return false;
+      return this.isToggled() && this.field_761.getValue() ? !(this.field_764.getValue() != null ? this.field_764.getValue().method_2(var1, this.field_762.getValue()) : false) : false;
    }
 
    public boolean method_281() {

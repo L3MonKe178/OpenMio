@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import net.minecraft.util.Identifier;
 
-public enum Class_0075 implements Class_0013 {
+public enum Class_0075 implements Nameable {
    NONE("none", null),
    MIO("mio", Identifier.of("mio", "capes/mio.png")),
    PEPSI("pepsi", Identifier.of("mio", "capes/pepsi.png")),

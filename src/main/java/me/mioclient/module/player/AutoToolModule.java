@@ -3,7 +3,7 @@ package me.mioclient.module.player;
 import me.mioclient.api.Class_1226;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -36,7 +36,7 @@ public class AutoToolModule extends Module {
             }
          }
 
-         Class_0136.method_16(var2);
+         PlayerUtil.method_16(var2);
       } else if (this.field_1100.getValue()) {
          if (this.field_1101) {
             field_4219.player.getInventory().selectedSlot = this.field_1071;

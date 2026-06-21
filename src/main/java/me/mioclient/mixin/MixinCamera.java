@@ -2,10 +2,10 @@ package me.mioclient.mixin;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0687;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1229;
 import me.mioclient.event.Event_31;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.movement.ElytraFlyModule;
 import me.mioclient.module.player.FreecamModule;
 import me.mioclient.module.render.FreeLookModule;
@@ -131,7 +131,7 @@ public abstract class MixinCamera {
    )
    private void onUpdateSetPosArgs(Args var1) {
       Event_31 var2 = new Event_31((Double)var1.get(0), (Double)var1.get(1), (Double)var1.get(2));
-      Class_1309.field_4220.method_36(var2);
+      MioAPI.field_4220.method_36(var2);
       if (var2.method_464()) {
          var1.set(0, var2.method_733().x);
          var1.set(1, var2.method_733().y);
@@ -151,7 +151,7 @@ public abstract class MixinCamera {
          var1.set(1, elytrafly.field_4383.getValue());
       }
 
-      float var2 = Class_0838.method_776();
+      float var2 = RenderUtil.method_776();
       if (freecam.isToggled()) {
          var1.set(0, (float)freecam.method_8(var2));
          var1.set(1, (float)freecam.method_334(var2));

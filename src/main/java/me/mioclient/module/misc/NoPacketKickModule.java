@@ -1,6 +1,6 @@
 package me.mioclient.module.misc;
 
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -18,7 +18,7 @@ public class NoPacketKickModule extends Module {
    }
 
    public Text method_38(Throwable var1) {
-      return Text.translatable("disconnect.genericReason", new Object[]{new Class_1303().method_2(String.valueOf(var1)).method_9("Internal Exception: \u0001")})
+      return Text.translatable("disconnect.genericReason", new Object[]{new TextBuilder().method_2(String.valueOf(var1)).method_9("Internal Exception: \u0001")})
          .formatted(Formatting.RED);
    }
 }

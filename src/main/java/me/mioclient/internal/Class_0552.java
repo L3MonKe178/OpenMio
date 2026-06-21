@@ -24,7 +24,7 @@ import net.minecraft.util.math.Direction;
 public class Class_0552 extends Class_0043 {
    public static final SpeedMineModule field_1756 = Hub.field_2595.method_78(SpeedMineModule.class);
    public static final AbstractModule_28 field_1757 = Hub.field_2595.method_78(AbstractModule_28.class);
-   public final Class_0242 field_1758 = new Class_0242();
+   public final Timer field_1758 = new Timer();
    public final List<Long> field_1759 = Collections.synchronizedList(new ArrayList<>());
    public boolean field_54;
    public float field_1760;
@@ -80,12 +80,12 @@ public class Class_0552 extends Class_0043 {
    public void method_578() {
       BlockPos var1 = this.method_579();
       if (var1 != null) {
-         Class_1261.method_2(
+         PacketUtil.method_2(
             new Full(
                field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), this.field_1760, this.field_1761, field_4219.player.isOnGround()
             )
          );
-         Class_1261.method_2(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var1, Direction.DOWN));
+         PacketUtil.method_2(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var1, Direction.DOWN));
       }
    }
 

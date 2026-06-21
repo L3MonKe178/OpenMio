@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
 import me.mioclient.enum_.Class_1176;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class Event_15 extends Class_0605 {
+public class Event_15 extends Event {
    public final PlayerEntity field_3733;
    public final int field_3734;
    public final Class_1176 field_3735;

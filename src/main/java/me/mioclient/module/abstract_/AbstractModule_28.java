@@ -10,10 +10,10 @@ import me.mioclient.event.Event_19;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0030;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0910;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.movement.VelocityModule;
 import me.mioclient.setting.Setting;
@@ -71,7 +71,7 @@ public class AbstractModule_28 extends AbstractModule_41 {
 
          float var4 = field_3741 * Float.intBitsToFloat(1073741824) * (float)(this.field_3748 ? -1 : 1);
          this.field_3748 = !this.field_3748;
-         var1.setPitch(MathHelper.clamp(var1.method_501() + var4, (float)(-Class_0245.field_685), (float)Class_0245.field_685));
+         var1.setPitch(MathHelper.clamp(var1.method_501() + var4, (float)(-Constants.field_685), (float)Constants.field_685));
       }
    }
 
@@ -80,7 +80,7 @@ public class AbstractModule_28 extends AbstractModule_41 {
    )
    public void method_2(Event_10 var1) {
       if (var1.method_127() instanceof PlayerActionC2SPacket var2 && this.method_1052() && var2.getAction() == Action.START_DESTROY_BLOCK) {
-         Class_1261.method_2(Action.STOP_DESTROY_BLOCK, var2.getPos(), var2.getDirection());
+         PacketUtil.method_2(Action.STOP_DESTROY_BLOCK, var2.getPos(), var2.getDirection());
       }
    }
 

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1226;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0186;
 import me.mioclient.event.Event_25;
 import me.mioclient.event.Event_36;
@@ -12,8 +12,8 @@ import me.mioclient.event.Event_44;
 import me.mioclient.event.Event_52;
 import me.mioclient.event.Event_55;
 import me.mioclient.event.Event_58;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.combat.AutoClickerModule;
 import me.mioclient.module.player.InventoryTweaksModule;
 import me.mioclient.module.player.NoInteractModule;
@@ -46,7 +46,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({ClientPlayerInteractionManager.class})
-public abstract class MixinClientPlayerInteractionManager implements Class_1309, Class_1226 {
+public abstract class MixinClientPlayerInteractionManager implements MioAPI, Class_1226 {
    private static final AutoClickerModule autoclicker = Hub.field_2595.method_78(AutoClickerModule.class);
    private static final NoInteractModule nointeract = Hub.field_2595.method_78(NoInteractModule.class);
    private static final InventoryTweaksModule inventorytweaks = Hub.field_2595.method_78(InventoryTweaksModule.class);
@@ -106,7 +106,7 @@ public abstract class MixinClientPlayerInteractionManager implements Class_1309,
          if (inventorytweaks.field_680.getValue() && var3 == 1 && var4 == SlotActionType.QUICK_MOVE) {
             Slot var8 = var7.getSlot(var2);
             if (var8.getStack().getItem() instanceof ArmorItem || var8.getStack().isOf(Items.ELYTRA)) {
-               Class_0136.method_5(var2, 8 - field_4219.player.getPreferredEquipmentSlot(var8.getStack()).getEntitySlotId());
+               PlayerUtil.method_5(var2, 8 - field_4219.player.getPreferredEquipmentSlot(var8.getStack()).getEntitySlotId());
                var6.cancel();
                return;
             }
@@ -144,7 +144,7 @@ public abstract class MixinClientPlayerInteractionManager implements Class_1309,
       if (nointeract.method_2(var6, var3.getBlockPos())) {
          if (nointeract.field_1452.getValue() == Class_0186.SHIFT) {
             nointeract.field_1454 = !Hub.field_2602.method_993();
-            Class_1261.method_2(var1, Mode.PRESS_SHIFT_KEY, 0);
+            PacketUtil.method_2(var1, Mode.PRESS_SHIFT_KEY, 0);
          } else {
             var4.setReturnValue(ActionResult.FAIL);
             var4.cancel();
@@ -160,7 +160,7 @@ public abstract class MixinClientPlayerInteractionManager implements Class_1309,
    )
    private void interactBlockHook2(ClientPlayerEntity var1, Hand var2, BlockHitResult var3, CallbackInfoReturnable<ActionResult> var4) {
       if (nointeract.field_1454) {
-         Class_1261.method_2(var1, Mode.RELEASE_SHIFT_KEY, 0);
+         PacketUtil.method_2(var1, Mode.RELEASE_SHIFT_KEY, 0);
          nointeract.field_1454 = false;
       }
    }

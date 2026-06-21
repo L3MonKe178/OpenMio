@@ -65,7 +65,7 @@ public class Class_0982 {
                ItemStack var16 = var13.getStack();
                if (!namesMatch(var16, field_3026.getText())) {
                   RenderSystem.disableDepthTest();
-                  Class_0838.field_2672.method_2(var3, (float)var14, (float)var15, (float)(var14 + 16), (float)(var15 + 16), -1442840576);
+                  RenderUtil.field_2672.method_2(var3, (float)var14, (float)var15, (float)(var14 + 16), (float)(var15 + 16), -1442840576);
                } else {
                   field_3027++;
                }

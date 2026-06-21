@@ -1,13 +1,13 @@
 package me.mioclient.event;
 
 import me.mioclient.enum_.PreType;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.client.gui.hud.ChatHudLine.Visible;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.Text;
 
-public class Event_46 extends Class_0605 {
+public class Event_46 extends Event {
    public final PreType field_3643;
    public final MessageIndicator field_3644;
    public MessageSignatureData signature;

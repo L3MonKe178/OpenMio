@@ -62,7 +62,7 @@ public class Class_0723 extends Class_0158 {
                0.0,
                Double.longBitsToDouble(4607182418800017408L)
             );
-            float var6 = Class_1016.field_3143.method_221(var4.method_15().getString());
+            float var6 = FontRenderer.field_3143.method_221(var4.method_15().getString());
             var1 += (float)this.method_66() * var5 + Float.intBitsToFloat(1065353216);
             if (var6 > var2) {
                var2 = var6;

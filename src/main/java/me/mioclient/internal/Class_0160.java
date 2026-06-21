@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1176;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_15;
@@ -18,7 +18,7 @@ import net.minecraft.network.packet.s2c.play.PlayerListS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerRemoveS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerListS2CPacket.Entry;
 
-public final class Class_0160 implements Class_1309 {
+public final class Class_0160 implements MioAPI {
    public final Map<String, Integer> field_472 = new ConcurrentHashMap<>();
    public final Map<String, Long> field_473 = new ConcurrentHashMap<>();
 

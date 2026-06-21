@@ -5,13 +5,13 @@ import me.mioclient.Hub;
 import me.mioclient.enum_.Class_0577;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0756;
 import me.mioclient.internal.Class_1117;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.internal.Class_1264;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.Category;
@@ -48,18 +48,18 @@ public class AutoArmorModule extends Module {
    public Setting<Boolean> field_2933;
    public Setting<Float> field_2934;
    public Setting<Boolean> field_2935;
-   public final Class_0242 field_2936;
-   public final Class_0242 field_2937;
-   public final Class_0242 field_2938;
+   public final Timer field_2936;
+   public final Timer field_2937;
+   public final Timer field_2938;
    public Class_1264 field_2939;
    public boolean field_2940;
 
    public AutoArmorModule() {
       super("AutoArmor", "Equips the best armor in your inventory for you.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_2936 = new Class_0242();
-      this.field_2937 = new Class_0242();
-      this.field_2938 = new Class_0242();
+      this.field_2936 = new Timer();
+      this.field_2937 = new Timer();
+      this.field_2938 = new Timer();
       this.field_2939 = null;
       Runnable var1 = () -> this.field_2936.setTime(-1L);
       this.field_2925.method_9(var1);
@@ -80,7 +80,7 @@ public class AutoArmorModule extends Module {
 
       this.field_2940 = Hub.field_2605.method_224();
       if (this.method_2(field_4219.currentScreen)) {
-         if (this.field_2936.method_9((long)this.field_2922.getValue().intValue())) {
+         if (this.field_2936.method_9((long)(this.field_2922.getValue() != null ? this.field_2922.getValue().intValue() : 0))) {
             if (field_4219.player.isFallFlying()) {
                this.field_2937.reset();
             }
@@ -90,7 +90,7 @@ public class AutoArmorModule extends Module {
                && !Class_0396.method_2(field_4219.player)
                && !this.field_2936.method_9(300L)
                && !this.field_2937.method_9(500L)) {
-               Class_1261.method_1099();
+               PacketUtil.method_1099();
                field_4219.player.startFallFlying();
             }
 
@@ -148,8 +148,8 @@ public class AutoArmorModule extends Module {
    }
 
    public double method_2(ItemStack var1, Class_0577 var2) {
-      float var3 = Class_0136.method_29(var1);
-      if (this.field_2931.getValue() && var3 < (float)this.field_2932.getValue().intValue()) {
+      float var3 = PlayerUtil.method_29(var1);
+      if (this.field_2931.getValue() && var3 < (float)(this.field_2932.getValue() != null ? this.field_2932.getValue().intValue() : 0)) {
          return Double.longBitsToDouble(-4616189618054758400L);
       } else if (!this.field_2924.getValue() && Class_0756.method_9(Enchantments.BINDING_CURSE, var1)) {
          return Double.longBitsToDouble(-4616189618054758400L);

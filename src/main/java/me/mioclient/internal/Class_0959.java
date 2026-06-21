@@ -18,7 +18,7 @@ public abstract class Class_0959 extends Class_0045 implements Class_1240 {
    @Override
    public void method_2(DrawContext var1, MatrixStack var2, double var3, double var5) {
       if (!this.field_89.method_911()) {
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                this.field_90,

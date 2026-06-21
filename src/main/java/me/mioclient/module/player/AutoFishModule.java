@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -16,12 +16,12 @@ import nick.Settings;
 
 public class AutoFishModule extends Module {
    public Setting<Float> field_3086;
-   public final Class_0242 field_3087;
+   public final Timer field_3087;
 
    public AutoFishModule() {
       super("AutoFish", "Fishes.", Category.PLAYER);
       Settings.initialize(this);
-      this.field_3087 = new Class_0242();
+      this.field_3087 = new Timer();
    }
 
    @Override
@@ -45,7 +45,7 @@ public class AutoFishModule extends Module {
    public void method_2(Event_1 var1) {
       if (field_4219.player.getMainHandStack().isOf(Items.FISHING_ROD)) {
          if (this.field_3087.method_2(Double.longBitsToDouble(4607182418800017408L), TimeUnit.MINUTES)
-            || field_4219.player.fishHook == null && this.field_3087.method_2((double)this.field_3086.getValue().floatValue(), TimeUnit.SECONDS)) {
+            || field_4219.player.fishHook == null && this.field_3087.method_2((double)(this.field_3086.getValue() != null ? this.field_3086.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
             field_4219.interactionManager.interactItem(field_4219.player, Hand.MAIN_HAND);
             field_4219.player.swingHand(Hand.MAIN_HAND);
             this.field_3087.reset();

@@ -11,7 +11,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public final class Class_1028 extends Class_0618 {
+public final class Class_1028 extends Command {
    public Class_1028() {
       super("irc");
    }
@@ -37,8 +37,8 @@ public final class Class_1028 extends Class_0618 {
                return 1;
             } else {
                for (String var5 : Hub.field_2610.method_330()) {
-                  String var6 = new Class_1303().method_2((Object)var5).method_2(Class_1032.method_927()).method_9("\u0001irc \u0001");
-                  Class_1245.method_2(Text.literal(var6), Class_1245.method_38(--var1x));
+                  String var6 = new TextBuilder().method_2((Object)var5).method_2(CommandManager.method_927()).method_9("\u0001irc \u0001");
+                  ChatUtil.method_2(Text.literal(var6), ChatUtil.method_38(--var1x));
                }
 
                return 1;

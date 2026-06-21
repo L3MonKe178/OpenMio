@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class Class_0978 extends Class_0605 {
+public class Class_0978 extends Event {
    public MatrixStack field_2997;
    public float field_2998;
    public DrawContext field_2999;

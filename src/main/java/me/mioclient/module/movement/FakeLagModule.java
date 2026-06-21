@@ -11,9 +11,9 @@ import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -47,15 +47,15 @@ public class FakeLagModule extends Module {
    public Setting<Color> field_3051;
    public Setting<Color> field_3052;
    public Setting<Float> field_3053;
-   public final Class_0242 field_3054;
-   public final Class_0242 field_3055;
+   public final Timer field_3054;
+   public final Timer field_3055;
    public Box field_1887;
 
    public FakeLagModule() {
       super("FakeLag", "Cancels movement packets until toggled off.", Category.MOVEMENT);
       Settings.initialize(this);
-      this.field_3054 = new Class_0242();
-      this.field_3055 = new Class_0242();
+      this.field_3054 = new Timer();
+      this.field_3055 = new Timer();
    }
 
    @Override
@@ -79,12 +79,12 @@ public class FakeLagModule extends Module {
 
    @Subscribe
    public void method_2(Event_1 var1) {
-      if (this.field_3038.getValue() == Class_0099.PULSE && this.field_3055.method_9((long)this.field_3039.getValue().intValue())) {
+      if (this.field_3038.getValue() == Class_0099.PULSE && this.field_3055.method_9((long)(this.field_3039.getValue() != null ? this.field_3039.getValue().intValue() : 0))) {
          this.method_159();
          this.field_3055.reset();
       }
 
-      if (this.field_3048.getValue() && this.field_3054.method_2((double)this.field_3049.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (this.field_3048.getValue() && this.field_3054.method_2((double)(this.field_3049.getValue() != null ? this.field_3049.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          this.method_68();
       }
    }
@@ -133,7 +133,7 @@ public class FakeLagModule extends Module {
    public void method_159() {
       while (!this.field_3037.isEmpty()) {
          Packet var1 = this.field_3037.poll();
-         Class_1261.method_9(var1);
+         PacketUtil.method_9(var1);
       }
 
       this.field_1887 = field_4219.player.getBoundingBox();

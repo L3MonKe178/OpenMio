@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_22;
 import me.mioclient.event.Event_4;
@@ -21,12 +21,12 @@ import net.minecraft.network.packet.s2c.play.PlayerListHeaderS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 
-public final class Class_1114 implements Class_1309 {
+public final class Class_1114 implements MioAPI {
    public static final FastLatencyModule field_3440 = Hub.field_2595.method_78(FastLatencyModule.class);
    public static final Pattern field_3441 = Pattern.compile("\\d+ ping");
    public final ArrayDeque<Float> field_3442 = new ArrayDeque<>(20);
-   public final Class_0242 field_3443 = new Class_0242();
-   public final Class_0242 field_3444 = new Class_0242();
+   public final Timer field_3443 = new Timer();
+   public final Timer field_3444 = new Timer();
    public float field_3445;
    public float field_3446;
    public long field_3447;
@@ -164,11 +164,11 @@ public final class Class_1114 implements Class_1309 {
       }
    }
 
-   public Class_0242 method_984() {
+   public Timer method_984() {
       return this.field_3443;
    }
 
-   public Class_0242 method_985() {
+   public Timer method_985() {
       return this.field_3444;
    }
 

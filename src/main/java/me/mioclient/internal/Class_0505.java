@@ -19,14 +19,14 @@ import java.util.Map.Entry;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0229;
 import net.minecraft.util.InvalidIdentifierException;
 import net.minecraft.util.math.Vec3d;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public final class Class_0505 implements Class_1309 {
+public final class Class_0505 implements MioAPI {
    public static final Logger field_1585 = LogManager.getLogger("Mio Sound System");
    public static final String field_1586 = "https://mioclient.me/assets/killstreaks.zip";
    public final Map<Class_0211, Class_0337> field_1587 = Collections.synchronizedMap(new HashMap<>());
@@ -109,7 +109,7 @@ public final class Class_0505 implements Class_1309 {
          }
 
          if (var2.isEmpty()) {
-            field_1585.warn(new Class_1303().method_2((Object)var1).method_9("No sounds were registered for \u0001"));
+            field_1585.warn(new TextBuilder().method_2((Object)var1).method_9("No sounds were registered for \u0001"));
          }
 
          return var2;
@@ -167,7 +167,7 @@ public final class Class_0505 implements Class_1309 {
 
       for (Class_0229 var4 : Class_0229.values()) {
          try {
-            String var5 = new Class_1303().method_2(var4.method_258().getName()).method_9("/assets/mio/sounds/\u0001.ogg");
+            String var5 = new TextBuilder().method_2(var4.method_258().getName()).method_9("/assets/mio/sounds/\u0001.ogg");
             InputStream var6 = this.getClass().getResourceAsStream(var5);
             if (var6 == null) {
                throw new FileNotFoundException(var5);

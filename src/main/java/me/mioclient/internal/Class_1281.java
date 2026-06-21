@@ -7,7 +7,7 @@ import me.mioclient.Hub;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
-public final class Class_1281 extends Class_0618 {
+public final class Class_1281 extends Command {
    public Class_1281() {
       super("ignore");
    }
@@ -18,13 +18,13 @@ public final class Class_1281 extends Class_0618 {
             LiteralArgumentBuilder.<CommandSource>literal("add").then(RequiredArgumentBuilder.<CommandSource, String>argument("name", StringArgumentType.word()).executes(var0 -> {
                String var1x = ((String)var0.getArgument("name", String.class)).toLowerCase();
                if (Hub.field_2610.method_331().contains(var1x)) {
-                  Class_1245.method_2(
-                     Text.literal(new Class_1303().method_2((Object)var1x).method_9("You are already ignoring \u0001")), Class_1245.method_38(-1)
+                  ChatUtil.method_2(
+                     Text.literal(new TextBuilder().method_2((Object)var1x).method_9("You are already ignoring \u0001")), ChatUtil.method_38(-1)
                   );
                } else {
                   Hub.field_2610.method_331().add(var1x);
-                  Class_1245.method_2(
-                     Text.literal(new Class_1303().method_2((Object)var1x).method_9("Player \u0001 has been ignored")), Class_1245.method_38(-1)
+                  ChatUtil.method_2(
+                     Text.literal(new TextBuilder().method_2((Object)var1x).method_9("Player \u0001 has been ignored")), ChatUtil.method_38(-1)
                   );
                }
 
@@ -39,13 +39,13 @@ public final class Class_1281 extends Class_0618 {
                      .executes(var0 -> {
                         String var1x = ((String)var0.getArgument("name", String.class)).toLowerCase();
                         if (Hub.field_2610.method_331().contains(var1x)) {
-                           Class_1245.method_2(
-                              Text.literal(new Class_1303().method_2((Object)var1x).method_9("\u0001 is no longer ignored")), Class_1245.method_38(-1)
+                           ChatUtil.method_2(
+                              Text.literal(new TextBuilder().method_2((Object)var1x).method_9("\u0001 is no longer ignored")), ChatUtil.method_38(-1)
                            );
                            Hub.field_2610.method_331().remove(var1x);
                         } else {
-                           Class_1245.method_2(
-                              Text.literal(new Class_1303().method_2((Object)var1x).method_9("You are not ignoring \u0001")), Class_1245.method_38(-1)
+                           ChatUtil.method_2(
+                              Text.literal(new TextBuilder().method_2((Object)var1x).method_9("You are not ignoring \u0001")), ChatUtil.method_38(-1)
                            );
                         }
 

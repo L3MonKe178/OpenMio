@@ -173,16 +173,16 @@ public class Class_0305 {
          float var14 = (float)var10.field_1657 / (float)this.field_989;
          float var15 = (float)var10.field_1656;
          float var16 = (float)var10.field_1657;
-         var2.vertex(var1.peek().getPositionMatrix(), var4, var5 + var16, (float)Class_1016.method_919())
+         var2.vertex(var1.peek().getPositionMatrix(), var4, var5 + var16, (float)FontRenderer.method_919())
             .color(var6, var8, var7, var9)
             .texture(var11, var12 + var14);
-         var2.vertex(var1.peek().getPositionMatrix(), var4 + var15, var5 + var16, (float)Class_1016.method_919())
+         var2.vertex(var1.peek().getPositionMatrix(), var4 + var15, var5 + var16, (float)FontRenderer.method_919())
             .color(var6, var8, var7, var9)
             .texture(var11 + var13, var12 + var14);
-         var2.vertex(var1.peek().getPositionMatrix(), var4 + var15, var5, (float)Class_1016.method_919())
+         var2.vertex(var1.peek().getPositionMatrix(), var4 + var15, var5, (float)FontRenderer.method_919())
             .color(var6, var8, var7, var9)
             .texture(var11 + var13, var12);
-         var2.vertex(var1.peek().getPositionMatrix(), var4, var5, (float)Class_1016.method_919()).color(var6, var8, var7, var9).texture(var11, var12);
+         var2.vertex(var1.peek().getPositionMatrix(), var4, var5, (float)FontRenderer.method_919()).color(var6, var8, var7, var9).texture(var11, var12);
          return var15 - Float.intBitsToFloat(1090519040);
       }
    }

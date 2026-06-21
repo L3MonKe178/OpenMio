@@ -1,6 +1,6 @@
 package me.mioclient.internal;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckKeyBinding;
 import me.mioclient.record.Class_0702;
 import net.minecraft.client.option.KeyBinding;
@@ -9,7 +9,7 @@ import net.minecraft.client.util.InputUtil.Key;
 import net.minecraft.client.util.InputUtil.Type;
 import org.lwjgl.glfw.GLFW;
 
-public class Class_0018 implements Class_1309 {
+public class Class_0018 implements MioAPI {
    public Class_0018() {
       super();
    }
@@ -23,7 +23,7 @@ public class Class_0018 implements Class_1309 {
          return "NONE";
       } else {
          return var1
-            ? new Class_1303().method_2(var0).method_9("MOUSE\u0001")
+            ? new TextBuilder().method_2(var0).method_9("MOUSE\u0001")
             : InputUtil.fromKeyCode(var0, 0).getTranslationKey().replaceAll("key.keyboard.", "").replace(".", "_").toUpperCase();
       }
    }

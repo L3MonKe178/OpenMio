@@ -8,7 +8,7 @@ import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0981;
 import me.mioclient.internal.Class_1035;
 import me.mioclient.module.Category;
@@ -63,12 +63,14 @@ public class AntiAimModule extends Module {
             float var2 = var1.method_500();
             float var3 = var1.method_501();
             if (this.field_2570.getValue()) {
-               var2 = this.field_2571.getValue().method_9(this, field_4219.player.getYaw());
+               if (this.field_2571 == null || this.field_2571.getValue() == null) return;
+               var2 = (this.field_2571.getValue() != null ? this.field_2571.getValue().method_9(this, field_4219.player.getYaw()) : 0.0f);
                this.method_746();
             }
 
             if (this.field_2577.getValue()) {
-               var3 = this.field_2578.getValue().method_2(this, field_4219.player.getPitch());
+               if (this.field_2578 == null || this.field_2578.getValue() == null) return;
+               var3 = (this.field_2578.getValue() != null ? this.field_2578.getValue().method_2(this, field_4219.player.getPitch()) : 0.0f);
                this.method_746();
             }
 
@@ -81,7 +83,7 @@ public class AntiAimModule extends Module {
                   }
 
                   if (this.field_2581.getValue() == Class_0555.STARE) {
-                     float[] var5 = Class_0485.method_78(var4.getEyePos());
+                     float[] var5 = RotationManager.method_78(var4.getEyePos());
                      var2 = var5[0];
                      var3 = var5[1];
                      this.method_746();

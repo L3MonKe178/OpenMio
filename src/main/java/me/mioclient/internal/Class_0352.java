@@ -37,7 +37,7 @@ public class Class_0352 implements CharacterVisitor {
 
    public void method_2(MatrixStack var1, OrderedText var2) {
       var1.push();
-      var1.translate((float)Class_1016.method_918(), (float)Class_1016.method_916(), 0.0F);
+      var1.translate((float)FontRenderer.method_918(), (float)FontRenderer.method_916(), 0.0F);
       var1.scale(Float.intBitsToFloat(1056964608), Float.intBitsToFloat(1056964608), Float.intBitsToFloat(1065353216));
       if (!Class_0436.field_1371.method_435()) {
          Class_0436.field_1371.method_9(DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);

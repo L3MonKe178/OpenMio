@@ -1,14 +1,14 @@
 package me.mioclient.enum_;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.module.combat.AutoCrystalModule;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Items;
 
-public enum Class_0247 implements Class_1309 {
+public enum Class_0247 implements MioAPI {
    NONE(false),
    POP(true),
    KILL(true);

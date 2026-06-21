@@ -13,8 +13,8 @@ import me.mioclient.event.Event_15;
 import me.mioclient.event.Event_45;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_1222;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1328;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -79,7 +79,7 @@ public class NotificationsModule extends Module {
          int var4 = var1.method_1049();
          if (var1.method_1050() == Class_1176.TOTEM_POP) {
             String var5 = var2 ? " have" : " has";
-            this.method_2(var3, new Class_1303().method_2((Object)var5).method_9("\u0001 popped "), var4);
+            this.method_2(var3, new TextBuilder().method_2((Object)var5).method_9("\u0001 popped "), var4);
             if (!Hub.field_2603.method_1009(var3) && !var2 && this.field_2166.getValue() && !this.field_2172.isEmpty()) {
                field_4221.submit(() -> {
                   try {
@@ -108,7 +108,7 @@ public class NotificationsModule extends Module {
                      var3x = var3x.replace("{name}", var3);
                      var3x = var3x.replace("{totems}", Integer.toString(var4));
                      if (!field_906.isToggled() || !var3x.startsWith(field_906.field_567.getValue())) {
-                        Class_1245.method_425(var3x);
+                        ChatUtil.method_425(var3x);
                      }
                   } catch (Exception var5x) {
                   }
@@ -135,7 +135,7 @@ public class NotificationsModule extends Module {
          }
 
          var2.append(Text.literal(Hub.field_2626.method_7(var1.method_65())));
-         Hub.field_2619.method_2(() -> Class_1245.method_2(var2, Class_1245.method_2(var1.method_65())), 0);
+         Hub.field_2619.method_2(() -> ChatUtil.method_2(var2, ChatUtil.method_2(var1.method_65())), 0);
       }
    }
 
@@ -146,11 +146,11 @@ public class NotificationsModule extends Module {
    public void method_2(String var1, String var2, int var3) {
       if (field_4219.options.getChatVisibility().getValue() != ChatVisibility.HIDDEN) {
          MutableText var4 = Text.empty()
-            .append(Text.literal(var1).styled(var1x -> var1x.withColor(this.field_2164.getValue().hashCode())))
-            .append(Text.literal(var2).styled(var1x -> var1x.withColor(this.field_2165.getValue().hashCode())))
-            .append(Text.literal(String.valueOf(var3)).styled(var1x -> var1x.withColor(this.field_2164.getValue().hashCode())))
-            .append(Text.literal(this.method_8(var3)).styled(var1x -> var1x.withColor(this.field_2165.getValue().hashCode())));
-         Class_1245.method_2(var4, Class_1245.method_38(Math.abs(var1.hashCode()) * -1), Priority.MID);
+            .append(Text.literal(var1).styled(var1x -> var1x.withColor((this.field_2164.getValue() != null ? this.field_2164.getValue().hashCode() : 0))))
+            .append(Text.literal(var2).styled(var1x -> var1x.withColor((this.field_2165.getValue() != null ? this.field_2165.getValue().hashCode() : 0))))
+            .append(Text.literal(String.valueOf(var3)).styled(var1x -> var1x.withColor((this.field_2164.getValue() != null ? this.field_2164.getValue().hashCode() : 0))))
+            .append(Text.literal(this.method_8(var3)).styled(var1x -> var1x.withColor((this.field_2165.getValue() != null ? this.field_2165.getValue().hashCode() : 0))));
+         ChatUtil.method_2(var4, ChatUtil.method_38(Math.abs(var1.hashCode()) * -1), Priority.MID);
       }
    }
 
@@ -178,9 +178,9 @@ public class NotificationsModule extends Module {
          this.field_2172.addAll(FileUtils.readLines(var1.toFile(), StandardCharsets.UTF_8));
       } catch (Exception var2) {
          if (this.field_2166.getValue()) {
-            Class_1245.method_2(
+            ChatUtil.method_2(
                Text.literal("Failed to open totem pop file").styled(var0 -> var0.withColor(Formatting.RED)),
-               Class_1245.method_38(var2.toString().hashCode()),
+               ChatUtil.method_38(var2.toString().hashCode()),
                Priority.LOW
             );
             var2.printStackTrace();

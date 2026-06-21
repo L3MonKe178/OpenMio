@@ -74,7 +74,7 @@ public class Class_0516 extends Class_0746 {
             }));
             break;
          case EDIT:
-            this.method_29(new Class_0906(this, new Class_1303().method_2(this.field_1636.getName()).method_9("Preset \u0001")));
+            this.method_29(new Class_0906(this, new TextBuilder().method_2(this.field_1636.getName()).method_9("Preset \u0001")));
             this.method_29(new Class_1266(this, "Load", () -> {
                Hub.field_2597.method_1174().method_357();
                this.method_549().method_465(this.field_1636.getName());

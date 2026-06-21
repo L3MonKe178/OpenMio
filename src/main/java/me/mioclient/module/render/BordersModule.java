@@ -27,11 +27,11 @@ public class BordersModule extends Module {
 
    @Subscribe
    public void method_9(Event_3 var1) {
-      if (this.field_617.getValue().getAlpha() != 0) {
+      if ((this.field_617.getValue() != null ? this.field_617.getValue().getAlpha() : 255) != 0) {
          this.method_255().method_2(var1.method_10(), this.field_617.getValue(), this.field_621.getValue(), this.field_619.getValue());
       }
 
-      if (this.field_618.getValue().getAlpha() != 0) {
+      if ((this.field_618.getValue() != null ? this.field_618.getValue().getAlpha() : 255) != 0) {
          this.method_256().method_2(var1.method_10(), this.field_618.getValue(), this.field_621.getValue(), this.field_619.getValue());
       }
    }

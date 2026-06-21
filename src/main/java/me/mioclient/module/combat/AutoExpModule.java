@@ -5,11 +5,11 @@ import me.mioclient.enum_.Class_0456;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0719;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -34,14 +34,14 @@ public class AutoExpModule extends Module {
    public Setting<Boolean> field_3426;
    public Setting<Boolean> field_3427;
    public static AntiAimModule field_3428 = Hub.field_2595.method_78(AntiAimModule.class);
-   public final Class_0242 field_3429;
+   public final Timer field_3429;
    public int field_3430;
    public boolean field_1702;
 
    public AutoExpModule() {
       super("AutoExp", "Mends your armor for you.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_3429 = new Class_0242();
+      this.field_3429 = new Timer();
       this.field_1702 = false;
    }
 
@@ -64,7 +64,7 @@ public class AutoExpModule extends Module {
    public void onDisable() {
       if (!this.method_535()) {
          if (field_4219.player.getInventory().selectedSlot != this.field_3430 && this.field_3419.getValue() == Class_0456.NORMAL) {
-            Class_0136.method_16(this.field_3430);
+            PlayerUtil.method_16(this.field_3430);
          }
       }
    }
@@ -92,13 +92,13 @@ public class AutoExpModule extends Module {
       if (!this.method_404()) {
          if (var1.method_213() == PreType.PRE) {
             Box var2 = Hub.field_2612.method_2(field_4219.player, 1);
-            float[] var3 = Class_0485.method_78(Class_0719.method_2(var2));
+            float[] var3 = RotationManager.method_78(Class_0719.method_2(var2));
             if (!this.field_1702 && this.field_3422.getValue()) {
                Hub.field_2598.method_2(var3, 4, true);
             }
 
             boolean var4 = field_4219.player.isHolding(Items.EXPERIENCE_BOTTLE);
-            int var5 = Class_0136.method_5(Items.EXPERIENCE_BOTTLE);
+            int var5 = PlayerUtil.method_5(Items.EXPERIENCE_BOTTLE);
             if (this.field_3424.getValue()) {
                boolean var6 = true;
 
@@ -129,19 +129,19 @@ public class AutoExpModule extends Module {
                this.field_1702 = false;
                int var10 = field_4219.player.getInventory().selectedSlot;
                if (field_4219.player.getMainHandStack().getItem() != Items.EXPERIENCE_BOTTLE && var9 == Hand.MAIN_HAND) {
-                  Class_0136.method_16(var5);
+                  PlayerUtil.method_16(var5);
                }
 
                for (int var11 = 0; var11 < this.field_3421.getValue(); var11++) {
                   if (this.field_3422.getValue()) {
-                     Class_1261.method_2(var9, var3[0], var3[1]);
+                     PacketUtil.method_2(var9, var3[0], var3[1]);
                   } else {
-                     Class_1261.method_2(var9);
+                     PacketUtil.method_2(var9);
                   }
                }
 
                if (this.field_3419.getValue() == Class_0456.SILENT && field_4219.player.getInventory().selectedSlot != var10) {
-                  Class_0136.method_16(var10);
+                  PlayerUtil.method_16(var10);
                }
 
                this.field_3429.reset();

@@ -2,10 +2,10 @@ package me.mioclient.record;
 
 import java.awt.Color;
 import java.util.Objects;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0200;
 import me.mioclient.enum_.Class_0334;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0612;
 import me.mioclient.internal.Class_0978;
 import me.mioclient.internal.Class_1225;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ChunkPos;
 
-public final class Class_0853 implements Class_1309 {
+public final class Class_0853 implements MioAPI {
    public final ChunkPos field_2749;
    public final Class_0200 field_2750;
    public final Class_0334 field_2751;
@@ -48,7 +48,7 @@ public final class Class_0853 implements Class_1309 {
                (double)var5,
                (double)(this.field_2749.getStartZ() + 16)
             );
-            if (!Class_0485.method_4(var6)) {
+            if (!RotationManager.method_4(var6)) {
                return;
             }
 

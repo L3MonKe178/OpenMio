@@ -3,13 +3,13 @@ package me.mioclient.internal;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0930 implements Class_1309 {
+public class Class_0930 implements MioAPI {
    public Class_0930() {
       super();
    }
@@ -47,11 +47,11 @@ public class Class_0930 implements Class_1309 {
    }
 
    public static float method_7(float var0) {
-      return var0 * Class_0245.field_690;
+      return var0 * Constants.field_690;
    }
 
    public static float method_29(float var0) {
-      return var0 * Class_0245.field_691;
+      return var0 * Constants.field_691;
    }
 
    public static Vec3d method_9(float var0, float var1) {
@@ -81,7 +81,7 @@ public class Class_0930 implements Class_1309 {
    }
 
    public static float method_38(PlayerEntity var0) {
-      float[] var1 = Class_0485.method_78(var0.getPos());
+      float[] var1 = RotationManager.method_78(var0.getPos());
       return MathHelper.angleBetween(field_4219.player.getYaw(), var1[0]);
    }
 
@@ -100,11 +100,11 @@ public class Class_0930 implements Class_1309 {
    }
 
    public static float method_5(float var0, float var1) {
-      return MathHelper.lerp(Class_0838.method_776(), var0, var1);
+      return MathHelper.lerp(RenderUtil.method_776(), var0, var1);
    }
 
    public static double method_2(double var0, double var2) {
-      return MathHelper.lerp((double)Class_0838.method_776(), var0, var2);
+      return MathHelper.lerp((double)RenderUtil.method_776(), var0, var2);
    }
 
    public static double method_35(BlockPos var0) {

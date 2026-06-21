@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0075;
 import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_1;
@@ -27,7 +27,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
-public class Class_0291 implements Class_1309, Class_1146 {
+public class Class_0291 implements MioAPI, Class_1146 {
    public static final String field_932 = "auth.mioclient.me";
    public static final int field_933 = 48002;
    public static final int field_934 = 65536;
@@ -172,9 +172,9 @@ public class Class_0291 implements Class_1309, Class_1146 {
 
    public void method_327() {
       try {
-         Class_1245.method_2(
-            Text.literal(new Class_1303().method_2(String.valueOf(Formatting.RED)).method_9("\u0001You are not connected to the chat server")),
-            Class_1245.method_38(12482345),
+         ChatUtil.method_2(
+            Text.literal(new TextBuilder().method_2(String.valueOf(Formatting.RED)).method_9("\u0001You are not connected to the chat server")),
+            ChatUtil.method_38(12482345),
             Priority.MID
          );
       } catch (Exception var2) {
@@ -217,9 +217,9 @@ public class Class_0291 implements Class_1309, Class_1146 {
          System.err.println(var2);
          Hub.field_2619
             .method_2(
-               () -> Class_1245.method_2(
-                     Text.literal(new Class_1303().method_2((Object)var2).method_2(String.valueOf(Formatting.RED)).method_9("\u0001\u0001")),
-                     Class_1245.method_38(8345486),
+               () -> ChatUtil.method_2(
+                     Text.literal(new TextBuilder().method_2((Object)var2).method_2(String.valueOf(Formatting.RED)).method_9("\u0001\u0001")),
+                     ChatUtil.method_38(8345486),
                      Priority.MID
                   ),
                0

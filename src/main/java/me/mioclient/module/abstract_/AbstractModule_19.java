@@ -6,8 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import me.mioclient.Hub;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0719;
 import me.mioclient.internal.Class_1225;
@@ -68,7 +68,7 @@ public class AbstractModule_19 extends AbstractModule_32 {
          }
 
          BlockPos var3 = BlockPos.ofFloored(Class_0719.method_2(var2));
-         if (this.field_3661.getValue() && var2.minY - (double)var3.getY() <= Class_0245.field_688) {
+         if (this.field_3661.getValue() && var2.minY - (double)var3.getY() <= Constants.field_688) {
             var1.add(var3.down());
             var1.add(var3);
          }
@@ -91,7 +91,7 @@ public class AbstractModule_19 extends AbstractModule_32 {
 
    @Override
    public int method_34() {
-      return Class_0136.method_5(Items.COBWEB);
+      return PlayerUtil.method_5(Items.COBWEB);
    }
 
    @Override

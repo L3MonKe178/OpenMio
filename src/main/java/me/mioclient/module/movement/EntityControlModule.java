@@ -5,7 +5,7 @@ import me.mioclient.event.Event_64;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0018;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -46,7 +46,7 @@ public class EntityControlModule extends Module {
             Entity var2 = field_4219.player.getVehicle();
             if (var2 != null) {
                if (this.field_3687.getValue()) {
-                  var2.setYaw(field_4219.player.getYaw(Class_0838.method_776()));
+                  var2.setYaw(field_4219.player.getYaw(RenderUtil.method_776()));
                }
 
                if (var2 instanceof Saddleable var3 && !var3.isSaddled()) {
@@ -54,7 +54,7 @@ public class EntityControlModule extends Module {
                }
 
                double var11 = this.field_3681.getValue();
-               double var5 = (double)this.field_3684.getValue().floatValue();
+               double var5 = (double)(this.field_3684.getValue() != null ? this.field_3684.getValue().floatValue() : 0.0f);
                if (var11 >= Double.longBitsToDouble(4626322717216342016L)) {
                   var11 = Double.longBitsToDouble(4626319902466574909L);
                }
@@ -66,7 +66,7 @@ public class EntityControlModule extends Module {
                }
 
                if (this.field_3680.getValue() && !this.method_1044()) {
-                  double[] var9 = Class_0464.method_2(field_4219.player.getYaw(Class_0838.method_776()), field_4219.player.input, var11);
+                  double[] var9 = Class_0464.method_2(field_4219.player.getYaw(RenderUtil.method_776()), field_4219.player.input, var11);
                   double var7;
                   if (this.field_3683.getValue()) {
                      if (var2 instanceof BoatEntity var10) {

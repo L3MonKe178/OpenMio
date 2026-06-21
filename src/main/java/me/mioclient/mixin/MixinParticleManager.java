@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_28;
 import me.mioclient.module.render.NoRenderModule;
 import net.minecraft.block.BlockState;
@@ -37,7 +37,7 @@ public abstract class MixinParticleManager {
    )
    private void addParticle(Particle var1, CallbackInfo var2) {
       Event_28 var3 = new Event_28(var1);
-      Class_1309.field_4220.method_36(var3);
+      MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
          var2.cancel();
       }

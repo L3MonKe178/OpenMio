@@ -9,11 +9,11 @@ import me.mioclient.event.Event_40;
 import me.mioclient.event.Event_55;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.mixin.ducks.DuckFireworkEntity;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -45,7 +45,7 @@ public final class FireworksModule extends Module {
    public Setting<Boolean> field_2688;
    public Setting<Float> field_2689;
    public Setting<Float> field_2690;
-   public final Class_0242 field_2691;
+   public final Timer field_2691;
    public boolean field_2692;
    public int field_2693;
    public int field_2694;
@@ -55,7 +55,7 @@ public final class FireworksModule extends Module {
    public FireworksModule() {
       super("Fireworks", "Enhances the usage of firework rockets.", Category.MOVEMENT, "rockets");
       Settings.initialize(this);
-      this.field_2691 = new Class_0242();
+      this.field_2691 = new Timer();
       this.field_2685.method_2("Auto", SettingMode.MIN);
    }
 
@@ -86,7 +86,7 @@ public final class FireworksModule extends Module {
    public void method_2(Event_17 var1) {
       if (this.field_2695) {
          field_4219.player.setSneaking(false);
-         Class_1261.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
+         PacketUtil.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
          this.field_2695 = false;
          if (!Class_0382.method_4(field_4219.player)) {
             field_4219.player.stopFallFlying();
@@ -104,7 +104,7 @@ public final class FireworksModule extends Module {
             this.field_2691.setTime(-1L);
          }
 
-         boolean var2 = !this.field_2691.method_2((double)this.field_2685.getValue().floatValue(), TimeUnit.SECONDS)
+         boolean var2 = !this.field_2691.method_2((double)(this.field_2685.getValue() != null ? this.field_2685.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)
             || field_2675.isToggled() && field_2675.field_3473 != -1 && field_2675.field_3534 != null;
          if (this.method_784()) {
             var2 = true;
@@ -171,10 +171,10 @@ public final class FireworksModule extends Module {
 
    public void method_783() {
       if (this.field_2681.getValue() && field_4219.player.isFallFlying()) {
-         Hand var1 = Class_0136.method_7(Items.FIREWORK_ROCKET);
+         Hand var1 = PlayerUtil.method_7(Items.FIREWORK_ROCKET);
          int var2 = field_4219.player.getInventory().selectedSlot;
-         int var3 = Class_0136.method_9(Items.FIREWORK_ROCKET);
-         int var4 = Class_0136.method_5(Items.FIREWORK_ROCKET);
+         int var3 = PlayerUtil.method_9(Items.FIREWORK_ROCKET);
+         int var4 = PlayerUtil.method_5(Items.FIREWORK_ROCKET);
          if (var1 != null) {
             field_4219.interactionManager.interactItem(field_4219.player, var1);
             this.field_2691.reset();
@@ -193,9 +193,9 @@ public final class FireworksModule extends Module {
 
    public void method_7(int var1, boolean var2) {
       if (var2) {
-         Class_0136.method_39(var1);
+         PlayerUtil.method_39(var1);
       } else {
-         Class_0136.method_16(var1);
+         PlayerUtil.method_16(var1);
       }
    }
 
@@ -224,14 +224,14 @@ public final class FireworksModule extends Module {
    public boolean method_786() {
       return Class_0382.method_4(field_4219.player)
          ? false
-         : this.isToggled() && this.field_2686.getValue() && !field_4219.player.isOnGround() && Class_0136.method_9(Items.ELYTRA) != -1;
+         : this.isToggled() && this.field_2686.getValue() && !field_4219.player.isOnGround() && PlayerUtil.method_9(Items.ELYTRA) != -1;
    }
 
    public void method_787() {
-      int var1 = Class_0136.method_5(Items.ELYTRA);
+      int var1 = PlayerUtil.method_5(Items.ELYTRA);
       boolean var2 = var1 == -1;
       if (var1 == -1) {
-         var1 = Class_0136.method_9(Items.ELYTRA);
+         var1 = PlayerUtil.method_9(Items.ELYTRA);
       }
 
       if (var1 != -1) {
@@ -242,7 +242,7 @@ public final class FireworksModule extends Module {
          }
 
          field_4219.interactionManager.clickSlot(0, 6, var1, SlotActionType.SWAP, field_4219.player);
-         Class_1261.method_1099();
+         PacketUtil.method_1099();
          field_4219.player.startFallFlying();
          field_4219.interactionManager.clickSlot(0, 6, var1, SlotActionType.SWAP, field_4219.player);
          if (var2) {

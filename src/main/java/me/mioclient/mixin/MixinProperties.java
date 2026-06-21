@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.render.SkyColorModule;
 import net.minecraft.client.world.ClientWorld.Properties;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +23,8 @@ public class MixinProperties {
       cancellable = true
    )
    private void onGetSkyProperties(CallbackInfoReturnable<Float> var1) {
-      if (Class_1309.field_4219.world != null) {
-         if (skycolor.isToggled() && skycolor.method_125() && !Class_1309.field_4219.world.getRegistryKey().getValue().getPath().contains("over")) {
+      if (MioAPI.field_4219.world != null) {
+         if (skycolor.isToggled() && skycolor.method_125() && !MioAPI.field_4219.world.getRegistryKey().getValue().getPath().contains("over")) {
             var1.setReturnValue(1.0F);
             var1.cancel();
          }

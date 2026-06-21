@@ -2,10 +2,10 @@ package me.mioclient.internal;
 
 import java.util.HashMap;
 import java.util.Map;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.record.Class_0501;
 
-public final class Class_1009 implements Class_0013 {
+public final class Class_1009 implements Nameable {
    public final Map<Integer, Class_0501> field_3110 = new HashMap<>();
    public final String field_3111;
 

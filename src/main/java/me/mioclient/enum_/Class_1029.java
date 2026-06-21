@@ -1,9 +1,9 @@
 package me.mioclient.enum_;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.module.combat.AutoCrystalModule;
 import net.minecraft.block.Blocks;
@@ -11,7 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 
-public enum Class_1029 implements Class_1309, Class_0013 {
+public enum Class_1029 implements MioAPI, Nameable {
    PLACE("Place"),
    HIT("Hit");
 
@@ -27,7 +27,7 @@ public enum Class_1029 implements Class_1309, Class_0013 {
          return 0.1;
       } else if (!field_3184.field_4084.getValue()
          || !(Class_0396.method_2((Entity)var1) <= field_3184.field_4085.getValue())
-            && !(Class_0136.method_2(var1) <= (float)field_3184.field_4086.getValue().intValue())) {
+            && !(PlayerUtil.method_2(var1) <= (float)field_3184.field_4086.getValue().intValue())) {
          if (field_4219.world.getBlockState(field_4219.player.getBlockPos()).isOf(Blocks.NETHER_PORTAL)) {
             return 0.6;
          } else {

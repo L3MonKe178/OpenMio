@@ -20,9 +20,9 @@ import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0482;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0809;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_0878;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.internal.Class_1135;
@@ -125,9 +125,9 @@ public class ChamsModule extends Module {
                   Float.intBitsToFloat(1065353216),
                   Float.intBitsToFloat(1065353216),
                   Float.intBitsToFloat(1065353216),
-                  (float)this.field_228.getValue().intValue() / Float.intBitsToFloat(1120403456)
+                  (float)(this.field_228.getValue() != null ? this.field_228.getValue().intValue() : 0) / Float.intBitsToFloat(1120403456)
                );
-               Class_0838.field_2672.method_2(var5, var1.method_880(), var1.method_10(), field_4219.getBufferBuilders().getEntityVertexConsumers());
+               RenderUtil.field_2672.method_2(var5, var1.method_880(), var1.method_10(), field_4219.getBufferBuilders().getEntityVertexConsumers());
                this.field_257 = false;
             }
 
@@ -137,8 +137,8 @@ public class ChamsModule extends Module {
                   Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216), Float.intBitsToFloat(1065353216)
                );
                var1.method_10().push();
-               Class_0838.method_9(var1.method_10());
-               Class_0838.field_2672.method_2(var5, var1.method_880(), var1.method_10(), field_4219.getBufferBuilders().getEntityVertexConsumers());
+               RenderUtil.method_9(var1.method_10());
+               RenderUtil.field_2672.method_2(var5, var1.method_880(), var1.method_10(), field_4219.getBufferBuilders().getEntityVertexConsumers());
                var1.method_10().pop();
                field_253 = false;
             }
@@ -150,7 +150,7 @@ public class ChamsModule extends Module {
             Float.intBitsToFloat(1065353216),
             Float.intBitsToFloat(1065353216),
             Float.intBitsToFloat(1065353216),
-            (float)this.field_228.getValue().intValue() / Float.intBitsToFloat(1120403456)
+            (float)(this.field_228.getValue() != null ? this.field_228.getValue().intValue() : 0) / Float.intBitsToFloat(1120403456)
          );
          field_4219.getBufferBuilders().getEntityVertexConsumers().draw();
          RenderSystem.setShaderColor(
@@ -167,11 +167,11 @@ public class ChamsModule extends Module {
       method_800 = -1000
    )
    public void method_7(Event_3 var1) {
-      Class_0482.method_5((double)this.field_224.getValue().floatValue());
+      Class_0482.method_5((double)(this.field_224.getValue() != null ? this.field_224.getValue().floatValue() : 0.0f));
 
       for (Entity var3 : field_4219.world.getEntities()) {
-         if (this.method_98(var3) && this.method_105(var3).getValue().method_670()) {
-            this.method_105(var3).getValue().method_2(this, var3, var1.method_10());
+         if (this.method_98(var3) && (this.method_105(var3).getValue() != null ? this.method_105(var3).getValue().method_670() : false)) {
+            if (this.method_105(var3).getValue() != null) this.method_105(var3).getValue().method_2(this, var3, var1.method_10());
          }
       }
 
@@ -195,7 +195,7 @@ public class ChamsModule extends Module {
                      var2.setPosition(
                         var2.getX(), var2.method_805().y + (double)((Float.intBitsToFloat(1065353216) - var4x) * this.field_245.getValue()), var2.getZ()
                      );
-                     Color[] var5 = this.field_241.getValue().method_2(this);
+                     Color[] var5 = (this.field_241.getValue() != null ? this.field_241.getValue().method_2(this) : null);
                      Class_0482.method_2(
                         Class_1081.method_2(var5[0], (float)var5[0].getAlpha() / Float.intBitsToFloat(1132396544) * var4x),
                         Class_1081.method_2(var5[1], (float)var5[1].getAlpha() / Float.intBitsToFloat(1132396544) * var4x)
@@ -213,8 +213,8 @@ public class ChamsModule extends Module {
       if (this.field_229.getValue()) {
          double var9 = (Double)field_4219.options.getGlintSpeed().getValue();
          double var4 = (Double)field_4219.options.getGlintStrength().getValue();
-         ((Class_0718)(Object)field_4219.options.getGlintSpeed()).forceSetValue(this.field_230.getValue().doubleValue());
-         field_4219.options.getGlintStrength().setValue(this.field_231.getValue().doubleValue());
+         ((Class_0718)(Object)field_4219.options.getGlintSpeed()).forceSetValue((this.field_230.getValue() != null ? this.field_230.getValue().doubleValue() : 0.0));
+         field_4219.options.getGlintStrength().setValue((this.field_231.getValue() != null ? this.field_231.getValue().doubleValue() : 0.0));
          Color var6 = this.field_250.getValue();
          RenderSystem.enableBlend();
          field_254 = true;
@@ -288,8 +288,8 @@ public class ChamsModule extends Module {
       } else {
          boolean var2;
          try {
-            var2 = !Class_0485.method_4(var1.getBoundingBox())
-               || field_4219.gameRenderer.getCamera().getPos().distanceTo(var1.getPos()) > (double)this.field_221.getValue().intValue();
+            var2 = !RotationManager.method_4(var1.getBoundingBox())
+               || field_4219.gameRenderer.getCamera().getPos().distanceTo(var1.getPos()) > (double)(this.field_221.getValue() != null ? this.field_221.getValue().intValue() : 0);
          } catch (Exception var4) {
             return false;
          }
@@ -305,19 +305,23 @@ public class ChamsModule extends Module {
                   && field_219.field_4076.getValue()
                   && ((Class_0468)var5).isMioAttacked()
                ? false
-               : this.field_238.getValue().method_670();
+               : (this.field_238.getValue() != null ? this.field_238.getValue().method_670() : false);
          } else if (var1 instanceof PlayerEntity) {
             boolean var3 = field_220.isToggled() || field_4219.options.getPerspective() != Perspective.FIRST_PERSON;
-            return var1 != field_4219.player ? this.field_236.getValue().method_670() : this.field_237.getValue().method_670() && var3;
+            if (this.field_236 == null || this.field_236.getValue() == null) return false;
+            if (this.field_237 == null || this.field_237.getValue() == null) return false;
+            return var1 != field_4219.player ? (this.field_236.getValue() != null ? this.field_236.getValue().method_670() : false) : (this.field_237.getValue() != null ? this.field_237.getValue().method_670() : false) && var3;
          } else {
-            return var1 instanceof PassiveEntity && this.field_234.getValue().method_670() || var1 instanceof Monster && this.field_235.getValue().method_670();
+            if (this.field_234 == null || this.field_234.getValue() == null) return false;
+            if (this.field_235 == null || this.field_235.getValue() == null) return false;
+            return var1 instanceof PassiveEntity && (this.field_234.getValue() != null ? this.field_234.getValue().method_670() : false) || var1 instanceof Monster && (this.field_235.getValue() != null ? this.field_235.getValue().method_670() : false);
          }
       }
    }
 
    public float method_99(Entity var1) {
-      float var2 = (float)this.field_223.getValue().intValue() / Float.intBitsToFloat(1120403456);
-      double var3 = field_4219.gameRenderer.getCamera().getPos().distanceTo(var1.getPos()) / (double)this.field_221.getValue().intValue();
+      float var2 = (float)(this.field_223.getValue() != null ? this.field_223.getValue().intValue() : 0) / Float.intBitsToFloat(1120403456);
+      double var3 = field_4219.gameRenderer.getCamera().getPos().distanceTo(var1.getPos()) / (double)(this.field_221.getValue() != null ? this.field_221.getValue().intValue() : 0);
       var3 -= (double)var2;
       return (float)(
          Double.longBitsToDouble(4607182418800017408L)
@@ -330,7 +334,7 @@ public class ChamsModule extends Module {
    }
 
    public boolean method_101(Entity var1) {
-      boolean var2 = this.method_105(var1).getValue().method_670() || var1 == field_4219.player;
+      boolean var2 = (this.method_105(var1).getValue() != null ? this.method_105(var1).getValue().method_670() : false) || var1 == field_4219.player;
       return this.isToggled() && var2 && this.field_229.getValue() && field_253;
    }
 

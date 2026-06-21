@@ -1,9 +1,9 @@
 package me.mioclient.record;
 
 import java.awt.Color;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0612;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Box;
 
@@ -22,7 +22,7 @@ public final class Class_1030 {
    public void method_2(MatrixStack var1, Color var2, int var3, float var4) {
       double var5 = (double)var3;
       if (var3 == -1) {
-         var5 = Class_1309.field_4219.player.getLerpedPos(Class_0838.method_776()).y;
+         var5 = MioAPI.field_4219.player.getLerpedPos(RenderUtil.method_776()).y;
       }
 
       Box var7 = this.method_78(var5);

@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0574;
 import me.mioclient.event.Event_27;
 import me.mioclient.internal.Class_1355;
@@ -38,7 +38,7 @@ public abstract class MixinEntityRenderer<T extends Entity> {
          var7.cancel();
       } else {
          Event_27 var8 = new Event_27(var3, var1);
-         Class_1309.field_4220.method_36(var8);
+         MioAPI.field_4220.method_36(var8);
          if (var8.method_464()) {
             var7.cancel();
          }

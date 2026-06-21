@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.util.function.Predicate;
 import me.mioclient.Hub;
 import me.mioclient.internal.Class_0044;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.module.abstract_.AbstractModule_21;
 
@@ -35,7 +35,7 @@ public final class ColorSetting extends Setting<Color> {
 
    public Color method_2(Color var1, int var2) {
       float[] var3 = Color.RGBtoHSB(var1.getRed(), var1.getGreen(), var1.getBlue(), null);
-      return Class_1081.method_2(Class_0245.field_686, var2, var3[1], var3[2], var1.getAlpha());
+      return Class_1081.method_2(Constants.field_686, var2, var3[1], var3[2], var1.getAlpha());
    }
 
    @Override

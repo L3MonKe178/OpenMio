@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0152;
 import me.mioclient.module.client.HUDModule;
 import me.mioclient.module.client.UIModule;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({TitleScreen.class})
-public class MixinTitleScreen extends Screen implements Class_1309 {
+public class MixinTitleScreen extends Screen implements MioAPI {
    private static HUDModule h = Hub.field_2595.method_78(HUDModule.class);
    private static UIModule c = Hub.field_2595.method_78(UIModule.class);
 

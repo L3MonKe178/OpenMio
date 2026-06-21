@@ -31,7 +31,7 @@ import net.minecraft.text.ClickEvent.Action;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 
-public final class Class_0023 extends Class_0618 {
+public final class Class_0023 extends Command {
    public final Module field_34;
 
    public Class_0023(Module var1) {
@@ -52,18 +52,18 @@ public final class Class_0023 extends Class_0618 {
                                  "setting", new Class_1024(this.field_34)
                               )
                               .then(
-                                 Class_0618.method_2("clear")
+                                 Command.method_2("clear")
                                     .suggests(this::method_29)
                                     .executes(
                                        var1x -> {
                                           Setting var2 = Class_1024.getOption(var1x, this.field_34, "setting");
                                           if (var2 instanceof CustomSetting2 var3) {
                                              ((Set)var3.getValue()).clear();
-                                             Class_1245.method_2(
+                                             ChatUtil.method_2(
                                                 Text.literal(this.field_34.getName())
                                                    .append(Text.literal(" ").append(var2.getName()).styled(var0 -> var0.withFormatting(Formatting.GRAY)))
                                                    .append(": Cleared"),
-                                                Class_1245.method_2(this.field_34),
+                                                ChatUtil.method_2(this.field_34),
                                                 Priority.LOW
                                              );
                                           }
@@ -109,16 +109,16 @@ public final class Class_0023 extends Class_0618 {
                                              var9 = Text.literal(var3).styled(var1xx -> var1xx.withFormatting(var11));
                                           }
 
-                                          Class_1245.method_2(
+                                          ChatUtil.method_2(
                                              Text.literal(this.field_34.getName())
                                                 .append(Text.literal(" ").append(var2.getName()).styled(var0 -> var0.withFormatting(Formatting.GRAY)))
                                                 .append(": ")
                                                 .append((Text)var9),
-                                             Class_1245.method_2(this.field_34),
+                                             ChatUtil.method_2(this.field_34),
                                              Priority.LOW
                                           );
                                        } catch (Throwable var8) {
-                                          Class_1245.method_2(Text.literal("Invalid value: ").append(var3), Class_1245.method_2(this.field_34), Priority.HIGH);
+                                          ChatUtil.method_2(Text.literal("Invalid value: ").append(var3), ChatUtil.method_2(this.field_34), Priority.HIGH);
                                        }
 
                                        return 1;
@@ -133,12 +133,12 @@ public final class Class_0023 extends Class_0618 {
                      .executes(
                         var1x -> {
                            Setting var2 = Class_1024.getOption(var1x, this.field_34, "setting");
-                           Class_1245.method_2(
+                           ChatUtil.method_2(
                               Text.literal(this.field_34.getName())
                                  .append(Text.literal(" ").append(var2.getName()).styled(var0 -> var0.withFormatting(Formatting.GRAY)))
                                  .append(": ")
                                  .append(this.method_9(var2)),
-                              Class_1245.method_2(this.field_34)
+                              ChatUtil.method_2(this.field_34)
                            );
                            return 1;
                         }
@@ -152,7 +152,7 @@ public final class Class_0023 extends Class_0618 {
                      })))
                   .executes(
                      var1x -> {
-                        Class_1245.method_2(
+                        ChatUtil.method_2(
                            Text.literal("Module ")
                               .append(Text.literal(this.field_34.getName()).styled(var0 -> var0.withFormatting(Formatting.GRAY)))
                               .append(" is ")
@@ -162,7 +162,7 @@ public final class Class_0023 extends Class_0618 {
                                        var1xx -> this.field_34.isToggled() ? var1xx.withFormatting(Formatting.GREEN) : var1xx.withFormatting(Formatting.RED)
                                     )
                               ),
-                           Class_1245.method_2(this.field_34)
+                           ChatUtil.method_2(this.field_34)
                         );
                         return 1;
                      }
@@ -175,11 +175,11 @@ public final class Class_0023 extends Class_0618 {
                var2.append(var3).append(" [%s - %s]".formatted(this.field_34.getKeybind().method_4(), this.field_34.getKeybind().method_78().getName()));
 
                for (Object var5 : this.field_34.getRegistry()) {
-                  MutableText var6 = Text.literal(new Class_1303().method_2(((Named)var5).getName()).method_9("\n\u0001: "));
+                  MutableText var6 = Text.literal(new TextBuilder().method_2(((Named)var5).getName()).method_9("\n\u0001: "));
                   Objects.requireNonNull(var5);
                   switch (var5) {
                      case CustomSetting var9:
-                        var6.append(Text.literal(Class_1016.method_3(((Enum)var9.getValue()).name())).formatted(Formatting.GRAY));
+                        var6.append(Text.literal(FontRenderer.method_3(((Enum)var9.getValue()).name())).formatted(Formatting.GRAY));
                         break;
                      case CustomSetting2 var10:
                         var6.append(Text.literal(String.join(", ", var10.method_251())).formatted(Formatting.GRAY));
@@ -192,16 +192,16 @@ public final class Class_0023 extends Class_0618 {
                         var6.append(Text.literal(((Setting)var5).getValue().toString()).formatted(Formatting.GRAY));
                   }
 
-                  String var7 = new Class_1303()
+                  String var7 = new TextBuilder()
                      .method_2(((Named)var5).getName())
                      .method_2(this.field_34.getName().toLowerCase())
-                     .method_2(Class_1032.method_927())
+                     .method_2(CommandManager.method_927())
                      .method_9("\u0001\u0001 \u0001 ");
                   var6.styled(var1xx -> var1xx.withClickEvent(new ClickEvent(Action.SUGGEST_COMMAND, var7)));
                   var2.append(var6);
                }
 
-               Class_1245.method_2(var2, Class_1245.method_38(-1));
+               ChatUtil.method_2(var2, ChatUtil.method_38(-1));
                return 1;
             }
          );
@@ -217,7 +217,7 @@ public final class Class_0023 extends Class_0618 {
    @NotNull
    public MutableText method_28() {
       MutableText var1 = Text.literal(this.field_34.getName());
-      var1.styled(var1x -> Class_1245.method_2(var1x, () -> this.field_34.isToggled() ? Formatting.GREEN.getColorValue() : Formatting.RED.getColorValue()));
+      var1.styled(var1x -> ChatUtil.method_2(var1x, () -> this.field_34.isToggled() ? Formatting.GREEN.getColorValue() : Formatting.RED.getColorValue()));
       var1.styled(
          var1x -> var1x.withHoverEvent(
                new HoverEvent(net.minecraft.text.HoverEvent.Action.SHOW_TEXT, Text.literal(this.field_34.getDescription().split("\n")[0]))
@@ -226,7 +226,7 @@ public final class Class_0023 extends Class_0618 {
       var1.styled(
          var1x -> var1x.withClickEvent(
                new ClickEvent(
-                  Action.RUN_COMMAND, new Class_1303().method_2(this.field_34.getName()).method_2(Class_1032.method_927()).method_9("\u0001toggle \u0001")
+                  Action.RUN_COMMAND, new TextBuilder().method_2(this.field_34.getName()).method_2(CommandManager.method_927()).method_9("\u0001toggle \u0001")
                )
             )
       );

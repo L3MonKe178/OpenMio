@@ -105,7 +105,7 @@ public class Class_0745 {
             var4,
             var5,
             var0.peek().getPositionMatrix(),
-            Class_1016.field_3143.method_914().method_476(),
+            FontRenderer.field_3143.method_914().method_476(),
             TextLayerType.NORMAL,
             0,
             15728880
@@ -122,7 +122,7 @@ public class Class_0745 {
             var4,
             var5,
             var0.peek().getPositionMatrix(),
-            Class_1016.field_3143.method_914().method_476(),
+            FontRenderer.field_3143.method_914().method_476(),
             TextLayerType.NORMAL,
             0,
             15728880
@@ -140,7 +140,7 @@ public class Class_0745 {
       field_2377.method_529();
       RenderSystem.disableBlend();
       if (var0) {
-         Class_1016.field_3143.method_474();
+         FontRenderer.field_3143.method_474();
       }
    }
 

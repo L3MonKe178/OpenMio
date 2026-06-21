@@ -1,7 +1,7 @@
 package me.mioclient.internal;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_43;
 import me.mioclient.event.Subscribe;
@@ -10,7 +10,7 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket.Mode;
 import net.minecraft.util.math.Vec3d;
 
-public final class Class_1297 implements Class_1309 {
+public final class Class_1297 implements MioAPI {
    public double field_608;
    public double field_609;
    public double field_2311;
@@ -62,9 +62,9 @@ public final class Class_1297 implements Class_1309 {
    public void method_22(Runnable var1) {
       boolean var2 = Hub.field_2615.method_1160();
       if (var2) {
-         Class_1261.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.RELEASE_SHIFT_KEY));
+         PacketUtil.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.RELEASE_SHIFT_KEY));
          var1.run();
-         Class_1261.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.PRESS_SHIFT_KEY));
+         PacketUtil.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.PRESS_SHIFT_KEY));
       } else {
          var1.run();
       }
@@ -73,9 +73,9 @@ public final class Class_1297 implements Class_1309 {
    public void method_3(Runnable var1) {
       boolean var2 = !Hub.field_2615.method_1160();
       if (var2) {
-         Class_1261.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.PRESS_SHIFT_KEY));
+         PacketUtil.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.PRESS_SHIFT_KEY));
          var1.run();
-         Class_1261.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.RELEASE_SHIFT_KEY));
+         PacketUtil.method_2(new ClientCommandC2SPacket(field_4219.player, Mode.RELEASE_SHIFT_KEY));
       } else {
          var1.run();
       }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.record.Class_0559;
 
-public final class Class_0465 extends Class_0939<Class_0559> implements Class_1309 {
+public final class Class_0465 extends Registry<Class_0559> implements MioAPI {
    public final List<CompletableFuture<?>> field_1472 = new ArrayList<>();
    public int field_1473 = 0;
 

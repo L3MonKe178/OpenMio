@@ -13,10 +13,10 @@ import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_21;
 import me.mioclient.event.Event_46;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_1032;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.CommandManager;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.setting.Setting;
@@ -36,7 +36,7 @@ public class DiscordNotifsModule extends Module {
    public final DateTimeFormatter field_2546;
    public final List<String> field_2547;
    public final List<String> field_2548;
-   public final Class_0242 field_2549;
+   public final Timer field_2549;
    public String field_2550;
    public ServerInfo field_2551;
 
@@ -46,17 +46,17 @@ public class DiscordNotifsModule extends Module {
       this.field_2546 = DateTimeFormatter.ofPattern("HH:mm");
       this.field_2547 = Collections.synchronizedList(new ArrayList<>());
       this.field_2548 = new ArrayList<>();
-      this.field_2549 = new Class_0242();
+      this.field_2549 = new Timer();
    }
 
    @Override
    public void onEnable() {
       this.field_2549.reset();
       if (Hub.field_2621.method_695() == null || Hub.field_2621.method_695().isEmpty()) {
-         String var1 = Class_1032.method_927();
-         String var2 = new Class_1303().method_2((Object)var1).method_9("\u0001webhook set <url>");
-         Class_1245.method_2(
-            Text.literal("You don't have a webhook URL set. Set one by typing \"").append(var2).append("\"."), Class_1245.method_38(-10395), Priority.MID
+         String var1 = CommandManager.method_927();
+         String var2 = new TextBuilder().method_2((Object)var1).method_9("\u0001webhook set <url>");
+         ChatUtil.method_2(
+            Text.literal("You don't have a webhook URL set. Set one by typing \"").append(var2).append("\"."), ChatUtil.method_38(-10395), Priority.MID
          );
       }
    }
@@ -68,7 +68,7 @@ public class DiscordNotifsModule extends Module {
       }
 
       if (Hub.field_2621.method_695() != null && !Hub.field_2621.method_695().isEmpty()) {
-         if (this.field_2549.method_2((double)this.field_2539.getValue().floatValue(), TimeUnit.SECONDS) && !this.field_2547.isEmpty()) {
+         if (this.field_2549.method_2((double)(this.field_2539.getValue() != null ? this.field_2539.getValue().floatValue() : 0.0f), TimeUnit.SECONDS) && !this.field_2547.isEmpty()) {
             this.field_2549.reset();
             synchronized (this.field_2547) {
                StringBuilder var3 = new StringBuilder();
@@ -108,14 +108,14 @@ public class DiscordNotifsModule extends Module {
       if (!var1.method_464()) {
          if (Hub.field_2621.method_695() != null && !Hub.field_2621.method_695().isEmpty()) {
             if (var1.method_213() == PreType.PRE && var1.method_1035() != null) {
-               if (this.field_2545.getValue() && var1.method_1036() == Class_1245.field_3910) {
+               if (this.field_2545.getValue() && var1.method_1036() == ChatUtil.field_3910) {
                   return;
                }
 
                String var2 = var1.method_1035();
                String[] var3 = var2.split("\n");
-               boolean var4 = Class_1245.method_107(var2);
-               boolean var5 = Class_1245.method_374(var2);
+               boolean var4 = ChatUtil.method_107(var2);
+               boolean var5 = ChatUtil.method_374(var2);
                if (!var4 && !var5) {
                   if (var2.contains("Position in queue:") && var3.length > 15) {
                      if (this.field_2550 == null) {

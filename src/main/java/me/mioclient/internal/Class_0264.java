@@ -11,7 +11,7 @@ import net.minecraft.nbt.NbtHelper;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
-public class Class_0264 extends Class_0618 {
+public class Class_0264 extends Command {
    public Class_0264() {
       super("nbt");
    }
@@ -33,7 +33,7 @@ public class Class_0264 extends Class_0618 {
             var3.append("{}");
          }
 
-         Class_1245.method_2(var3, Class_1245.method_38(-1));
+         ChatUtil.method_2(var3, ChatUtil.method_38(-1));
          return 1;
       });
    }

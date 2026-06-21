@@ -1,7 +1,7 @@
 package me.mioclient.record;
 
 import java.util.Map.Entry;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import net.minecraft.util.Formatting;
 
 public final class Class_0197 {
@@ -21,7 +21,7 @@ public final class Class_0197 {
    public String method_2(Formatting var1) {
       String var10000 = this.field_553;
       int var10001 = this.field_554;
-      return new Class_1303().method_2(var10001).method_2((Object)var10000).method_9("\u0001 x\u0001");
+      return new TextBuilder().method_2(var10001).method_2((Object)var10000).method_9("\u0001 x\u0001");
    }
 
    public String method_228() {

@@ -1,6 +1,6 @@
 package me.mioclient.mixin.lithium;
 
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_35;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -36,7 +36,7 @@ public class MixinChunkAwareBlockCollisionSweeper {
       if (var2 != MinecraftClient.getInstance().world) {
          return var5;
       } else {
-         Event_35 var6 = Class_1309.field_4220.method_36(Event_35.method_2(var5, var3, var1));
+         Event_35 var6 = MioAPI.field_4220.method_36(Event_35.method_2(var5, var3, var1));
          return var6.method_464() ? VoxelShapes.empty() : var6.method_957();
       }
    }

@@ -7,7 +7,7 @@ import me.mioclient.enum_.Class_0800;
 import me.mioclient.event.Event_3;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0838;
+import me.mioclient.internal.RenderUtil;
 import me.mioclient.internal.Class_1081;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -48,10 +48,11 @@ public class TracersModule extends Module {
 
       for (AbstractClientPlayerEntity var5 : field_4219.world.getPlayers()) {
          if (field_4219.player != var5
-            && !(field_4219.gameRenderer.getCamera().getPos().distanceTo(var5.getPos()) > (double)this.field_523.getValue().floatValue())
+            && !(field_4219.gameRenderer.getCamera().getPos().distanceTo(var5.getPos()) > (double)(this.field_523.getValue() != null ? this.field_523.getValue().floatValue() : 0.0f))
             && (!this.field_529.getValue() || !Hub.field_2603.method_30(var5))
             && (!this.field_530.getValue() || Class_0382.method_29(var5))) {
-            Vec3d var6 = var5.getLerpedPos(Class_0838.method_776()).add(0.0, (double)(var5.getHeight() * this.field_522.getValue().method_438()), 0.0);
+            if (this.field_522 == null || this.field_522.getValue() == null) continue;
+            Vec3d var6 = var5.getLerpedPos(RenderUtil.method_776()).add(0.0, (double)(var5.getHeight() * (this.field_522.getValue() != null ? this.field_522.getValue().method_438() : 0.5f)), 0.0);
             Color var7 = this.field_525.getValue();
             boolean var8 = this.field_527.getValue();
             if (var8) {
@@ -60,26 +61,26 @@ public class TracersModule extends Module {
                );
                float var11 = Float.intBitsToFloat(1065353216)
                   - (float)((var9 - Double.longBitsToDouble(4620693217682128896L)) / Double.longBitsToDouble(4633078116657397760L));
-               var7 = Class_1081.method_9(Class_1081.method_2(Color.red, Color.green, var11), this.field_525.getValue().getAlpha());
+               var7 = Class_1081.method_9(Class_1081.method_2(Color.red, Color.green, var11), (this.field_525.getValue() != null ? this.field_525.getValue().getAlpha() : 255));
             }
 
             if (Hub.field_2603.method_30(var5)) {
-               var7 = Class_1081.method_9(Hub.field_2603.method_1145(), this.field_525.getValue().getAlpha());
+               var7 = Class_1081.method_9(Hub.field_2603.method_1145(), (this.field_525.getValue() != null ? this.field_525.getValue().getAlpha() : 255));
             } else if (Hub.field_2603.method_16(var5) && this.field_528.getValue()) {
-               var7 = Class_1081.method_9(Hub.field_2603.method_1146(), this.field_525.getValue().getAlpha());
+               var7 = Class_1081.method_9(Hub.field_2603.method_1146(), (this.field_525.getValue() != null ? this.field_525.getValue().getAlpha() : 255));
             }
 
             Class_0800 var12 = var8 ? field_521.field_2133.getValue() : Class_0800.NORMAL;
             Color var10 = var7;
             var12.method_5(
                () -> {
-                  Class_0838.field_2672.method_2(var1.method_10(), var3, var6, var10);
+                  RenderUtil.field_2672.method_2(var1.method_10(), var3, var6, var10);
                   if (this.field_526.getValue()) {
-                     Class_0838.field_2672
+                     RenderUtil.field_2672
                         .method_2(
                            var1.method_10(),
-                           var5.getLerpedPos(Class_0838.method_776()),
-                           var5.getLerpedPos(Class_0838.method_776()).add(0.0, (double)var5.getEyeHeight(var5.getPose()), 0.0),
+                           var5.getLerpedPos(RenderUtil.method_776()),
+                           var5.getLerpedPos(RenderUtil.method_776()).add(0.0, (double)var5.getEyeHeight(var5.getPose()), 0.0),
                            var10
                         );
                   }

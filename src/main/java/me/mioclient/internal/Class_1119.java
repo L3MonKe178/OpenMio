@@ -8,12 +8,12 @@ import java.awt.Color;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import org.apache.commons.io.IOUtils;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL32C;
 
-public class Class_1119 implements Class_1309 {
+public class Class_1119 implements MioAPI {
    public static Class_1119 field_3472;
    public final int field_3473;
    public final Object2IntMap<String> field_3474 = new Object2IntOpenHashMap();
@@ -24,23 +24,23 @@ public class Class_1119 implements Class_1309 {
       Class_1088.method_2(var3, this.method_186(var1));
       String var4 = Class_1088.method_186(var3);
       if (var4 != null) {
-         System.err.println(new Class_1303().method_2((Object)var4).method_2((Object)var1).method_9("Failed to compile vertex shader (\u0001): \u0001"));
-         throw new RuntimeException(new Class_1303().method_2((Object)var4).method_2((Object)var1).method_9("Failed to compile vertex shader (\u0001): \u0001"));
+         System.err.println(new TextBuilder().method_2((Object)var4).method_2((Object)var1).method_9("Failed to compile vertex shader (\u0001): \u0001"));
+         throw new RuntimeException(new TextBuilder().method_2((Object)var4).method_2((Object)var1).method_9("Failed to compile vertex shader (\u0001): \u0001"));
       } else {
          int var5 = GlStateManager.glCreateShader(35632);
          Class_1088.method_2(var5, this.method_186(var2));
          String var6 = Class_1088.method_186(var5);
          if (var6 != null) {
-            System.err.println(new Class_1303().method_2((Object)var6).method_2((Object)var2).method_9("Failed to compile fragment shader (\u0001): \u0001"));
+            System.err.println(new TextBuilder().method_2((Object)var6).method_2((Object)var2).method_9("Failed to compile fragment shader (\u0001): \u0001"));
             throw new RuntimeException(
-               new Class_1303().method_2((Object)var6).method_2((Object)var2).method_9("Failed to compile fragment shader (\u0001): \u0001")
+               new TextBuilder().method_2((Object)var6).method_2((Object)var2).method_9("Failed to compile fragment shader (\u0001): \u0001")
             );
          } else {
             this.field_3473 = GlStateManager.glCreateProgram();
             String var7 = Class_1088.method_9(this.field_3473, var3, var5);
             if (var7 != null) {
-               System.err.println(new Class_1303().method_2((Object)var7).method_9("Failed to link program: \u0001"));
-               throw new RuntimeException(new Class_1303().method_2((Object)var7).method_9("Failed to link program: \u0001"));
+               System.err.println(new TextBuilder().method_2((Object)var7).method_9("Failed to link program: \u0001"));
+               throw new RuntimeException(new TextBuilder().method_2((Object)var7).method_9("Failed to link program: \u0001"));
             } else {
                GlStateManager.glDeleteShader(var3);
                GlStateManager.glDeleteShader(var5);
@@ -51,7 +51,7 @@ public class Class_1119 implements Class_1309 {
 
    public String method_186(String var1) {
       try {
-         InputStream var2 = this.getClass().getResourceAsStream(new Class_1303().method_2((Object)var1).method_9("/assets/mio/shaders\u0001"));
+         InputStream var2 = this.getClass().getResourceAsStream(new TextBuilder().method_2((Object)var1).method_9("/assets/mio/shaders\u0001"));
          return IOUtils.toString(var2, StandardCharsets.UTF_8);
       } catch (IOException var3) {
          var3.printStackTrace();

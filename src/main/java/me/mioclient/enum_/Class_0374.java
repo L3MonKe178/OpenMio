@@ -1,10 +1,10 @@
 package me.mioclient.enum_;
 
 import java.util.concurrent.TimeUnit;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.module.exploit.TimerModule;
 
-public enum Class_0374 implements Class_0013 {
+public enum Class_0374 implements Nameable {
    NORMAL("Normal") {
       @Override
       public void method_2(TimerModule var1) {

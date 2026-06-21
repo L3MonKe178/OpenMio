@@ -245,15 +245,15 @@ public class Class_0933 extends Class_0716 {
 
    public float method_500() {
       double[] var1 = Class_0464.method_2(field_4219.player.getYaw(), field_4219.player.input, Double.longBitsToDouble(4607182418800017408L));
-      return (float)(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Class_0245.field_685);
+      return (float)(Math.toDegrees(Math.atan2(var1[1], var1[0])) - (double)Constants.field_685);
    }
 
    public float method_501() {
       float var1 = field_4219.player.getPitch();
       if (this.method_846()) {
-         var1 = (float)Class_0245.field_685;
+         var1 = (float)Constants.field_685;
          if (Class_0464.method_363()) {
-            var1 = (float)Class_0245.field_684;
+            var1 = (float)Constants.field_684;
          }
 
          if (field_4219.player.input.jumping) {
@@ -266,7 +266,7 @@ public class Class_0933 extends Class_0716 {
 
    public boolean method_846() {
       return field_4219.player.input.jumping
-         || field_4219.player.input.sneaking && this.field_2275.field_4365.getValue() == Class_0845.PLAIN && Class_0485.method_513();
+         || field_4219.player.input.sneaking && this.field_2275.field_4365.getValue() == Class_0845.PLAIN && RotationManager.method_513();
    }
 
    public boolean method_847() {

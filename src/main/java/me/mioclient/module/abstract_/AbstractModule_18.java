@@ -8,7 +8,7 @@ import me.mioclient.internal.Class_0121;
 import me.mioclient.internal.Class_0723;
 import me.mioclient.internal.Class_0930;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.player.FreecamModule;
 import me.mioclient.record.Class_0362;
 import me.mioclient.setting.BooleanSetting;
@@ -97,14 +97,14 @@ public class AbstractModule_18 extends AbstractModule_26 {
                         Double.longBitsToDouble(4593671619917905920L)
                      )
                   );
-               String var5 = new Class_1303().method_2(String.valueOf(Formatting.WHITE)).method_9("XYZ: \u0001");
-               String var6 = new Class_1303().method_2(var3.getZ()).method_2(var3.getY()).method_2(var3.getX()).method_9("\u0001, \u0001, \u0001.");
-               String var7 = new Class_1303().method_2(var4.getZ()).method_2(var4.getY()).method_2(var4.getX()).method_9(" (\u0001, \u0001, \u0001.)");
+               String var5 = new TextBuilder().method_2(String.valueOf(Formatting.WHITE)).method_9("XYZ: \u0001");
+               String var6 = new TextBuilder().method_2(var3.getZ()).method_2(var3.getY()).method_2(var3.getX()).method_9("\u0001, \u0001, \u0001.");
+               String var7 = new TextBuilder().method_2(var4.getZ()).method_2(var4.getY()).method_2(var4.getX()).method_9(" (\u0001, \u0001, \u0001.)");
                if (this.field_3277.getValue() && Class_1225.method_1071() != Class_0200.THE_END) {
-                  var6 = new Class_1303().method_2((Object)var7).method_2((Object)var6).method_9("\u0001\u0001");
+                  var6 = new TextBuilder().method_2((Object)var7).method_2((Object)var6).method_9("\u0001\u0001");
                }
 
-               return Text.literal(new Class_1303().method_2((Object)var6).method_2((Object)var5).method_9("\u0001\u0001"));
+               return Text.literal(new TextBuilder().method_2((Object)var6).method_2((Object)var5).method_9("\u0001\u0001"));
             } else {
                return Text.literal("XYZ: %sREDACTED".formatted(Formatting.WHITE));
             }

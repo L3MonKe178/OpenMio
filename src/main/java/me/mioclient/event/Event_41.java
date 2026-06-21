@@ -1,11 +1,11 @@
 package me.mioclient.event;
 
 import java.util.List;
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 
-public class Event_41 extends Class_0605 {
+public class Event_41 extends Event {
    public static int field_1663;
    public static int field_1664;
    public final Screen field_1665;

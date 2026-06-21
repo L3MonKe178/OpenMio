@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_1010;
 import me.mioclient.enum_.Class_1172;
 import me.mioclient.mixin.ducks.DuckAbstractBlock;
@@ -59,8 +59,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
-public class Class_1035 implements Class_1309 {
-   public static final Class_0242 field_3195 = new Class_0242();
+public class Class_1035 implements MioAPI {
+   public static final Timer field_3195 = new Timer();
    public static boolean field_3196 = false;
    public static final Direction[] field_3197 = new Direction[]{Direction.DOWN, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP};
    public static AbstractModule_28 field_144 = Hub.field_2595.method_78(AbstractModule_28.class);
@@ -111,18 +111,18 @@ public class Class_1035 implements Class_1309 {
 
       double var9 = field_4219.player.getEyePos().x - var0.toCenterPos().x;
       double var10 = field_4219.player.getEyePos().z - var0.toCenterPos().z;
-      if (var9 > Class_0245.field_688) {
+      if (var9 > Constants.field_688) {
          var1.remove(Direction.WEST);
-      } else if (var9 < -Class_0245.field_688) {
+      } else if (var9 < -Constants.field_688) {
          var1.remove(Direction.EAST);
       } else {
          var1.remove(Direction.WEST);
          var1.remove(Direction.EAST);
       }
 
-      if (var10 > Class_0245.field_688) {
+      if (var10 > Constants.field_688) {
          var1.remove(Direction.NORTH);
-      } else if (var10 < -Class_0245.field_688) {
+      } else if (var10 < -Constants.field_688) {
          var1.remove(Direction.SOUTH);
       } else {
          var1.remove(Direction.NORTH);
@@ -185,7 +185,7 @@ public class Class_1035 implements Class_1309 {
             BlockPos var12 = var11 ? var0 : var0.offset(var2);
             boolean var13 = method_31(var12);
             if (var1 == null) {
-               var1 = var0.toCenterPos().add(Vec3d.of(var2.getVector()).multiply(Class_0245.field_688));
+               var1 = var0.toCenterPos().add(Vec3d.of(var2.getVector()).multiply(Constants.field_688));
             }
 
             if (var13) {
@@ -237,10 +237,10 @@ public class Class_1035 implements Class_1309 {
             }
 
             if (var1 == null) {
-               var1 = var0.toCenterPos().add(Vec3d.of(var2.getVector()).multiply(Class_0245.field_688));
+               var1 = var0.toCenterPos().add(Vec3d.of(var2.getVector()).multiply(Constants.field_688));
             }
 
-            Class_1261.method_2(var4, new BlockHitResult(var1, var8 ? var2 : var2.getOpposite(), var10, false));
+            PacketUtil.method_2(var4, new BlockHitResult(var1, var8 ? var2 : var2.getOpposite(), var10, false));
             if (field_144.method_1052() && field_144.field_3744.getValue()) {
                if (!field_4219.player.handSwinging
                   || field_4219.player.handSwingTicks >= ((DuckLivingEntity)field_4219.player).getSwingDuration() / 2

@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_64;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.module.movement.EntityControlModule;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({BoatEntity.class})
-public abstract class MixinBoat extends Entity implements Class_1309 {
+public abstract class MixinBoat extends Entity implements MioAPI {
    private static final EntityControlModule entitycontrol = Hub.field_2595.method_78(EntityControlModule.class);
    @Unique
    private Event_64 mio$event;

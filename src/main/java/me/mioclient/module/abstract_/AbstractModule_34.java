@@ -11,8 +11,8 @@ import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0149;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
-import me.mioclient.internal.Class_0485;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.internal.RotationManager;
+import me.mioclient.internal.FontRenderer;
 import me.mioclient.module.render.NameTagsModule;
 import me.mioclient.setting.BooleanSetting;
 import me.mioclient.setting.CustomSetting;
@@ -64,14 +64,14 @@ public class AbstractModule_34 extends AbstractModule_26 {
             .stream()
             .filter(this::method_22)
             .sorted(Comparator.comparing(this::method_37))
-            .limit(this.field_705.getValue() ? (long)this.field_706.getValue().intValue() : Long.MAX_VALUE)
+            .limit(this.field_705.getValue() ? (long)(this.field_706.getValue() != null ? this.field_706.getValue().intValue() : 0) : Long.MAX_VALUE)
             .forEachOrdered(this.field_710::add);
       }
    }
 
    @Override
    public void method_2(DrawContext var1) {
-      float var2 = this.field_1844.method_194((float)Class_1016.field_3143.method_66()) - this.field_1844.method_60();
+      float var2 = this.field_1844.method_194((float)FontRenderer.field_3143.method_66()) - this.field_1844.method_60();
 
       for (PlayerEntity var4 : this.field_710) {
          Color var5 = this.method_9(var2);
@@ -82,9 +82,9 @@ public class AbstractModule_34 extends AbstractModule_26 {
          }
 
          String var6 = this.method_31(var4);
-         float var7 = Class_1016.field_3143.method_221(var6);
-         Class_1016.field_3143.method_9(var1, var6, this.field_1844.method_176(var7) - this.field_1844.method_59(), var2, var5);
-         var2 += (float)((Class_1016.field_3143.method_66() + 1) * this.field_1844.method_196());
+         float var7 = FontRenderer.field_3143.method_221(var6);
+         FontRenderer.field_3143.method_9(var1, var6, this.field_1844.method_176(var7) - this.field_1844.method_59(), var2, var5);
+         var2 += (float)((FontRenderer.field_3143.method_66() + 1) * this.field_1844.method_196());
       }
    }
 
@@ -94,8 +94,8 @@ public class AbstractModule_34 extends AbstractModule_26 {
       float var2 = 0.0F;
 
       for (PlayerEntity var4 : this.field_710) {
-         float var5 = Class_1016.field_3143.method_221(this.method_31(var4));
-         var1 += (float)(Class_1016.field_3143.method_66() + 1);
+         float var5 = FontRenderer.field_3143.method_221(this.method_31(var4));
+         var1 += (float)(FontRenderer.field_3143.method_66() + 1);
          if (var5 > var2) {
             var2 = var5;
          }
@@ -171,7 +171,7 @@ public class AbstractModule_34 extends AbstractModule_26 {
    public double method_37(Entity var1) {
       return this.field_698.getValue() == Class_0861.DISTANCE
          ? var1.squaredDistanceTo(field_4219.player)
-         : (double)MathHelper.angleBetween(field_4219.gameRenderer.getCamera().getYaw(), Class_0485.method_14(var1)[0]);
+         : (double)MathHelper.angleBetween(field_4219.gameRenderer.getCamera().getYaw(), RotationManager.method_14(var1)[0]);
    }
 
    public boolean method_22(PlayerEntity var1) {

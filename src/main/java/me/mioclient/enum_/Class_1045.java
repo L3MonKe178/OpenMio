@@ -1,12 +1,12 @@
 package me.mioclient.enum_;
 
 import java.util.function.Function;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0396;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
-public enum Class_1045 implements Class_1309 {
+public enum Class_1045 implements MioAPI {
    DISTANCE(var0 -> var0.squaredDistanceTo(field_4219.player)),
    HEALTH(var0 -> (double)Class_0396.method_2((Entity)var0));
 

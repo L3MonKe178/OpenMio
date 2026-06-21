@@ -1,12 +1,12 @@
 package me.mioclient.enum_;
 
 import java.util.function.Supplier;
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
 import me.mioclient.record.Class_0920;
 import net.minecraft.util.math.MathHelper;
 
-public enum Class_0274 implements Class_1309, Class_0013 {
+public enum Class_0274 implements MioAPI, Nameable {
    TOP_LEFT("top_left", () -> Class_0920.method_9(0.0F, 0.0F, 10.0F, 10.0F)),
    TOP_RIGHT("top_right", () -> Class_0920.method_9((float)(field_4219.getWindow().getScaledWidth() - 10), 0.0F, 10.0F, 10.0F)),
    BOTTOM_LEFT("bottom_left", () -> Class_0920.method_9(0.0F, (float)(field_4219.getWindow().getScaledHeight() - 10), 10.0F, 10.0F)),

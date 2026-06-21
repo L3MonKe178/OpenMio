@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_0937;
 import me.mioclient.api.Class_0945;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.module.client.UIModule;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class Class_0746 implements Class_0013, Class_0937, Class_0945<Class_0937, List<Class_0937>> {
+public class Class_0746 implements Nameable, Class_0937, Class_0945<Class_0937, List<Class_0937>> {
    public final ArrayList<Class_0937> field_2378;
    public final String field_2379;
    public final int field_1656;
@@ -51,12 +51,12 @@ public class Class_0746 implements Class_0013, Class_0937, Class_0945<Class_0937
          (float)(this.field_1322 + 14),
          UIModule.field_2843.field_2879.getValue()
       );
-      Class_1016.field_3143
+      FontRenderer.field_3143
          .method_9(
             var1,
             this.field_2379,
             (float)(this.field_1321 + 2),
-            (float)this.field_1322 + Float.intBitsToFloat(1088421888) - (float)Class_1016.field_3143.method_66() / Float.intBitsToFloat(1073741824),
+            (float)this.field_1322 + Float.intBitsToFloat(1088421888) - (float)FontRenderer.field_3143.method_66() / Float.intBitsToFloat(1073741824),
             Color.white
          );
       this.field_2384.method_3(this.field_111);
@@ -262,8 +262,8 @@ public class Class_0746 implements Class_0013, Class_0937, Class_0945<Class_0937
 
    public void method_22(int var1, int var2) {
       if (this.field_2383) {
-         this.setX(Math.max(0, Math.min(Class_1309.field_4219.getWindow().getScaledWidth() - this.method_216(), var1 - this.field_2381)));
-         this.setY(Math.max(0, Math.min(Class_1309.field_4219.getWindow().getScaledHeight() - this.method_66(), var2 - this.field_2382)));
+         this.setX(Math.max(0, Math.min(MioAPI.field_4219.getWindow().getScaledWidth() - this.method_216(), var1 - this.field_2381)));
+         this.setY(Math.max(0, Math.min(MioAPI.field_4219.getWindow().getScaledHeight() - this.method_66(), var2 - this.field_2382)));
       }
    }
 

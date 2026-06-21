@@ -1,13 +1,13 @@
 package me.mioclient.internal;
 
 import io.netty.buffer.Unpooled;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0034;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 
-public class Class_0144 implements Class_1309 {
+public class Class_0144 implements MioAPI {
    public Class_0144() {
       super();
    }

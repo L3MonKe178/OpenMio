@@ -6,8 +6,8 @@ import me.mioclient.event.Event_11;
 import me.mioclient.event.Event_36;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0018;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0509;
 import me.mioclient.internal.Class_1225;
@@ -32,9 +32,9 @@ public class MainhandModule extends Module {
    public Setting<Float> field_3102;
    public Setting<Boolean> field_3103;
    public Setting<Float> field_3104;
-   public final Class_0242 field_3105;
-   public final Class_0242 field_3106;
-   public final Class_0242 field_3107;
+   public final Timer field_3105;
+   public final Timer field_3106;
+   public final Timer field_3107;
    public boolean field_1982;
    public int field_1071;
    public final Class_0509 field_3108;
@@ -42,9 +42,9 @@ public class MainhandModule extends Module {
    public MainhandModule() {
       super("Mainhand", "Auto totem for main hand.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_3105 = new Class_0242();
-      this.field_3106 = new Class_0242();
-      this.field_3107 = new Class_0242();
+      this.field_3105 = new Timer();
+      this.field_3106 = new Timer();
+      this.field_3107 = new Timer();
       this.field_3108 = new Class_0509() {
          @Override
          public boolean method_206() {
@@ -93,7 +93,7 @@ public class MainhandModule extends Module {
    }
 
    public void method_36(Item var1) {
-      int var2 = Class_0136.method_2((Predicate<ItemStack>)(var1x -> var1x.isOf(var1)), true);
+      int var2 = PlayerUtil.method_2((Predicate<ItemStack>)(var1x -> var1x.isOf(var1)), true);
       if (this.field_1071 != -1 && field_4219.player.getInventory().getStack(this.field_1071).isOf(var1) && var2 != -1) {
          var2 = this.field_1071;
       }
@@ -102,8 +102,8 @@ public class MainhandModule extends Module {
          if (var2 < field_4219.player.currentScreenHandler.slots.size()) {
             ItemStack var3 = field_4219.player.currentScreenHandler.getSlot(var2).getStack();
             if (!var3.contains(DataComponentTypes.FOOD) || this.field_1982) {
-               if (this.field_3105.method_5((long)this.field_3098.getValue().intValue()) && this.field_3107.method_9(200L)) {
-                  Class_0136.method_9(var2, this.method_905());
+               if (this.field_3105.method_5((long)(this.field_3098.getValue() != null ? this.field_3098.getValue().intValue() : 0)) && this.field_3107.method_9(200L)) {
+                  PlayerUtil.method_9(var2, this.method_905());
                   this.field_1071 = var2;
                }
 
@@ -120,8 +120,8 @@ public class MainhandModule extends Module {
          Item var1 = field_4219.player.getInventory().getStack(this.method_905()).getItem();
          if (var1 == Items.TOTEM_OF_UNDYING && (!field_4219.player.isUsingItem() || field_4219.player.getActiveHand() != Hand.MAIN_HAND)) {
             if ((this.field_3108.method_538() || Class_0396.method_76() <= this.field_3102.getValue())
-               && this.field_3106.method_5((long)this.field_3100.getValue().intValue())) {
-               Class_0136.method_16(this.method_905());
+               && this.field_3106.method_5((long)(this.field_3100.getValue() != null ? this.field_3100.getValue().intValue() : 0))) {
+               PlayerUtil.method_16(this.method_905());
             }
          }
       }

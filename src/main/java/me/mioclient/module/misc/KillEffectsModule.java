@@ -33,8 +33,8 @@ import me.mioclient.internal.Class_0337;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_1222;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.internal.Class_1328;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -106,12 +106,12 @@ extends Module {
         this.field_894.method_31("KillStreakSoundVolume");
         this.field_900.method_31("AshesSelf");
         this.field_901.method_9(() -> {
-            if (this.field_901.getValue().booleanValue()) {
+            if ((this.field_901.getValue() != null ? this.field_901.getValue().booleanValue() : false)) {
                 this.method_99(false);
             }
         });
         this.field_905.method_9(() -> {
-            if (this.field_905.getValue().booleanValue()) {
+            if ((this.field_905.getValue() != null ? this.field_905.getValue().booleanValue() : false)) {
                 this.method_99(true);
                 this.field_905.method_78(false);
             }
@@ -175,13 +175,13 @@ extends Module {
         }
         if (this.field_910 == -1) {
             this.field_910 = 0;
-            if (this.field_886.getValue().booleanValue() && this.field_890.getValue().booleanValue() && this.field_892.getValue().floatValue() > 0.0f && (object = Hub.field_2606.method_2(this.field_891.getValue())) != null) {
-                ((Class_0337)object).method_230(this.field_892.getValue().floatValue());
+            if ((this.field_886.getValue() != null ? this.field_886.getValue().booleanValue() : false) && (this.field_890.getValue() != null ? this.field_890.getValue().booleanValue() : false) && (this.field_892.getValue() != null ? this.field_892.getValue().floatValue() : 0.0f) > 0.0f && (object = Hub.field_2606.method_2(this.field_891.getValue())) != null) {
+                ((Class_0337)object).method_230((this.field_892.getValue() != null ? this.field_892.getValue().floatValue() : 0.0f));
             }
-            if (this.field_895.getValue().booleanValue() && this.field_897.getValue().booleanValue()) {
+            if ((this.field_895.getValue() != null ? this.field_895.getValue().booleanValue() : false) && (this.field_897.getValue() != null ? this.field_897.getValue().booleanValue() : false)) {
                 this.method_36(KillEffectsModule.field_4219.player.getPos());
             }
-            if (this.field_899.getValue().booleanValue() && this.field_900.getValue().booleanValue()) {
+            if ((this.field_899.getValue() != null ? this.field_899.getValue().booleanValue() : false) && (this.field_900.getValue() != null ? this.field_900.getValue().booleanValue() : false)) {
                 this.method_14(KillEffectsModule.field_4219.player.getPos());
             }
         }
@@ -205,7 +205,7 @@ extends Module {
                     if (!(playerEntity2.getHealth() <= 0.0f)) continue;
                     this.field_909.add(uUID);
                     ++this.field_910;
-                    if (this.field_901.getValue().booleanValue() && (object2 = this.method_311()) != null) {
+                    if ((this.field_901.getValue() != null ? this.field_901.getValue().booleanValue() : false) && (object2 = this.method_311()) != null) {
                         object2 = ((String)object2).replace("{name}", playerEntity2.getName().getString());
                         if (!field_906.isToggled() || !((String)object2).startsWith(KillEffectsModule.field_906.field_567.getValue())) {
                             String string = (String) (object2);
@@ -216,21 +216,21 @@ extends Module {
                             if (this.field_902.method_105()) {
                                 runnable.run();
                             } else {
-                                Hub.field_2619.method_2(runnable, (int)(this.field_902.getValue().floatValue() / Float.intBitsToFloat(1028443341)));
+                                Hub.field_2619.method_2(runnable, (int)((this.field_902.getValue() != null ? this.field_902.getValue().floatValue() : 0.0f) / Float.intBitsToFloat(1028443341)));
                             }
                         }
                     }
-                    if (this.field_895.getValue().booleanValue() && (Class_0382.method_29((LivingEntity)playerEntity) || !this.field_898.getValue().booleanValue())) {
+                    if ((this.field_895.getValue() != null ? this.field_895.getValue().booleanValue() : false) && (Class_0382.method_29((LivingEntity)playerEntity) || !(this.field_898.getValue() != null ? this.field_898.getValue().booleanValue() : false))) {
                         this.method_36(playerEntity.getPos());
                     }
-                    if (this.field_899.getValue().booleanValue()) {
+                    if ((this.field_899.getValue() != null ? this.field_899.getValue().booleanValue() : false)) {
                         this.method_14(playerEntity.getPos());
                     }
-                    if (this.field_886.getValue().booleanValue() && this.field_887.getValue().booleanValue() && this.field_889.getValue().floatValue() > 0.0f && (object2 = Hub.field_2606.method_2(this.field_888.getValue())) != null) {
-                        ((Class_0337)object2).method_230(this.field_889.getValue().floatValue());
+                    if ((this.field_886.getValue() != null ? this.field_886.getValue().booleanValue() : false) && (this.field_887.getValue() != null ? this.field_887.getValue().booleanValue() : false) && (this.field_889.getValue() != null ? this.field_889.getValue().floatValue() : 0.0f) > 0.0f && (object2 = Hub.field_2606.method_2(this.field_888.getValue())) != null) {
+                        ((Class_0337)object2).method_230((this.field_889.getValue() != null ? this.field_889.getValue().floatValue() : 0.0f));
                     }
-                    if (!this.field_893.getValue().booleanValue() || this.field_910 < 2 || !(this.field_894.getValue().floatValue() > 0.0f) || (object2 = Hub.field_2606.method_6(this.field_910)) == null) continue;
-                    ((Class_0337)object2).method_230(this.field_894.getValue().floatValue());
+                    if (!(this.field_893.getValue() != null ? this.field_893.getValue().booleanValue() : false) || this.field_910 < 2 || !((this.field_894.getValue() != null ? this.field_894.getValue().floatValue() : 0.0f) > 0.0f) || (object2 = Hub.field_2606.method_6(this.field_910)) == null) continue;
+                    ((Class_0337)object2).method_230((this.field_894.getValue() != null ? this.field_894.getValue().floatValue() : 0.0f));
                 }
                 catch (Exception exception) {}
             }
@@ -261,7 +261,7 @@ extends Module {
 
     public void method_99(boolean bl) {
         block6: {
-            if (!this.field_901.getValue().booleanValue() && !bl) {
+            if (!(this.field_901.getValue() != null ? this.field_901.getValue().booleanValue() : false) && !bl) {
                 return;
             }
             Path path = Class_1222.method_2(Class_1328.field_4284.resolve(this.field_903.getValue()), new String[]{".txt"});
@@ -274,8 +274,8 @@ extends Module {
                 this.field_911 = 0;
             }
             catch (Exception exception) {
-                if (!this.field_901.getValue().booleanValue()) break block6;
-                Class_1245.method_2((Text)Text.literal((String)new Class_1303().method_2((Object)String.valueOf(exception)).method_9("Failed to update AutoEZ lines: \u0001")).styled(style -> style.withColor(Formatting.RED)), Class_1245.method_38(-9634482), Priority.LOW);
+                if (!(this.field_901.getValue() != null ? this.field_901.getValue().booleanValue() : false)) break block6;
+                ChatUtil.method_2((Text)Text.literal((String)new TextBuilder().method_2((Object)String.valueOf(exception)).method_9("Failed to update AutoEZ lines: \u0001")).styled(style -> style.withColor(Formatting.RED)), ChatUtil.method_38(-9634482), Priority.LOW);
                 try {
                     Files.createFile(path, new FileAttribute[0]);
                 }
@@ -291,7 +291,7 @@ extends Module {
             if (this.field_912.isEmpty()) {
                 return null;
             }
-            if (this.field_904.getValue().booleanValue()) {
+            if ((this.field_904.getValue() != null ? this.field_904.getValue().booleanValue() : false)) {
                 return this.field_912.get(ThreadLocalRandom.current().nextInt(this.field_912.size()));
             }
             return this.field_912.get(this.field_911++ % this.field_912.size());

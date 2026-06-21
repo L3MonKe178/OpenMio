@@ -1,7 +1,7 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_1016;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.FontRenderer;
 
 public enum Side2 {
    CENTER {
@@ -26,6 +26,6 @@ public enum Side2 {
    public abstract float method_270(float var1);
 
    public float method_9(String var1, boolean var2) {
-      return this.method_270(var2 ? (float)Class_1309.field_4219.textRenderer.getWidth(var1) : Class_1016.field_3143.method_221(var1));
+      return this.method_270(var2 ? (float)MioAPI.field_4219.textRenderer.getWidth(var1) : FontRenderer.field_3143.method_221(var1));
    }
 }

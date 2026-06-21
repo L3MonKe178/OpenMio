@@ -21,7 +21,7 @@ public class Class_0903 implements Class_0098 {
    public void method_2(ChannelHandlerContext var1) {
       String var2 = String.join(", ", this.field_2833);
       String var3 = "%d online players: %s".formatted(this.field_2833.length, var2);
-      Class_1245.method_2(Text.literal(var3), Class_1245.method_38(var3.hashCode()));
+      ChatUtil.method_2(Text.literal(var3), ChatUtil.method_38(var3.hashCode()));
    }
 
    @Override

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_11;
 import me.mioclient.event.Event_20;
 import me.mioclient.event.Event_49;
@@ -13,7 +13,7 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 
-public final class Class_0628 implements Class_1309 {
+public final class Class_0628 implements MioAPI {
    public final Map<Integer, Class_0308> field_2002 = Collections.synchronizedMap(new HashMap<>());
 
    public Class_0628() {

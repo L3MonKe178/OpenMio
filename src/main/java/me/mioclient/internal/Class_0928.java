@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_1;
 import me.mioclient.event.Event_10;
@@ -28,10 +28,10 @@ import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
 import net.minecraft.network.packet.s2c.play.InventoryS2CPacket;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 
-public final class Class_0928 implements Class_1309 {
+public final class Class_0928 implements MioAPI {
    public static final XCarryModule field_1340 = Hub.field_2595.method_78(XCarryModule.class);
    public final Map<Integer, Class_0081> field_2909 = Collections.synchronizedMap(new HashMap<>());
-   public final Class_0242 field_2910 = new Class_0242();
+   public final Timer field_2910 = new Timer();
    public volatile boolean field_111;
    public volatile boolean field_2500;
    public volatile boolean field_478;
@@ -91,7 +91,7 @@ public final class Class_0928 implements Class_1309 {
             if (var2.getSelectedSlot() != this.field_682) {
                field_4220.method_36(new Event_34(var2.getSelectedSlot()));
                this.field_682 = var2.getSelectedSlot();
-            } else if (Class_0485.method_513()) {
+            } else if (RotationManager.method_513()) {
                var1.method_463();
             }
          }
@@ -114,7 +114,7 @@ public final class Class_0928 implements Class_1309 {
          this.field_2909.clear();
       }
 
-      if (var1.method_127() instanceof ScreenHandlerSlotUpdateS2CPacket var4 && Class_0485.method_513()) {
+      if (var1.method_127() instanceof ScreenHandlerSlotUpdateS2CPacket var4 && RotationManager.method_513()) {
          if (var4.getSlot() == 36 + field_4219.player.getInventory().selectedSlot) {
             return;
          }
@@ -148,7 +148,7 @@ public final class Class_0928 implements Class_1309 {
    @Subscribe
    public void method_2(Event_59 var1) {
       if (!field_4219.isInSingleplayer()) {
-         Class_1261.method_14(field_4219.player.getInventory().selectedSlot);
+         PacketUtil.method_14(field_4219.player.getInventory().selectedSlot);
          var1.method_463();
       }
    }

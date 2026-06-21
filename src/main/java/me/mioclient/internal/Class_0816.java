@@ -82,21 +82,21 @@ public class Class_0816 extends Class_0370 {
 
       if (this.field_1804) {
          int var10000 = this.field_2587;
-         String var14 = new Class_1303().method_2(var10000).method_9("Score \u0001. Press R.");
-         Class_1016.field_3143
+         String var14 = new TextBuilder().method_2(var10000).method_9("Score \u0001. Press R.");
+         FontRenderer.field_3143
             .method_9(
                var1,
                var14,
                (float)(
                   (double)this.method_167().getX()
-                     + (double)this.method_167().method_216() * Class_0245.field_688
-                     - (double)Class_1016.field_3143.method_221(var14) * Class_0245.field_688
+                     + (double)this.method_167().method_216() * Constants.field_688
+                     - (double)FontRenderer.field_3143.method_221(var14) * Constants.field_688
                ),
-               (float)((double)(this.method_167().getY() + this.field_419) + (double)this.method_66() * Class_0245.field_688),
+               (float)((double)(this.method_167().getY() + this.field_419) + (double)this.method_66() * Constants.field_688),
                Color.white
             );
       } else {
-         Class_1016.field_3143
+         FontRenderer.field_3143
             .method_9(
                var1,
                String.valueOf(this.field_2587),

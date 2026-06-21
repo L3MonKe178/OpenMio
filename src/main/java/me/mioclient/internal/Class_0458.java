@@ -17,7 +17,7 @@ public class Class_0458 extends Class_0906 {
    @Override
    public void method_2(DrawContext var1, MatrixStack var2, double var3, double var5) {
       if (this.field_1464.field_2897.getValue().equals(this.field_1463)) {
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_9(
                var2,
                (float)(this.field_418.getX() + 1),
@@ -27,7 +27,7 @@ public class Class_0458 extends Class_0906 {
                this.method_852().field_2879.getValue()
             );
       } else {
-         Class_0838.field_2672
+         RenderUtil.field_2672
             .method_9(
                var2,
                (float)(this.field_418.getX() + 1),

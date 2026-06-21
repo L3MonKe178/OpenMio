@@ -6,10 +6,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0304;
 
-public class Class_0170 implements Class_1309 {
+public class Class_0170 implements MioAPI {
    public static final CopyOnWriteArrayList<ScheduledFuture<?>> field_485 = new CopyOnWriteArrayList<>();
 
    public Class_0170() {

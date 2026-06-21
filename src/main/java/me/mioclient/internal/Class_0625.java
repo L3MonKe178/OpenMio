@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Subscribe;
 
-public class Class_0625 extends Class_1049<Class_0140, List<Class_0140>> implements Class_1309 {
+public class Class_0625 extends Class_1049<Class_0140, List<Class_0140>> implements MioAPI {
    public final Queue<Class_0140> field_1992 = new ArrayDeque<>();
 
    public Class_0625() {

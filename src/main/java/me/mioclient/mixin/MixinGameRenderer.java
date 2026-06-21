@@ -6,9 +6,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.internal.Class_0127;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_1000;
 import me.mioclient.internal.Class_1334;
 import me.mioclient.internal.Class_1355;
@@ -216,7 +216,7 @@ public abstract class MixinGameRenderer {
          Class_1355.field_2003 = true;
          this.method_3172(this.field_18765, var4, var3);
          Class_1355.field_2003 = false;
-         Class_1309.field_4219.getProfiler().pop();
+         MioAPI.field_4219.getProfiler().pop();
       }
    }
 
@@ -246,8 +246,8 @@ public abstract class MixinGameRenderer {
    private void renderHandHook(Camera var1, float var2, Matrix4f var3, CallbackInfo var4) {
       RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, norender.method_282());
       if (viewmodel.isToggled() && !viewmodel.field_1907.getValue()) {
-         float var5 = var1.getPitch() * Class_0245.field_690;
-         float var6 = -(var1.getYaw() - 45.0F) * Class_0245.field_690;
+         float var5 = var1.getPitch() * Constants.field_690;
+         float var6 = -(var1.getYaw() - 45.0F) * Constants.field_690;
          float var7 = MathHelper.cos(var6);
          float var8 = MathHelper.sin(var6);
          float var9 = MathHelper.cos(var5);

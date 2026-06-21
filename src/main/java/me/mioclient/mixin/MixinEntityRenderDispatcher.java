@@ -1,7 +1,7 @@
 package me.mioclient.mixin;
 
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_13;
 import me.mioclient.internal.Class_0483;
 import me.mioclient.internal.Class_1355;
@@ -56,7 +56,7 @@ public class MixinEntityRenderDispatcher {
       E var1, double var2, double var4, double var6, float var8, float var9, MatrixStack var10, VertexConsumerProvider var11, int var12, CallbackInfo var13
    ) {
       Event_13 var14 = Event_13.method_9(var1, var10, var11);
-      Class_1309.field_4220.method_36(var14);
+      MioAPI.field_4220.method_36(var14);
       if (var14.method_464() || var1 == null) {
          var13.cancel();
       }
@@ -70,7 +70,7 @@ public class MixinEntityRenderDispatcher {
       E var1, double var2, double var4, double var6, float var8, float var9, MatrixStack var10, VertexConsumerProvider var11, int var12, CallbackInfo var13
    ) {
       Class_0483 var14 = Class_0483.method_2(var1, var10, var11);
-      Class_1309.field_4220.method_36(var14);
+      MioAPI.field_4220.method_36(var14);
    }
 
    @Inject(

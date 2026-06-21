@@ -20,7 +20,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.util.math.Vec3d;
 
-public final class Class_1207 extends Class_0618 {
+public final class Class_1207 extends Command {
    public Class_1207() {
       super("waypoints");
       this.method_9("wp");
@@ -38,7 +38,7 @@ public final class Class_1207 extends Class_0618 {
                                  String var3 = Class_1225.method_1071().method_235().toLowerCase();
                                  Class_1368 var4 = new Class_1368(var1x, var2, var3, method_1054());
                                  Hub.field_2604.method_9(var4);
-                                 Class_1245.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
+                                 ChatUtil.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
                                  return 1;
                               })).then(RequiredArgumentBuilder.<CommandSource, Class_0200>argument("dimension", new Class_0699<>(Class_0200.class, "dimension")).executes(var0 -> {
                                  String var1x = (String)var0.getArgument("name", String.class);
@@ -46,7 +46,7 @@ public final class Class_1207 extends Class_0618 {
                                  Class_0200 var3 = (Class_0200)var0.getArgument("dimension", Class_0200.class);
                                  Class_1368 var4 = new Class_1368(var1x, var2, var3.method_235().toLowerCase(), method_1054());
                                  Hub.field_2604.method_9(var4);
-                                 Class_1245.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
+                                 ChatUtil.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
                                  return 1;
                               }))))
                            .executes(var0 -> {
@@ -55,13 +55,13 @@ public final class Class_1207 extends Class_0618 {
                               Vec3d var3 = field_4219.player.getPos();
                               Class_1368 var4 = new Class_1368(var1x, var3, var2, method_1054());
                               Hub.field_2604.method_9(var4);
-                              Class_1245.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
+                              ChatUtil.method_2(Text.literal("Waypoint ").append(var4.method_15()).append(" has been created"), -1);
                               return 1;
                            })
                      )
                ))
                .then(
-                  Class_0618.method_2("remove", "delete", "del")
+                  Command.method_2("remove", "delete", "del")
                      .then(
                         RequiredArgumentBuilder.<CommandSource, String>argument("server", StringArgumentType.string())
                            .suggests(Class_1207::method_38)
@@ -70,7 +70,7 @@ public final class Class_1207 extends Class_0618 {
                               String var2 = (String)var0.getArgument("server", String.class);
                               ((List<Class_1368>)Hub.field_2604.getRegistry())
                                  .removeIf(var2x -> var2.equalsIgnoreCase(var2x.method_106()) && var1x.equalsIgnoreCase(var2x.getName()));
-                              Class_1245.method_2(Text.literal("Waypoint ").append(var1x).append(" has been removed"), -1);
+                              ChatUtil.method_2(Text.literal("Waypoint ").append(var1x).append(" has been removed"), -1);
                               return 1;
                            }))
                      )
@@ -90,7 +90,7 @@ public final class Class_1207 extends Class_0618 {
                                  Predicate<Class_1368> var4 = var2x -> var2.equalsIgnoreCase(var2x.method_106()) && var1x.equalsIgnoreCase(var2x.getName());
                                  Class_1368 var5 = (Class_1368)Hub.field_2604.method_2(var4).orElse(null);
                                  if (var5 == null) {
-                                    Class_1245.method_2(Text.of("Waypoint not found"), -1);
+                                    ChatUtil.method_2(Text.of("Waypoint not found"), -1);
                                     return 1;
                                  } else {
                                     ((List<Class_1368>)Hub.field_2604.getRegistry()).removeIf(var4);
@@ -99,7 +99,7 @@ public final class Class_1207 extends Class_0618 {
                                     var6 = var6.append(var1x);
                                     var6 = var6.append(" has been renamed to");
                                     var6 = var6.append(var3);
-                                    Class_1245.method_2(var6, -1);
+                                    ChatUtil.method_2(var6, -1);
                                     return 1;
                                  }
                               }))
@@ -110,7 +110,7 @@ public final class Class_1207 extends Class_0618 {
             MutableText var1x = Text.empty();
             var1x.append("Waypoints list: ");
             var1x.append(Texts.join(((List<Class_1368>)Hub.field_2604.getRegistry()).stream().map(Class_1368::method_15).toList(), Text.literal(", ")));
-            Class_1245.method_2(var1x, -1);
+            ChatUtil.method_2(var1x, -1);
             return 1;
          }));
       var1.then(
@@ -124,12 +124,12 @@ public final class Class_1207 extends Class_0618 {
                      Predicate<Class_1368> var3 = var2x -> var2.equalsIgnoreCase(var2x.method_106()) && var1x.equalsIgnoreCase(var2x.getName());
                      Class_1368 var4 = (Class_1368)Hub.field_2604.method_2(var3).orElse(null);
                      if (var4 == null) {
-                        Class_1245.method_2(Text.of("Waypoint not found"), -1);
+                        ChatUtil.method_2(Text.of("Waypoint not found"), -1);
                         return 1;
                      } else {
                         var4.method_38(!var4.isToggled());
                         String var5 = "Made the waypoint %s %s.".formatted(var1x, var4.isToggled() ? "visible" : "invisible");
-                        Class_1245.method_2(Text.literal(var5), -1);
+                        ChatUtil.method_2(Text.literal(var5), -1);
                         return 1;
                      }
                   }))
@@ -157,7 +157,7 @@ public final class Class_1207 extends Class_0618 {
 
    public static String method_2(Class_1368 var0) {
       String var1 = var0.method_106().toLowerCase();
-      return var1.contains(":") ? new Class_1303().method_2((Object)var1).method_9("\"\u0001\"") : var1;
+      return var1.contains(":") ? new TextBuilder().method_2((Object)var1).method_9("\"\u0001\"") : var1;
    }
 
    public static String method_1054() {

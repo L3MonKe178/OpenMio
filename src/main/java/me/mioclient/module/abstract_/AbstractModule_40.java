@@ -13,6 +13,6 @@ public class AbstractModule_40 extends AbstractModule_26 {
 
    public AbstractModule_40() {
       super("Welcomer");
-      this.method_2(new Class_0723(this, new Class_0121(() -> this.field_3762.getValue().method_2(this), () -> true)));
+      this.method_2(new Class_0723(this, new Class_0121(() -> (this.field_3762.getValue() != null ? this.field_3762.getValue().method_2(this) : null), () -> true)));
    }
 }

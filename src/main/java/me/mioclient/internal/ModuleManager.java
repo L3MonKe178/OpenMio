@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_1146;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.deobf.Named;
 import me.mioclient.enum_.Class_0046;
 import me.mioclient.event.Event_18;
@@ -23,10 +23,10 @@ import me.mioclient.module.abstract_.AbstractModule_32;
 import me.mioclient.module.abstract_.AbstractModule_6;
 import me.mioclient.record.Class_0702;
 
-public final class Class_0965 extends Class_0939<Module> implements Class_1309, Class_1146 {
+public final class ModuleManager extends Registry<Module> implements MioAPI, Class_1146 {
    public final Object2ObjectOpenHashMap<Class<? extends Module>, Module> field_2974 = new Object2ObjectOpenHashMap();
 
-   public Class_0965() {
+   public ModuleManager() {
       super();
       field_4220.method_14(this);
       MioModules.init(this);

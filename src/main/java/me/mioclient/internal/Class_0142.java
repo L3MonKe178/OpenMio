@@ -1,11 +1,11 @@
 package me.mioclient.internal;
 
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckMinecraftClient;
 import org.lwjgl.glfw.GLFW;
 
-public final class Class_0142 implements BooleanConsumer, Class_1309 {
+public final class Class_0142 implements BooleanConsumer, MioAPI {
    public Class_0142() {
       super();
    }

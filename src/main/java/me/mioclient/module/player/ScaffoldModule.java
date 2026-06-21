@@ -13,17 +13,17 @@ import me.mioclient.event.Event_7;
 import me.mioclient.event.Event_8;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Timer;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0512;
 import me.mioclient.internal.Class_0533;
 import me.mioclient.internal.Class_0719;
 import me.mioclient.internal.Class_0981;
 import me.mioclient.internal.Class_1035;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.mixin.ducks.DuckAbstractBlock;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -72,11 +72,11 @@ public class ScaffoldModule extends Module {
    public Setting<Color> field_161;
    public Setting<Boolean> field_162;
    public Setting<Float> field_163;
-   public final Class_0242 field_164;
-   public final Class_0242 field_165;
-   public final Class_0242 field_166;
-   public final Class_0242 field_167;
-   public final Class_0242 field_168;
+   public final Timer field_164;
+   public final Timer field_165;
+   public final Timer field_166;
+   public final Timer field_167;
+   public final Timer field_168;
    public Class_0407 field_169;
    public float[] field_170;
    public int field_171;
@@ -87,11 +87,11 @@ public class ScaffoldModule extends Module {
    public ScaffoldModule() {
       super("Scaffold", "Speedbridges for you automatically.", Category.PLAYER);
       Settings.initialize(this);
-      this.field_164 = new Class_0242();
-      this.field_165 = new Class_0242();
-      this.field_166 = new Class_0242();
-      this.field_167 = new Class_0242();
-      this.field_168 = new Class_0242();
+      this.field_164 = new Timer();
+      this.field_165 = new Timer();
+      this.field_166 = new Timer();
+      this.field_167 = new Timer();
+      this.field_168 = new Timer();
       this.field_172 = -1;
       this.field_174 = Float.intBitsToFloat(-1082130432);
       Hub.field_2616.method_2(new Class_0828(this, this.field_160, this.field_161, this.field_159, this.field_163, () -> false, this.field_162, 450));
@@ -138,7 +138,7 @@ public class ScaffoldModule extends Module {
                this.field_169 = null;
             } else {
                this.method_2(this.field_169);
-               if (!Class_0485.method_514() && this.field_169 != null) {
+               if (!RotationManager.method_514() && this.field_169 != null) {
                   this.method_78(this.method_2(Class_0147.PRE));
                }
 
@@ -146,12 +146,12 @@ public class ScaffoldModule extends Module {
                   Hub.field_2598.method_2(this.field_170, 5);
                }
 
-               if (this.field_165.method_9(500L) || Class_0485.method_513()) {
+               if (this.field_165.method_9(500L) || RotationManager.method_513()) {
                   this.field_170 = null;
                }
 
                this.method_77();
-               if (this.field_169 != null && this.field_166.method_9((long)this.field_148.getValue().intValue())) {
+               if (this.field_169 != null && this.field_166.method_9((long)(this.field_148.getValue() != null ? this.field_148.getValue().intValue() : 0))) {
                   if (!this.method_5(this.field_169.method_406(), this.field_172)) {
                      return;
                   }
@@ -173,20 +173,20 @@ public class ScaffoldModule extends Module {
                               var2x = var2x.add(
                                  0.0,
                                  var1x.method_721().isEmpty()
-                                    ? Class_0245.field_688
+                                    ? Constants.field_688
                                     : var1x.method_721().getBoundingBox().maxY - Double.longBitsToDouble(4576918229304087675L),
                                  0.0
                               );
                            }
 
                            boolean var3 = Hub.field_2602.method_993();
-                           Class_1261.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
+                           PacketUtil.method_2(field_4219.player, Mode.PRESS_SHIFT_KEY, 0);
                            Class_1035.method_2(this.field_169.method_406(), var2x, var1x.method_457(), this.field_152.getValue(), Hand.MAIN_HAND);
                            if (!var3) {
-                              Class_1261.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
+                              PacketUtil.method_2(field_4219.player, Mode.RELEASE_SHIFT_KEY, 0);
                            }
 
-                           if (Class_0485.method_514()) {
+                           if (RotationManager.method_514()) {
                               this.method_78(this.method_2(Class_0147.POST.method_2(var1x, var2x)));
                            }
 
@@ -215,7 +215,7 @@ public class ScaffoldModule extends Module {
 
    @Subscribe
    public void method_2(Event_9 var1) {
-      if (this.field_151.getValue() && Class_0485.method_513() && field_4219.player.isOnGround() && !field_4219.player.isRiding()) {
+      if (this.field_151.getValue() && RotationManager.method_513() && field_4219.player.isOnGround() && !field_4219.player.isRiding()) {
          Box var2 = field_4219.player.getBoundingBox().offset(var1.method_380(), 0.0, var1.method_396());
          boolean var3 = field_4219.player.isSneaking();
          if (field_4219.world.isSpaceEmpty(var2.stretch(0.0, Double.longBitsToDouble(-4616189618054758400L), 0.0))) {
@@ -241,10 +241,10 @@ public class ScaffoldModule extends Module {
 
    public void method_77() {
       int var1 = (int)Math.floor(field_4219.player.getY());
-      if (this.field_171 != var1 || Class_0485.method_513()) {
+      if (this.field_171 != var1 || RotationManager.method_513()) {
          this.field_171 = var1;
          if (this.field_150.getValue() && field_4219.player.input.jumping && field_4219.player.forwardSpeed == 0.0F && field_4219.player.sidewaysSpeed == 0.0F) {
-            if (Class_0485.method_513()) {
+            if (RotationManager.method_513()) {
                if (field_4219.player.isOnGround()) {
                   this.field_174 = this.method_83();
                   this.method_84(Float.intBitsToFloat(1052539785));
@@ -261,7 +261,7 @@ public class ScaffoldModule extends Module {
          if (this.field_157.getValue() && this.field_168.method_9((long)Hub.field_2623.method_878())) {
             Entity var2 = Class_1035.method_2(var1.method_406(), Hub.field_2623.method_523());
             if (var2 != null) {
-               float[] var3 = Class_0485.method_14(var2);
+               float[] var3 = RotationManager.method_14(var2);
                this.method_78(var3);
                this.field_168.reset();
             }
@@ -271,9 +271,9 @@ public class ScaffoldModule extends Module {
 
    public void method_78(float[] var1) {
       if (this.field_155.getValue()) {
-         if (Class_0485.method_514()) {
+         if (RotationManager.method_514()) {
             Hub.field_2598.method_9(var1, 10);
-            Class_1261.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), var1[0], var1[1], field_4219.player.isOnGround());
+            PacketUtil.method_2(field_4219.player.getX(), field_4219.player.getY(), field_4219.player.getZ(), var1[0], var1[1], field_4219.player.isOnGround());
          } else {
             this.field_170 = var1;
          }
@@ -305,7 +305,7 @@ public class ScaffoldModule extends Module {
 
    public int method_80(ItemStack var1) {
       if (var1.getItem() instanceof BlockItem var2
-         && this.field_145.getValue().method_2(var2.getBlock(), this.field_146.getValue())
+         && (this.field_145.getValue() != null ? this.field_145.getValue().method_2(var2.getBlock(), this.field_146.getValue()) : false)
          && ((DuckAbstractBlock)var2.getBlock()).isCollidable()
          && this.method_2(var2)) {
          return Class_0719.method_2(var2.getBlock().getDefaultState().getCollisionShape(field_4219.world, BlockPos.ORIGIN)) ? 2 : 1;
@@ -322,11 +322,11 @@ public class ScaffoldModule extends Module {
    public float[] method_2(Class_0147 var1) {
       if (var1 == Class_0147.PRE) {
          Class_0773 var2 = Class_0773.method_2(this.field_169, false);
-         float[] var3 = Class_0485.method_78(
+         float[] var3 = RotationManager.method_78(
             var2.method_564()
                .add(
                   0.0,
-                  var2.method_721().isEmpty() ? Class_0245.field_688 : var2.method_721().getBoundingBox().maxY - Double.longBitsToDouble(4576918229304087675L),
+                  var2.method_721().isEmpty() ? Constants.field_688 : var2.method_721().getBoundingBox().maxY - Double.longBitsToDouble(4576918229304087675L),
                   0.0
                )
          );
@@ -341,12 +341,12 @@ public class ScaffoldModule extends Module {
          this.field_165.reset();
          return var3;
       } else {
-         return Class_0485.method_78(
+         return RotationManager.method_78(
             var1.field_427
                .add(
                   0.0,
                   var1.field_426.method_721().isEmpty()
-                     ? Class_0245.field_688
+                     ? Constants.field_688
                      : var1.field_426.method_721().getBoundingBox().maxY - Double.longBitsToDouble(4576918229304087675L),
                   0.0
                )

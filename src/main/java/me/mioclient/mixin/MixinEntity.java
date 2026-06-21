@@ -4,10 +4,10 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReceiver;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0687;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_51;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.module.movement.ElytraFlyModule;
 import me.mioclient.module.movement.NoSlowModule;
@@ -139,11 +139,11 @@ public abstract class MixinEntity implements Class_0687 {
          return this.method_17835(var2);
       } else {
          Event_51 var3 = new Event_51(PreType.PRE, 0.6F);
-         Class_1309.field_4220.method_36(var3);
+         MioAPI.field_4220.method_36(var3);
          Class_0396.method_9((LivingEntity)(Object)this, var3.method_575());
          Vec3d var4 = this.method_17835(var2);
          if (var4 != null) {
-            Class_1309.field_4220.method_36(new Event_51(PreType.POST, (float)var4.y));
+            MioAPI.field_4220.method_36(new Event_51(PreType.POST, (float)var4.y));
          }
 
          return var4;
@@ -174,7 +174,7 @@ public abstract class MixinEntity implements Class_0687 {
          if (fl.isToggled() && this.equals(MinecraftClient.getInstance().player)) {
             double var6 = var3 * 0.15;
             double var8 = var1 * 0.15;
-            this.cameraPitch = MathHelper.clamp(this.cameraPitch + (float)var6, (float)(-Class_0245.field_685), (float)Class_0245.field_685);
+            this.cameraPitch = MathHelper.clamp(this.cameraPitch + (float)var6, (float)(-Constants.field_685), (float)Constants.field_685);
             this.cameraYaw += (float)var8;
             var5.cancel();
          }

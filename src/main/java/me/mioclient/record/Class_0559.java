@@ -1,9 +1,9 @@
 package me.mioclient.record;
 
 import com.google.gson.annotations.SerializedName;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 
-public final class Class_0559 implements Class_0013 {
+public final class Class_0559 implements Nameable {
    @SerializedName("sha")
    public final String field_1772;
    @SerializedName("message")

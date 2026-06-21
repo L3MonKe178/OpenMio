@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.network.packet.s2c.play.ExplosionS2CPacket;
 
-public class Event_37 extends Class_0605 {
+public class Event_37 extends Event {
    public final double field_1159;
    public final double field_1160;
    public final double field_1161;

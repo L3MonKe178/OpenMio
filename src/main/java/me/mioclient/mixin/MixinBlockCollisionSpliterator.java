@@ -2,7 +2,7 @@ package me.mioclient.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_35;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
@@ -40,7 +40,7 @@ public class MixinBlockCollisionSpliterator {
       if (this.field_25174 != MinecraftClient.getInstance().world) {
          return var1;
       } else {
-         Event_35 var3 = Class_1309.field_4220.method_36(Event_35.method_2(var1, this.field_25172, var2));
+         Event_35 var3 = MioAPI.field_4220.method_36(Event_35.method_2(var1, this.field_25172, var2));
          return var3.method_464() ? VoxelShapes.empty() : var3.method_957();
       }
    }

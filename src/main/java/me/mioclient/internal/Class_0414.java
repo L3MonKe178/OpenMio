@@ -13,8 +13,8 @@ import me.mioclient.internal.Class_0745;
 import me.mioclient.internal.Class_0746;
 import me.mioclient.internal.Class_0841;
 import me.mioclient.internal.Class_1015;
-import me.mioclient.internal.Class_1016;
-import me.mioclient.internal.Class_1303;
+import me.mioclient.internal.FontRenderer;
+import me.mioclient.internal.TextBuilder;
 import me.mioclient.module.client.UIModule;
 import me.mioclient.setting.Setting;
 import net.minecraft.client.gui.DrawContext;
@@ -112,8 +112,8 @@ extends Class_1015<Enum<?>> {
                 Class_0745.method_29(matrixStack, this.field_418.getX() + this.method_170(), (float)(this.field_418.getY() + this.field_419) + Float.intBitsToFloat(0x3F000000), this.field_418.getX() + this.field_418.method_216() - 2, (float)(this.field_418.getY() + this.field_419 + this.method_66()) - Float.intBitsToFloat(1069547520), this.method_852().field_2879.getValue());
             }
         }
-        String string = new Class_1303().method_2((Object)Class_0841.method_5((Enum)this.field_3138.getValue())).method_2((Object)this.field_3138.getName()).method_9("\u0001: \u0001");
-        this.method_2(matrixStack, string, () -> Class_1016.field_3143.method_9(drawContext, string, (float)(this.field_418.getX() + 4), (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419, this.method_852().field_2876.getValue()));
+        String string = new TextBuilder().method_2((Object)Class_0841.method_5((Enum)this.field_3138.getValue())).method_2((Object)this.field_3138.getName()).method_9("\u0001: \u0001");
+        this.method_2(matrixStack, string, () -> FontRenderer.field_3143.method_9(drawContext, string, (float)(this.field_418.getX() + 4), (float)this.field_418.getY() + this.method_850() - this.method_169() + (float)this.field_419, this.method_852().field_2876.getValue()));
         int n2 = this.method_851();
         for (Class_0194 class_01942 : this.field_1318) {
             class_01942.method_26(n2);

@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.mixin.ducks.DuckLivingEntity;
 import me.mioclient.setting.Setting;
 import net.minecraft.block.BlockState;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class Class_0719 implements Class_1309 {
+public class Class_0719 implements MioAPI {
    public static double field_2280 = Double.longBitsToDouble(4589168020290535424L);
 
    public Class_0719() {
@@ -26,7 +26,7 @@ public class Class_0719 implements Class_1309 {
    }
 
    public static Vec3d method_2(Box var0) {
-      return new Vec3d(MathHelper.lerp(Class_0245.field_688, var0.minX, var0.maxX), var0.minY, MathHelper.lerp(Class_0245.field_688, var0.minZ, var0.maxZ));
+      return new Vec3d(MathHelper.lerp(Constants.field_688, var0.minX, var0.maxX), var0.minY, MathHelper.lerp(Constants.field_688, var0.minZ, var0.maxZ));
    }
 
    public static Vec3d method_9(Box var0) {
@@ -34,13 +34,13 @@ public class Class_0719 implements Class_1309 {
    }
 
    public static Vec3d method_5(Box var0) {
-      return new Vec3d(MathHelper.lerp(Class_0245.field_688, var0.minX, var0.maxX), var0.maxY, MathHelper.lerp(Class_0245.field_688, var0.minZ, var0.maxZ));
+      return new Vec3d(MathHelper.lerp(Constants.field_688, var0.minX, var0.maxX), var0.maxY, MathHelper.lerp(Constants.field_688, var0.minZ, var0.maxZ));
    }
 
    public static Box method_2(Box var0, Vec3d var1) {
-      double var2 = var0.getLengthX() * Class_0245.field_688;
-      double var4 = var0.getLengthY() * Class_0245.field_688;
-      double var6 = var0.getLengthZ() * Class_0245.field_688;
+      double var2 = var0.getLengthX() * Constants.field_688;
+      double var4 = var0.getLengthY() * Constants.field_688;
+      double var6 = var0.getLengthZ() * Constants.field_688;
       return new Box(var1.x - var2, var1.y - var4, var1.z - var6, var1.x + var2, var1.y + var4, var1.z + var6);
    }
 
@@ -48,9 +48,9 @@ public class Class_0719 implements Class_1309 {
       return method_2(
          var0,
          new Vec3d(
-            (double)var1.getX() + Class_0245.field_688,
-            (double)var1.getY() + var0.getLengthY() * Class_0245.field_688,
-            (double)var1.getZ() + Class_0245.field_688
+            (double)var1.getX() + Constants.field_688,
+            (double)var1.getY() + var0.getLengthY() * Constants.field_688,
+            (double)var1.getZ() + Constants.field_688
          )
       );
    }

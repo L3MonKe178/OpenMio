@@ -8,13 +8,13 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiPredicate;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.command.CommandSource;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class Class_0624<T> implements ArgumentType<T>, Class_1309 {
+public class Class_0624<T> implements ArgumentType<T>, MioAPI {
    public final BiPredicate<CommandContext<?>, T> field_1990;
    public final Registry<T> field_1991;
 
@@ -29,7 +29,7 @@ public class Class_0624<T> implements ArgumentType<T>, Class_1309 {
       return (T)this.field_1991
          .getOrEmpty(Identifier.of(var2))
          .orElseThrow(
-            () -> new DynamicCommandExceptionType(var0x -> Text.of(new Class_1303().method_2(String.valueOf(var0x)).method_9("Element not found \u0001")))
+            () -> new DynamicCommandExceptionType(var0x -> Text.of(new TextBuilder().method_2(String.valueOf(var0x)).method_9("Element not found \u0001")))
                   .create(var2)
          );
    }

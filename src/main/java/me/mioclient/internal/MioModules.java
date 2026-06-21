@@ -3,7 +3,7 @@ package me.mioclient.internal;
 import me.mioclient.module.Module;
 
 public final class MioModules {
-   public static void init(Class_0965 manager) {
+   public static void init(ModuleManager manager) {
       String[] classes = new String[] {
          "me.mioclient.module.abstract_.AbstractModule_10",
          "me.mioclient.module.abstract_.AbstractModule_1",
@@ -249,7 +249,7 @@ public final class MioModules {
       applyUIModuleDefaults(manager, unsafe);
    }
 
-   private static void applyUIModuleDefaults(Class_0965 manager, sun.misc.Unsafe unsafe) {
+   private static void applyUIModuleDefaults(ModuleManager manager, sun.misc.Unsafe unsafe) {
       try {
          me.mioclient.module.client.UIModule ui = manager.method_78(me.mioclient.module.client.UIModule.class);
          if (ui == null) return;
@@ -303,7 +303,7 @@ public final class MioModules {
       }
    }
 
-   private static void applyDefaultKeybinds(Class_0965 manager) {
+   private static void applyDefaultKeybinds(ModuleManager manager) {
       try {
          me.mioclient.module.client.UIModule ui = manager.method_78(me.mioclient.module.client.UIModule.class);
          if (ui != null && (ui.getKeybind() == null || ui.getKeybind().method_38() < 0)) {

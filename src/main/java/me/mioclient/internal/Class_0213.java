@@ -9,7 +9,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-public class Class_0213 extends Class_0618 {
+public class Class_0213 extends Command {
    public static final Color field_596 = new Color(255, 0, 0, 120);
    public static final Color field_597 = new Color(0, 0, 0, 0);
 

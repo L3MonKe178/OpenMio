@@ -4,7 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 import java.io.DataInputStream;
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0098;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.event.Event_23;
 
 public class Class_0476 implements Class_0098 {
@@ -37,7 +37,7 @@ public class Class_0476 implements Class_0098 {
          Class_1257 var2 = new Class_1257(this.username, this.field_1518, this.field_1321, this.field_1322, this.field_1519);
          var2.reset();
          Event_23 var3 = new Event_23(var2);
-         Class_1309.field_4220.method_36(var3);
+         MioAPI.field_4220.method_36(var3);
          if (!var3.method_464()) {
             synchronized (Hub.field_2610.method_328()) {
                Hub.field_2610.method_328().add(var2);

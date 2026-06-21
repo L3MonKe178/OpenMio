@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Class_0655;
 import me.mioclient.enum_.Class_1200;
 import me.mioclient.module.client.UIModule;
@@ -20,7 +20,7 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 
-public class Class_1117 extends Screen implements Class_1309 {
+public class Class_1117 extends Screen implements MioAPI {
    public static BlurModule field_3459 = Hub.field_2595.method_78(BlurModule.class);
    public static Class_1200 field_3460 = Class_1200.STANDARD;
    public static final int field_3461 = 25;
@@ -124,7 +124,7 @@ public class Class_1117 extends Screen implements Class_1309 {
          float var28 = 0.0F;
 
          for (String var13 : var26) {
-            float var14 = Class_1016.field_3143.method_221(var13);
+            float var14 = FontRenderer.field_3143.method_221(var13);
             if (var14 > var28) {
                var28 = var14;
             }
@@ -142,22 +142,22 @@ public class Class_1117 extends Screen implements Class_1309 {
          int var33 = (int)var6;
          float var15 = var6
             - Float.intBitsToFloat(1065353216)
-            + ((float)Class_1016.field_3143.method_66() + Float.intBitsToFloat(1065353216)) * (float)var26.length;
+            + ((float)FontRenderer.field_3143.method_66() + Float.intBitsToFloat(1065353216)) * (float)var26.length;
          Class_1299.method_2(
-            () -> Class_0838.field_2672
+            () -> RenderUtil.field_2672
                   .method_2(context.getMatrices(), var31, (float)var33 - Float.intBitsToFloat(1065353216), var32, var15, Class_1081.method_2(10, 10, 10, 140)),
             Float.intBitsToFloat(1086324736)
          );
-         Class_0838.field_2672.method_9(context.getMatrices(), var29, var6 - Float.intBitsToFloat(1065353216), var30, var15, new Color(10, 10, 10, 80));
+         RenderUtil.field_2672.method_9(context.getMatrices(), var29, var6 - Float.intBitsToFloat(1065353216), var30, var15, new Color(10, 10, 10, 80));
          int var16 = 0;
 
          for (String var20 : var26) {
-            Class_1016.field_3143
+            FontRenderer.field_3143
                .method_9(
                   context,
                   var20,
                   var29 + Float.intBitsToFloat(1065353216),
-                  var6 + ((float)Class_1016.field_3143.method_66() + Float.intBitsToFloat(1065353216)) * (float)var16,
+                  var6 + ((float)FontRenderer.field_3143.method_66() + Float.intBitsToFloat(1065353216)) * (float)var16,
                   Color.white
                );
             var16++;
@@ -227,7 +227,7 @@ public class Class_1117 extends Screen implements Class_1309 {
       double var9 = Class_1067.method_78(this.field_1096);
       mouseX /= var9;
       mouseY /= var9;
-      int var11 = 2 + Class_1016.field_3143.method_66() + UIModule.field_2843.field_2851.getValue();
+      int var11 = 2 + FontRenderer.field_3143.method_66() + UIModule.field_2843.field_2851.getValue();
       int var12 = this.field_3462.stream().mapToInt(Class_0746::method_66).max().orElse(var11);
       if ((double)var12 > (double)(field_4219.getWindow().getScaledHeight() + 5) / var9) {
          var12 -= (int)((double)(field_4219.getWindow().getScaledHeight() - 5) / var9);

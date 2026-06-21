@@ -9,11 +9,11 @@ import me.mioclient.event.Event_39;
 import me.mioclient.event.Event_7;
 import me.mioclient.event.Event_9;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0444;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0512;
 import me.mioclient.internal.Class_0981;
 import me.mioclient.module.Category;
@@ -40,8 +40,8 @@ public class HoleSnapModule extends Module {
    public Setting<Float> field_1175;
    public Setting<Float> field_1176;
    public final Class_0444 field_1177;
-   public final Class_0242 field_1178;
-   public final Class_0242 field_1179;
+   public final Timer field_1178;
+   public final Timer field_1179;
    public boolean field_1180;
    public boolean field_1181;
 
@@ -49,8 +49,8 @@ public class HoleSnapModule extends Module {
       super("HoleSnap", "Pushes you into holes as you go past them.", Category.MOVEMENT, "holetp", "anchor");
       Settings.initialize(this);
       this.field_1177 = new Class_0444(this);
-      this.field_1178 = new Class_0242();
-      this.field_1179 = new Class_0242();
+      this.field_1178 = new Timer();
+      this.field_1179 = new Timer();
       this.field_1181 = false;
       this.field_1176.method_2("None", SettingMode.MIN);
    }
@@ -68,14 +68,14 @@ public class HoleSnapModule extends Module {
          this.field_1178.reset();
       }
 
-      if (!this.method_404() && this.field_1179.method_2((double)this.field_1173.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (!this.method_404() && this.field_1179.method_2((double)(this.field_1173.getValue() != null ? this.field_1173.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          Class_0123 var3 = this.method_403();
          if (var3 == null) {
             this.field_1181 = false;
             Hub.field_2617.method_38(this);
          } else {
-            if (Class_0485.method_513()) {
-               Hub.field_2598.method_2(Class_0485.method_78((Vec3d)var3.method_144()), 1337, true);
+            if (RotationManager.method_513()) {
+               Hub.field_2598.method_2(RotationManager.method_78((Vec3d)var3.method_144()), 1337, true);
                this.field_1181 = true;
             }
 
@@ -102,7 +102,7 @@ public class HoleSnapModule extends Module {
             this.field_1179.reset();
          }
 
-         if (this.field_1179.method_2((double)this.field_1173.getValue().floatValue(), TimeUnit.SECONDS) && !Class_0485.method_513()) {
+         if (this.field_1179.method_2((double)(this.field_1173.getValue() != null ? this.field_1173.getValue().floatValue() : 0.0f), TimeUnit.SECONDS) && !RotationManager.method_513()) {
             Class_0123 var2 = this.method_403();
             if (var2 == null) {
                this.field_1181 = false;
@@ -110,7 +110,7 @@ public class HoleSnapModule extends Module {
                Vec3d var3 = ((Vec3d)var2.method_144())
                   .subtract(field_4219.player.getPos())
                   .normalize()
-                  .multiply(Math.min(Class_0464.method_78(true) * (double)this.field_1175.getValue().floatValue(), (Double)var2.method_145()));
+                  .multiply(Math.min(Class_0464.method_78(true) * (double)(this.field_1175.getValue() != null ? this.field_1175.getValue().floatValue() : 0.0f), (Double)var2.method_145()));
                var1.method_7(var3.x, var3.z);
             }
          }
@@ -121,7 +121,7 @@ public class HoleSnapModule extends Module {
       method_800 = -100
    )
    public void method_2(Event_16 var1) {
-      if (this.field_1181 && !this.method_404() && this.field_1179.method_2((double)this.field_1173.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (this.field_1181 && !this.method_404() && this.field_1179.method_2((double)(this.field_1173.getValue() != null ? this.field_1173.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          var1.method_276().movementForward = var1.method_278() ? var1.method_277() : Float.intBitsToFloat(1065353216);
          var1.method_276().pressingForward = true;
       }
@@ -129,13 +129,13 @@ public class HoleSnapModule extends Module {
 
    @Subscribe
    public void method_9(Event_39 var1) {
-      if (this.field_1181 && !this.method_404() && this.field_1179.method_2((double)this.field_1173.getValue().floatValue(), TimeUnit.SECONDS)) {
+      if (this.field_1181 && !this.method_404() && this.field_1179.method_2((double)(this.field_1173.getValue() != null ? this.field_1173.getValue().floatValue() : 0.0f), TimeUnit.SECONDS)) {
          Class_0123 var2 = this.method_403();
          if (var2 == null) {
             return;
          }
 
-         float[] var3 = Class_0485.method_78((Vec3d)var2.method_144());
+         float[] var3 = RotationManager.method_78((Vec3d)var2.method_144());
          var1.setYaw(var3[0]);
          var1.setPitch(var3[1]);
          var1.method_463();
@@ -151,12 +151,12 @@ public class HoleSnapModule extends Module {
          Vec3d var7 = var6.method_172().getCenter();
          var7 = var7.withAxis(
             Axis.Y,
-            MathHelper.clamp(var4.getY(), var7.y, var7.y + (double)this.field_1172.getValue().floatValue() - Double.longBitsToDouble(4602678819172646912L))
+            MathHelper.clamp(var4.getY(), var7.y, var7.y + (double)(this.field_1172.getValue() != null ? this.field_1172.getValue().floatValue() : 0.0f) - Double.longBitsToDouble(4602678819172646912L))
          );
          if (!((double)var6.method_406().getY() >= var4.getY()) && !var6.method_676()) {
             double var8 = var4.distanceTo(var7);
             if ((!this.field_1169.getValue() || Class_0464.method_2(var7) || !(var8 > Double.longBitsToDouble(4587366580439587226L)))
-               && !(var8 > (double)this.field_1174.getValue().floatValue())
+               && !(var8 > (double)(this.field_1174.getValue() != null ? this.field_1174.getValue().floatValue() : 0.0f))
                && field_4219.world.isSpaceEmpty(var6.method_172().withMaxY(field_4219.player.getBoundingBox().maxY))
                && !this.method_29(var4, var7)
                && !this.method_29(
@@ -169,7 +169,7 @@ public class HoleSnapModule extends Module {
          }
       }
 
-      return var1 > (double)this.field_1174.getValue().floatValue() ? null : new Class_0123<>(var3, var1);
+      return var1 > (double)(this.field_1174.getValue() != null ? this.field_1174.getValue().floatValue() : 0.0f) ? null : new Class_0123<>(var3, var1);
    }
 
    public boolean method_404() {

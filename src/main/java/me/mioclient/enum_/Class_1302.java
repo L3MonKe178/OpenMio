@@ -1,15 +1,15 @@
 package me.mioclient.enum_;
 
-import me.mioclient.api.Class_0013;
-import me.mioclient.api.Class_1309;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.api.Nameable;
+import me.mioclient.api.MioAPI;
+import me.mioclient.internal.PlayerUtil;
 
-public enum Class_1302 implements Class_1309, Class_0013 {
+public enum Class_1302 implements MioAPI, Nameable {
    NONE("None"),
    NORMAL("Normal") {
       @Override
       public void method_9(int var1, Runnable var2) {
-         Class_0136.method_16(var1);
+         PlayerUtil.method_16(var1);
          var2.run();
       }
    },
@@ -17,9 +17,9 @@ public enum Class_1302 implements Class_1309, Class_0013 {
       @Override
       public void method_9(int var1, Runnable var2) {
          int var3 = field_4219.player.getInventory().selectedSlot;
-         Class_0136.method_16(var1);
+         PlayerUtil.method_16(var1);
          var2.run();
-         Class_0136.method_16(var3);
+         PlayerUtil.method_16(var3);
       }
    };
 

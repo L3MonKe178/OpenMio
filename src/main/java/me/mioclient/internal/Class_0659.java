@@ -2,7 +2,7 @@ package me.mioclient.internal;
 
 import net.minecraft.client.gui.screen.Screen;
 
-public class Class_0659 extends Class_0605 {
+public class Class_0659 extends Event {
    public final Screen field_2117;
    public final Screen field_2118;
 

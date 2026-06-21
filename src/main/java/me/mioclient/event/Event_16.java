@@ -1,9 +1,9 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.client.input.Input;
 
-public class Event_16 extends Class_0605 {
+public class Event_16 extends Event {
    public final Input field_714;
    public final float field_715;
 

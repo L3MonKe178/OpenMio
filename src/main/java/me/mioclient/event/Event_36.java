@@ -1,10 +1,10 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 
-public class Event_36 extends Class_0605 {
+public class Event_36 extends Event {
    public final BlockHitResult field_1098;
    public final Hand field_1099;
 

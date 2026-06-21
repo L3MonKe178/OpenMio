@@ -2,10 +2,10 @@ package me.mioclient.record;
 
 import me.mioclient.Hub;
 import me.mioclient.api.Class_0705;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.entity.player.PlayerEntity;
 
-public final class Class_1073 implements Class_1309 {
+public final class Class_1073 implements MioAPI {
    public final PlayerEntity field_3292;
    public final double field_3293;
 

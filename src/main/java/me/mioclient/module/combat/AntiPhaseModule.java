@@ -9,12 +9,12 @@ import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0003;
 import me.mioclient.internal.Class_0035;
 import me.mioclient.internal.Class_0088;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0382;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_1161;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.movement.NoSlowModule;
@@ -48,18 +48,18 @@ public class AntiPhaseModule extends Module {
    public Setting<Float> field_854;
    public Setting<Boolean> field_855;
    public Setting<Float> field_856;
-   public final Class_0242 field_857;
+   public final Timer field_857;
 
    public AntiPhaseModule() {
       super("AntiPhase", "Prevents your enemies from pearl-phasing into nearest block.", Category.COMBAT);
       Settings.initialize(this);
-      this.field_857 = new Class_0242();
+      this.field_857 = new Timer();
       Hub.field_2616.method_2(new Class_0828(this, this.field_852, this.field_853, this.field_854, this.field_856, () -> true, this.field_855, 450));
    }
 
    @Subscribe
    public void method_9(Event_7 var1) {
-      if (this.field_857.method_5((long)this.field_846.getValue().intValue()) && !field_843.method_573()) {
+      if (this.field_857.method_5((long)(this.field_846.getValue() != null ? this.field_846.getValue().intValue() : 0)) && !field_843.method_573()) {
          int var2 = 0;
 
          for (AbstractClientPlayerEntity var4 : field_4219.world.getPlayers()) {
@@ -68,7 +68,7 @@ public class AntiPhaseModule extends Module {
                if (var5 != null) {
                   if (this.method_2(var5)) {
                      if (this.field_849.getValue()) {
-                        float[] var6 = Class_0485.method_78(var5.method_908());
+                        float[] var6 = RotationManager.method_78(var5.method_908());
                         Hub.field_2598.method_2(var6, 25);
                      }
 
@@ -89,17 +89,18 @@ public class AntiPhaseModule extends Module {
    }
 
    public boolean method_2(Class_1013 var1) {
-      Item var2 = this.field_844.getValue().method_903();
-      int var3 = Class_0136.method_5(var2);
+      if (this.field_844 == null || this.field_844.getValue() == null) return false;
+      Item var2 = (this.field_844.getValue() != null ? this.field_844.getValue().method_903() : null);
+      int var3 = PlayerUtil.method_5(var2);
       int var4 = field_4219.player.getInventory().selectedSlot;
       if (var3 == -1) {
          return false;
       } else {
-         Class_0136.method_78(var3);
+         PlayerUtil.method_78(var3);
          BlockHitResult var5 = new BlockHitResult(var1.method_908(), var1.method_20(), var1.method_406(), false);
-         Hub.field_2615.method_3(() -> Class_1261.method_2(Hand.MAIN_HAND, var5));
-         Class_1261.method_9(Hand.MAIN_HAND);
-         Class_0136.method_78(var4);
+         Hub.field_2615.method_3(() -> PacketUtil.method_2(Hand.MAIN_HAND, var5));
+         PacketUtil.method_9(Hand.MAIN_HAND);
+         PlayerUtil.method_78(var4);
          return true;
       }
    }

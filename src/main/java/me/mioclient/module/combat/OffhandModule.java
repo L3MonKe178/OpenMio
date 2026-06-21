@@ -13,14 +13,14 @@ import me.mioclient.event.Event_36;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0018;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0199;
-import me.mioclient.internal.Class_0242;
+import me.mioclient.internal.Timer;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.internal.Class_0509;
 import me.mioclient.internal.Class_1225;
-import me.mioclient.internal.Class_1245;
-import me.mioclient.internal.Class_1261;
+import me.mioclient.internal.ChatUtil;
+import me.mioclient.internal.PacketUtil;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
 import me.mioclient.module.abstract_.AbstractModule_28;
@@ -71,10 +71,10 @@ public class OffhandModule extends Module {
    public Setting<Boolean> field_1972;
    public Setting<Boolean> field_1973;
    public Setting<Set<Item>> field_1974;
-   public final Class_0242 field_1975;
-   public final Class_0242 field_1976;
-   public final Class_0242 field_1977;
-   public final Class_0242 field_1978;
+   public final Timer field_1975;
+   public final Timer field_1976;
+   public final Timer field_1977;
+   public final Timer field_1978;
    public final List<Long> field_1979;
    public int field_1980;
    public boolean field_1981;
@@ -86,10 +86,10 @@ public class OffhandModule extends Module {
    public OffhandModule() {
       super("Offhand", "Manages your offhand automatically.", Category.COMBAT, "autototem");
       Settings.initialize(this);
-      this.field_1975 = new Class_0242();
-      this.field_1976 = new Class_0242();
-      this.field_1977 = new Class_0242();
-      this.field_1978 = new Class_0242();
+      this.field_1975 = new Timer();
+      this.field_1976 = new Timer();
+      this.field_1977 = new Timer();
+      this.field_1978 = new Timer();
       this.field_1979 = new ArrayList<>();
       this.field_1980 = -1;
       this.field_1983 = new Class_0509() {
@@ -109,7 +109,7 @@ public class OffhandModule extends Module {
 
    @Override
    public String getInfo() {
-      return this.field_1962.getValue().toString();
+      return (this.field_1962.getValue() != null ? this.field_1962.getValue().toString() : "");
    }
 
    @Override
@@ -134,7 +134,7 @@ public class OffhandModule extends Module {
          field_1984 = false;
          this.field_1983.method_142();
          if (!this.method_638()) {
-            if (this.method_569() && this.field_1975.method_9((long)this.field_1963.getValue().intValue())) {
+            if (this.method_569() && this.field_1975.method_9((long)(this.field_1963.getValue() != null ? this.field_1963.getValue().intValue() : 0))) {
                this.field_1979.removeIf(var0 -> var0 == null || System.currentTimeMillis() > var0 + 1000L);
                byte var1 = 4;
                if (this.field_1979.size() > var1) {
@@ -199,7 +199,7 @@ public class OffhandModule extends Module {
             float var3 = Class_0396.method_76();
             if (var3 > this.field_1964.getValue()
                && field_4219.player.fallDistance < Float.intBitsToFloat(1098907648)
-               && Class_0136.method_29((Predicate<ItemStack>)(var2x -> var2x.isOf(this.field_1962.getValue().method_98(var1)))) > 0) {
+               && PlayerUtil.method_29((Predicate<ItemStack>)(var2x -> var2x.isOf((this.field_1962.getValue() != null ? this.field_1962.getValue().method_98(var1) : null)))) > 0) {
                var2 = this.field_1962.getValue();
             }
 
@@ -246,7 +246,7 @@ public class OffhandModule extends Module {
       this.field_1979.add(System.currentTimeMillis());
       Hub.field_2611.method_154(true);
       if (Hub.field_2602.method_992()) {
-         Class_1261.method_2(field_4219.player, Mode.STOP_SPRINTING, 0);
+         PacketUtil.method_2(field_4219.player, Mode.STOP_SPRINTING, 0);
          this.field_1981 = true;
       }
    }
@@ -258,7 +258,7 @@ public class OffhandModule extends Module {
       }
 
       if (this.field_1981) {
-         Class_1261.method_2(field_4219.player, Mode.START_SPRINTING, 0);
+         PacketUtil.method_2(field_4219.player, Mode.START_SPRINTING, 0);
          this.field_1981 = false;
       }
    }
@@ -285,8 +285,8 @@ public class OffhandModule extends Module {
                if (!var4.contains(DataComponentTypes.FOOD) || this.field_1982) {
                   this.method_635();
                   int var5 = field_4219.player.currentScreenHandler.syncId;
-                  if (!var3.isEmpty() && !Class_0136.method_161()) {
-                     field_4219.interactionManager.clickSlot(var5, Class_0136.method_9(Items.AIR), 0, SlotActionType.PICKUP, field_4219.player);
+                  if (!var3.isEmpty() && !PlayerUtil.method_161()) {
+                     field_4219.interactionManager.clickSlot(var5, PlayerUtil.method_9(Items.AIR), 0, SlotActionType.PICKUP, field_4219.player);
                   }
 
                   if (this.field_1966.getValue() && field_4219.player.currentScreenHandler.getCursorStack().isEmpty()) {
@@ -310,9 +310,9 @@ public class OffhandModule extends Module {
    }
 
    public void method_78(int var1) {
-      if (this.field_1975.method_9((long)this.field_1963.getValue().intValue())) {
+      if (this.field_1975.method_9((long)(this.field_1963.getValue() != null ? this.field_1963.getValue().intValue() : 0))) {
          if (field_4219.player.currentScreenHandler.slots.size() > 45) {
-            Class_0136.method_5(var1, 45);
+            PlayerUtil.method_5(var1, 45);
             this.field_1975.reset();
          }
       }
@@ -338,7 +338,7 @@ public class OffhandModule extends Module {
                   .styled(var0 -> var0.withHoverEvent(new HoverEvent(Action.SHOW_TEXT, Text.literal("More info in the game log."))))
             );
          if ((long)var3 > var1) {
-            Class_1245.method_2(var4, Class_1245.method_38(Math.abs(this.getName().hashCode()) * -1 - 1), Priority.HIGH);
+            ChatUtil.method_2(var4, ChatUtil.method_38(Math.abs(this.getName().hashCode()) * -1 - 1), Priority.HIGH);
             System.out
                .println(
                   "*Death was most likely caused by you taking damage before the server receives the update slot packet, making you die holding a totem client-side."

@@ -3,13 +3,13 @@ package me.mioclient.internal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.item.tooltip.TooltipData;
 import net.minecraft.text.Text;
 
-public final class Class_0593 implements Class_1309 {
+public final class Class_0593 implements MioAPI {
    public static boolean field_1856 = false;
    public static List<TooltipComponent> field_1666;
 

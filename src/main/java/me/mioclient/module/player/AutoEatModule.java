@@ -5,7 +5,7 @@ import me.mioclient.enum_.Class_0776;
 import me.mioclient.enum_.PreType;
 import me.mioclient.event.Event_19;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_0396;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -61,7 +61,7 @@ public class AutoEatModule extends Module {
          } else {
             int var2 = this.method_891();
             if ((var2 == -1 || !field_4219.player.getInventory().getStack(var2).isOf(Items.CHORUS_FRUIT)) && this.method_893()) {
-               int var3 = Class_0136.method_9(Items.CHORUS_FRUIT);
+               int var3 = PlayerUtil.method_9(Items.CHORUS_FRUIT);
                if (var3 != -1) {
                   var2 = -1;
                   this.field_3078 = var3;
@@ -74,7 +74,7 @@ public class AutoEatModule extends Module {
                   field_4219.interactionManager.stopUsingItem(field_4219.player);
                   this.method_84(false);
                   if (this.field_3071.getValue() && this.field_3073.getValue() && this.field_3076 != -1) {
-                     Class_0136.method_16(this.field_3076);
+                     PlayerUtil.method_16(this.field_3076);
                   }
 
                   if (this.field_3078 != -1) {
@@ -92,7 +92,7 @@ public class AutoEatModule extends Module {
                boolean var5 = var2 == 40;
                if (this.field_3071.getValue() && !var5 && var2 != -1 && field_4219.player.getInventory().selectedSlot != var2) {
                   this.field_3076 = field_4219.player.getInventory().selectedSlot;
-                  Class_0136.method_16(var2);
+                  PlayerUtil.method_16(var2);
                }
 
                ItemStack var4 = field_4219.player.getMainHandStack();
@@ -121,7 +121,8 @@ public class AutoEatModule extends Module {
          ItemStack var5 = field_4219.player.getInventory().getStack(var4);
          FoodComponent var6 = (FoodComponent)var5.get(DataComponentTypes.FOOD);
          if (var6 != null && (var6.canAlwaysEat() || field_4219.player.getHungerManager().getFoodLevel() < 20)) {
-            double var7 = this.field_3072.getValue().method_2(var6);
+            if (this.field_3072 == null || this.field_3072.getValue() == null) continue;
+            double var7 = (this.field_3072.getValue() != null ? this.field_3072.getValue().method_2(var6) : 0.0);
             if (var7 > var1 || var7 == var1 && var4 == field_4219.player.getInventory().selectedSlot) {
                var1 = var7;
                var3 = var4;
@@ -160,7 +161,7 @@ public class AutoEatModule extends Module {
 
    public boolean method_894() {
       return (this.field_3069.getValue() == -1 || field_4219.player.getHungerManager().getFoodLevel() > this.field_3069.getValue())
-         && (this.field_3068.getValue() == 0 || Class_0396.method_76() > (float)this.field_3068.getValue().intValue());
+         && (this.field_3068.getValue() == 0 || Class_0396.method_76() > (float)(this.field_3068.getValue() != null ? this.field_3068.getValue().intValue() : 0));
    }
 
    public void method_84(boolean var1) {

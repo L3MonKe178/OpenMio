@@ -33,7 +33,7 @@ public abstract class Class_0260 extends Named {
 
    public void method_7(String var1) {
       for (String var5 : var1.split(";")) {
-         Class_1032.method_7(var5.trim());
+         CommandManager.method_7(var5.trim());
       }
    }
 }

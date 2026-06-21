@@ -22,7 +22,7 @@ public class Class_0121 {
    }
 
    public void method_2(DrawContext var1, float var2, float var3, Color var4) {
-      float var5 = Class_1016.field_3143.method_221(this.method_15().getString());
+      float var5 = FontRenderer.field_3143.method_221(this.method_15().getString());
       if (hud.field_956.getValue()) {
          this.field_360.method_3(var5);
       } else {
@@ -41,7 +41,7 @@ public class Class_0121 {
                   )
             )
          );
-         Class_1016.field_3143.method_9(var1, this.method_15(), var2, var3, var6);
+         FontRenderer.field_3143.method_9(var1, this.method_15(), var2, var3, var6);
       }
    }
 

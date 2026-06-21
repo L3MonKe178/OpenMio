@@ -1,13 +1,13 @@
 package me.mioclient.enum_;
 
 import java.awt.Color;
-import me.mioclient.api.Class_0013;
+import me.mioclient.api.Nameable;
 import me.mioclient.api.Class_0964;
 import me.mioclient.module.render.ChamsModule;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
-public enum Class_0670 implements Class_0013, Class_0964 {
+public enum Class_0670 implements Nameable, Class_0964 {
    BOTH("Both"),
    FILL("Fill") {
       @Override

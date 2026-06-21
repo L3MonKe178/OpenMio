@@ -1,12 +1,12 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 
-public class Event_6 extends Class_0605 {
+public class Event_6 extends Event {
    public MatrixStack field_1577;
    public VertexConsumer field_3915;
    public BlockPos field_355;

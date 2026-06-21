@@ -3,7 +3,7 @@ package me.mioclient.module.player;
 import me.mioclient.api.Class_1226;
 import me.mioclient.event.Event_58;
 import me.mioclient.event.Subscribe;
-import me.mioclient.internal.Class_0136;
+import me.mioclient.internal.PlayerUtil;
 import me.mioclient.internal.Class_1323;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -22,7 +22,7 @@ public class ItemSaverModule extends Module {
       ItemStack var3 = field_4219.player.getInventory().getStack(var2);
       if (!method_101(var3)) {
          if (((Class_1226)field_4219.interactionManager).getCurrentBreakingBlock() != null && field_4219.options.attackKey.isPressed()) {
-            Class_0136.method_16(var2 == 8 ? var2 - 1 : var2 + 1);
+            PlayerUtil.method_16(var2 == 8 ? var2 - 1 : var2 + 1);
             var1.method_463();
          }
       }

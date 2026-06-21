@@ -1,8 +1,8 @@
 package me.mioclient.event;
 
-import me.mioclient.internal.Class_0605;
+import me.mioclient.internal.Event;
 
-public class Event_65 extends Class_0605 {
+public class Event_65 extends Event {
    public final double field_1882;
    public final double field_1883;
 

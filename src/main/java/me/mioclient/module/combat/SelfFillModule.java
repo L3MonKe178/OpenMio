@@ -12,14 +12,14 @@ import me.mioclient.event.Event_19;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Subscribe;
 import me.mioclient.internal.Class_0127;
-import me.mioclient.internal.Class_0136;
-import me.mioclient.internal.Class_0245;
+import me.mioclient.internal.PlayerUtil;
+import me.mioclient.internal.Constants;
 import me.mioclient.internal.Class_0382;
 import me.mioclient.internal.Class_0464;
-import me.mioclient.internal.Class_0485;
+import me.mioclient.internal.RotationManager;
 import me.mioclient.internal.Class_0719;
 import me.mioclient.internal.Class_1035;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.mixin.ducks.DuckAbstractBlock;
 import me.mioclient.module.Category;
 import me.mioclient.module.Module;
@@ -120,8 +120,8 @@ public class SelfFillModule extends Module {
                      }
 
                      if (this.field_4239 == null) {
-                        int var7 = Class_0136.method_7((Predicate<ItemStack>)(var1x -> {
-                           if (var1x.getItem() instanceof BlockItem var2x && this.field_4232.getValue().method_2(var2x.getBlock(), this.field_4236)) {
+                        int var7 = PlayerUtil.method_7((Predicate<ItemStack>)(var1x -> {
+                           if (var1x.getItem() instanceof BlockItem var2x && (this.field_4232.getValue() != null ? this.field_4232.getValue().method_2(var2x.getBlock(), this.field_4236) : false)) {
                               return true;
                            }
 
@@ -129,14 +129,14 @@ public class SelfFillModule extends Module {
                         }));
                         int var8 = field_4219.player.getInventory().selectedSlot;
                         if (var7 == -1) {
-                           Class_1245.method_2(Text.literal(this.getName()).append(" is out of blocks!"), Class_1245.method_38(-2), Priority.HIGH);
+                           ChatUtil.method_2(Text.literal(this.getName()).append(" is out of blocks!"), ChatUtil.method_38(-2), Priority.HIGH);
                            this.disable();
                         } else {
                            Direction var9 = Class_1035.method_78(var12);
                            if (var9 != null) {
-                              float[] var10 = new float[]{var1.method_500(), (float)Class_0245.field_685};
+                              float[] var10 = new float[]{var1.method_500(), (float)Constants.field_685};
                               if (this.field_4239 != null && this.field_4233.getValue()) {
-                                 var10 = Class_0485.method_14(this.field_4239);
+                                 var10 = RotationManager.method_14(this.field_4239);
                               }
 
                               int var11 = var2;
@@ -172,7 +172,7 @@ public class SelfFillModule extends Module {
       if (var6) {
          field_4219.player.setSneaking(false);
          field_4219.player.networkHandler.sendPacket(new ClientCommandC2SPacket(field_4219.player, Mode.PRESS_SHIFT_KEY));
-         Class_0136.method_16(var4);
+         PlayerUtil.method_16(var4);
          Item var13 = field_4219.player.getMainHandStack().getItem();
          Block var8 = ((BlockItem)var13).getBlock();
          boolean var9 = ((DuckAbstractBlock)var8).isCollidable();
@@ -186,7 +186,7 @@ public class SelfFillModule extends Module {
                         field_4219.player.getY() + var11,
                         field_4219.player.getZ(),
                         field_4219.player.getYaw(),
-                        (float)Class_0245.field_685,
+                        (float)Constants.field_685,
                         false
                      )
                   );
@@ -206,7 +206,7 @@ public class SelfFillModule extends Module {
             this.method_38((double)var5);
          }
 
-         Class_0136.method_16(var3);
+         PlayerUtil.method_16(var3);
          field_4219.player.networkHandler.sendPacket(new ClientCommandC2SPacket(field_4219.player, Mode.RELEASE_SHIFT_KEY));
          this.field_3965 = true;
       }
@@ -222,7 +222,7 @@ public class SelfFillModule extends Module {
                   field_4219.player.getY() + Double.longBitsToDouble(4607182418800017408L),
                   field_4219.player.getZ(),
                   field_4219.player.getYaw(),
-                  (float)Class_0245.field_685,
+                  (float)Constants.field_685,
                   true
                )
             );
@@ -241,7 +241,7 @@ public class SelfFillModule extends Module {
                   field_4219.player.getY() + var1,
                   field_4219.player.getZ(),
                   field_4219.player.getYaw(),
-                  (float)Class_0245.field_685,
+                  (float)Constants.field_685,
                   false
                )
             );

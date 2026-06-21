@@ -3,12 +3,12 @@ package me.mioclient.mixin;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import me.mioclient.Hub;
-import me.mioclient.api.Class_1309;
+import me.mioclient.api.MioAPI;
 import me.mioclient.enum_.Priority;
 import me.mioclient.event.Event_10;
 import me.mioclient.event.Event_4;
 import me.mioclient.event.Event_43;
-import me.mioclient.internal.Class_1245;
+import me.mioclient.internal.ChatUtil;
 import me.mioclient.module.misc.NoPacketKickModule;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.NetworkSide;
@@ -43,7 +43,7 @@ public class MixinClientConnection {
       if (this.field_11651.isOpen() && var2 != null) {
          try {
             Event_4 var4 = new Event_4(var2);
-            Class_1309.field_4220.method_36(var4);
+            MioAPI.field_4220.method_36(var4);
             if (var4.method_464()) {
                var3.cancel();
             }
@@ -61,7 +61,7 @@ public class MixinClientConnection {
       if (this.field_11643 == NetworkSide.CLIENTBOUND) {
          try {
             Event_10 var5 = new Event_10(var1);
-            Class_1309.field_4220.method_36(var5);
+            MioAPI.field_4220.method_36(var5);
             if (var5.method_464()) {
                var4.cancel();
             }
@@ -78,7 +78,7 @@ public class MixinClientConnection {
       if (this.field_11643 == NetworkSide.CLIENTBOUND) {
          try {
             Event_43 var5 = new Event_43(var1);
-            Class_1309.field_4220.method_36(var5);
+            MioAPI.field_4220.method_36(var5);
          } catch (Exception var6) {
          }
       }
@@ -93,7 +93,7 @@ public class MixinClientConnection {
       if (nopacketkick.isToggled()) {
          if (nopacketkick.field_4173.getValue()) {
             try {
-               Class_1245.method_2(nopacketkick.method_38(var2), Class_1245.method_2(nopacketkick), Priority.HIGH);
+               ChatUtil.method_2(nopacketkick.method_38(var2), ChatUtil.method_2(nopacketkick), Priority.HIGH);
             } catch (Throwable var5) {
             }
          }
