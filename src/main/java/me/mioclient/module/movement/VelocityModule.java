@@ -58,19 +58,19 @@ public class VelocityModule extends Module {
    @Override
    public void onDisable() {
       if (sprint != null) sprint.field_1033 = false;
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.onDisable();
    }
 
    @Subscribe
    public void method_2(Event_10 var1) {
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
    public void method_5(Event_4 var1) {
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_5(var1);
    }
 
@@ -82,25 +82,25 @@ public class VelocityModule extends Module {
          if (sprint != null) sprint.field_1033 = false;
       }
 
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_40();
    }
 
    @Subscribe
    public void method_5(Event_36 var1) {
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe
    public void method_9(Event_19 var1) {
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_2(Event_37 var1) {
-      var handler = this.field_2516.method_1156();
+      var handler = this.field_2516 != null ? this.field_2516.method_1156() : null;
       if (handler != null) handler.method_2(var1);
    }
 
@@ -114,10 +114,10 @@ public class VelocityModule extends Module {
    public boolean method_734() {
       if (!this.isToggled()) {
          return false;
-      } else if (this.field_2516.method_1156() instanceof Class_0198 && this.field_2510.getValue() == 0 && this.field_2511.getValue() == 0) {
+      } else if ((this.field_2516 != null ? this.field_2516.method_1156() : null) instanceof Class_0198 && this.field_2510.getValue() == 0 && this.field_2511.getValue() == 0) {
          return true;
       } else {
-         if (this.field_2516.method_1156() instanceof Class_0552 var1 && !var1.method_581()) {
+         if ((this.field_2516 != null ? this.field_2516.method_1156() : null) instanceof Class_0552 var1 && !var1.method_581()) {
             return true;
          }
 
@@ -126,6 +126,6 @@ public class VelocityModule extends Module {
    }
 
    public Class_0043 method_735() {
-      return this.field_2516.method_1156();
+      return this.field_2516 != null ? this.field_2516.method_1156() : null;
    }
 }

@@ -132,7 +132,7 @@ public class ElytraFlyModule extends Module {
       this.field_4392.setTime(-1L);
       this.field_4394 = true;
       if (!this.method_535()) {
-         var handler = this.field_4388.method_1156();
+         var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
          if (handler != null) handler.onEnable();
       }
    }
@@ -140,7 +140,7 @@ public class ElytraFlyModule extends Module {
    @Override
    public void onDisable() {
       if (!this.method_535()) {
-         var handler = this.field_4388.method_1156();
+         var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
          if (handler != null) handler.onDisable();
       }
 
@@ -163,7 +163,7 @@ public class ElytraFlyModule extends Module {
 
    @Subscribe
    public void method_78(Event_7 var1) {
-      if (Class_0382.method_428() && this.field_4388.method_1156() instanceof Class_0613 var2 && this.field_4360.getValue()) {
+      if (Class_0382.method_428() && ( this.field_4388 != null ? this.field_4388.method_1156() : null ) instanceof Class_0613 var2 && this.field_4360.getValue()) {
          Class_0983 var5 = Hub.field_2598.method_510();
          float var4 = var5 != null ? var5.method_888()[0] : var1.method_500();
          Hub.field_2598.method_2(new float[]{var4, var2.method_501()}, 999, true);
@@ -176,7 +176,7 @@ public class ElytraFlyModule extends Module {
          this.field_4394 = true;
       }
 
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_2(var1);
    }
 
@@ -186,7 +186,7 @@ public class ElytraFlyModule extends Module {
          this.field_4391.reset();
       }
 
-      var handler2 = this.field_4388.method_1156();
+      var handler2 = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler2 != null) handler2.method_2(var1);
    }
 
@@ -245,7 +245,7 @@ public class ElytraFlyModule extends Module {
                   }
                }
 
-               var handler = this.field_4388.method_1156();
+               var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
                if (handler != null) handler.method_2(var1);
             }
          }
@@ -261,31 +261,31 @@ public class ElytraFlyModule extends Module {
          }
       }
 
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_5(var1);
    }
 
    @Subscribe
    public void method_9(Event_9 var1) {
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_2(var1);
    }
 
    @Subscribe
    public void method_9(Event_19 var1) {
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_9(Event_39 var1) {
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_9(var1);
    }
 
    @Subscribe
    public void method_5(Event_16 var1) {
-      var handler = this.field_4388.method_1156();
+      var handler = this.field_4388 != null ? this.field_4388.method_1156() : null;
       if (handler != null) handler.method_5(var1);
    }
 
