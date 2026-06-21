@@ -32,10 +32,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({SplashOverlay.class})
 public abstract class MixinSplashOverlay extends Overlay {
    @Shadow
-   private long field_17771;
+   private long reloadCompleteTime;
    @Shadow
    @Final
-   private MinecraftClient field_18217;
+   private MinecraftClient client;
    @Unique
    private Class_1202 flag;
 
@@ -70,7 +70,7 @@ public abstract class MixinSplashOverlay extends Overlay {
    }
 
    @Shadow
-   private static int method_35732(int var0, int var1) {
+   private static int withAlpha(int var0, int var1) {
       return 0;
    }
 
@@ -85,10 +85,10 @@ public abstract class MixinSplashOverlay extends Overlay {
       )}
    )
    private void renderHook(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      int var6 = this.field_18217.getWindow().getScaledWidth();
-      int var7 = this.field_18217.getWindow().getScaledHeight();
+      int var6 = this.client.getWindow().getScaledWidth();
+      int var7 = this.client.getWindow().getScaledHeight();
       int var8 = MathHelper.ceil(
-         (1.0F - MathHelper.clamp((this.field_17771 > -1L ? (float)(Util.getMeasuringTimeMs() - this.field_17771) / 1000.0F : -1.0F) - 1.0F, 0.0F, 1.0F))
+         (1.0F - MathHelper.clamp((this.reloadCompleteTime > -1L ? (float)(Util.getMeasuringTimeMs() - this.reloadCompleteTime) / 1000.0F : -1.0F) - 1.0F, 0.0F, 1.0F))
             * 255.0F
       );
 
@@ -98,7 +98,7 @@ public abstract class MixinSplashOverlay extends Overlay {
             var9 * (var7 / this.flag.method_492().size()),
             var6,
             (var9 + 1) * (var7 / this.flag.method_492().size()),
-            method_35732(this.flag.method_492().get(var9).hashCode(), var8)
+            withAlpha(this.flag.method_492().get(var9).hashCode(), var8)
          );
       }
    }

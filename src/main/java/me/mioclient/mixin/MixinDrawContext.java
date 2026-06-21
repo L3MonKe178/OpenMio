@@ -37,10 +37,10 @@ public abstract class MixinDrawContext {
    }
 
    @Shadow
-   public abstract void method_51427(ItemStack var1, int var2, int var3);
+   public abstract void drawItem(ItemStack var1, int var2, int var3);
 
    @Shadow
-   public abstract MatrixStack method_51448();
+   public abstract MatrixStack getMatrices();
 
    @Inject(
       at = {@At(
@@ -54,7 +54,7 @@ public abstract class MixinDrawContext {
          for (Class_0576 var8 : tooltips.field_1192) {
             if (var8.method_594() == var2 && var8.method_595() != null) {
                this.translate = true;
-               this.method_51427(var8.method_595(), var3, var4);
+               this.drawItem(var8.method_595(), var3, var4);
                this.translate = false;
             }
          }

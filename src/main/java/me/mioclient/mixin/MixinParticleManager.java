@@ -28,7 +28,7 @@ public abstract class MixinParticleManager {
 
    @Shadow
    @Nullable
-   protected abstract <T extends ParticleEffect> Particle method_3055(T var1, double var2, double var4, double var6, double var8, double var10, double var12);
+   protected abstract <T extends ParticleEffect> Particle createParticle(T var1, double var2, double var4, double var6, double var8, double var10, double var12);
 
    @Inject(
       method = {"addParticle(Lnet/minecraft/client/particle/Particle;)V"},
@@ -52,7 +52,7 @@ public abstract class MixinParticleManager {
       ParticleEffect var1, double var2, double var4, double var6, double var8, double var10, double var12, CallbackInfoReturnable<Particle> var14
    ) {
       if (norender.method_2(var1)) {
-         var14.setReturnValue(this.method_3055(var1, var2, var4, var6, var8, var10, var12));
+         var14.setReturnValue(this.createParticle(var1, var2, var4, var6, var8, var10, var12));
          var14.cancel();
       }
    }

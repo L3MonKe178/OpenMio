@@ -25,7 +25,7 @@ public class MixinKeyboardInput extends Input {
    private static NoSlowModule noslow = Hub.field_2595.method_78(NoSlowModule.class);
    @Shadow
    @Final
-   private GameOptions field_3902;
+   private GameOptions settings;
 
    public MixinKeyboardInput() {
       super();
@@ -65,7 +65,7 @@ public class MixinKeyboardInput extends Input {
       require = 0
    )
    private boolean tickHook2(KeyBinding var1) {
-      return noslow.isToggled() && noslow.method_569() && noslow.field_1685.getValue() && var1 != this.field_3902.sneakKey
+      return noslow.isToggled() && noslow.method_569() && noslow.field_1685.getValue() && var1 != this.settings.sneakKey
          ? GLFW.glfwGetKey(MinecraftClient.getInstance().getWindow().getHandle(), ((DuckKeyBinding)var1).getKey().getCode()) == 1
          : var1.isPressed();
    }

@@ -19,7 +19,7 @@ public class MixinLightmapTextureManager {
    private static AmbienceModule ambience = Hub.field_2595.method_78(AmbienceModule.class);
    @Final
    @Shadow
-   private NativeImage field_4133;
+   private NativeImage image;
 
    public MixinLightmapTextureManager() {
       super();
@@ -37,7 +37,7 @@ public class MixinLightmapTextureManager {
          var1.setColor(var2, var3, var4);
       } else {
          Color var5 = ambience.field_208.getValue();
-         this.field_4133.setColor(var2, var3, 0xFF000000 | var5.getBlue() << 16 | var5.getGreen() << 8 | var5.getRed());
+         this.image.setColor(var2, var3, 0xFF000000 | var5.getBlue() << 16 | var5.getGreen() << 8 | var5.getRed());
       }
    }
 

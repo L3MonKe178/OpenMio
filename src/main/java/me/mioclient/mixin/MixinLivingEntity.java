@@ -48,7 +48,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({LivingEntity.class})
 public abstract class MixinLivingEntity extends Entity implements Class_0705 {
    @Shadow
-   private int field_6228;
+   private int jumpingCooldown;
    @Unique
    private Event_64 mio$moveEvent;
    @Unique
@@ -218,10 +218,10 @@ public abstract class MixinLivingEntity extends Entity implements Class_0705 {
    )
    public void reduceCooldown(CallbackInfo var1) {
       MinecraftClient var2 = MinecraftClient.getInstance();
-      if (efly.isToggled() && efly.field_4349.getValue() == Class_1229.BOUNCE && this.equals(var2.player) && this.field_6228 > 2) {
-         this.field_6228 = 2;
+      if (efly.isToggled() && efly.field_4349.getValue() == Class_1229.BOUNCE && this.equals(var2.player) && this.jumpingCooldown > 2) {
+         this.jumpingCooldown = 2;
       } else if (njd.isToggled() && this.equals(var2.player) && !var2.player.isFallFlying()) {
-         this.field_6228 = 0;
+         this.jumpingCooldown = 0;
       }
    }
 

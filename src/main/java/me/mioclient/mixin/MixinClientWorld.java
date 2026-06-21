@@ -39,7 +39,7 @@ public abstract class MixinClientWorld implements Class_0514 {
    private static AmbienceModule ambience = Hub.field_2595.method_78(AmbienceModule.class);
    @Shadow
    @Final
-   private DimensionEffects field_24606;
+   private DimensionEffects dimensionEffects;
    @Unique
    private final DimensionEffects mio$customEnd = new End();
    @Unique
@@ -64,7 +64,7 @@ public abstract class MixinClientWorld implements Class_0514 {
    }
 
    @Shadow
-   public abstract void method_8406(ParticleEffect var1, double var2, double var4, double var6, double var8, double var10, double var12);
+   public abstract void addParticle(ParticleEffect var1, double var2, double var4, double var6, double var8, double var10, double var12);
 
    @ModifyArg(
       method = {"method_24462"},
@@ -99,7 +99,7 @@ public abstract class MixinClientWorld implements Class_0514 {
             return;
          }
 
-         this.method_8406(
+         this.addParticle(
             var9.getParticle(),
             (double)var7.getX() + this.random.nextDouble(),
             (double)var7.getY() + this.random.nextDouble(),
@@ -159,6 +159,6 @@ public abstract class MixinClientWorld implements Class_0514 {
 
    @Override
    public DimensionEffects mio$getOriginalEffects() {
-      return this.field_24606;
+      return this.dimensionEffects;
    }
 }

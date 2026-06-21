@@ -46,7 +46,7 @@ public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity
    private static EntityControlModule entitycontrol = Hub.field_2595.method_78(EntityControlModule.class);
    private static SprintModule sprint = Hub.field_2595.method_78(SprintModule.class);
    @Shadow
-   public Input field_3913;
+   public Input input;
    @Unique
    private Event_19 motionEvent = new Event_19();
 
@@ -55,7 +55,7 @@ public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity
    }
 
    @Shadow
-   protected abstract void method_3148(float var1, float var2);
+   protected abstract void autoJump(float var1, float var2);
 
    @Shadow
    public abstract float getPitch(float tickDelta);
@@ -64,13 +64,13 @@ public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity
    public abstract float getYaw(float tickDelta);
 
    @Shadow
-   public abstract void method_33689();
+   public abstract void init();
 
    @Shadow
    public abstract boolean isUsingItem();
 
    @Shadow
-   private void method_3136() {
+   private void sendMovementPackets() {
    }
 
    @Inject(
@@ -131,7 +131,7 @@ public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity
          double var6 = this.getX();
          double var8 = this.getZ();
          super.move(var5.method_1067(), var5.method_1066());
-         this.method_3148((float)(this.getX() - var6), (float)(this.getZ() - var8));
+         this.autoJump((float)(this.getX() - var6), (float)(this.getZ() - var8));
       } else {
          var3.cancel();
       }
@@ -372,7 +372,7 @@ public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity
 
    @Override
    public void sendMovementPacketsWrapper() {
-      this.method_3136();
+      this.sendMovementPackets();
    }
 
    @Override

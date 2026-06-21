@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinFireworkParticle {
    @Final
    @Shadow
-   private ParticleManager field_3805;
+   private ParticleManager particleManager;
 
    public MixinFireworkParticle() {
       super();
@@ -40,7 +40,7 @@ public class MixinFireworkParticle {
       boolean var16,
       CallbackInfo var17
    ) {
-      Explosion var18 = (Explosion)this.field_3805.addParticle(ParticleTypes.FIREWORK, var1, var3, var5, var7, var9, var11);
+      Explosion var18 = (Explosion)this.particleManager.addParticle(ParticleTypes.FIREWORK, var1, var3, var5, var7, var9, var11);
       if (var18 == null) {
          var17.cancel();
       }

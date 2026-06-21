@@ -20,7 +20,7 @@ public class MixinToastManagerEntry {
    private static NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
    @Final
    @Shadow
-   private Toast field_2241;
+   private Toast instance;
 
    public MixinToastManagerEntry() {
       super();
@@ -34,8 +34,8 @@ public class MixinToastManagerEntry {
    public void draw(int var1, DrawContext var2, CallbackInfoReturnable<Boolean> var3) {
       if (norender.isToggled()
          && (
-            this.field_2241.getType() == Type.UNSECURE_SERVER_WARNING && norender.field_727.getValue()
-               || this.field_2241 instanceof TutorialToast && norender.field_728.getValue()
+            this.instance.getType() == Type.UNSECURE_SERVER_WARNING && norender.field_727.getValue()
+               || this.instance instanceof TutorialToast && norender.field_728.getValue()
          )) {
          var3.setReturnValue(true);
       }

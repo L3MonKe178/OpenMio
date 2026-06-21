@@ -9,22 +9,22 @@ import org.spongepowered.asm.mixin.Shadow;
 )
 public abstract class MixinCapabilityTracker implements Class_0637 {
    @Shadow
-   private boolean field_5051;
+   private boolean state;
 
    public MixinCapabilityTracker() {
       super();
    }
 
    @Shadow
-   public abstract void method_4470(boolean var1);
+   public abstract void setState(boolean var1);
 
    @Override
    public boolean getState() {
-      return this.field_5051;
+      return this.state;
    }
 
    @Override
    public void set(boolean var1) {
-      this.method_4470(var1);
+      this.setState(var1);
    }
 }

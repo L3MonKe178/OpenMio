@@ -41,21 +41,21 @@ public abstract class MixinCamera {
    private static FreeLookModule fl = Hub.field_2595.method_78(FreeLookModule.class);
    @Final
    @Shadow
-   private Vector3f field_18714;
+   private Vector3f horizontalPlane;
    @Final
    @Shadow
-   private Vector3f field_18715;
+   private Vector3f verticalPlane;
    @Final
    @Shadow
-   private Vector3f field_18716;
+   private Vector3f diagonalPlane;
    @Shadow
-   private Vec3d field_18712;
+   private Vec3d pos;
    @Shadow
-   private float field_18721;
+   private float cameraY;
    @Shadow
-   private float field_18722;
+   private float lastCameraY;
    @Shadow
-   private Entity field_18711;
+   private Entity focusedEntity;
    @Unique
    private boolean hold = true;
 
@@ -64,11 +64,11 @@ public abstract class MixinCamera {
    }
 
    @Shadow
-   protected void method_19322(Vec3d var1) {
+   protected void setPos(Vec3d var1) {
    }
 
    @Shadow
-   protected abstract void method_19325(float var1, float var2);
+   protected abstract void setRotation(float var1, float var2);
 
    @Inject(
       method = {"clipToSpace"},
@@ -87,18 +87,18 @@ public abstract class MixinCamera {
       cancellable = true
    )
    private void updateEyeHeightHook(CallbackInfo var1) {
-      if (norender.isToggled() && norender.field_721.getValue() && this.field_18711 != null) {
+      if (norender.isToggled() && norender.field_721.getValue() && this.focusedEntity != null) {
          var1.cancel();
-         this.field_18722 = this.field_18721;
-         if (this.field_18711 instanceof PlayerEntity var2) {
+         this.lastCameraY = this.cameraY;
+         if (this.focusedEntity instanceof PlayerEntity var2) {
             if (var2.isInPose(EntityPose.CROUCHING)) {
-               this.field_18721 = 1.54F;
-            } else if (this.field_18721 < 1.62F && var2.isInPose(EntityPose.STANDING)) {
-               float var4 = 1.62F - this.field_18721;
+               this.cameraY = 1.54F;
+            } else if (this.cameraY < 1.62F && var2.isInPose(EntityPose.STANDING)) {
+               float var4 = 1.62F - this.cameraY;
                var4 = (float)((double)var4 * 0.4);
-               this.field_18721 = 1.62F - var4;
+               this.cameraY = 1.62F - var4;
             } else {
-               this.field_18721 = this.field_18721 + (this.field_18711.getStandingEyeHeight() - this.field_18721) * 0.5F;
+               this.cameraY = this.cameraY + (this.focusedEntity.getStandingEyeHeight() - this.cameraY) * 0.5F;
             }
          }
       }
@@ -111,12 +111,12 @@ public abstract class MixinCamera {
    )
    private void moveByHook(float var1, float var2, float var3, CallbackInfo var4) {
       if (viewclip.isToggled() && viewclip.field_4495.getValue()) {
-         double var5 = (double)this.field_18714.x() * (double)var1 + (double)this.field_18715.x() * (double)var2 + (double)this.field_18716.x() * (double)var3;
-         double var7 = (double)this.field_18714.y() * (double)var1 + (double)this.field_18715.y() * (double)var2 + (double)this.field_18716.y() * (double)var3;
-         double var9 = (double)this.field_18714.z() * (double)var1 + (double)this.field_18715.z() * (double)var2 + (double)this.field_18716.z() * (double)var3;
+         double var5 = (double)this.horizontalPlane.x() * (double)var1 + (double)this.verticalPlane.x() * (double)var2 + (double)this.diagonalPlane.x() * (double)var3;
+         double var7 = (double)this.horizontalPlane.y() * (double)var1 + (double)this.verticalPlane.y() * (double)var2 + (double)this.diagonalPlane.y() * (double)var3;
+         double var9 = (double)this.horizontalPlane.z() * (double)var1 + (double)this.verticalPlane.z() * (double)var2 + (double)this.diagonalPlane.z() * (double)var3;
          float var11 = viewclip.field_4496.method_45();
-         this.method_19322(
-            new Vec3d(this.field_18712.x + var5 * (double)var11, this.field_18712.y + var7 * (double)var11, this.field_18712.z + var9 * (double)var11)
+         this.setPos(
+            new Vec3d(this.pos.x + var5 * (double)var11, this.pos.y + var7 * (double)var11, this.pos.z + var9 * (double)var11)
          );
          var4.cancel();
       }
@@ -178,7 +178,7 @@ public abstract class MixinCamera {
                this.hold = false;
             }
 
-            this.method_19325(var8.getCameraYaw(), var8.getCameraPitch());
+            this.setRotation(var8.getCameraYaw(), var8.getCameraPitch());
          }
 
          if (!fl.isToggled() && var2 instanceof ClientPlayerEntity) {

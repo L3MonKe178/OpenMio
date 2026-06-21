@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({TextFieldWidget.class})
 public class MixinTextFieldWidget {
    @Shadow
-   private boolean field_2095;
+   private boolean drawsBackground;
    private MatrixStack lastmatrix;
 
    public MixinTextFieldWidget() {
@@ -55,7 +55,7 @@ public class MixinTextFieldWidget {
          RenderUtil.field_2672.method_2(this.lastmatrix, (float)(var2 + var4 - 1), (float)(var3 + 1), (float)(var2 + var4), (float)(var3 + var5), -1);
          return false;
       } else {
-         return this.field_2095;
+         return this.drawsBackground;
       }
    }
 }

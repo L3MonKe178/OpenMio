@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin({SimpleOption.class})
 public class MixinSimpleOption<T> implements Class_0718<T> {
    @Shadow
-   T field_37868;
+   T value;
 
    public MixinSimpleOption() {
       super();
@@ -16,6 +16,6 @@ public class MixinSimpleOption<T> implements Class_0718<T> {
 
    @Override
    public void forceSetValue(T var1) {
-      this.field_37868 = (T)var1;
+      this.value = (T)var1;
    }
 }

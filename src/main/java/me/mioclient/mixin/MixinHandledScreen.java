@@ -45,7 +45,7 @@ public class MixinHandledScreen implements MioAPI {
    private static final AbstractModule_37 tooltips = Hub.field_2595.method_78(AbstractModule_37.class);
    @Shadow
    @Nullable
-   protected Slot field_2787;
+   protected Slot focusedSlot;
    @Unique
    private int lastMX;
    @Unique
@@ -107,7 +107,7 @@ public class MixinHandledScreen implements MioAPI {
    )
    private void render(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
       if (!Class_0018.method_22(342)) {
-         this.mio$lastSlot = this.field_2787;
+         this.mio$lastSlot = this.focusedSlot;
       }
 
       this.lastMX = var2;
@@ -120,7 +120,7 @@ public class MixinHandledScreen implements MioAPI {
    )
    private void renderWithTooltipHook(DrawContext var1, int var2, int var3, CallbackInfo var4) {
       if (tooltips.isToggled() && this.mio$lastSlot != null && PlayerUtil.method_29(this.mio$lastSlot.getStack().getItem()) && Class_0018.method_22(342)) {
-         this.field_2787 = this.mio$lastSlot;
+         this.focusedSlot = this.mio$lastSlot;
       }
    }
 

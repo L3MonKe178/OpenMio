@@ -35,7 +35,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 public class MixinEndCrystalEntityRenderer {
    @Shadow
    @Final
-   private static Identifier field_4663;
+   private static Identifier TEXTURE;
    private static AutoCrystalModule ac = Hub.field_2595.method_78(AutoCrystalModule.class);
    private static ChamsModule mod = Hub.field_2595.method_78(ChamsModule.class);
    private static AnimationsModule animations = Hub.field_2595.method_78(AnimationsModule.class);
@@ -159,7 +159,7 @@ public class MixinEndCrystalEntityRenderer {
    )
    private VertexConsumer render3(VertexConsumer var1, @Local(argsOnly = true) VertexConsumerProvider var2) {
       return mod.isToggled() && mod.field_227.getValue() && mod.field_238.getValue() != Class_0670.OFF && !Class_1355.field_4422
-         ? var2.getBuffer(Class_0392.method_5(field_4663))
+         ? var2.getBuffer(Class_0392.method_5(TEXTURE))
          : var1;
    }
 

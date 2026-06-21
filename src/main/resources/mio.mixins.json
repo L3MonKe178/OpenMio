@@ -161,5 +161,5 @@
 	"injectors": {
 		"defaultRequire": 1
 	},
-	"refmap": "refmap.json"
+	"refmap": "mioclient-refmap.json"
 }

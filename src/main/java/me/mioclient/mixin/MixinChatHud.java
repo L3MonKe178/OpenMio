@@ -55,7 +55,7 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
    private static final FontsModule fonts = Hub.field_2595.method_78(FontsModule.class);
    @Shadow
    @Final
-   private List<Visible> field_2064;
+   private List<Visible> visibleMessages;
    @Unique
    private MessageSignatureData last;
    @Unique
@@ -68,22 +68,22 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
    }
 
    @Shadow
-   protected abstract void method_45027(ChatHudLine var1);
+   protected abstract void logChatMessage(ChatHudLine var1);
 
    @Shadow
-   protected abstract void method_1815(ChatHudLine var1);
+   protected abstract void addVisibleMessage(ChatHudLine var1);
 
    @Shadow
-   protected abstract void method_58744(ChatHudLine var1);
+   protected abstract void addMessage(ChatHudLine var1);
 
    @Shadow
-   public abstract void method_44811(Text var1, @Nullable MessageSignatureData var2, @Nullable MessageIndicator var3);
+   public abstract void addMessage(Text var1, @Nullable MessageSignatureData var2, @Nullable MessageIndicator var3);
 
    @Shadow
-   public abstract double method_1814();
+   public abstract double getChatScale();
 
    @Shadow
-   protected abstract int method_44752();
+   protected abstract int getLineHeight();
 
    private void drawIndicatorIcon(MatrixStack var1, int var2, int var3, Icon var4) {
    }
@@ -175,8 +175,8 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
    )
    private int textHook(DrawContext var1, TextRenderer var2, OrderedText var3, int var4, int var5, int var6, Operation<Integer> var7) {
       var4 -= norender.isToggled() && norender.field_726.getValue() ? 3 : 0;
-      if (betterchat.method_1092() && this.current < this.field_2064.size()) {
-         Class_0333 var8 = (Class_0333)(Object)this.field_2064.get(this.current);
+      if (betterchat.method_1092() && this.current < this.visibleMessages.size()) {
+         Class_0333 var8 = (Class_0333)(Object)this.visibleMessages.get(this.current);
          var8.getProgress().method_3(true);
          float var9 = var8.getProgress().method_45();
          long var10 = var8.mio$getAddTime();
@@ -272,14 +272,14 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
          if (!var7.method_464()) {
             if (!var1.equals(var1)) {
                skip = true;
-               this.method_44811(var1, var2, var3);
+               this.addMessage(var1, var2, var3);
                skip = false;
                return;
             }
 
-            this.method_45027(var5);
-            this.method_1815(var5);
-            this.method_58744(var5);
+            this.logChatMessage(var5);
+            this.addVisibleMessage(var5);
+            this.addMessage(var5);
          }
       }
    }
@@ -371,7 +371,7 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
    )
    private void toChatLineX(double var1, CallbackInfoReturnable<Double> var3) {
       if (chathud.isToggled() && chathud.method_648() != 0.0F) {
-         var3.setReturnValue((var1 - (double)chathud.method_14().method_59()) / this.method_1814());
+         var3.setReturnValue((var1 - (double)chathud.method_14().method_59()) / this.getChatScale());
       }
    }
 
@@ -383,13 +383,13 @@ public abstract class MixinChatHud implements MioAPI, Class_1322 {
    private void toChatLineY(double var1, CallbackInfoReturnable<Double> var3) {
       if (chathud.isToggled() && chathud.method_647() != 0.0F) {
          var3.setReturnValue(
-            ((double)chathud.method_14().method_60() - var1 + (double)chathud.method_14().method_193()[1]) / (this.method_1814() * (double)this.method_44752())
+            ((double)chathud.method_14().method_60() - var1 + (double)chathud.method_14().method_193()[1]) / (this.getChatScale() * (double)this.getLineHeight())
          );
       }
    }
 
    @Override
    public List<Visible> getVisible() {
-      return this.field_2064;
+      return this.visibleMessages;
    }
 }

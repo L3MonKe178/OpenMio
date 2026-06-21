@@ -33,10 +33,10 @@ public class MixinDisconnectedScreen extends Screen {
    private long startTime;
    @Shadow
    @Final
-   private DisconnectionInfo field_52131;
+   private DisconnectionInfo info;
    @Shadow
    @Final
-   private DirectionalLayoutWidget field_44552;
+   private DirectionalLayoutWidget grid;
    @Unique
    private ButtonWidget reconnectButton;
    @Unique
@@ -73,7 +73,7 @@ public class MixinDisconnectedScreen extends Screen {
       }).width(200);
       this.reconnectButton = var2.build();
       this.autoReconnectButton = var3.build();
-      this.field_44552.refreshPositions();
+      this.grid.refreshPositions();
       this.addDrawableChild(this.reconnectButton);
       this.addDrawableChild(this.autoReconnectButton);
    }
@@ -85,13 +85,13 @@ public class MixinDisconnectedScreen extends Screen {
    private void initTabHook(CallbackInfo var1) {
       if (this.reconnectButton != null) {
          int var2 = this.width / 2 - 100;
-         this.reconnectButton.setPosition(var2, Math.min(this.height / 2 + this.field_44552.getHeight() / 2, this.height - 30) - 1);
-         this.autoReconnectButton.setPosition(var2, Math.min(this.height / 2 + this.field_44552.getHeight() / 2, this.height - 30) + 20);
+         this.reconnectButton.setPosition(var2, Math.min(this.height / 2 + this.grid.getHeight() / 2, this.height - 30) - 1);
+         this.autoReconnectButton.setPosition(var2, Math.min(this.height / 2 + this.grid.getHeight() / 2, this.height - 30) + 20);
       }
    }
 
    public void tick() {
-      String var1 = this.field_52131.reason().getString();
+      String var1 = this.info.reason().getString();
       if (var1.contains("Mio") && var1.contains("[AutoLog]")) {
          this.autoReconnectButton.setX(-1000);
          this.autoReconnectButton.setY(-1000);
@@ -107,7 +107,7 @@ public class MixinDisconnectedScreen extends Screen {
    }
 
    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-      String var5 = this.field_52131.reason().getString();
+      String var5 = this.info.reason().getString();
       if (var5.contains("Mio") && var5.contains("[AutoLog]")) {
          this.autoReconnectButton.setX(-1000);
          this.autoReconnectButton.setY(-1000);
@@ -120,7 +120,7 @@ public class MixinDisconnectedScreen extends Screen {
 
    private Text getAutoReconnectText() {
       MutableText var1 = Text.literal("AutoReconnect ");
-      String var2 = this.field_52131.reason().getString();
+      String var2 = this.info.reason().getString();
       boolean var3 = autoreconnect.isToggled() && (!var2.contains("Mio") || !var2.contains("[AutoLog]"));
       float var4 = this.getAutoReconnectTime(autoreconnect);
       if (Hub.field_2602.field_3453) {

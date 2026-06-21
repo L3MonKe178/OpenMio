@@ -24,7 +24,7 @@ public abstract class MixinFireworkRocketEntity extends Entity {
    private static FireworksModule fireworks = Hub.field_2595.method_78(FireworksModule.class);
    @Shadow
    @Nullable
-   private LivingEntity field_7616;
+   private LivingEntity shooter;
 
    public MixinFireworkRocketEntity(EntityType<?> var1, World var2) {
       super(var1, var2);
@@ -61,17 +61,17 @@ public abstract class MixinFireworkRocketEntity extends Entity {
       }
 
       float var2 = fireworks.method_100(true);
-      if (this.field_7616 == MinecraftClient.getInstance().player) {
+      if (this.shooter == MinecraftClient.getInstance().player) {
          if (var2 != 0.0F) {
-            float var3 = Class_0930.method_7(this.field_7616.getYaw());
+            float var3 = Class_0930.method_7(this.shooter.getYaw());
             if ((double)var2 > 0.5) {
                var2 = MathHelper.clamp(0.2F + 0.3F * (float)this.age, 0.0F, var2);
             }
 
             if (fireworks.method_785() > 0) {
-               this.field_7616.addVelocity(this.field_7616.getRotationVec(1.0F).multiply((double)var2));
+               this.shooter.addVelocity(this.shooter.getRotationVec(1.0F).multiply((double)var2));
             } else {
-               this.field_7616.addVelocity((double)(MathHelper.sin(var3) * -var2), 0.0, (double)(MathHelper.cos(var3) * var2));
+               this.shooter.addVelocity((double)(MathHelper.sin(var3) * -var2), 0.0, (double)(MathHelper.cos(var3) * var2));
             }
          }
       }

@@ -40,7 +40,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 public class MixinPlayerListHud {
    @Shadow
    @Final
-   private MinecraftClient field_2155;
+   private MinecraftClient client;
    private static final NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
    private static final ExtraTabModule extratab = Hub.field_2595.method_78(ExtraTabModule.class);
    private static final NameProtectModule nameprotect = Hub.field_2595.method_78(NameProtectModule.class);
@@ -152,7 +152,7 @@ public class MixinPlayerListHud {
             var6.cancel();
          } else {
             String var7 = "" + Formatting.YELLOW + var5.getLatency();
-            var1.drawTextWithShadow(this.field_2155.textRenderer, var7, var3 + var2 - this.field_2155.textRenderer.getWidth(var7), var4, 16777215);
+            var1.drawTextWithShadow(this.client.textRenderer, var7, var3 + var2 - this.client.textRenderer.getWidth(var7), var4, 16777215);
             var6.cancel();
          }
       }
@@ -178,7 +178,7 @@ public class MixinPlayerListHud {
    )
    private void render(Args var1, @Local PlayerListEntry var2) {
       if (extratab.isToggled() && extratab.field_69.getValue() == Class_0829.TEXT) {
-         var1.set(1, (Integer)var1.get(1) + this.field_2155.textRenderer.getWidth(String.valueOf(var2.getLatency())));
+         var1.set(1, (Integer)var1.get(1) + this.client.textRenderer.getWidth(String.valueOf(var2.getLatency())));
       }
    }
 

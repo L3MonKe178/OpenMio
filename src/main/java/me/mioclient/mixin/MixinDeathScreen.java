@@ -18,7 +18,7 @@ public class MixinDeathScreen {
    @Mutable
    @Shadow
    @Final
-   private Text field_2450;
+   private Text message;
 
    public MixinDeathScreen() {
       super();
@@ -30,7 +30,7 @@ public class MixinDeathScreen {
    )
    public void mio$init(Text var1, boolean var2, CallbackInfo var3) {
       if (customdeath != null && customdeath.isToggled()) {
-         this.field_2450 = customdeath.method_210();
+         this.message = customdeath.method_210();
       }
    }
 }

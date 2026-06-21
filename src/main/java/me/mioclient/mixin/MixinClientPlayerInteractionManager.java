@@ -52,20 +52,20 @@ public abstract class MixinClientPlayerInteractionManager implements MioAPI, Cla
    private static final InventoryTweaksModule inventorytweaks = Hub.field_2595.method_78(InventoryTweaksModule.class);
    private static SpeedMineModule speedmine = Hub.field_2595.method_78(SpeedMineModule.class);
    @Shadow
-   private boolean field_3717;
+   private boolean breakingBlock;
    @Shadow
-   private float field_3715;
+   private float currentBreakingProgress;
    @Shadow
-   private BlockPos field_3714;
+   private BlockPos currentBreakingPos;
    @Shadow
-   private int field_3716;
+   private int blockBreakingCooldown;
 
    public MixinClientPlayerInteractionManager() {
       super();
    }
 
    @Shadow
-   public abstract void method_2906(int var1, int var2, int var3, SlotActionType var4, PlayerEntity var5);
+   public abstract void clickSlot(int var1, int var2, int var3, SlotActionType var4, PlayerEntity var5);
 
    @Inject(
       method = {"breakBlock"},
@@ -116,8 +116,8 @@ public abstract class MixinClientPlayerInteractionManager implements MioAPI, Cla
             for (int var10 = 0; var10 < 4; var10++) {
                ItemStack var9 = (ItemStack)field_4219.player.playerScreenHandler.getCraftingInput().getHeldStacks().get(var10);
                if (var9.isEmpty()) {
-                  this.method_2906(var1, var2, 0, SlotActionType.PICKUP, field_4219.player);
-                  this.method_2906(var1, var10 + 1, 0, SlotActionType.PICKUP, field_4219.player);
+                  this.clickSlot(var1, var2, 0, SlotActionType.PICKUP, field_4219.player);
+                  this.clickSlot(var1, var10 + 1, 0, SlotActionType.PICKUP, field_4219.player);
                   var6.cancel();
                   return;
                }
@@ -220,7 +220,7 @@ public abstract class MixinClientPlayerInteractionManager implements MioAPI, Cla
    )
    private void attackBlock(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
       if (speedmine.isToggled()) {
-         this.field_3716 = 0;
+         this.blockBreakingCooldown = 0;
       }
    }
 
@@ -239,31 +239,31 @@ public abstract class MixinClientPlayerInteractionManager implements MioAPI, Cla
 
    @Override
    public boolean isBreakingBlock() {
-      return this.field_3717;
+      return this.breakingBlock;
    }
 
    @Override
    public void setBreakingBlock(boolean var1) {
-      this.field_3717 = var1;
+      this.breakingBlock = var1;
    }
 
    @Override
    public float getBreakingProgress() {
-      return this.field_3715;
+      return this.currentBreakingProgress;
    }
 
    @Override
    public void setBreakingProgress(float var1) {
-      this.field_3715 = var1;
+      this.currentBreakingProgress = var1;
    }
 
    @Override
    public BlockPos getCurrentBreakingBlock() {
-      return this.field_3714;
+      return this.currentBreakingPos;
    }
 
    @Override
    public void setCurrentBreakingBlock(BlockPos var1) {
-      this.field_3714 = var1;
+      this.currentBreakingPos = var1;
    }
 }

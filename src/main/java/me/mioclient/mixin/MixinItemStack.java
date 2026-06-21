@@ -21,7 +21,7 @@ public abstract class MixinItemStack {
    }
 
    @Shadow
-   public abstract Item method_7909();
+   public abstract Item getItem();
 
    @Inject(
       method = {"finishUsing"},
@@ -40,7 +40,7 @@ public abstract class MixinItemStack {
       cancellable = true
    )
    private void hasGlintHook(CallbackInfoReturnable<Boolean> var1) {
-      if (Class_0114.method_22(this.method_7909())) {
+      if (Class_0114.method_22(this.getItem())) {
          var1.setReturnValue(true);
          var1.cancel();
       }

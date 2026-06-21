@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin({PalettedContainer.class})
 public class MixinPalettedContainer<T> implements Class_1366<T> {
    @Shadow
-   private volatile Data<T> field_34560;
+   private volatile Data<T> data;
 
    public MixinPalettedContainer() {
       super();
@@ -19,6 +19,6 @@ public class MixinPalettedContainer<T> implements Class_1366<T> {
    @Override
    @SuppressWarnings({"rawtypes", "unchecked"})
    public Class_0037<T> mio$data() {
-      return (Class_0037<T>)(Object)this.field_34560;
+      return (Class_0037<T>)(Object)this.data;
    }
 }

@@ -23,22 +23,22 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public abstract class MixinChatInputSuggester implements MioAPI {
    @Shadow
    @Final
-   TextFieldWidget field_21599;
+   TextFieldWidget textField;
    @Shadow
-   boolean field_21614;
+   boolean completingSuggestions;
    @Shadow
-   private ParseResults<CommandSource> field_21610;
+   private ParseResults<CommandSource> parse;
    @Shadow
-   private CompletableFuture<Suggestions> field_21611;
+   private CompletableFuture<Suggestions> pendingSuggestions;
    @Shadow
-   private SuggestionWindow field_21612;
+   private SuggestionWindow window;
 
    public MixinChatInputSuggester() {
       super();
    }
 
    @Shadow
-   public abstract void method_23920(boolean var1);
+   public abstract void show(boolean var1);
 
    @Inject(
       method = {"refresh"},
@@ -55,16 +55,16 @@ public abstract class MixinChatInputSuggester implements MioAPI {
       if (var3.canRead(var4.length()) && var3.getString().startsWith(var4, var3.getCursor())) {
          var3.setCursor(var3.getCursor() + var4.length());
          CommandDispatcher var5 = CommandManager.field_3191;
-         if (this.field_21610 == null) {
-            this.field_21610 = var5.parse(var3, CommandManager.field_3190);
+         if (this.parse == null) {
+            this.parse = var5.parse(var3, CommandManager.field_3190);
          }
 
-         int var6 = this.field_21599.getCursor();
-         if (var6 >= 1 && (this.field_21612 == null || !this.field_21614)) {
-            this.field_21611 = var5.getCompletionSuggestions(this.field_21610, var6);
-            this.field_21611.thenRun(() -> {
-               if (this.field_21611.isDone()) {
-                  this.method_23920(false);
+         int var6 = this.textField.getCursor();
+         if (var6 >= 1 && (this.window == null || !this.completingSuggestions)) {
+            this.pendingSuggestions = var5.getCompletionSuggestions(this.parse, var6);
+            this.pendingSuggestions.thenRun(() -> {
+               if (this.pendingSuggestions.isDone()) {
+                  this.show(false);
                }
             });
          }

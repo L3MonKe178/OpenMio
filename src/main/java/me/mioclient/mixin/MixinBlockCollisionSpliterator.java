@@ -20,10 +20,10 @@ import org.spongepowered.asm.mixin.injection.At;
 public class MixinBlockCollisionSpliterator {
    @Shadow
    @Final
-   private CollisionView field_25174;
+   private CollisionView world;
    @Shadow
    @Final
-   private Mutable field_25172;
+   private Mutable pos;
 
    public MixinBlockCollisionSpliterator() {
       super();
@@ -37,10 +37,10 @@ public class MixinBlockCollisionSpliterator {
       )}
    )
    private VoxelShape computeNextHook(VoxelShape var1, @Local BlockState var2) {
-      if (this.field_25174 != MinecraftClient.getInstance().world) {
+      if (this.world != MinecraftClient.getInstance().world) {
          return var1;
       } else {
-         Event_35 var3 = MioAPI.field_4220.method_36(Event_35.method_2(var1, this.field_25172, var2));
+         Event_35 var3 = MioAPI.field_4220.method_36(Event_35.method_2(var1, this.pos, var2));
          return var3.method_464() ? VoxelShapes.empty() : var3.method_957();
       }
    }

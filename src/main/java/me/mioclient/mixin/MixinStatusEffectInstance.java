@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({StatusEffectInstance.class})
 public class MixinStatusEffectInstance implements Class_0558 {
    @Shadow
-   private int field_5895;
+   private int duration;
    @Unique
    private int mio$initialDuration;
 
@@ -52,11 +52,11 @@ public class MixinStatusEffectInstance implements Class_0558 {
       )}
    )
    private void updateDuration(CallbackInfoReturnable<Integer> var1) {
-      this.mio$initialDuration = this.field_5895;
+      this.mio$initialDuration = this.duration;
    }
 
    @Override
    public float mio$getDurationRation() {
-      return (float)this.field_5895 / (float)this.mio$initialDuration;
+      return (float)this.duration / (float)this.mio$initialDuration;
    }
 }

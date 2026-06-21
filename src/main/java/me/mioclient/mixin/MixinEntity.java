@@ -45,9 +45,9 @@ public abstract class MixinEntity implements Class_0687 {
    private static ElytraFlyModule elytrafly = Hub.field_2595.method_78(ElytraFlyModule.class);
    private static FreecamModule freecam = Hub.field_2595.method_78(FreecamModule.class);
    @Shadow
-   private float field_6031;
+   private float yaw;
    @Shadow
-   private float field_5965;
+   private float pitch;
    private static VelocityModule velo = Hub.field_2595.method_78(VelocityModule.class);
    private static FreeLookModule fl = Hub.field_2595.method_78(FreeLookModule.class);
    private static NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
@@ -63,31 +63,31 @@ public abstract class MixinEntity implements Class_0687 {
    }
 
    @Shadow
-   private Vec3d method_17835(Vec3d var1) {
+   private Vec3d adjustMovementForCollisions(Vec3d var1) {
       return null;
    }
 
    @Shadow
-   public abstract void method_5784(MovementType var1, Vec3d var2);
+   public abstract void move(MovementType var1, Vec3d var2);
 
    @Shadow
    @Override
    public abstract boolean equals(Object var1);
 
    @Shadow
-   public abstract void method_33574(Vec3d var1);
+   public abstract void setPosition(Vec3d var1);
 
    @Shadow
-   public abstract void method_5814(double var1, double var3, double var5);
+   public abstract void setPosition(double var1, double var3, double var5);
 
    @Shadow
-   protected abstract void method_5710(float var1, float var2);
+   protected abstract void setRotation(float var1, float var2);
 
    @Shadow
-   public abstract Vec3d method_18798();
+   public abstract Vec3d getVelocity();
 
    @Shadow
-   public abstract boolean method_41328(EntityPose var1);
+   public abstract boolean isInPose(EntityPose var1);
 
    @ModifyReceiver(
       method = {"getVelocityMultiplier"},
@@ -136,12 +136,12 @@ public abstract class MixinEntity implements Class_0687 {
    )
    private Vec3d moveHook(Entity var1, Vec3d var2) {
       if ((Entity)(Object)this != MinecraftClient.getInstance().player) {
-         return this.method_17835(var2);
+         return this.adjustMovementForCollisions(var2);
       } else {
          Event_51 var3 = new Event_51(PreType.PRE, 0.6F);
          MioAPI.field_4220.method_36(var3);
          Class_0396.method_9((LivingEntity)(Object)this, var3.method_575());
-         Vec3d var4 = this.method_17835(var2);
+         Vec3d var4 = this.adjustMovementForCollisions(var2);
          if (var4 != null) {
             MioAPI.field_4220.method_36(new Event_51(PreType.POST, (float)var4.y));
          }
@@ -188,8 +188,8 @@ public abstract class MixinEntity implements Class_0687 {
    )
    private void lerpPosAndRotationHook(int var1, double var2, double var4, double var6, double var8, double var10, CallbackInfo var12) {
       if (norender.isToggled() && norender.field_749.getValue()) {
-         this.method_5814(var2, var4, var6);
-         this.method_5710((float)var8, (float)var10);
+         this.setPosition(var2, var4, var6);
+         this.setRotation((float)var8, (float)var10);
          var12.cancel();
       }
    }
@@ -202,7 +202,7 @@ public abstract class MixinEntity implements Class_0687 {
       )}
    )
    private float getHeightHook(float var1) {
-      return norender.isToggled() && norender.field_721.getValue() && this.method_41328(EntityPose.CROUCHING) ? 1.54F : var1;
+      return norender.isToggled() && norender.field_721.getValue() && this.isInPose(EntityPose.CROUCHING) ? 1.54F : var1;
    }
 
    @Inject(
@@ -215,7 +215,7 @@ public abstract class MixinEntity implements Class_0687 {
       )}
    )
    private void baseTick(CallbackInfo var1) {
-      this.mio$prevVelocity = this.method_18798();
+      this.mio$prevVelocity = this.getVelocity();
    }
 
    @Inject(

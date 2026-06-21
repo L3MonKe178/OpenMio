@@ -54,9 +54,9 @@ public class MixinChatScreen extends Screen {
    private static HUDModule hud = Hub.field_2595.method_78(HUDModule.class);
    private static NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
    @Shadow
-   protected TextFieldWidget field_2382;
+   protected TextFieldWidget chatField;
    @Shadow
-   ChatInputSuggestor field_21616;
+   ChatInputSuggestor chatInputSuggestor;
    @Unique
    private Class_0855 scroll;
 
@@ -83,8 +83,8 @@ public class MixinChatScreen extends Screen {
       at = {@At("RETURN")}
    )
    private void renderHook1(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      boolean var6 = this.field_2382.getText().startsWith(CommandManager.method_927());
-      if (irc.isToggled() && irc.field_566.getValue() && this.field_2382.getText().startsWith(irc.field_567.getValue())) {
+      boolean var6 = this.chatField.getText().startsWith(CommandManager.method_927());
+      if (irc.isToggled() && irc.field_566.getValue() && this.chatField.getText().startsWith(irc.field_567.getValue())) {
          var6 = true;
       }
 
@@ -130,15 +130,15 @@ public class MixinChatScreen extends Screen {
       )}
    )
    private void renderHook4(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      if (this.field_2382.getText().startsWith(CommandManager.method_927())) {
-         DuckSuggestionWindow var6 = (DuckSuggestionWindow)((DuckChatInputSuggester)this.field_21616).getWindow();
-         CompletableFuture var7 = ((DuckChatInputSuggester)this.field_21616).getSuggestion();
-         if (var7 != null && var7.isDone() && this.field_2382.getText().startsWith(CommandManager.method_927())) {
+      if (this.chatField.getText().startsWith(CommandManager.method_927())) {
+         DuckSuggestionWindow var6 = (DuckSuggestionWindow)((DuckChatInputSuggester)this.chatInputSuggestor).getWindow();
+         CompletableFuture var7 = ((DuckChatInputSuggester)this.chatInputSuggestor).getSuggestion();
+         if (var7 != null && var7.isDone() && this.chatField.getText().startsWith(CommandManager.method_927())) {
             String var8 = "";
             Suggestions var9 = (Suggestions)var7.join();
-            ParseResults var10 = ((DuckChatInputSuggester)this.field_21616).getParse();
+            ParseResults var10 = ((DuckChatInputSuggester)this.chatInputSuggestor).getParse();
             List var11 = Collections.emptyList();
-            if (var10 != null && this.field_2382.getCursor() == this.field_2382.getText().length()) {
+            if (var10 != null && this.chatField.getCursor() == this.chatField.getText().length()) {
                List var12 = var10.getContext().getNodes();
                if (!var10.getContext().getNodes().isEmpty()) {
                   var11 = this.getStrings(((ParsedCommandNode)var12.get(var12.size() - 1)).getNode().getChildren());
@@ -147,10 +147,10 @@ public class MixinChatScreen extends Screen {
 
             if (var6 != null) {
                String var14 = ((Suggestion)var9.getList().get(var6.getSelection())).apply(var6.getTypedText());
-               var8 = var8 + (var14.startsWith(this.field_2382.getText()) ? var14.substring(this.field_2382.getText().length()) : "");
+               var8 = var8 + (var14.startsWith(this.chatField.getText()) ? var14.substring(this.chatField.getText().length()) : "");
             }
 
-            if (this.field_2382.getCursor() > 0 && this.field_2382.getText().charAt(this.field_2382.getCursor() - 1) != ' ' || !var8.isEmpty()) {
+            if (this.chatField.getCursor() > 0 && this.chatField.getText().charAt(this.chatField.getCursor() - 1) != ' ' || !var8.isEmpty()) {
                var8 = var8 + " ";
             }
 
@@ -159,7 +159,7 @@ public class MixinChatScreen extends Screen {
             }
 
             var8 = var8 + String.join(" ", var11);
-            this.field_2382.setSuggestion(var8);
+            this.chatField.setSuggestion(var8);
          }
       }
    }

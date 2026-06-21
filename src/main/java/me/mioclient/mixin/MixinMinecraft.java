@@ -52,18 +52,18 @@ public class MixinMinecraft {
    @Unique
    private Screen mio$lastScreen;
    @Shadow
-   private boolean field_1695;
+   private boolean windowFocused;
    @Shadow
-   public int field_1771;
+   public int attackCooldown;
    @Shadow
    @Final
-   public GameOptions field_1690;
+   public GameOptions options;
    @Shadow
    @Nullable
-   public Screen field_1755;
+   public Screen currentScreen;
    @Shadow
    @Final
-   private Window field_1704;
+   private Window window;
    private static boolean saved = false;
 
    public MixinMinecraft() {
@@ -76,7 +76,7 @@ public class MixinMinecraft {
    )
    public void doAttackHook(CallbackInfoReturnable<Boolean> var1) {
       if (nohitdelay.isToggled() || autoclicker.isToggled()) {
-         this.field_1771 = 0;
+         this.attackCooldown = 0;
       }
    }
 
@@ -130,7 +130,7 @@ public class MixinMinecraft {
       cancellable = true
    )
    private void setScreenHookPre(Screen var1, CallbackInfo var2) {
-      this.mio$lastScreen = this.field_1755;
+      this.mio$lastScreen = this.currentScreen;
       Event_53 var3 = new Event_53(this.mio$lastScreen, var1);
       MioAPI.field_4220.method_36(var3);
       if (var3.method_464()) {
@@ -180,15 +180,15 @@ public class MixinMinecraft {
       cancellable = true
    )
    public void getFramerateLimit(CallbackInfoReturnable<Integer> var1) {
-      if (unfocusedfps.isToggled() && !this.field_1695) {
+      if (unfocusedfps.isToggled() && !this.windowFocused) {
          if (unfocusedfps.field_2211.method_468()) {
             var1.setReturnValue(unfocusedfps.method_681());
          } else {
             var1.setReturnValue(unfocusedfps.field_2211.getValue());
          }
       } else {
-         if (this.field_1755 instanceof Class_1117 && this.field_1695) {
-            var1.setReturnValue(this.field_1704.getFramerateLimit());
+         if (this.currentScreen instanceof Class_1117 && this.windowFocused) {
+            var1.setReturnValue(this.window.getFramerateLimit());
          }
       }
    }

@@ -64,20 +64,20 @@ public abstract class MixinWorldRenderer implements MioAPI, Class_1171 {
    @Unique
    private MatrixStack mio$stack;
    @Shadow
-   private Framebuffer field_4101;
+   private Framebuffer entityOutlinesFramebuffer;
    @Shadow
    @Nullable
-   private ClientWorld field_4085;
+   private ClientWorld world;
 
    public MixinWorldRenderer() {
       super();
    }
 
    @Shadow
-   protected abstract void method_22977(Entity var1, double var2, double var4, double var6, float var8, MatrixStack var9, VertexConsumerProvider var10);
+   protected abstract void renderEntity(Entity var1, double var2, double var4, double var6, float var8, MatrixStack var9, VertexConsumerProvider var10);
 
    @Shadow
-   private void method_22712(MatrixStack var1, VertexConsumer var2, Entity var3, double var4, double var6, double var8, BlockPos var10, BlockState var11) {
+   private void drawBlockOutline(MatrixStack var1, VertexConsumer var2, Entity var3, double var4, double var6, double var8, BlockPos var10, BlockState var11) {
    }
 
    @Inject(
@@ -153,7 +153,7 @@ public abstract class MixinWorldRenderer implements MioAPI, Class_1171 {
       Event_6 var13 = new Event_6(var2, var3, var11, var12);
       field_4220.method_36(var13);
       if (!var13.method_464()) {
-         this.method_22712(var13.method_1089(), var13.method_1090(), var4, var5, var7, var9, var13.method_111(), var13.method_958());
+         this.drawBlockOutline(var13.method_1089(), var13.method_1090(), var4, var5, var7, var9, var13.method_111(), var13.method_958());
       }
    }
 
@@ -243,12 +243,12 @@ public abstract class MixinWorldRenderer implements MioAPI, Class_1171 {
 
    @Override
    public Framebuffer getFramebuffer() {
-      return this.field_4101;
+      return this.entityOutlinesFramebuffer;
    }
 
    @Override
    public void setFramebuffer(Framebuffer var1) {
-      this.field_4101 = var1;
+      this.entityOutlinesFramebuffer = var1;
    }
 
    @ModifyVariable(
@@ -279,7 +279,7 @@ public abstract class MixinWorldRenderer implements MioAPI, Class_1171 {
       )}
    )
    private boolean isDarkened(boolean var1) {
-      return skycolor.isToggled() && skycolor.method_125() ? ((Class_0514)this.field_4085).mio$getOriginalEffects().isDarkened() : var1;
+      return skycolor.isToggled() && skycolor.method_125() ? ((Class_0514)this.world).mio$getOriginalEffects().isDarkened() : var1;
    }
 
    @Inject(

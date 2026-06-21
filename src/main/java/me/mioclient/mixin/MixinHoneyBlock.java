@@ -19,7 +19,7 @@ public class MixinHoneyBlock {
    }
 
    @Shadow
-   private boolean method_23356(BlockPos var1, Entity var2) {
+   private boolean isSliding(BlockPos var1, Entity var2) {
       return false;
    }
 
@@ -31,6 +31,6 @@ public class MixinHoneyBlock {
       )
    )
    private boolean onEntityCollisionHook(HoneyBlock var1, BlockPos var2, Entity var3) {
-      return noslow.isToggled() && noslow.field_1699.getValue() ? false : this.method_23356(var2, var3);
+      return noslow.isToggled() && noslow.field_1699.getValue() ? false : this.isSliding(var2, var3);
    }
 }

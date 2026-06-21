@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinClientNetworkHandler {
    private static final AmbienceModule ambience = Hub.field_2595.method_78(AmbienceModule.class);
    @Shadow
-   private ClientWorld field_3699;
+   private ClientWorld world;
    @Unique
    private Event_24 event;
 
@@ -87,8 +87,8 @@ public class MixinClientNetworkHandler {
    )
    private void onWorldTimeUpdateHook(WorldTimeUpdateS2CPacket var1, CallbackInfo var2) {
       if (ambience.isToggled() && ambience.field_210.getValue()) {
-         this.field_3699.setTime(ambience.method_94());
-         this.field_3699.setTimeOfDay(ambience.method_94());
+         this.world.setTime(ambience.method_94());
+         this.world.setTimeOfDay(ambience.method_94());
          var2.cancel();
       }
    }

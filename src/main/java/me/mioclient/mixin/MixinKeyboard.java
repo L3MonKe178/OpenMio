@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinKeyboard {
    @Shadow
    @Final
-   private MinecraftClient field_1678;
+   private MinecraftClient client;
 
    public MixinKeyboard() {
       super();
@@ -31,7 +31,7 @@ public class MixinKeyboard {
       cancellable = true
    )
    private void onKey(long var1, int var3, int var4, int var5, int var6, CallbackInfo var7) {
-      if (var3 >= 0 && this.field_1678.currentScreen == null && var5 == 1) {
+      if (var3 >= 0 && this.client.currentScreen == null && var5 == 1) {
          Event_18 var8 = new Event_18(var3, false);
          MioAPI.field_4220.method_36(var8);
          if (var8.method_464()) {
@@ -45,7 +45,7 @@ public class MixinKeyboard {
       at = {@At("HEAD")}
    )
    public void onChar(long var1, int var3, int var4, CallbackInfo var5) {
-      if (this.field_1678.currentScreen == null && var1 == this.field_1678.getWindow().getHandle()) {
+      if (this.client.currentScreen == null && var1 == this.client.getWindow().getHandle()) {
          Event_60 var6 = new Event_60(var3);
          MioAPI.field_4220.method_36(var6);
       }

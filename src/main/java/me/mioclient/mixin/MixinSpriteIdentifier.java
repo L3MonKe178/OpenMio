@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinSpriteIdentifier {
    @Shadow
    @Final
-   private Identifier field_21769;
+   private Identifier atlas;
    private static final NoRenderModule norender = Hub.field_2595.method_78(NoRenderModule.class);
 
    public MixinSpriteIdentifier() {
@@ -32,7 +32,7 @@ public class MixinSpriteIdentifier {
    )
    private void getRenderLayerHook(Function<Identifier, RenderLayer> var1, CallbackInfoReturnable<RenderLayer> var2) {
       if (norender.method_282() != 1.0F && RenderSystem.getShaderColor()[3] != 1.0F) {
-         var2.setReturnValue(RenderLayer.getEntityTranslucent(this.field_21769));
+         var2.setReturnValue(RenderLayer.getEntityTranslucent(this.atlas));
          var2.cancel();
       }
    }

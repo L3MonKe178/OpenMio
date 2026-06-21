@@ -25,18 +25,18 @@ public abstract class MixinScreen {
    private static final BlurModule blur = Hub.field_2595.method_78(BlurModule.class);
    @Shadow
    @Nullable
-   protected MinecraftClient field_22787;
+   protected MinecraftClient client;
    @Shadow
-   public int field_22789;
+   public int width;
    @Shadow
-   public int field_22790;
+   public int height;
 
    public MixinScreen() {
       super();
    }
 
    @Shadow
-   protected abstract void method_57735(DrawContext var1);
+   protected abstract void renderDarkening(DrawContext var1);
 
    @Inject(
       method = {"handleTextClick"},
@@ -47,10 +47,10 @@ public abstract class MixinScreen {
       )}
    )
    private void handleTextClickHook(Style var1, CallbackInfoReturnable<Boolean> var2) {
-      if (this.field_22787.getNetworkHandler() != null) {
+      if (this.client.getNetworkHandler() != null) {
          String var3 = var1.getClickEvent().getValue();
          if (var3.startsWith(CommandManager.method_927())) {
-            this.field_22787.getNetworkHandler().sendChatMessage(var3);
+            this.client.getNetworkHandler().sendChatMessage(var3);
          }
       }
    }
@@ -76,13 +76,13 @@ public abstract class MixinScreen {
       cancellable = true
    )
    private void renderBackground(DrawContext var1, int var2, int var3, float var4, CallbackInfo var5) {
-      if (blur.isToggled() && this.field_22787.world != null && this.field_22787.player != null) {
-         this.method_57735(var1);
+      if (blur.isToggled() && this.client.world != null && this.client.player != null) {
+         this.renderDarkening(var1);
          var5.cancel();
       } else if (MinecraftClient.getInstance().currentScreen instanceof Class_1117) {
-         float var6 = (float)this.field_22787.options.getMenuBackgroundBlurrinessValue();
-         this.method_57735(var1);
-         Class_1299.method_2(() -> var1.fill(0, 0, this.field_22789, this.field_22790, -1), var6);
+         float var6 = (float)this.client.options.getMenuBackgroundBlurrinessValue();
+         this.renderDarkening(var1);
+         Class_1299.method_2(() -> var1.fill(0, 0, this.width, this.height, -1), var6);
          var5.cancel();
       }
    }

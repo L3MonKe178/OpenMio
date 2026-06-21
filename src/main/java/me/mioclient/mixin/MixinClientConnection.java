@@ -25,10 +25,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinClientConnection {
    private static NoPacketKickModule nopacketkick = Hub.field_2595.method_78(NoPacketKickModule.class);
    @Shadow
-   private Channel field_11651;
+   private Channel channel;
    @Shadow
    @Final
-   private NetworkSide field_11643;
+   private NetworkSide side;
 
    public MixinClientConnection() {
       super();
@@ -40,7 +40,7 @@ public class MixinClientConnection {
       cancellable = true
    )
    public void channelRead0(ChannelHandlerContext var1, Packet<?> var2, CallbackInfo var3) {
-      if (this.field_11651.isOpen() && var2 != null) {
+      if (this.channel.isOpen() && var2 != null) {
          try {
             Event_4 var4 = new Event_4(var2);
             MioAPI.field_4220.method_36(var4);
@@ -58,7 +58,7 @@ public class MixinClientConnection {
       cancellable = true
    )
    private void sendImmediately(Packet<?> var1, PacketCallbacks var2, boolean var3, CallbackInfo var4) {
-      if (this.field_11643 == NetworkSide.CLIENTBOUND) {
+      if (this.side == NetworkSide.CLIENTBOUND) {
          try {
             Event_10 var5 = new Event_10(var1);
             MioAPI.field_4220.method_36(var5);
@@ -75,7 +75,7 @@ public class MixinClientConnection {
       at = {@At("TAIL")}
    )
    private void sendInternal(Packet<?> var1, PacketCallbacks var2, boolean var3, CallbackInfo var4) {
-      if (this.field_11643 == NetworkSide.CLIENTBOUND) {
+      if (this.side == NetworkSide.CLIENTBOUND) {
          try {
             Event_43 var5 = new Event_43(var1);
             MioAPI.field_4220.method_36(var5);

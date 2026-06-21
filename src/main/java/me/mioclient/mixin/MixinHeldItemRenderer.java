@@ -43,19 +43,19 @@ public abstract class MixinHeldItemRenderer {
    private static ViewModelModule viewmodel = Hub.field_2595.method_78(ViewModelModule.class);
    private static SwingModule swing = Hub.field_2595.method_78(SwingModule.class);
    @Shadow
-   private ItemStack field_4047;
+   private ItemStack mainHand;
    @Shadow
-   private float field_4043;
+   private float equipProgressMainHand;
    @Shadow
    @Final
-   private MinecraftClient field_4050;
+   private MinecraftClient client;
 
    public MixinHeldItemRenderer() {
       super();
    }
 
    @Shadow
-   protected abstract void method_3228(
+   protected abstract void renderFirstPersonItem(
       AbstractClientPlayerEntity var1,
       float var2,
       float var3,
@@ -160,7 +160,7 @@ public abstract class MixinHeldItemRenderer {
       VertexConsumerProvider var10,
       int var11
    ) {
-      this.method_3228(var2, var3, var4, var5, viewmodel.method_2(var5, var6), var7, var8, var9, var10, var11);
+      this.renderFirstPersonItem(var2, var3, var4, var5, viewmodel.method_2(var5, var6), var7, var8, var9, var10, var11);
    }
 
    @ModifyVariable(
@@ -203,14 +203,14 @@ public abstract class MixinHeldItemRenderer {
    private float updateHeldItemsHook(float var1) {
       if (swing.isToggled() && swing.field_505.getValue() != Class_0286.VANILLA) {
          boolean var2 = swing.field_505.getValue() == Class_0286.ONE_EIGHT;
-         float var3 = this.field_4050.player.getAttackCooldownProgress(1.0F);
+         float var3 = this.client.player.getAttackCooldownProgress(1.0F);
          if (var2) {
             var3 = 1.0F;
          }
 
-         boolean var4 = !ItemStack.areItemsAndComponentsEqual(this.field_4047, MioAPI.field_4219.player.getMainHandStack());
+         boolean var4 = !ItemStack.areItemsAndComponentsEqual(this.mainHand, MioAPI.field_4219.player.getMainHandStack());
          float var5 = var2 ? -0.6F : -0.4F;
-         return MathHelper.clamp((var4 ? 0.0F : var3 * var3 * var3) - this.field_4043, var5, 0.4F);
+         return MathHelper.clamp((var4 ? 0.0F : var3 * var3 * var3) - this.equipProgressMainHand, var5, 0.4F);
       } else {
          return var1;
       }

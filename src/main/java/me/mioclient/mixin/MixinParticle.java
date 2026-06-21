@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({Particle.class})
 public class MixinParticle implements Class_0549 {
    @Shadow
-   protected float field_3841;
+   protected float alpha;
    @Unique
    private float mio$initialAlpha;
 
@@ -27,7 +27,7 @@ public class MixinParticle implements Class_0549 {
       at = {@At("TAIL")}
    )
    private void init(ClientWorld var1, double var2, double var4, double var6, CallbackInfo var8) {
-      this.mio$initialAlpha = this.field_3841;
+      this.mio$initialAlpha = this.alpha;
    }
 
    @ModifyVariable(
@@ -43,7 +43,7 @@ public class MixinParticle implements Class_0549 {
    @Override
    public void mio$setInitialAlpha(float var1) {
       this.mio$initialAlpha = var1;
-      this.field_3841 = var1;
+      this.alpha = var1;
    }
 
    @Override

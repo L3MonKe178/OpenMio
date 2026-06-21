@@ -61,18 +61,18 @@ public abstract class MixinGameRenderer {
    private static NoBobModule nobob = Hub.field_2595.method_78(NoBobModule.class);
    @Final
    @Shadow
-   MinecraftClient field_4015;
+   MinecraftClient client;
    @Final
    @Shadow
-   private Camera field_18765;
+   private Camera camera;
    @Shadow
-   private boolean field_3992;
-   @Shadow
-   @Final
-   public HeldItemRenderer field_4012;
+   private boolean renderHand;
    @Shadow
    @Final
-   private BufferBuilderStorage field_20948;
+   public HeldItemRenderer firstPersonRenderer;
+   @Shadow
+   @Final
+   private BufferBuilderStorage buffers;
    @Unique
    private boolean bobbing;
    @Unique
@@ -84,14 +84,14 @@ public abstract class MixinGameRenderer {
    }
 
    @Shadow
-   private void method_3172(Camera var1, float var2, Matrix4f var3) {
+   private void renderHand(Camera var1, float var2, Matrix4f var3) {
    }
 
    @Shadow
-   public abstract void method_3182();
+   public abstract void tick();
 
    @Shadow
-   public abstract void method_3190(float var1);
+   public abstract void updateCrosshairTarget(float var1);
 
    @Inject(
       at = {@At(
@@ -104,7 +104,7 @@ public abstract class MixinGameRenderer {
    )
    private void renderWorldFieldHook(RenderTickCounter var1, CallbackInfo var2) {
       if (this.bobbing) {
-         this.field_4015.options.getBobView().setValue(true);
+         this.client.options.getBobView().setValue(true);
          this.bobbing = false;
       }
    }
@@ -123,9 +123,9 @@ public abstract class MixinGameRenderer {
       cancellable = true
    )
    private void bobViewHook(MatrixStack var1, float var2, CallbackInfo var3) {
-      if ((Boolean)this.field_4015.options.getBobView().getValue() && this.prevBobbing) {
+      if ((Boolean)this.client.options.getBobView().getValue() && this.prevBobbing) {
          this.bobbing = true;
-         this.field_4015.options.getBobView().setValue(false);
+         this.client.options.getBobView().setValue(false);
          this.prevBobbing = false;
          var3.cancel();
       }
@@ -207,14 +207,14 @@ public abstract class MixinGameRenderer {
    private void renderWorldHook(
       RenderTickCounter var1, CallbackInfo var2, @Local(ordinal = 1) Matrix4f var3, @Local(ordinal = 0) float var4, @Local(ordinal = 0) Quaternionf var5
    ) {
-      if (this.field_3992 && shader.isToggled() && shader.field_2041.getValue()) {
+      if (this.renderHand && shader.isToggled() && shader.field_2041.getValue()) {
          var2.cancel();
          if (!norender.method_279()) {
-            this.method_3172(this.field_18765, var4, var3);
+            this.renderHand(this.camera, var4, var3);
          }
 
          Class_1355.field_2003 = true;
-         this.method_3172(this.field_18765, var4, var3);
+         this.renderHand(this.camera, var4, var3);
          Class_1355.field_2003 = false;
          MioAPI.field_4219.getProfiler().pop();
       }
@@ -233,7 +233,7 @@ public abstract class MixinGameRenderer {
          var5 = 1.0F;
       }
 
-      if ((Boolean)this.field_4015.options.getBobView().getValue()) {
+      if ((Boolean)this.client.options.getBobView().getValue()) {
          var1.translate(var2 * var5, var3 * var5, var4 * var5);
       }
    }
@@ -291,9 +291,9 @@ public abstract class MixinGameRenderer {
       cancellable = true
    )
    private void updateTargetedEntityInvoke(float var1, CallbackInfo var2) {
-      if (freecam.isToggled() && this.field_4015.getCameraEntity() != null && !this.freecamSet) {
+      if (freecam.isToggled() && this.client.getCameraEntity() != null && !this.freecamSet) {
          var2.cancel();
-         Entity var3 = this.field_4015.getCameraEntity();
+         Entity var3 = this.client.getCameraEntity();
          double var4 = var3.getX();
          double var6 = var3.getY();
          double var8 = var3.getZ();
@@ -315,7 +315,7 @@ public abstract class MixinGameRenderer {
          this.freecamSet = true;
          Class_0127.method_7(() -> {
             Class_1334.method_2(var3.getPos(), freecam.field_806.x, freecam.field_806.y - (double)var3.getEyeHeight(var3.getPose()), freecam.field_806.z);
-            this.method_3190(var1);
+            this.updateCrosshairTarget(var1);
             Class_1334.method_2(var3.getPos(), var4, var6, var8);
          });
          this.freecamSet = false;

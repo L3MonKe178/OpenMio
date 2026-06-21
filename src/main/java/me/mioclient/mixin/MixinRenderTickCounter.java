@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({Dynamic.class})
 public class MixinRenderTickCounter {
    @Shadow
-   private float field_51958;
+   private float lastFrameDuration;
 
    public MixinRenderTickCounter() {
       super();
@@ -26,7 +26,7 @@ public class MixinRenderTickCounter {
    )
    public void beginRenderTick(long var1, CallbackInfoReturnable<Integer> var3) {
       if (Hub.field_2596 != null) {
-         this.field_51958 = this.field_51958 * Hub.field_2596.method_537();
+         this.lastFrameDuration = this.lastFrameDuration * Hub.field_2596.method_537();
       }
    }
 }

@@ -22,7 +22,7 @@ public abstract class MixinGameMenuScreen extends Screen {
    private static AntiQuitModule antiquit = Hub.field_2595.method_78(AntiQuitModule.class);
 
    @Shadow
-   protected abstract void method_47632();
+   protected abstract void disconnect();
 
    protected MixinGameMenuScreen(Text var1) {
       super(var1);
@@ -37,7 +37,7 @@ public abstract class MixinGameMenuScreen extends Screen {
       if (antiquit.isToggled() && antiquit.field_3760.getValue() && !this.mio$ignoreDisconnect) {
          this.client.setScreen(new Class_0372(() -> {
             this.mio$ignoreDisconnect = true;
-            this.method_47632();
+            this.disconnect();
          }));
          var1.cancel();
       } else {
