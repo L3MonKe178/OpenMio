@@ -46,16 +46,24 @@ dependencies {
     compileOnly "com.kohlschutter.junixsocket:junixsocket-core:2.10.0"
     compileOnly "net.lenni0451:Reflect:1.5.0"
 
-    // The decompiled code calls `nick.Loader.settings(this)` and friends. Those
-    // classes live in the *loader* jar that we deliberately didn't decompile.
-    // Drop the loader jar in `libs/mio-loader-deobf.jar` and Gradle will pick it up.
+    // 反编译后的代码调用了 `nick.Loader`、`nick.Settings` 等函数
     compileOnly fileTree(dir: 'libs', includes: ['*.jar'])
+    modRuntimeOnly files("libs/mio-loader.jar")
 }
 
 java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
+}
+
+tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 processResources {
