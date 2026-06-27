@@ -39,7 +39,7 @@ public class EnumComponent extends SettingComponent {
       if (!within(mx, my, x, y, width, height())) return false;
       if (button != 0 && button != 1) return false;
       Enum<?> cur = (Enum<?>) s().getValue();
-      Object[] all = cur.getClass().getEnumConstants();
+      Object[] all = cur.getDeclaringClass().getEnumConstants();
       int step = button == 0 ? 1 : -1;
       Enum<?> next = (Enum<?>) all[((cur.ordinal() + step) % all.length + all.length) % all.length];
       ((Setting) this.setting).method_78(next);
